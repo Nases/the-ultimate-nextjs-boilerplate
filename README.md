@@ -1,3 +1,3 @@
 # Express Authentication App
 
-## Leveraging express
+Simple authentication app leveraging express

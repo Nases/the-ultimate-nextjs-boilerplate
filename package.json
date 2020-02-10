@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js --watch"
+    "start": "nodemon app.js --watch",
+    "save": "git add -A && git commit -m 'Hello World' && git push -u origin master"
   },
   "author": "",
   "license": "ISC",
