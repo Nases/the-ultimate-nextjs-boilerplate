@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js --watch",
-    "save": "git add -A && git commit -m 'Hello World' && git push -u origin master"
+    "save": "git add -A && git commit -m '⭐️' && git push -u origin master"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
+    "mongoose": "^5.8.11",
     "nodemon": "^2.0.2",
     "path": "^0.12.7"
   }
