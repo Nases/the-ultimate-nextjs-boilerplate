@@ -15,6 +15,7 @@ const app = express()
 //   console.log("Not Connected to Database ERROR! ", err);
 // });
 
+
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
