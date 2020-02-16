@@ -1,28 +1,61 @@
-require('dotenv').config()
+require("dotenv").config();
 
-const express = require('express')
-const expressLayouts = require('express-ejs-layouts')
-const mongoose = require('mongoose')
-const app = express()
+const express = require("express");
+const expressLayouts = require("express-ejs-layouts");
+const mongoose = require("mongoose");
+const flash = require("connect-flash");
+const session = require("express-session");
+const passport = require("passport");
 
-// mongoose.connect('mongodb+srv://nases:qweqwedD@nases-group-llc-bophr.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
-//   .then(() => console.log("MongoDB connected"))
-//   .catch(err => console.log(err))
+const app = express();
 
-// mongoose.connect('mongodb+srv://nases2:qweqwedD@nases-group-llc-bophr.azure.mongodb.net/test?retryWrites=true&w=majority').then(() => {
-//   console.log("Connected to Database");
-// }).catch((err) => {
-//   console.log("Not Connected to Database ERROR! ", err);
-// });
+// Passport config
+require("./config/passport")(passport);
 
+mongoose
+  .connect(process.env.DB_CONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));
 
-app.set('view engine', 'ejs')
-app.use(expressLayouts)
+// EJS middleware
+app.set("view engine", "ejs");
+app.use(expressLayouts);
 
-app.use('/', require('./routes/index'))
-app.use('/users', require('./routes/users'))
+// bodyparser middleware (in order to get urlencoded data from req.body when form is posted)
+app.use(express.urlencoded({ extended: false }));
 
-const PORT = process.env.PORT || 3000
+// Express session middleware
+app.use(
+  session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true
+    // cookie: { secure: true }
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Flash messages middleware
+app.use(flash());
+
+// Self middleware for global variables
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+app.use("/", require("./routes/index"));
+app.use("/users", require("./routes/users"));
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running at port ${PORT}`)
-})
+  console.log(`Server is running at port ${PORT}`);
+});
