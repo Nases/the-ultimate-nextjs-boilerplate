@@ -46,8 +46,8 @@ app.use(flash())
 
 // Self middleware for global variables
 app.use((req, res, next) => {
-  console.log(req.flash());
-  const flashMessages = req.flash()
+  // console.log(req.flash());
+  // const flashMessages = req.flash()
   // Object.entries(flashMessages).forEach((value, index) => {
   //   console.log(index)
   // })

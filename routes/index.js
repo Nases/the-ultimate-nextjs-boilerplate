@@ -21,7 +21,16 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 // login POST
-router.post('/login', (req, res, next) => {
+router.post('/login', [
+  check('email').isEmail().withMessage('Please enter email in correct format'),
+  check('password')
+    .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.')
+    .isLength({ max: 50 }).withMessage('Password must be maximum 50 characters long.')
+], (req, res, next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    req.flash('errors', errors.errors)
+  }
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: 'login',
@@ -42,11 +51,12 @@ router.get('/register', (req, res) => {
 // register POST
 router.post('/register', [
   check('email').isEmail().withMessage('Please enter email in correct format.'),
-  check('password1').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.'),
-  check('password1').isLength({ max: 50 }).withMessage('Password can be maximum 50 characters long.'),
-  check('password1').custom((value, { req }) => {
-    return (value === req.body.password2) ? true : false
-  }).withMessage('Passwords do not match')
+  check('password1')
+    .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.')
+    .isLength({ max: 50 }).withMessage('Password can be maximum 50 characters long.')
+    .custom((value, { req }) => {
+      return (value === req.body.password2) ? true : false
+    }).withMessage('Passwords do not match')
 ], (req, res) => {
   const errors = validationResult(req)
   const { email, password1, password2 } = req.body
