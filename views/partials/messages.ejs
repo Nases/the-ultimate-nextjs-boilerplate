@@ -1,29 +1,32 @@
-<% if (locals.errors) { %> <% errors.forEach(function(error) { %>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<% if (locals.errors) { %>
+<% errors.map(error => { %>
+<div class='alert alert-danger alert-dismissible fade show' role='alert'>
   <%= error.msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
   </button>
 </div>
-<% }); %> <% } %> <% if(success_msg != '') { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <%= success_msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
+<% }); %>
+<% } %>
+
+<% if (locals.info) { %>
+<% info.map(info => { %>
+<div class='alert alert-info alert-dismissible fade show' role='alert'>
+  <%= info.msg %>
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
   </button>
 </div>
-<% } %> <% if(error_msg != '') { %>
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <%= error_msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
+<% }); %>
+<% } %>
+
+<% if (locals.success) { %>
+<% success.map(success => { %>
+<div class='alert alert-success alert-dismissible fade show' role='alert'>
+  <%= success.msg %>
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
   </button>
 </div>
-<% } %> <% if(error != '') { %>
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <%= error %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+<% }); %>
 <% } %>
