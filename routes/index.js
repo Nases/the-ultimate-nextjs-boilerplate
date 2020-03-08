@@ -6,6 +6,12 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const { check, validationResult } = require('express-validator')
 
+// new login temp GET
+router.get('/newlogin', (req, res) => {
+  res.render('newLogin')
+})
+
+
 // index GET
 router.get('/', (req, res) => {
   res.render('welcome')
