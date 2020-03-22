@@ -44,16 +44,11 @@ app.use(passport.session())
 // Flash messages middleware
 app.use(flash())
 
-// Self middleware for global variables
+// assign flash messages to global variables
 app.use((req, res, next) => {
-  // console.log(req.flash());
-  // const flashMessages = req.flash()
-  // Object.entries(flashMessages).forEach((value, index) => {
-  //   console.log(index)
-  // })
-  res.locals.errors = req.flash('errors')
-  res.locals.info = req.flash('info')
-  res.locals.success = req.flash('success')
+  Object.entries(req.flash()).map(([type, info]) => {
+    res.locals[type] = info
+  })
   next()
 })
 

@@ -1,16 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const { ensureAuthenticated } = require('../config/auth')
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth')
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const { check, validationResult } = require('express-validator')
-
-// new login temp GET
-router.get('/newlogin', (req, res) => {
-  res.render('newLogin')
-})
-
 
 // index GET
 router.get('/', (req, res) => {
@@ -23,11 +17,11 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 })
 
 // login GET
-router.get('/login', (req, res) => {
+router.get('/login', forwardAuthenticated, (req, res) => {
   res.render('login')
 })
 // login POST
-router.post('/login', [
+router.post('/login', forwardAuthenticated, [
   check('email').isEmail().withMessage('Please enter email in correct format'),
   check('password')
     .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.')
@@ -39,10 +33,11 @@ router.post('/login', [
   }
   passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: 'login',
+    failureRedirect: '/login',
     failureFlash: true
   })(req, res, next)
 })
+
 // logout GET
 router.get('/logout', (req, res) => {
   req.logout()
@@ -50,12 +45,12 @@ router.get('/logout', (req, res) => {
   res.redirect('/login')
 })
 
-// register GET
-router.get('/register', (req, res) => {
-  res.render('register')
+// sign up GET
+router.get('/signup', forwardAuthenticated, (req, res) => {
+  res.render('signup')
 })
-// register POST
-router.post('/register', [
+// sign up POST
+router.post('/signup', forwardAuthenticated, [
   check('email').isEmail().withMessage('Please enter email in correct format.'),
   check('password1')
     .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.')
@@ -69,14 +64,14 @@ router.post('/register', [
 
   if (!errors.isEmpty()) {
     req.flash('errors', errors.errors)
-    res.redirect('/register')
+    res.redirect('/signup')
   } else {
     // Validation pass
     User.exists({ email }, (err, exists) => {
       if (exists) {
         // User email exists
         req.flash('errors', { msg: 'User email exists' })
-        res.redirect('register')
+        res.redirect('signup')
       } else {
         // User email does not exist
         bcrypt.genSalt(10, (err, salt) => {
