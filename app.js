@@ -7,6 +7,9 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 
+
+const serverless = require('serverless-http')
+
 const app = express()
 
 // Passport config
@@ -21,6 +24,7 @@ mongoose
   .catch(err => console.log(err))
 
 // EJS middleware
+app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
@@ -52,9 +56,14 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/', require('./routes/index'))
+// With serverless + netlify-lambda
+app.use('/.netlify/functions/app', require('./routes/index'))
 
-const PORT = process.env.PORT || 5000
-app.listen(PORT, () => {
-  console.log(`Server is running at port ${PORT}`)
-})
+// With server
+// app.use('/', require('./routes/index'))
+// const PORT = process.env.PORT || 5000
+// app.listen(PORT, () => {
+//   console.log(`Server is running at port ${PORT}`)
+// })
+
+module.exports.handler = serverless(app) // No need to export handler if not using netlify-lambda

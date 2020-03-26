@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "save": "git add -A && git commit -m '⭐️' && git push -u origin master"
+    "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
+    "dev2": "rm -rf functions && netlify-lambda serve .",
+    "build": "rm -rf functions && netlify-lambda build ."
   },
   "author": "",
   "license": "ISC",
@@ -19,9 +21,11 @@
     "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
     "mongoose": "^5.8.11",
+    "netlify-lambda": "^1.6.3",
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "serverless-http": "^2.3.2"
   }
 }
