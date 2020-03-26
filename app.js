@@ -59,11 +59,4 @@ app.use((req, res, next) => {
 // With serverless + netlify-lambda
 app.use('/.netlify/functions/app', require('./routes/index'))
 
-// With server
-// app.use('/', require('./routes/index'))
-// const PORT = process.env.PORT || 5000
-// app.listen(PORT, () => {
-//   console.log(`Server is running at port ${PORT}`)
-// })
-
 module.exports.handler = serverless(app) // No need to export handler if not using netlify-lambda
