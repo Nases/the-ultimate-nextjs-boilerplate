@@ -24,9 +24,9 @@ mongoose
   .catch(err => console.log(err))
 
 // EJS middleware
+app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
-app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
 
 // bodyparser middleware (in order to get urlencoded data from req.body when form is posted)
 app.use(express.urlencoded({ extended: false }))
