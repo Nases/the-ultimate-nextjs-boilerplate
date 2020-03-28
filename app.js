@@ -8,6 +8,9 @@ const session = require('express-session')
 const passport = require('passport')
 
 
+const path = require('path')
+
+
 const serverless = require('serverless-http')
 
 const app = express()
@@ -22,6 +25,8 @@ mongoose
   })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err))
+
+app.set('views', '../../views')
 
 // EJS middleware
 app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
