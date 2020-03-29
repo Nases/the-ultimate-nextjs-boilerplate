@@ -26,7 +26,8 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err))
 
-app.set('views', '../../views')
+app.set('views', path.join(__dirname + 'views'))
+// console.log(path.join(__dirname + " this was dirname"))
 
 // EJS middleware
 app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work

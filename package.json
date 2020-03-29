@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
     "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
-    "dev2": "rm -rf functions && netlify-lambda serve .",
+    "dev": "rm -rf functions && netlify-lambda serve .",
+    "dev2": "rm -rf functions && netlify-lambda -c ./config/webpack.functions.js serve .",
     "build": "rm -rf functions && netlify-lambda build ."
   },
   "author": "",
