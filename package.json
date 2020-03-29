@@ -7,7 +7,7 @@
     "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
     "dev": "rm -rf functions && netlify-lambda serve .",
     "dev2": "rm -rf functions && netlify-lambda -c ./config/webpack.functions.js serve .",
-    "build": "rm -rf functions && netlify-lambda build ."
+    "build": "rm -rf functions && netlify-lambda -c ./config/webpack.functions.js build ."
   },
   "author": "",
   "license": "ISC",
