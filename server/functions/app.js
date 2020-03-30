@@ -16,7 +16,7 @@ const serverless = require('serverless-http')
 const app = express()
 
 // Passport config
-require('./config/passport')(passport)
+require('../config/passport')(passport)
 
 mongoose
   .connect(process.env.DB_CONNECTION, {
@@ -26,9 +26,10 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err))
 
-app.set('views', path.join(__dirname + '/../views'))
 
-console.log(path.join(__dirname + " this was dirname"))
+
+app.set('views', path.join(__dirname + '/../server/views'))
+
 
 // EJS middleware
 app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
@@ -64,6 +65,6 @@ app.use((req, res, next) => {
 })
 
 // With serverless + netlify-lambda
-app.use('/.netlify/functions/app', require('./routes/index'))
+app.use('/.netlify/functions/app', require('../routes/index'))
 
 module.exports.handler = serverless(app) // No need to export handler if not using netlify-lambda
