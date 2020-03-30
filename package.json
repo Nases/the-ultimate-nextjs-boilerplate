@@ -4,7 +4,10 @@
   "description": "Simple authentication app leveraging express",
   "main": "index.js",
   "scripts": {
-    "save": "git add -A && git commit -m '⭐️' && git push -u origin master"
+    "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
+    "dev": "cd client && npm run dev",
+    "build": "cd client && next build",
+    "start": "cd client && next start"
   },
   "repository": {
     "type": "git",
