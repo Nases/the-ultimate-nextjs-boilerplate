@@ -1,0 +1,31 @@
+{
+  "name": "express-authentication-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
+    "dev": "rm -rf lambda && netlify-lambda serve server/functions",
+    "dev2": "rm -rf lambda && netlify-lambda -c ./server/config/webpack.functions.js serve server/functions",
+    "build": "rm -rf lambda && netlify-lambda -c ./server/config/webpack.functions.js build server/functions"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.4.0",
+    "mongoose": "^5.8.11",
+    "netlify-lambda": "^1.6.3",
+    "nodemon": "^2.0.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "serverless-http": "^2.3.2"
+  }
+}
