@@ -1,10 +1,7 @@
-@import './button.css';
-
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
 /* purgecss end ignore */
-
 
 .hero {
   width: 100%;
@@ -23,18 +20,6 @@
 .description {
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* add custom component classes before utilities (tailwindcss suggestion) */
 @tailwind utilities;
