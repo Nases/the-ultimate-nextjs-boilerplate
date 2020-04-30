@@ -18,5 +18,6 @@
   "bugs": {
     "url": "https://github.com/Nases/serverless-nextjs-express-starter/issues"
   },
-  "homepage": "https://github.com/Nases/serverless-nextjs-express-starter#readme"
+  "homepage": "https://github.com/Nases/serverless-nextjs-express-starter#readme",
+  "dependencies": {}
 }

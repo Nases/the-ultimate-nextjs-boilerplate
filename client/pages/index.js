@@ -1,7 +1,8 @@
 import Login from '../components/form/Login'
+import Layout from '../components/Layout'
 
 export default () => (
-  <div>
+  <Layout>
     <Login />
-  </div>
+  </Layout>
 )
