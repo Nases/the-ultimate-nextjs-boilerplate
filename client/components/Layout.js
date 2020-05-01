@@ -3,7 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import { initGA, logPageView } from '../assets/utils/google-analytics'
 
-export default ({ children }) => {
+export default ({ children, title }) => {
   React.useEffect(() => {
     if (!window.GA_INITIALIZED) {
       initGA()
@@ -16,7 +16,7 @@ export default ({ children }) => {
   return (
     <div>
       <Head>
-        <title>NextJS - Express Authentication Starter</title>
+        <title>{title}</title>
       </Head>
       <div>
         <Header />

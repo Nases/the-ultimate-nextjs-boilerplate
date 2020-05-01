@@ -3,30 +3,40 @@ import Layout from '../components/Layout'
 import Modal from 'react-modal'
 
 export default () => {
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)'
-    }
-  }
-  const [modalIsOpen, setIsOpen] = React.useState(false)
-  function openModal() {
-    setIsOpen(true)
-  }
-  function closeModal() {
-    setIsOpen(false)
-  }
+
+
+
+
+
+
+
+
+  // const customStyles = {
+  //   content: {
+  //     top: '50%',
+  //     left: '50%',
+  //     right: 'auto',
+  //     bottom: 'auto',
+  //     marginRight: '-50%',
+  //     transform: 'translate(-50%, -50%)'
+  //   }
+  // }
+  // const [modalIsOpen, setIsOpen] = React.useState(false)
+  // function openModal() {
+  //   setIsOpen(true)
+  // }
+  // function closeModal() {
+  //   setIsOpen(false)
+  // }
   // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
   Modal.setAppElement('#__next')
   return (
-    <Layout>
+    <Layout title='NextJS - Express Authentication Starter'>
+
+
+
+
       <div className="min-h-screen bg-gray-100">
-
-
         <div className="py-10">
           <header>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
