@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import Transition from "../assets/utils/Transition.js"
 
-
 export default () => {
-
+  // profile dropdown toggle
   const [isOpen, setIsOpen] = useState(false);
 
   return (
