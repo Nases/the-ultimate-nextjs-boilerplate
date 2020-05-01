@@ -1,4 +1,4 @@
-var companyInfo = {
+const companyInfo = {
   name: 'Nases Group LLC',
   email: 'info@nasesgroup.com',
   address: 'Los Angeles 90025',

@@ -3,7 +3,7 @@ import companyInfo from '../assets/company-info'
 
 export default () => {
   var title = `Default title | ${companyInfo.name}`
-  var description = 'Default description'
+  var description = 'Default description.'
 
   return (
     <Layout title={title} description={description}>

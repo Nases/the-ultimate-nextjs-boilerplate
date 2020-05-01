@@ -1,10 +1,34 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Transition from "../assets/utils/Transition.js"
 
 export default () => {
   // profile dropdown toggle
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const node = useRef()
+  useEffect(() => {
+    // add when mounted
+    document.addEventListener("mousedown", handleClick)
+    document.addEventListener("keydown", escFunction)
+    // return function to be called when unmounted
+    return () => {
+      document.removeEventListener("mousedown", handleClick)
+      document.removeEventListener("keydown", escFunction)
+    }
+  }, [])
+  const handleClick = e => {
+    if (node.current.contains(e.target)) {
+      // inside click
+      return
+    }
+    // outside click 
+    setIsOpen(false)
+  }
+  const escFunction = e => {
+    if (e.keyCode === 27) {
+      setIsOpen(false)
+    }
+  }
 
   return (
     <>
@@ -14,11 +38,9 @@ export default () => {
           <div className="flex justify-between h-16">
             <div className="flex">
               <Link href="/">
-                <a>
-                  <div className="flex-shrink-0 flex items-center">
-                    <i className="fab fa-canadian-maple-leaf fa-2x pt-3"></i>
-                    <img className="block lg:hidden h-8 w-auto" src="/img/logos/workflow-mark-on-white.svg" alt="Workflow logo" />
-                  </div>
+                <a className="flex-shrink-0 flex items-center">
+                  <img class="hidden lg:block h-8 w-auto" src="/img/logo/workflow-logo-on-white.svg" alt="Workflow logo" />
+                  <img className="block lg:hidden h-8 w-auto" src="/img/logo/workflow-mark-on-white.svg" alt="Workflow logo" />
                 </a>
               </Link>
               <div className="hidden sm:ml-6 sm:flex">
@@ -44,7 +66,7 @@ export default () => {
               </button>
 
               {/* profile dropdown */}
-              <div className="ml-3 relative">
+              <div ref={node} className="ml-3 relative">
                 <div>
                   <button onClick={() => setIsOpen(!isOpen)} className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
                     <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />

@@ -11,8 +11,8 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta name="viewport" content="width=device-width,height=device-height initial-scale=1" />
-          <link rel="shortcut icon" href="/favicon.png" />
-          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          <link rel="shortcut icon" href="/img/favicon/favicon.png" />
+          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" /> {/* tailwindui css */}
           <script src="https://kit.fontawesome.com/c9c5a1adc4.js" crossOrigin="anonymous"></script>
         </Head>
         <body className='bg-gray-50'>

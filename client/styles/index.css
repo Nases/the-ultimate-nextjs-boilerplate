@@ -3,6 +3,19 @@
 @tailwind components;
 /* purgecss end ignore */
 
+.text-primary {
+  @apply text-orange-500;
+}
+.text-secondary {
+  @apply text-indigo-500;
+}
+.bg-primary {
+  @apply text-orange-500;
+}
+.bg-secondary {
+  @apply text-indigo-500;
+}
+
 h1 {
   display: block;
   font-size: 2em;
