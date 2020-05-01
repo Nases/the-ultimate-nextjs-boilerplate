@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default () => {
   return (
     <>
@@ -143,14 +145,18 @@ export default () => {
                       </a>
                     </li>
                     <li className="mt-4">
-                      <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                        Privacy
-                      </a>
+                      <Link href="/policies/privacy">
+                        <a className="text-base leading-6 text-gray-500 hover:text-gray-900">
+                          Privacy
+                        </a>
+                      </Link>
                     </li>
                     <li className="mt-4">
-                      <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                        Terms
-                      </a>
+                      <Link href="/policies/terms">
+                        <a className="text-base leading-6 text-gray-500 hover:text-gray-900">
+                          Terms
+                        </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

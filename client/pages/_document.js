@@ -16,7 +16,7 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <script src="https://kit.fontawesome.com/c9c5a1adc4.js" crossOrigin="anonymous"></script>
         </Head>
-        <body className='bg-gray-100'>
+        <body className='min-h-screen bg-gray-50'>
           <Main />
           <NextScript />
         </body>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import Transition from "../assets/utils/Transition.js"
 
 export default () => {
@@ -7,14 +8,19 @@ export default () => {
 
   return (
     <>
-      <nav className="header bg-white shadow-sm">
+      <div className='headerBefore'></div>
+      <nav className="header bg-white shadow-sm sticky top-0">
         <div className="max-w-7xl mx-auto pt-1 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <img className="block lg:hidden h-8 w-auto" src="/img/logos/workflow-mark-on-white.svg" alt="Workflow logo" />
-                <img className="hidden lg:block h-8 w-auto" src="/img/logos/workflow-logo-on-white.svg" alt="Workflow logo" />
-              </div>
+              <Link href="/">
+                <a>
+                  <div className="flex-shrink-0 flex items-center">
+                    <i className="fab fa-canadian-maple-leaf fa-2x pt-3"></i>
+                    <img className="block lg:hidden h-8 w-auto" src="/img/logos/workflow-mark-on-white.svg" alt="Workflow logo" />
+                  </div>
+                </a>
+              </Link>
               <div className="hidden sm:ml-6 sm:flex">
                 <a href="#" className="inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
                   Dashboard
@@ -104,11 +110,12 @@ export default () => {
       </nav>
       <style jsx>
         {`
-          .header {
-            border-width: 10px 0 0;
-            border-top-style: solid;
-            -o-border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
-            border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
+          .headerBefore::before {
+            content: "";
+            display: block;
+            height: 10px;
+            width: 100%;
+            background-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff);
           }
         `}
       </style>

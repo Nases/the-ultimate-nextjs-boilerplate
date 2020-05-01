@@ -3,22 +3,32 @@
 @tailwind components;
 /* purgecss end ignore */
 
-.hero {
-  width: 100%;
-  color: #333;
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 
-.title {
-  margin: 0;
-  width: 100%;
-  padding-top: 80px;
-  line-height: 1.15;
-  font-size: 48px;
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 
-.title,
-.description {
-  text-align: center;
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 /* add custom component classes before utilities (tailwindcss suggestion) */
