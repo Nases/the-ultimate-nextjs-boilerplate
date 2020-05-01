@@ -3,7 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import { initGA, logPageView } from '../assets/utils/google-analytics'
 
-export default ({ children, title }) => {
+export default ({ children, title, description }) => {
   React.useEffect(() => {
     if (!window.GA_INITIALIZED) {
       initGA()
@@ -17,10 +17,13 @@ export default ({ children, title }) => {
     <div>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={description} />
       </Head>
       <div>
         <Header />
-        {children}
+        <div className='min-h-screen'>
+          {children}
+        </div>
         <Footer />
       </div>
     </div>

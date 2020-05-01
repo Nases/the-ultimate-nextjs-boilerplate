@@ -1,14 +1,11 @@
 import Login from '../components/form/Login'
 import Layout from '../components/Layout'
 import Modal from 'react-modal'
+import companyInfo from '../assets/company-info'
 
 export default () => {
-
-
-
-
-
-
+  var title = `Default title | ${companyInfo.name}`
+  var description = 'Default description'
 
 
   // const customStyles = {
@@ -31,7 +28,7 @@ export default () => {
   // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
   Modal.setAppElement('#__next')
   return (
-    <Layout title='NextJS - Express Authentication Starter'>
+    <Layout title={title} description={description}>
       <div className="py-10">
         <header>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

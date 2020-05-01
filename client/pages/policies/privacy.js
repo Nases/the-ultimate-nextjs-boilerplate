@@ -2,8 +2,10 @@ import Layout from '../../components/Layout'
 import companyInfo from '../../assets/company-info'
 
 export default () => {
+  var title = `Privacy Policy | ${companyInfo.name}`
+  var description = 'See our privacy policy and how it relates to you.'
   return (
-    <Layout>
+    <Layout title={title} description={description}>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto">
           <div className='text-gray-900 bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
