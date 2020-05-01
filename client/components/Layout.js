@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Header from './Header'
-import Footer from './Footer'
+import Header from './partials/Header'
+import Footer from './partials/Footer'
 import { initGA, logPageView } from '../assets/utils/google-analytics'
 
 export default ({ children, title, description }) => {

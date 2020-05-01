@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import Transition from "../assets/utils/Transition.js"
+import Transition from "../utils/Transition.js"
 
 export default () => {
   // profile dropdown toggle
@@ -39,7 +39,7 @@ export default () => {
             <div className="flex">
               <Link href="/">
                 <a className="flex-shrink-0 flex items-center">
-                  <img class="hidden lg:block h-8 w-auto" src="/img/logo/workflow-logo-on-white.svg" alt="Workflow logo" />
+                  <img className="hidden lg:block h-8 w-auto" src="/img/logo/workflow-logo-on-white.svg" alt="Workflow logo" />
                   <img className="block lg:hidden h-8 w-auto" src="/img/logo/workflow-mark-on-white.svg" alt="Workflow logo" />
                 </a>
               </Link>
