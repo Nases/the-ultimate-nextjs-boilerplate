@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Transition from "../../utils/Transition.js"
-import NavLink from './NavLink'
+import MainMenuLink from './MainMenuLink'
+import UserMenuLink from './UserMenuLink'
+import { mainMenuItems, profileMenuItems } from './menu-items'
 
 export default () => {
   // profile dropdown logic start
@@ -63,18 +65,15 @@ export default () => {
                 </a>
               </Link>
               <div className="hidden sm:ml-6 sm:flex">
-                <NavLink href='/'>
-                  Dashboard
-                </NavLink>
-                <NavLink href='/a'>
-                  Team
-                </NavLink>
-                <NavLink href='/b'>
-                  Projects
-                </NavLink>
-                <NavLink href='/c'>
-                  Calendar
-                </NavLink>
+                {
+                  mainMenuItems.map(value => {
+                    return (
+                      <MainMenuLink href={value.href}>
+                        {value.name}
+                      </MainMenuLink>
+                    )
+                  })
+                }
               </div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -102,9 +101,15 @@ export default () => {
                 >
                   <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
                     <div className="py-1 rounded-md bg-white shadow-xs">
-                      <a href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Your Profile</a>
-                      <a href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Settings</a>
-                      <a href="#" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">Sign out</a>
+                      {
+                        profileMenuItems.map(value => {
+                          return (
+                            <UserMenuLink href={value.href}>
+                              {value.name}
+                            </UserMenuLink>
+                          )
+                        })
+                      }
                     </div>
                   </div>
                 </Transition>
@@ -126,18 +131,15 @@ export default () => {
         {/* mobile menu */}
         <div ref={mobileProfileMenuNode} className={`${mobileProfileMenuIsOpen ? 'block' : 'hidden'} sm:hidden`}>
           <div className="pt-2 pb-3">
-            <NavLink href='/' isMobile={true}>
-              Dashboard
-            </NavLink>
-            <NavLink href='/a' isMobile={true}>
-              Team
-            </NavLink>
-            <NavLink href='/b' isMobile={true}>
-              Projects
-            </NavLink>
-            <NavLink href='/c' isMobile={true}>
-              Calendar
-            </NavLink>
+            {
+              mainMenuItems.map(value => {
+                return (
+                  <MainMenuLink href={value.href} isMobile={true}>
+                    {value.name}
+                  </MainMenuLink>
+                )
+              })
+            }
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4">
@@ -150,9 +152,15 @@ export default () => {
               </div>
             </div>
             <div className="mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-              <a href="#" className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Your Profile</a>
-              <a href="#" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Settings</a>
-              <a href="#" className="mt-1 block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">Sign out</a>
+              {
+                profileMenuItems.map(value => {
+                  return (
+                    <UserMenuLink href={value.href} isMobile={true}>
+                      {value.name}
+                    </UserMenuLink>
+                  )
+                })
+              }
             </div>
           </div>
         </div>
