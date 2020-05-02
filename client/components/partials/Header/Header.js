@@ -170,7 +170,7 @@ export default () => {
           .headerBefore::before {
             content: "";
             display: block;
-            height: 10px;
+            height: 4px;
             width: 100%;
             background-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff);
           }
