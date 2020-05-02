@@ -299,6 +299,7 @@ export default () => {
             <circle cx="582.946" cy="355.1155" r={5} className="fill-current text-primary" opacity="0.3" />
             <circle cx="460.946" cy="355.1155" r={5} className="fill-current text-primary" opacity="0.3" />
           </svg>
+          <h1 className='text-center text-gray-600'>Page Not Found</h1>
         </div>
       </div>
     </Layout>
