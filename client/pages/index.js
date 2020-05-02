@@ -39,7 +39,7 @@ export default () => {
           </div>
         </header>
         <main>
-          <OfflineDetected />
+          {/* <OfflineDetected /> */}
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {/* <!-- Replace with your content --> */}
             <div className="px-4 py-8 sm:px-0">
