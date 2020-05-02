@@ -3,32 +3,43 @@ import Link from 'next/link'
 import Transition from "../utils/Transition.js"
 
 export default () => {
-  // profile dropdown toggle
-  const [isOpen, setIsOpen] = useState(false)
-  const node = useRef()
+  // profile dropdown logic start
+  const [desktopProfileMenuIsOpen, setDesktopProfileMenuIsOpen] = useState(false)
+  const [mobileProfileMenuIsOpen, setMobileProfileMenuIsOpen] = useState(false)
+  const desktopProfileMenuNode = useRef()
+  const mobileProfileMenuNode = useRef()
+  const mobileProfileMenuButtonNode = useRef()
+
   useEffect(() => {
-    // add when mounted
     document.addEventListener("mousedown", handleClick)
     document.addEventListener("keydown", escFunction)
-    // return function to be called when unmounted
     return () => {
       document.removeEventListener("mousedown", handleClick)
       document.removeEventListener("keydown", escFunction)
     }
   }, [])
+  const toggleDropdown = () => {
+    setDesktopProfileMenuIsOpen(!desktopProfileMenuIsOpen)
+    setMobileProfileMenuIsOpen(!mobileProfileMenuIsOpen)
+  }
+
   const handleClick = e => {
-    if (node.current.contains(e.target)) {
-      // inside click
-      return
+    if (!desktopProfileMenuNode.current.contains(e.target)) {
+      // outside click 
+      setDesktopProfileMenuIsOpen(false)
     }
-    // outside click 
-    setIsOpen(false)
+    if (!mobileProfileMenuNode.current.contains(e.target) && !mobileProfileMenuButtonNode.current.contains(e.target)) {
+      // outside click 
+      setMobileProfileMenuIsOpen(false)
+    }
   }
   const escFunction = e => {
     if (e.keyCode === 27) {
-      setIsOpen(false)
+      setDesktopProfileMenuIsOpen(false)
+      setMobileProfileMenuIsOpen(false)
     }
   }
+  // profile dropdown end
 
   return (
     <>
@@ -66,14 +77,14 @@ export default () => {
               </button>
 
               {/* profile dropdown */}
-              <div ref={node} className="ml-3 relative">
+              <div ref={desktopProfileMenuNode} className="ml-3 relative">
                 <div>
-                  <button onClick={() => setIsOpen(!isOpen)} className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                  <button onClick={toggleDropdown} className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
                     <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                   </button>
                 </div>
                 <Transition
-                  show={isOpen}
+                  show={desktopProfileMenuIsOpen}
                   enter="transition ease-out duration-200"
                   enterFrom="transform opacity-0 scale-95"
                   enterTo="transform opacity-100 scale-100"
@@ -93,11 +104,11 @@ export default () => {
             </div>
             <div className="-mr-2 flex items-center sm:hidden">
               {/* mobile menu button */}
-              <button onClick={() => setIsOpen(!isOpen)} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                <svg className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
+              <button ref={mobileProfileMenuButtonNode} onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <svg className={`${mobileProfileMenuIsOpen ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-                <svg className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <svg className={`${mobileProfileMenuIsOpen ? 'block' : 'hidden'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -105,7 +116,7 @@ export default () => {
           </div>
         </div>
         {/* mobile menu */}
-        <div className={`${isOpen ? 'block' : 'hidden'} sm:hidden`}>
+        <div ref={mobileProfileMenuNode} className={`${mobileProfileMenuIsOpen ? 'block' : 'hidden'} sm:hidden`}>
           <div className="pt-2 pb-3">
             <a href="#" className="block pl-3 pr-4 py-2 border-l-4 border-indigo-500 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">Dashboard</a>
             <a href="#" className="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Team</a>
