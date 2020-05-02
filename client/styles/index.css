@@ -15,6 +15,9 @@
 .bg-secondary {
   @apply text-indigo-500;
 }
+.border-primary {
+  @apply border-orange-500;
+}
 
 h1 {
   display: block;

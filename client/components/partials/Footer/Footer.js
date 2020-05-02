@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import companyInfo from '../../assets/company-info'
+import companyInfo from '../../../assets/company-info'
 
 export default () => {
   return (
@@ -8,7 +8,11 @@ export default () => {
         <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="xl:col-span-1">
-              <img className="h-10" src="/img/logo/workflow-mark-gray-300.svg" alt="Company name" />
+              <Link href="/">
+                <a>
+                  <img className="h-10" src="/img/logo/workflow-mark-gray-300.svg" alt={companyInfo.name} />
+                </a>
+              </Link>
               <p className="mt-8 text-gray-500 text-base leading-6">
                 Making the world a better place through constructing elegant hierarchies.
               </p>
@@ -172,7 +176,16 @@ export default () => {
           </div>
           <div className="mt-12 border-t border-gray-200 pt-8">
             <p className="text-base leading-6 text-gray-400 xl:text-center">
-              &copy; {`${new Date().getFullYear()} ${companyInfo.name}. All rights reserved.`}
+              &copy;
+              {new Date().getFullYear()}
+              {' '}
+              <Link href="/">
+                <a className='hover:text-gray-700'>
+                  {companyInfo.name}.
+                </a>
+              </Link>
+              {' '}
+              All rights reserved.
             </p>
           </div>
         </div>

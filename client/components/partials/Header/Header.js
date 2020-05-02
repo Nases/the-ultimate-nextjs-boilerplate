@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Transition from "../utils/Transition.js"
+import Transition from "../../utils/Transition.js"
+import NavLink from './NavLink'
 
 export default () => {
   // profile dropdown logic start
@@ -11,11 +13,11 @@ export default () => {
   const mobileProfileMenuButtonNode = useRef()
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClick)
-    document.addEventListener("keydown", escFunction)
+    document.addEventListener("mousedown", handleProfileMenuClick)
+    document.addEventListener("keydown", handleEscClick)
     return () => {
-      document.removeEventListener("mousedown", handleClick)
-      document.removeEventListener("keydown", escFunction)
+      document.removeEventListener("mousedown", handleProfileMenuClick)
+      document.removeEventListener("keydown", handleEscClick)
     }
   }, [])
   const toggleDropdown = () => {
@@ -23,7 +25,7 @@ export default () => {
     setMobileProfileMenuIsOpen(!mobileProfileMenuIsOpen)
   }
 
-  const handleClick = e => {
+  const handleProfileMenuClick = e => {
     if (!desktopProfileMenuNode.current.contains(e.target)) {
       // outside click 
       setDesktopProfileMenuIsOpen(false)
@@ -33,13 +35,19 @@ export default () => {
       setMobileProfileMenuIsOpen(false)
     }
   }
-  const escFunction = e => {
+  const handleEscClick = e => {
     if (e.keyCode === 27) {
       setDesktopProfileMenuIsOpen(false)
       setMobileProfileMenuIsOpen(false)
     }
   }
   // profile dropdown end
+
+
+  const router = useRouter()
+  console.log(router.pathname)
+
+
 
   return (
     <>
@@ -55,18 +63,18 @@ export default () => {
                 </a>
               </Link>
               <div className="hidden sm:ml-6 sm:flex">
-                <a href="#" className="inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out">
+                <NavLink href='/'>
                   Dashboard
-                  </a>
-                <a href="#" className="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                </NavLink>
+                <NavLink href='/a'>
                   Team
-                  </a>
-                <a href="#" className="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                </NavLink>
+                <NavLink href='/b'>
                   Projects
-                  </a>
-                <a href="#" className="ml-8 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                </NavLink>
+                <NavLink href='/c'>
                   Calendar
-                  </a>
+                </NavLink>
               </div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -118,10 +126,18 @@ export default () => {
         {/* mobile menu */}
         <div ref={mobileProfileMenuNode} className={`${mobileProfileMenuIsOpen ? 'block' : 'hidden'} sm:hidden`}>
           <div className="pt-2 pb-3">
-            <a href="#" className="block pl-3 pr-4 py-2 border-l-4 border-indigo-500 text-base font-medium text-indigo-700 bg-indigo-50 focus:outline-none focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700 transition duration-150 ease-in-out">Dashboard</a>
-            <a href="#" className="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Team</a>
-            <a href="#" className="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Projects</a>
-            <a href="#" className="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out">Calendar</a>
+            <NavLink href='/' isMobile={true}>
+              Dashboard
+            </NavLink>
+            <NavLink href='/a' isMobile={true}>
+              Team
+            </NavLink>
+            <NavLink href='/b' isMobile={true}>
+              Projects
+            </NavLink>
+            <NavLink href='/c' isMobile={true}>
+              Calendar
+            </NavLink>
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4">
