@@ -9,9 +9,9 @@ import { mainMenuItems, profileMenuItems } from './menu-items'
 export default () => {
   // profile dropdown logic start
   const [desktopProfileMenuIsOpen, setDesktopProfileMenuIsOpen] = useState(false)
-  const [mobileProfileMenuIsOpen, setMobileProfileMenuIsOpen] = useState(false)
+  const [mobileMenuIsOpen, setmobileMenuIsOpen] = useState(false)
   const desktopProfileMenuNode = useRef()
-  const mobileProfileMenuNode = useRef()
+  const mobileMenuNode = useRef()
   const mobileProfileMenuButtonNode = useRef()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default () => {
   }, [])
   const toggleDropdown = () => {
     setDesktopProfileMenuIsOpen(!desktopProfileMenuIsOpen)
-    setMobileProfileMenuIsOpen(!mobileProfileMenuIsOpen)
+    setmobileMenuIsOpen(!mobileMenuIsOpen)
   }
 
   const handleProfileMenuClick = e => {
@@ -32,15 +32,15 @@ export default () => {
       // outside click 
       setDesktopProfileMenuIsOpen(false)
     }
-    if (!mobileProfileMenuNode.current.contains(e.target) && !mobileProfileMenuButtonNode.current.contains(e.target)) {
+    if (!mobileMenuNode.current.contains(e.target) && !mobileProfileMenuButtonNode.current.contains(e.target)) {
       // outside click 
-      setMobileProfileMenuIsOpen(false)
+      setmobileMenuIsOpen(false)
     }
   }
   const handleEscClick = e => {
     if (e.keyCode === 27) {
       setDesktopProfileMenuIsOpen(false)
-      setMobileProfileMenuIsOpen(false)
+      setmobileMenuIsOpen(false)
     }
   }
   // profile dropdown end
@@ -57,13 +57,16 @@ export default () => {
       <nav className="header bg-white shadow-sm sticky top-0">
         <div className="max-w-7xl mx-auto pt-1 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
+            {/* logo & main menu items */}
             <div className="flex">
+              {/* logo */}
               <Link href="/">
                 <a className="flex-shrink-0 flex items-center">
                   <img className="hidden lg:block h-8 w-auto" src="/img/logo/workflow-logo-on-white.svg" alt="Workflow logo" />
                   <img className="block lg:hidden h-8 w-auto" src="/img/logo/workflow-mark-on-white.svg" alt="Workflow logo" />
                 </a>
               </Link>
+              {/* main menu items */}
               <div className="hidden sm:ml-6 sm:flex">
                 {
                   mainMenuItems.map(value => {
@@ -76,7 +79,11 @@ export default () => {
                 }
               </div>
             </div>
+
+            {/* logged in */}
+            {/* profile & notification dropdown */}
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
+              {/* notification dropdown */}
               <button className="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:text-gray-500 focus:bg-gray-100 transition duration-150 ease-in-out" aria-label="Notifications">
                 <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -115,13 +122,17 @@ export default () => {
                 </Transition>
               </div>
             </div>
+
+            {/* logged out */}
+            {/* show Log In & Sign Up button */}
+
+            {/* mobile menu button */}
             <div className="-mr-2 flex items-center sm:hidden">
-              {/* mobile menu button */}
               <button ref={mobileProfileMenuButtonNode} onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                <svg className={`${mobileProfileMenuIsOpen ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <svg className={`${mobileMenuIsOpen ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-                <svg className={`${mobileProfileMenuIsOpen ? 'block' : 'hidden'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <svg className={`${mobileMenuIsOpen ? 'block' : 'hidden'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -129,7 +140,8 @@ export default () => {
           </div>
         </div>
         {/* mobile menu */}
-        <div ref={mobileProfileMenuNode} className={`${mobileProfileMenuIsOpen ? 'block' : 'hidden'} sm:hidden`}>
+        <div ref={mobileMenuNode} className={`${mobileMenuIsOpen ? 'block' : 'hidden'} sm:hidden`}>
+          {/* main menu items */}
           <div className="pt-2 pb-3">
             {
               mainMenuItems.map(value => {
@@ -141,6 +153,7 @@ export default () => {
               })
             }
           </div>
+          {/* profile menu items */}
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4">
               <div className="flex-shrink-0">

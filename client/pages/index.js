@@ -2,7 +2,6 @@ import Login from '../components/form/Login'
 import Layout from '../components/Layout'
 import Modal from 'react-modal'
 import companyInfo from '../assets/company-info'
-import OfflineDetected from '../components/partials/OfflineDetected'
 
 export default () => {
   var title = `Default title | ${companyInfo.name}`
@@ -39,7 +38,6 @@ export default () => {
           </div>
         </header>
         <main>
-          {/* <OfflineDetected /> */}
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
             {/* <!-- Replace with your content --> */}
             <div className="px-4 py-8 sm:px-0">
