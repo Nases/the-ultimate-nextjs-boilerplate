@@ -31,6 +31,9 @@
   .border-primary {
     @apply border-orange-500;
   }
+  .border-common {
+    @apply border-gray-200;
+  }
 }
 
 

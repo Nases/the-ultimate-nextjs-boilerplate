@@ -84,7 +84,7 @@ export default () => {
             {/* profile & notification dropdown */}
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
               {/* notification dropdown */}
-              <button className="p-1 border-2 border-transparent text-common-lighter rounded-full hover:text-common-light focus:outline-none focus:text-common-light focus:bg-gray-100 transition duration-150 ease-in-out" aria-label="Notifications">
+              <button className="p-1 border-2 border-transparent text-common-lighter rounded-full hover:text-common-light transition duration-150 ease-in-out" aria-label="Notifications">
                 <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
@@ -93,7 +93,7 @@ export default () => {
               {/* profile dropdown */}
               <div ref={desktopProfileMenuNode} className="ml-3 relative">
                 <div>
-                  <button onClick={toggleDropdown} className="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                  <button onClick={toggleDropdown} className="flex text-sm border-2 border-transparent rounded-full transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
                     <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                   </button>
                 </div>
@@ -128,7 +128,7 @@ export default () => {
 
             {/* mobile menu button */}
             <div className="-mr-2 flex items-center sm:hidden">
-              <button ref={mobileProfileMenuButtonNode} onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 rounded-md text-common-lighter hover:text-common-light hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-common-light transition duration-150 ease-in-out">
+              <button ref={mobileProfileMenuButtonNode} onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 rounded-md text-common-lighter hover:text-common-light hover:bg-gray-100 transition duration-150 ease-in-out">
                 <svg className={`${mobileMenuIsOpen ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -156,7 +156,7 @@ export default () => {
 
           {/* logged in */}
           {/* profile menu items */}
-          <div className="pt-4 pb-3 border-t border-gray-200">
+          <div className="pt-4 pb-3 border-t border-common">
             <div className="flex items-center px-4">
               <div className="flex-shrink-0">
                 <img className="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />

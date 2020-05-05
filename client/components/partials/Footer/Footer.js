@@ -179,7 +179,7 @@ export default () => {
               </div>
             </div>
           </div>
-          <div className="md:grid md:grid-cols-2 mt-12 border-t border-gray-200 pt-8">
+          <div className="md:grid md:grid-cols-2 mt-12 border-t border-common pt-8">
             <p className="text-base leading-6 text-common-lighter md:text-left">
               Made with <i class="fas fa-heart hover:text-red-600"></i> & <i class="fas fa-coffee hover:text-yellow-700"></i> in California.
             </p>
