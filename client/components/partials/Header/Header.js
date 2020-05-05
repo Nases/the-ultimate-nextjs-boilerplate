@@ -125,6 +125,18 @@ export default () => {
 
             {/* logged out */}
             {/* show Log In & Sign Up button */}
+            <div className='inline-flex items-center'>
+              <span class="inline-flex rounded-md shadow-sm">
+                <button type="button" class="inline-flex items-center font-primary font-semibold uppercase hover:text-primary h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-common-dark transition ease-in-out duration-150">
+                  Log In
+              </button>
+              </span>
+              <span class="inline-flex rounded-md shadow-sm items-center ml-2">
+                <button type="button" class="inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 transition ease-in-out duration-150">
+                  Sign Up
+              </button>
+              </span>
+            </div>
 
             {/* mobile menu button */}
             <div className="-mr-2 flex items-center sm:hidden">

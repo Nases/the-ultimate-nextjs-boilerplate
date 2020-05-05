@@ -36,6 +36,10 @@
   }
 }
 
+.font-primary {
+  font-family: Montserrat,Arial,Helvetica,sans-serif;
+}
+
 
 h1 {
   display: block;
