@@ -7,7 +7,7 @@ export default () => {
     <Layout title={title} description={description}>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto">
-          <div className='text-gray-900 bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
+          <div className='text-common-dark bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
             <h1>Terms and Conditions</h1>
             <p>Welcome to {companyInfo.name}!</p>
             <p>These terms and conditions outline the rules and regulations for the use of {companyInfo.website}'s Website, located at {companyInfo.website}.</p>

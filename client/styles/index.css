@@ -3,31 +3,36 @@
 @tailwind components;
 /* purgecss end ignore */
 
-.text-primary {
-  @apply text-orange-500;
-}
-.text-secondary {
-  @apply text-indigo-500;
-}
-.text-common {
-  @apply text-gray-500;
-}
-.text-common-light {
-  @apply text-gray-400;
-}
-.text-common-dary {
-  @apply text-gray-600;
+@variants hover {
+  .text-common-dark {
+    @apply text-gray-900;
+  }
+  .text-primary {
+    @apply text-orange-500;
+  }
+  .text-secondary {
+    @apply text-indigo-500;
+  }
+  .text-common {
+    @apply text-gray-700;
+  }
+  .text-common-light {
+    @apply text-gray-500;
+  }
+  .text-common-lighter {
+    @apply text-gray-400;
+  }
+  .bg-primary {
+    @apply bg-orange-500;
+  }
+  .bg-secondary {
+    @apply bg-indigo-500;
+  }
+  .border-primary {
+    @apply border-orange-500;
+  }
 }
 
-.bg-primary {
-  @apply bg-orange-500;
-}
-.bg-secondary {
-  @apply bg-indigo-500;
-}
-.border-primary {
-  @apply border-orange-500;
-}
 
 h1 {
   display: block;

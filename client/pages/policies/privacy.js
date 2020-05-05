@@ -8,7 +8,7 @@ export default () => {
     <Layout title={title} description={description}>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto">
-          <div className='text-gray-900 bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
+          <div className='text-common-dark bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
             <h1>Privacy Policy</h1>
             <p>At {companyInfo.name}, accessible from {companyInfo.website}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by {companyInfo.name} and how we use it.</p>
             <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
