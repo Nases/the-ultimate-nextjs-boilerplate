@@ -153,6 +153,8 @@ export default () => {
               })
             }
           </div>
+
+          {/* logged in */}
           {/* profile menu items */}
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4">
@@ -176,6 +178,10 @@ export default () => {
               }
             </div>
           </div>
+
+          {/* logged out */}
+          {/* show Log In & Sign Up button */}
+
         </div>
       </nav>
       <style jsx>

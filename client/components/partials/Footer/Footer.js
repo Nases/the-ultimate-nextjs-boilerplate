@@ -5,6 +5,11 @@ export default () => {
   return (
     <>
       <div className="footer bg-white">
+        <div className='absolute text-center -mt-5 min-w-full'>
+          <a href='https://hasansefaozalp.com/' target='_blank'>
+            <i class="fas fa-kiwi-bird fa-lg text-gray-400 hover:text-purple-600"></i>
+          </a>
+        </div>
         <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="xl:col-span-1">
@@ -13,7 +18,7 @@ export default () => {
                   <img className="h-10" src="/img/logo/workflow-mark-gray-300.svg" alt={companyInfo.name} />
                 </a>
               </Link>
-              <p className="mt-8 text-gray-500 text-base leading-6">
+              <p className="mt-8 text-gray-500 text-base leading-6 test">
                 Making the world a better place through constructing elegant hierarchies.
               </p>
               <p>
@@ -174,8 +179,11 @@ export default () => {
               </div>
             </div>
           </div>
-          <div className="mt-12 border-t border-gray-200 pt-8">
-            <p className="text-base leading-6 text-gray-400 xl:text-center">
+          <div className="md:grid md:grid-cols-2 mt-12 border-t border-gray-200 pt-8">
+            <p className="text-base leading-6 text-gray-400 md:text-left">
+              Made with <i class="fas fa-heart hover:text-red-600"></i> & <i class="fas fa-coffee hover:text-yellow-700"></i> in California.
+            </p>
+            <p className="text-base leading-6 text-gray-400 md:text-right">
               &copy;
               {new Date().getFullYear()}
               {' '}
@@ -184,8 +192,6 @@ export default () => {
                   {companyInfo.name}.
                 </a>
               </Link>
-              {' '}
-              All rights reserved.
             </p>
           </div>
         </div>
