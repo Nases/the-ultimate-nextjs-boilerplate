@@ -3,7 +3,7 @@ import Header from './partials/Header/Header'
 import Footer from './partials/Footer/Footer'
 import { initGA, logPageView } from '../assets/utils/google-analytics'
 
-export default ({ children, title, description }) => {
+export default function Layout({ children, title, description }) {
   React.useEffect(() => {
     if (!window.GA_INITIALIZED) {
       initGA()
@@ -12,7 +12,6 @@ export default ({ children, title, description }) => {
     logPageView()
   }, [])
 
-  console.log(process.env.GOOGLE_ANALYTICS_ID)
   return (
     <div>
       <Head>

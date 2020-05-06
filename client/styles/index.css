@@ -25,6 +25,12 @@
   .bg-primary {
     @apply bg-orange-500;
   }
+  .bg-primary-light {
+    @apply bg-orange-400;
+  }
+  .bg-primary-dark {
+    @apply bg-orange-600;
+  }
   .bg-secondary {
     @apply bg-indigo-500;
   }
@@ -67,6 +73,10 @@ p {
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+
+button:focus {
+  outline:0;
 }
 
 /* custom scroll bar start  */

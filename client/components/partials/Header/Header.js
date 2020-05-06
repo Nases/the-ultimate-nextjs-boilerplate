@@ -1,12 +1,38 @@
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Transition from "../../utils/Transition.js"
 import MainMenuLink from './MainMenuLink'
 import UserMenuLink from './UserMenuLink'
 import { mainMenuItems, profileMenuItems } from './menu-items'
+import Modal from 'react-modal'
+import Login from './Login'
 
 export default () => {
+
+  // login modal logic start
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      padding: 0
+    }
+  }
+  const [modalIsOpen, setIsOpen] = React.useState(false)
+  function openModal() {
+    setIsOpen(true)
+  }
+  function closeModal() {
+    setIsOpen(false)
+  }
+  // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+  Modal.setAppElement('#__next')
+  // login modal logic end
+
+
   // profile dropdown logic start
   const [desktopProfileMenuIsOpen, setDesktopProfileMenuIsOpen] = useState(false)
   const [mobileMenuIsOpen, setmobileMenuIsOpen] = useState(false)
@@ -46,9 +72,6 @@ export default () => {
   // profile dropdown end
 
 
-  const router = useRouter()
-  console.log(router.pathname)
-
 
 
   return (
@@ -71,7 +94,7 @@ export default () => {
                 {
                   mainMenuItems.map(value => {
                     return (
-                      <MainMenuLink href={value.href}>
+                      <MainMenuLink key={value.href} href={value.href}>
                         {value.name}
                       </MainMenuLink>
                     )
@@ -111,7 +134,7 @@ export default () => {
                       {
                         profileMenuItems.map(value => {
                           return (
-                            <UserMenuLink href={value.href}>
+                            <UserMenuLink key={value.href} href={value.href}>
                               {value.name}
                             </UserMenuLink>
                           )
@@ -126,13 +149,21 @@ export default () => {
             {/* logged out */}
             {/* show Log In & Sign Up button */}
             <div className='inline-flex items-center'>
-              <span class="inline-flex rounded-md shadow-sm">
-                <button type="button" class="inline-flex items-center font-primary font-semibold uppercase hover:text-primary h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-common-dark transition ease-in-out duration-150">
+              <span className="inline-flex">
+                <button onClick={openModal} type="button" className="inline-flex items-center font-primary font-semibold uppercase hover:text-primary h-10 px-3 py-2 text-sm leading-4 font-medium text-common-dark transition ease-in-out duration-150">
                   Log In
-              </button>
+                </button>
+                <Modal
+                  isOpen={modalIsOpen}
+                  onRequestClose={closeModal}
+                  style={customStyles}
+                  contentLabel="Login Modal"
+                >
+                  <Login />
+                </Modal>
               </span>
-              <span class="inline-flex rounded-md shadow-sm items-center ml-2">
-                <button type="button" class="inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 transition ease-in-out duration-150">
+              <span className="inline-flex rounded-md shadow-sm items-center ml-2">
+                <button type="button" className="inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition ease-in-out duration-150">
                   Sign Up
               </button>
               </span>
@@ -158,7 +189,7 @@ export default () => {
             {
               mainMenuItems.map(value => {
                 return (
-                  <MainMenuLink href={value.href} isMobile={true}>
+                  <MainMenuLink key={value.href} href={value.href} isMobile={true}>
                     {value.name}
                   </MainMenuLink>
                 )
@@ -182,7 +213,7 @@ export default () => {
               {
                 profileMenuItems.map(value => {
                   return (
-                    <UserMenuLink href={value.href} isMobile={true}>
+                    <UserMenuLink key={value.href} href={value.href} isMobile={true}>
                       {value.name}
                     </UserMenuLink>
                   )
