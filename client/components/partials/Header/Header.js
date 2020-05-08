@@ -4,34 +4,9 @@ import Transition from "../../utils/Transition.js"
 import MainMenuLink from './MainMenuLink'
 import UserMenuLink from './UserMenuLink'
 import { mainMenuItems, profileMenuItems } from './menu-items'
-import Modal from 'react-modal'
-import Login from './Login'
+import { LoginButton, LoginModal } from './Login'
 
 export default () => {
-
-  // login modal logic start
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: 0
-    }
-  }
-  const [modalIsOpen, setIsOpen] = React.useState(false)
-  function openModal() {
-    setIsOpen(true)
-  }
-  function closeModal() {
-    setIsOpen(false)
-  }
-  // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-  Modal.setAppElement('#__next')
-  // login modal logic end
-
 
   // profile dropdown logic start
   const [desktopProfileMenuIsOpen, setDesktopProfileMenuIsOpen] = useState(false)
@@ -71,6 +46,11 @@ export default () => {
   }
   // profile dropdown end
 
+
+
+  function openModal() {
+    dispatchAuthModal({ type: 'TOGGLE_LOGIN_MODAL' })
+  }
 
 
 
@@ -150,17 +130,8 @@ export default () => {
             {/* show Log In & Sign Up button */}
             <div className='inline-flex items-center'>
               <span className="inline-flex">
-                <button onClick={openModal} type="button" className="inline-flex items-center font-primary font-semibold uppercase hover:text-primary h-10 px-3 py-2 text-sm leading-4 font-medium text-common-dark transition ease-in-out duration-150">
-                  Log In
-                </button>
-                <Modal
-                  isOpen={modalIsOpen}
-                  onRequestClose={closeModal}
-                  style={customStyles}
-                  contentLabel="Login Modal"
-                >
-                  <Login />
-                </Modal>
+                <LoginButton />
+                <LoginModal />
               </span>
               <span className="inline-flex rounded-md shadow-sm items-center ml-2">
                 <button type="button" className="inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition ease-in-out duration-150">
