@@ -5,6 +5,7 @@ import MainMenuLink from './MainMenuLink'
 import UserMenuLink from './UserMenuLink'
 import { mainMenuItems, profileMenuItems } from './menu-items'
 import { LoginButton, LoginModal } from './Login'
+import { SignUpButton, SignUpModal } from './SignUp'
 
 export default () => {
 
@@ -134,9 +135,11 @@ export default () => {
                 <LoginModal />
               </span>
               <span className="inline-flex rounded-md shadow-sm items-center ml-2">
-                <button type="button" className="inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition ease-in-out duration-150">
+                {/* <button type="button" className="inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition ease-in-out duration-150">
                   Sign Up
-              </button>
+                </button> */}
+                <SignUpButton />
+                <SignUpModal />
               </span>
             </div>
 
