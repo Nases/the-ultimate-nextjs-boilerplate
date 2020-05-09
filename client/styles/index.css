@@ -10,6 +10,9 @@
   .text-primary {
     @apply text-orange-500;
   }
+  .text-primary-dark {
+    @apply text-orange-600;
+  }
   .text-secondary {
     @apply text-indigo-500;
   }
