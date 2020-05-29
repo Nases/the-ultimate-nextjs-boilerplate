@@ -3,7 +3,7 @@ const User = require('../../models/User')
 
 
 export default async (req, res) => {
-  res.status(200).send('asds')
+  res.status(200).send(req.body.email)
   // req.body.email
   // req.body.password
 
