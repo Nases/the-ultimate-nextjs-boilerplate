@@ -1,3 +1,19 @@
+const User = require('../models/User')
+
+
+
 export default async (req, res) => {
-  res.status(200).json({ success: true, data: "This works maaaann" })
+  res.status(200).json(req.body)
+  // req.body.email
+  // req.body.password
+
+
+  // const newUser = new User({
+  //   email,
+  //   password: hash
+  // })
+  // // Save user to mongodb
+  // newUser.save()
+
+
 }
