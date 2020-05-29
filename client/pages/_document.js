@@ -19,6 +19,7 @@ class MyDocument extends Document {
         <body className='bg-gray-50'>
           <Main />
           <NextScript />
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js'></script>
         </body>
       </Html>
     )
