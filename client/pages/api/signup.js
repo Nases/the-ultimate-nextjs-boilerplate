@@ -1,19 +1,14 @@
-const User = require('../../models/User')
+var express = require('express')
+var bodyParser = require('body-parser')
 
+var app = express()
 
+app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
 
-export default async (req, res) => {
-  res.status(200).send(req.body.email)
-  // req.body.email
-  // req.body.password
+app.use((req, res) => {
+  res.send(req.body)
+  console.log(req)
+})
 
-
-  // const newUser = new User({
-  //   email,
-  //   password: hash
-  // })
-  // // Save user to mongodb
-  // newUser.save()
-
-
-}
+export default app
