@@ -26,6 +26,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "serverless-http": "^2.3.2"
+    "serverless-http": "^2.3.2",
+    "yup": "^0.29.1"
   }
 }

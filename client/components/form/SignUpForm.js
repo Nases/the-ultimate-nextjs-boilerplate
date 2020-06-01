@@ -40,7 +40,7 @@ const Basic = () => (
         password: '',
         confirmPassword: ''
       }}
-      validationSchema={SignupSchema}
+      // validationSchema={SignupSchema}
       onSubmit={(values, { setSubmitting }) => {
         axios.post('http://localhost:5000/signup', {
           email: values.email,

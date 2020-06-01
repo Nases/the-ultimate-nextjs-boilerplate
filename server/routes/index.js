@@ -5,56 +5,61 @@ const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const { check, validationResult } = require('express-validator')
+const yup = require('yup')
 
-// index GET
-router.get('/', (req, res) => {
-  res.send('hey')
-})
-
-
-// login POST
-router.post('/login', forwardAuthenticated, [
-  check('email').isEmail().withMessage('Please enter email in correct format'),
-  check('password')
-    .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.')
-    .isLength({ max: 50 }).withMessage('Password must be maximum 50 characters long.')
-], (req, res, next) => {
-  const errors = validationResult(req)
-  if (!errors.isEmpty()) {
-    req.flash('errors', errors.errors)
-  }
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/login',
-    failureFlash: true
-  })(req, res, next)
-})
-
-// logout GET
-router.get('/logout', (req, res) => {
-  req.logout()
-  req.flash('success_msg', 'You are logged out')
-  res.redirect('/login')
-})
 
 // sign up POST
 router.post('/signup', (req, res) => {
   const { email, password, confirmPassword } = req.body
 
-  // res.send(JSON.stringify(req.body))
+  function equalTo(ref, msg) {
+    return yup.mixed().test({
+      name: 'equalTo',
+      exclusive: false,
+      message: msg || '${path} must be the same as ${reference}',
+      params: {
+        reference: ref.path,
+      },
+      test: function (value) {
+        return value === this.resolve(ref)
+      },
+    })
+  }
+  yup.addMethod(yup.string, 'equalTo', equalTo);
 
-  const newUser = new User({
-    email,
-    password
+  const schema = yup.object().shape({
+    email: yup.string()
+      .email('Invalid email')
+      .required('Required'),
+    password: yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .max(24, 'Password can be maximum 24 characters')
+      .required('Required'),
+    confirmPassword: yup.string().equalTo(yup.ref('password'), 'Passwords must match').required('Required')
   })
-  // Save user to mongodb
-  newUser.save()
-    .then((user) => {
-      res.send(true)
+
+  // check validity
+  schema.isValid({
+    email: email,
+    password: password,
+    confirmPassword: confirmPassword
+  })
+    .then(function (valid) {
+      valid ? res.send('valid') : res.send('not valid')
     })
-    .catch(err => {
-      res.send(err)
-    })
+
+  // const newUser = new User({
+  //   email,
+  //   password
+  // })
+  // // Save user to mongodb
+  // newUser.save()
+  //   .then((user) => {
+  //     res.send(true)
+  //   })
+  //   .catch(err => {
+  //     res.send(err)
+  //   })
 })
 
 
