@@ -8,18 +8,10 @@ const { check, validationResult } = require('express-validator')
 
 // index GET
 router.get('/', (req, res) => {
-  res.render('welcome')
+  res.send('hey')
 })
 
-// dashboard GET
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  res.render('dashboard')
-})
 
-// login GET
-router.get('/login', forwardAuthenticated, (req, res) => {
-  res.render('login')
-})
 // login POST
 router.post('/login', forwardAuthenticated, [
   check('email').isEmail().withMessage('Please enter email in correct format'),
@@ -45,55 +37,28 @@ router.get('/logout', (req, res) => {
   res.redirect('/login')
 })
 
-// sign up GET
-router.get('/signup', forwardAuthenticated, (req, res) => {
-  res.render('signup')
-})
 // sign up POST
-router.post('/signup', forwardAuthenticated, [
-  check('email').isEmail().withMessage('Please enter email in correct format.'),
-  check('password1')
-    .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long.')
-    .isLength({ max: 50 }).withMessage('Password can be maximum 50 characters long.')
-    .custom((value, { req }) => {
-      return (value === req.body.password2) ? true : false
-    }).withMessage('Passwords do not match')
-], (req, res) => {
-  const errors = validationResult(req)
-  const { email, password1, password2 } = req.body
+router.post('/signup', (req, res) => {
+  const { email, password, confirmPassword } = req.query
 
-  if (!errors.isEmpty()) {
-    req.flash('errors', errors.errors)
-    res.redirect('/signup')
-  } else {
-    // Validation pass
-    User.exists({ email }, (err, exists) => {
-      if (exists) {
-        // User email exists
-        req.flash('errors', { msg: 'User email exists' })
-        res.redirect('signup')
-      } else {
-        // User email does not exist
-        bcrypt.genSalt(10, (err, salt) => {
-          if (err) throw err
-          bcrypt.hash(password1, salt, (err, hash) => {
-            if (err) console.log(err)
-            const newUser = new User({
-              email,
-              password: hash
-            })
-            // Save user to mongodb
-            newUser.save()
-              .then(user => {
-                req.flash('success', { msg: 'Successfully registered. You can now login.' })
-                res.redirect('/login')
-              })
-              .catch(err => console.log(err))
-          })
-        })
-      }
+  // res.json({
+  //   email: email,
+  //   password: password,
+  //   confirmPassword: confirmPassword
+  // })
+
+  const newUser = new User({
+    email,
+    password
+  })
+  // Save user to mongodb
+  newUser.save()
+    .then((user) => {
+      res.send(true)
     })
-  }
+    .catch(err => {
+      res.send(false)
+    })
 
 
 })
