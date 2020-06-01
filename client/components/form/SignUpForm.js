@@ -6,21 +6,6 @@ import Label from './Label'
 import FormErrorMessage from './FormErrorMessage'
 import Button from './Button'
 
-function equalTo(ref, msg) {
-  return Yup.mixed().test({
-    name: 'equalTo',
-    exclusive: false,
-    message: msg || '${path} must be the same as ${reference}',
-    params: {
-      reference: ref.path,
-    },
-    test: function (value) {
-      return value === this.resolve(ref)
-    },
-  })
-}
-Yup.addMethod(Yup.string, 'equalTo', equalTo);
-
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email')
@@ -29,8 +14,12 @@ const SignupSchema = Yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .max(24, 'Password can be maximum 24 characters')
     .required('Required'),
-  confirmPassword: Yup.string().equalTo(Yup.ref('password'), 'Passwords must match').required('Required'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('Required'),
 })
+
+
 
 const Basic = () => (
   <div>
@@ -44,7 +33,8 @@ const Basic = () => (
       onSubmit={(values, { setSubmitting }) => {
         axios.post('http://localhost:5000/signup', {
           email: values.email,
-          password: values.password
+          password: values.password,
+          confirmPassword: values.confirmPassword
         })
           .then(function (response) {
             console.log(response)

@@ -35,18 +35,34 @@ router.post('/signup', (req, res) => {
       .min(6, 'Password must be at least 6 characters')
       .max(24, 'Password can be maximum 24 characters')
       .required('Required'),
-    confirmPassword: yup.string().equalTo(yup.ref('password'), 'Passwords must match').required('Required')
+    confirmPassword: yup.string()
+      .oneOf([yup.ref('password'), null], 'Passwords must match')
+      .required('Required')
   })
 
   // check validity
-  schema.isValid({
+  // schema.isValid({
+  //   email: email,
+  //   password: password,
+  //   confirmPassword: confirmPassword
+  // })
+  //   .then(function (valid) {
+  //     valid ? res.send('valid') : res.send('not valid')
+  //   })
+
+  schema.validate({
     email: email,
     password: password,
     confirmPassword: confirmPassword
   })
-    .then(function (valid) {
-      valid ? res.send('valid') : res.send('not valid')
+    .then(values => {
+      res.send(values)
     })
+    .catch(function (err) {
+      res.send(err.errors)
+      // err.name // => 'ValidationError'
+      // err.errors // => ['Deve ser maior que 18']
+    });
 
   // const newUser = new User({
   //   email,
