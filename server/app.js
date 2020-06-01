@@ -10,16 +10,13 @@ const passport = require('passport')
 
 const path = require('path')
 
-
-const serverless = require('serverless-http')
-
 const app = express()
 
 // Passport config
-require('../config/passport')(passport)
+require('./config/passport')(passport)
 
 mongoose
-  .connect(process.env.DB_CONNECTION, {
+  .connect('mongodb+srv://nases2:DtpEkmjqcWvV3DQ1@nases-group-llc-bophr.azure.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -28,11 +25,12 @@ mongoose
 
 
 
-app.set('views', path.join(__dirname + '/../server/views'))
+// app.set('views', path.join(__dirname + '/../server/views'))
+// app.set('views', path.join(__dirname + './views'))
 
 
 // EJS middleware
-app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
+// app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
@@ -64,7 +62,6 @@ app.use((req, res, next) => {
   next()
 })
 
-// With serverless + netlify-lambda
-app.use('/.netlify/functions/app', require('../routes/index'))
 
-module.exports.handler = serverless(app) // No need to export handler if not using netlify-lambda
+const PORT = process.env.PORT || 5000
+app.listen(PORT, console.log(`Server started on port ${PORT}`))
