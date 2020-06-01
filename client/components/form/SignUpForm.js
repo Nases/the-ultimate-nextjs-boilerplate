@@ -42,51 +42,22 @@ const Basic = () => (
       }}
       validationSchema={SignupSchema}
       onSubmit={(values, { setSubmitting }) => {
-        // axios.post('http://localhost:5000/signup', {
-        //   email: 'Fred',
-        //   password: 'Flintstone'
-        // }, {
-        //   headers: {
-        //     'Content-Type': 'application/x-www-form-urlencoded'
-        //   }
-        // })
-        //   .then(function (response) {
-        //     console.log(response);
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error);
-        //   });
-
-
-        (async () => {
-          const rawResponse = await fetch('http://localhost:5000/signup', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ a: 1, b: 'Textual content' })
-          });
-          const content = await rawResponse.json();
-
-          console.log(content);
-        })();
-
-
-
-
-
-
-
-
-        // alert(JSON.stringify(values, null, 2))
-        setSubmitting(false)
-
-
+        axios.post('http://localhost:5000/signup', {
+          email: values.email,
+          password: values.password
+        })
+          .then(function (response) {
+            console.log(response)
+            setSubmitting(false)
+          })
+          .catch(function (error) {
+            console.log(error)
+            setSubmitting(false)
+          })
       }}
     >
-      {({ isSubmitting, values, handleSubmit }) => (
-        <Form onSubmit={handleSubmit}>
+      {({ isSubmitting, values }) => (
+        <Form>
           <div>
             <Label htmlFor="email">Email address</Label>
             <Field id='email' type="email" name="email" as={Input} />
@@ -102,13 +73,9 @@ const Basic = () => (
             <Field id='confirmPassword' type="password" name="confirmPassword" as={Input} />
             <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
           </div>
-          <button type="submit">Submit</button>
-          {/* <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit" disabled={isSubmitting}>
             Submit
-          </Button> */}
-          <pre>
-            {JSON.stringify(values, null, 2)}
-          </pre>
+          </Button>
         </Form>
       )}
     </Formik>

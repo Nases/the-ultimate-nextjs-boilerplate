@@ -41,22 +41,20 @@ router.get('/logout', (req, res) => {
 router.post('/signup', (req, res) => {
   const { email, password, confirmPassword } = req.body
 
-  res.send(JSON.stringify(req.body))
+  // res.send(JSON.stringify(req.body))
 
-  // const newUser = new User({
-  //   email,
-  //   password
-  // })
-  // // Save user to mongodb
-  // newUser.save()
-  //   .then((user) => {
-  //     res.send(true)
-  //   })
-  //   .catch(err => {
-  //     res.send(err)
-  //   })
-
-
+  const newUser = new User({
+    email,
+    password
+  })
+  // Save user to mongodb
+  newUser.save()
+    .then((user) => {
+      res.send(true)
+    })
+    .catch(err => {
+      res.send(err)
+    })
 })
 
 
