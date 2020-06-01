@@ -39,26 +39,22 @@ router.get('/logout', (req, res) => {
 
 // sign up POST
 router.post('/signup', (req, res) => {
-  const { email, password, confirmPassword } = req.query
+  const { email, password, confirmPassword } = req.body
 
-  // res.json({
-  //   email: email,
-  //   password: password,
-  //   confirmPassword: confirmPassword
+  res.send(JSON.stringify(req.body))
+
+  // const newUser = new User({
+  //   email,
+  //   password
   // })
-
-  const newUser = new User({
-    email,
-    password
-  })
-  // Save user to mongodb
-  newUser.save()
-    .then((user) => {
-      res.send(true)
-    })
-    .catch(err => {
-      res.send(false)
-    })
+  // // Save user to mongodb
+  // newUser.save()
+  //   .then((user) => {
+  //     res.send(true)
+  //   })
+  //   .catch(err => {
+  //     res.send(err)
+  //   })
 
 
 })

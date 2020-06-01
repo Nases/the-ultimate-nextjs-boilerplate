@@ -2,15 +2,19 @@ require('dotenv').config()
 
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
+const cors = require('cors')
 const mongoose = require('mongoose')
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
+const bodyParser = require('body-parser')
 
 
 const path = require('path')
 
 const app = express()
+
+app.use(cors())
 
 // Passport config
 require('./config/passport')(passport)
@@ -24,18 +28,18 @@ mongoose
   .catch(err => console.log(err))
 
 
-
-// app.set('views', path.join(__dirname + '/../server/views'))
-// app.set('views', path.join(__dirname + './views'))
-
-
 // EJS middleware
-// app.engine('ejs', require('ejs').__express) // Needed for netlify-lambda's or serverless's webpack babel solution to work
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
 // bodyparser middleware (in order to get urlencoded data from req.body when form is posted)
-app.use(express.urlencoded({ extended: false }))
+// app.use(express.urlencoded({ extended: true }))
+
+// parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // Express session middleware
 app.use(

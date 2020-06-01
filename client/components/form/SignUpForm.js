@@ -1,11 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import axios from 'axios'
 import Input from './Input'
 import Label from './Label'
 import FormErrorMessage from './FormErrorMessage'
 import Button from './Button'
-
-console.log(process.env.MONGODB_URI)
 
 function equalTo(ref, msg) {
   return Yup.mixed().test({
@@ -23,14 +22,6 @@ function equalTo(ref, msg) {
 Yup.addMethod(Yup.string, 'equalTo', equalTo);
 
 const SignupSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  lastName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
   email: Yup.string()
     .email('Invalid email')
     .required('Required'),
@@ -38,23 +29,64 @@ const SignupSchema = Yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .max(24, 'Password can be maximum 24 characters')
     .required('Required'),
-  passwordConfirm: Yup.string().equalTo(Yup.ref('password'), 'Passwords must match').required('Required'),
+  confirmPassword: Yup.string().equalTo(Yup.ref('password'), 'Passwords must match').required('Required'),
 })
 
 const Basic = () => (
   <div>
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{
+        email: '',
+        password: '',
+        confirmPassword: ''
+      }}
       validationSchema={SignupSchema}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2))
-          setSubmitting(false)
-        }, 400)
+        // axios.post('http://localhost:5000/signup', {
+        //   email: 'Fred',
+        //   password: 'Flintstone'
+        // }, {
+        //   headers: {
+        //     'Content-Type': 'application/x-www-form-urlencoded'
+        //   }
+        // })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
+
+
+        (async () => {
+          const rawResponse = await fetch('http://localhost:5000/signup', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ a: 1, b: 'Textual content' })
+          });
+          const content = await rawResponse.json();
+
+          console.log(content);
+        })();
+
+
+
+
+
+
+
+
+        // alert(JSON.stringify(values, null, 2))
+        setSubmitting(false)
+
+
       }}
     >
-      {({ isSubmitting, values }) => (
-        <Form>
+      {({ isSubmitting, values, handleSubmit }) => (
+        <Form onSubmit={handleSubmit}>
           <div>
             <Label htmlFor="email">Email address</Label>
             <Field id='email' type="email" name="email" as={Input} />
@@ -66,20 +98,21 @@ const Basic = () => (
             <ErrorMessage name="password" component={FormErrorMessage} />
           </div>
           <div>
-            <Label htmlFor="passwordConfirm">Confirm password</Label>
-            <Field id='passwordConfirm' type="password" name="passwordConfirm" as={Input} />
-            <ErrorMessage name="passwordConfirm" component={FormErrorMessage} />
+            <Label htmlFor="confirmPassword">Confirm password</Label>
+            <Field id='confirmPassword' type="password" name="confirmPassword" as={Input} />
+            <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
           </div>
-          <Button type="submit" disabled={isSubmitting}>
+          <button type="submit">Submit</button>
+          {/* <Button type="submit" disabled={isSubmitting}>
             Submit
-          </Button>
+          </Button> */}
           <pre>
             {JSON.stringify(values, null, 2)}
           </pre>
         </Form>
       )}
     </Formik>
-  </div>
+  </div >
 )
 
 export default Basic
