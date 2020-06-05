@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
-    "dev": "cd client && npm run dev",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
     "build": "cd client && next build",
     "start": "cd client && next start"
   },
