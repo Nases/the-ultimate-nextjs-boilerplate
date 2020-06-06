@@ -49,6 +49,10 @@
   font-family: Montserrat,Arial,Helvetica,sans-serif;
 }
 
+* {
+  @apply font-primary;
+}
+
 
 h1 {
   display: block;
@@ -99,6 +103,22 @@ button:focus {
 }
 
 /* custom scroll bar end */
+
+
+.underline-primary::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff);
+}
+
+.button-disabled span {
+  display: none
+}
+.button-disabled i {
+  display: block
+}
 
 
 

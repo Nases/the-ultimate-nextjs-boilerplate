@@ -1,6 +1,6 @@
 const yup = require('yup')
 
-const SignupSchema = yup.object().shape({
+const SignUpSchema = yup.object().shape({
   email: yup.string()
     .email('Invalid email')
     .required('Required'),
@@ -13,4 +13,4 @@ const SignupSchema = yup.object().shape({
     .required('Required'),
 })
 
-module.exports = { SignupSchema }
+module.exports = { SignUpSchema }

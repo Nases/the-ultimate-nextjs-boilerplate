@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const { check, validationResult } = require('express-validator')
-const { SignupSchema } = require('../assets/validation/schemas')
+const { SignUpSchema } = require('../assets/validation/schemas')
 
 
 
@@ -10,7 +10,7 @@ const { SignupSchema } = require('../assets/validation/schemas')
 router.post('/signup', (req, res) => {
   const { email, password, confirmPassword } = req.body
 
-  SignupSchema.validate({
+  SignUpSchema.validate({
     email: email,
     password: password,
     confirmPassword: confirmPassword
@@ -18,7 +18,7 @@ router.post('/signup', (req, res) => {
     .then(values => {
       res.send(values)
     })
-    .catch(function (err) {
+    .catch(err => {
       res.send(err.errors)
       // err.name // => 'ValidationError'
       // err.errors // => ['Deve ser maior que 18']

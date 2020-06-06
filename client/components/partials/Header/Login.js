@@ -1,8 +1,5 @@
 import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
-import Input from '../../form/Input'
-import Basic from '../../form/Basic'
-import Label from '../../form/Label'
 
 
 export const LoginButton = () => {
@@ -59,7 +56,7 @@ export const LoginModal = () => {
           </div>
           <form className="mt-8" action="#" method="POST" data-parsley-validate>
             <div className="rounded-md shadow-sm">
-              Content Here
+              Content here
             </div>
             <div className="mt-6">
               <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition duration-150 ease-in-out">
