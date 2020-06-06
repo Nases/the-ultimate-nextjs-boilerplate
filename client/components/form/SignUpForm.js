@@ -31,8 +31,7 @@ const SignUpForm = () => (
               console.log(error)
               setSubmitting(false)
             })
-        }, 5000)
-
+        }, 2000)
       }}
     >
       {({ isSubmitting, values }) => (
