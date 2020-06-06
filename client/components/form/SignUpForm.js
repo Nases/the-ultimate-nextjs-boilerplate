@@ -23,11 +23,11 @@ const SignUpForm = () => (
             password: values.password,
             confirmPassword: values.confirmPassword
           })
-            .then(function (response) {
+            .then(response => {
               console.log(response)
               setSubmitting(false)
             })
-            .catch(function (error) {
+            .catch(error => {
               console.log(error)
               setSubmitting(false)
             })
