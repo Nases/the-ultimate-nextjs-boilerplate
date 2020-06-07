@@ -121,6 +121,39 @@ button:focus {
 }
 
 
+.form-modal {
+  /* width: 95% !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin-right: -50% !important;
+  transform: translate(-50%, -50%) !important;
+  padding: 0 !important; */
+
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px; */
+}
+
+@media (min-width: 640px) {
+  /* .form-modal {
+    width: 440px;
+  } */
+}
+
+
+
+
 
 
 

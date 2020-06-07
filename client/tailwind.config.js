@@ -6,7 +6,10 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
-    },
+      width: {
+        '440px': '440px'
+      }
+    }
   },
   plugins: [
     require('@tailwindcss/ui'),

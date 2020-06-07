@@ -26,26 +26,15 @@ export const SignUpModal = () => {
     dispatchAuthModal({ type: 'OPEN_LOGIN_MODAL' })
   }
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: 0,
-      width: '400px'
-    }
-  }
   // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
   Modal.setAppElement('#__next')
 
   return (
     <Modal
+      className='m-auto w-11/12 md:w-440px border border-solid border-gray-300 outline-none overflow-auto bg-white'
+      overlayClassName='fixed top-0 bottom-0 left-0 right-0 bg-white bg-opacity-75 flex'
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      style={customStyles}
       contentLabel="Sign Up Modal"
     >
       <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">

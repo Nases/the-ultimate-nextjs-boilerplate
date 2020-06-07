@@ -6,7 +6,7 @@ const Button = (props) => {
           <span>
             Sign up
           </span>
-          <i class="fas fa-spinner fa-spin hidden m-auto"></i>
+          <i class="fas fa-spinner fa-spin fa-lg hidden m-auto"></i>
         </button>
       </span>
     </div >
