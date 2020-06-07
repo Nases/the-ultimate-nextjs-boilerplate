@@ -15,7 +15,7 @@ const LoginForm = () => (
         password: '',
         serverError: ''
       }}
-      // validationSchema={LoginSchema}
+      validationSchema={LoginSchema}
       onSubmit={(values, { setSubmitting, setFieldError }) => {
         axios.post('http://localhost:5000/login', {
           email: values.email,

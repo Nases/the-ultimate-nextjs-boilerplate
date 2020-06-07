@@ -16,7 +16,7 @@ const SignUpForm = () => (
         confirmPassword: '',
         serverError: ''
       }}
-      // validationSchema={SignUpSchema}
+      validationSchema={SignUpSchema}
       onSubmit={(values, { setSubmitting, setFieldError }) => {
         axios.post('http://localhost:5000/signup', {
           email: values.email,
