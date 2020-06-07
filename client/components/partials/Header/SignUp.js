@@ -40,7 +40,7 @@ export const SignUpModal = () => {
       <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">
         <div className="underline-primary text-center">
           <i className="text-primary fas fa-user-plus fa-3x"></i>
-          <h2 className="text-common mt-6 text-3xl leading-9 font-extrabold text-common-dark">
+          <h2 className="text-common mt-6 text-3xl leading-9 font-extrabold">
             Sign Up
           </h2>
         </div>

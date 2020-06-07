@@ -1,6 +1,6 @@
 import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
-
+import LoginForm from '../../form/LoginForm'
 
 export const LoginButton = () => {
   const dispatchAuthModal = useDispatchAuthModal()
@@ -25,57 +25,37 @@ export const LoginModal = () => {
   const openSignUpModal = e => {
     dispatchAuthModal({ type: 'OPEN_SIGN_UP_MODAL' })
   }
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      padding: 0
-    }
-  }
+
   // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
   Modal.setAppElement('#__next')
 
   return (
     <Modal
+      className='m-auto w-11/12 md:w-440px border border-solid border-gray-300 outline-none overflow-auto bg-white'
+      overlayClassName='fixed top-0 bottom-0 left-0 right-0 bg-white bg-opacity-75 flex'
       isOpen={modalIsOpen}
       onRequestClose={closeLoginModal}
-      style={customStyles}
       contentLabel="Login Modal"
     >
-      <div className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="min-w-md w-full">
-          <div className="text-center">
-            <i className="fab fa-canadian-maple-leaf fa-3x"></i>
-            <h2 className="mt-6 text-3xl leading-9 font-extrabold text-common-dark">
-              Welcome Back
-            </h2>
+      <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">
+        <div className="underline-primary text-center">
+          <i className="text-primary fas fa-sign-in-alt fa-3x"></i>
+          <h2 className="text-common mt-6 text-3xl leading-9 font-extrabold">
+            Log In
+          </h2>
+        </div>
+        <LoginForm />
+        <div className="mt-3">
+          <div className="text-sm leading-5 justify-between flex">
+            <button onClick={openSignUpModal} className="font-medium text-common-dark hover:text-primary transition ease-in-out duration-150">
+              Create an account
+            </button>
+            <button className="font-medium text-common-dark hover:text-primary transition ease-in-out duration-150">
+              Forgot password
+            </button>
           </div>
-          <form className="mt-8" action="#" method="POST" data-parsley-validate>
-            <div className="rounded-md shadow-sm">
-              Content here
-            </div>
-            <div className="mt-6">
-              <button type="submit" className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition duration-150 ease-in-out">
-                Sign in
-              </button>
-            </div>
-            <div className="mt-3">
-              <div className="text-sm leading-5 flex justify-between">
-                <button onClick={openSignUpModal} className="font-medium text-primary hover:text-primary-dark transition ease-in-out duration-150">
-                  Create account
-                </button>
-                <button className="font-medium text-primary hover:text-primary-dark transition ease-in-out duration-150">
-                  Forgot your password?
-                </button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
-    </Modal >
+    </Modal>
   )
 }

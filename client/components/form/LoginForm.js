@@ -7,21 +7,19 @@ import Button from './partials/Button'
 import { SignUpSchema } from '../../assets/validation/schemas'
 
 
-const SignUpForm = () => (
+const LoginForm = () => (
   <div>
     <Formik
       initialValues={{
         email: '',
-        password: '',
-        confirmPassword: ''
+        password: ''
       }}
       validationSchema={SignUpSchema}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-          axios.post('http://localhost:5000/signup', {
+          axios.post('http://localhost:5000/login', {
             email: values.email,
-            password: values.password,
-            confirmPassword: values.confirmPassword
+            password: values.password
           })
             .then(response => {
               console.log(response)
@@ -46,13 +44,8 @@ const SignUpForm = () => (
             <Field id='password' type="password" name="password" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
             <ErrorMessage name="password" component={FormErrorMessage} />
           </div>
-          <div>
-            <Label htmlFor="confirmPassword">Confirm password</Label>
-            <Field id='confirmPassword' type="password" name="confirmPassword" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
-            <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
-          </div>
           <Button type="submit" disabled={isSubmitting}>
-            Sign Up
+            Log In
           </Button>
         </Form>
       )}
@@ -60,4 +53,4 @@ const SignUpForm = () => (
   </div >
 )
 
-export default SignUpForm
+export default LoginForm
