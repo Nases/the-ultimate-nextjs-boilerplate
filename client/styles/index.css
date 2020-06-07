@@ -129,10 +129,6 @@ button:focus {
 .ReactModal__Content--after-open {
   opacity: 1;
 }
-
-.ReactModal__Content--before-close {
-  opacity: 0.25;
-}
 /* react-modal ease animation end */
 
 
