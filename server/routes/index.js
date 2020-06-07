@@ -16,9 +16,7 @@ router.post('/login', (req, res) => {
       res.send(values)
     })
     .catch(err => {
-      res.send(`Error: ${err.errors}`)
-      // err.name // => 'ValidationError'
-      // err.errors // => ['Deve ser maior que 18']
+      res.status(406).send('Something went wrong, please try again later.')
     })
 })
 
@@ -35,9 +33,7 @@ router.post('/signup', (req, res) => {
       res.send(values)
     })
     .catch(err => {
-      res.status(406).send('Current password does not match');
-      // err.name // => 'ValidationError'
-      // err.errors // => ['Deve ser maior que 18']
+      res.status(406).send('Something went wrong, please try again later.')
     })
 
   // const newUser = new User({

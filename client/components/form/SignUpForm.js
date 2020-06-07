@@ -13,7 +13,8 @@ const SignUpForm = () => (
       initialValues={{
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        serverError: ''
       }}
       // validationSchema={SignUpSchema}
       onSubmit={(values, { setSubmitting, setFieldError }) => {
@@ -27,15 +28,14 @@ const SignUpForm = () => (
             setSubmitting(false)
           })
           .catch((error) => {
-            setFieldError('asdasd', 'Something went wrong, please try again later.')
-            console.log(error.response)
+            setFieldError('serverError', error.response.data)
             setSubmitting(false)
           })
       }}
     >
       {({ isSubmitting, values }) => (
         <Form>
-          <ErrorMessage name="asdasd" component={FormErrorMessage} />
+          <ErrorMessage name="serverError" component={FormErrorMessage} />
           <div>
             <Label htmlFor="email">Email address</Label>
             <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />

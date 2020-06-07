@@ -12,10 +12,11 @@ const LoginForm = () => (
     <Formik
       initialValues={{
         email: '',
-        password: ''
+        password: '',
+        serverError: ''
       }}
-      validationSchema={LoginSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      // validationSchema={LoginSchema}
+      onSubmit={(values, { setSubmitting, setFieldError }) => {
         axios.post('http://localhost:5000/login', {
           email: values.email,
           password: values.password
@@ -25,13 +26,14 @@ const LoginForm = () => (
             setSubmitting(false)
           })
           .catch(error => {
-            console.log(error)
+            setFieldError('serverError', error.response.data)
             setSubmitting(false)
           })
       }}
     >
       {({ isSubmitting, values }) => (
         <Form>
+          <ErrorMessage name="serverError" component={FormErrorMessage} />
           <div>
             <Label htmlFor="email">Email address</Label>
             <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />
