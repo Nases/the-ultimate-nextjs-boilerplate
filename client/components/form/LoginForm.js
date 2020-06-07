@@ -4,7 +4,7 @@ import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from './partials/Button'
-import { SignUpSchema } from '../../assets/validation/schemas'
+import { LoginSchema } from '../../assets/validation/schemas'
 
 
 const LoginForm = () => (
@@ -14,22 +14,20 @@ const LoginForm = () => (
         email: '',
         password: ''
       }}
-      validationSchema={SignUpSchema}
+      validationSchema={LoginSchema}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          axios.post('http://localhost:5000/login', {
-            email: values.email,
-            password: values.password
+        axios.post('http://localhost:5000/login', {
+          email: values.email,
+          password: values.password
+        })
+          .then(response => {
+            console.log(response)
+            setSubmitting(false)
           })
-            .then(response => {
-              console.log(response)
-              setSubmitting(false)
-            })
-            .catch(error => {
-              console.log(error)
-              setSubmitting(false)
-            })
-        }, 2000)
+          .catch(error => {
+            console.log(error)
+            setSubmitting(false)
+          })
       }}
     >
       {({ isSubmitting, values }) => (

@@ -15,27 +15,27 @@ const SignUpForm = () => (
         password: '',
         confirmPassword: ''
       }}
-      validationSchema={SignUpSchema}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          axios.post('http://localhost:5000/signup', {
-            email: values.email,
-            password: values.password,
-            confirmPassword: values.confirmPassword
+      // validationSchema={SignUpSchema}
+      onSubmit={(values, { setSubmitting, setFieldError }) => {
+        axios.post('http://localhost:5000/signup', {
+          email: values.email,
+          password: values.password,
+          confirmPassword: values.confirmPassword
+        })
+          .then(response => {
+            console.log(response)
+            setSubmitting(false)
           })
-            .then(response => {
-              console.log(response)
-              setSubmitting(false)
-            })
-            .catch(error => {
-              console.log(error)
-              setSubmitting(false)
-            })
-        }, 2000)
+          .catch((error) => {
+            setFieldError('asdasd', 'Something went wrong, please try again later.')
+            console.log(error.response)
+            setSubmitting(false)
+          })
       }}
     >
       {({ isSubmitting, values }) => (
         <Form>
+          <ErrorMessage name="asdasd" component={FormErrorMessage} />
           <div>
             <Label htmlFor="email">Email address</Label>
             <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />

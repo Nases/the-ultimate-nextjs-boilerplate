@@ -31,7 +31,7 @@ export const SignUpModal = () => {
 
   return (
     <Modal
-      className='m-auto w-11/12 md:w-440px border border-solid border-gray-300 outline-none overflow-auto bg-white'
+      className='m-auto w-11/12 md:w-440px border border-solid border-gray-300 outline-none overflow-auto bg-white rounded-lg'
       overlayClassName='fixed top-0 bottom-0 left-0 right-0 bg-white bg-opacity-75 flex'
       isOpen={modalIsOpen}
       onRequestClose={closeModal}

@@ -14,3 +14,12 @@ export const SignUpSchema = yup.object().shape({
     .required('Required'),
 })
 
+export const LoginSchema = yup.object().shape({
+  email: yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  password: yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(24, 'Password can be maximum 24 characters')
+    .required('Required')
+})
