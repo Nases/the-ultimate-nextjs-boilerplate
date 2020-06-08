@@ -27,6 +27,7 @@ module.exports = passport => {
               }
               // Password matches
               else {
+                // console.log(user)
                 return done(null, user)
               }
             })

@@ -7,23 +7,15 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
 // ensure auth
-router.post('/ensure-auth', (req, res) => {
+router.use('/ensure-auth', (req, res) => {
   if (req.isAuthenticated()) {
-    res.send('Authenticated')
+    res.send(`Authenticated, user data: ${req.user}`)
   } else {
-    res.status(401).send('Unauthenticated')
+    res.status(401).send(`Unauthenticated, user data: ${req.user}`)
   }
 })
 
-router.get('/ensure-auth', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.send('Authenticated')
-  } else {
-    res.send('Unauthenticated')
 
-    // res.status(401).send('Unauthenticated')
-  }
-})
 
 // login POST
 router.post('/login', (req, res, next) => {

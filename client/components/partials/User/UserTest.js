@@ -4,7 +4,7 @@ const UserTest = () => {
   const userData = useUser()
   const dispatchUserData = useDispatchUser()
 
-  const userId = userData.id
+  const userId = userData._id
   const userEmail = userData.email
   const userPassword = userData.password
 

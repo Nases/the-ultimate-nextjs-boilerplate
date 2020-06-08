@@ -14,7 +14,8 @@ const path = require('path')
 
 const app = express()
 
-app.use(cors())
+
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
 // Passport config
 require('./config/passport')(passport)
@@ -32,14 +33,10 @@ mongoose
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
-// bodyparser middleware (in order to get urlencoded data from req.body when form is posted)
-// app.use(express.urlencoded({ extended: true }))
-
-// parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
 
 // Express session middleware
 app.use(

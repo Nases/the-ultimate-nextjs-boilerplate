@@ -9,7 +9,7 @@ import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvid
 
 
 const LoginForm = () => {
-  const userData = useUser()
+  // const userData = useUser()
   const dispatchUserData = useDispatchUser()
 
   return (
@@ -25,6 +25,8 @@ const LoginForm = () => {
           axios.post('http://localhost:5000/login', {
             email: values.email,
             password: values.password
+          }, {
+            withCredentials: true
           })
             .then(response => {
               dispatchUserData({
@@ -35,7 +37,8 @@ const LoginForm = () => {
               setSubmitting(false)
             })
             .catch(error => {
-              setFieldError('serverError', error)
+              console.log(error)
+              // setFieldError('serverError', error.response.data)
               setSubmitting(false)
             })
         }}
