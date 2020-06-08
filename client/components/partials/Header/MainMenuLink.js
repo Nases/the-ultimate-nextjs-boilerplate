@@ -14,7 +14,7 @@ export default ({ children, href, isMobile = false }) => {
   } else {
     return (
       <Link href={href}>
-        <a className={`${router.pathname == href ? 'cursor-default border-primary text-common-dark' : 'ml-8 border-transparent text-common-light hover:text-common hover:border-common'} inline-flex items-center px-1 pt-1 border-b-2 font-primary font-semibold text-sm leading-5 transition duration-150 ease-in-out`}>
+        <a className={`${router.pathname == href ? 'cursor-default border-primary text-common-dark' : 'border-transparent text-common-light hover:text-common hover:border-common'} ml-8 inline-flex items-center px-1 pt-1 border-b-2 font-primary font-semibold text-sm leading-5 transition duration-150 ease-in-out`}>
           {children}
         </a>
       </Link>

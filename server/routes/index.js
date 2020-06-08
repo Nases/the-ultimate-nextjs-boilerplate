@@ -6,6 +6,25 @@ const { SignUpSchema, LoginSchema } = require('../assets/validation/schemas')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
+// ensure auth
+router.post('/ensure-auth', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.send('Authenticated')
+  } else {
+    res.status(401).send('Unauthenticated')
+  }
+})
+
+router.get('/ensure-auth', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.send('Authenticated')
+  } else {
+    res.send('Unauthenticated')
+
+    // res.status(401).send('Unauthenticated')
+  }
+})
+
 // login POST
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body
@@ -24,7 +43,7 @@ router.post('/login', (req, res, next) => {
         req.logIn(user, err => {
           if (err) { return next(err) }
           // return res.redirect('/users/' + user.username)
-          res.send(`succes, user matched: ${user}`)
+          res.send(user)
         })
       })(req, res, next)
     })

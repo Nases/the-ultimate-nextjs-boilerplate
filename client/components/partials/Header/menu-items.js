@@ -1,20 +1,12 @@
 export const mainMenuItems = [
   {
-    name: 'Dashboard',
+    name: 'Home',
     href: '/'
   },
   {
-    name: 'Team',
-    href: '/a'
-  },
-  {
-    name: 'Projects',
-    href: '/b'
-  },
-  {
-    name: 'Calendar',
-    href: '/c'
-  },
+    name: 'Dashboard',
+    href: '/dashboard'
+  }
 ]
 
 export const profileMenuItems = [

@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import companyInfo from '../assets/company-info'
 
-export default () => {
+const Template = () => {
   var title = `Default title | ${companyInfo.name}`
   var description = 'Default description.'
 
@@ -11,3 +11,5 @@ export default () => {
     </Layout>
   )
 }
+
+export default Template
