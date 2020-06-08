@@ -14,7 +14,7 @@ const path = require('path')
 
 const app = express()
 
-
+// allow cors with credentials and explicit uri
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
 // Passport config

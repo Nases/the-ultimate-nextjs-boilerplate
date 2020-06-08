@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import companyInfo from '../assets/company-info'
 import UserTest from '../components/partials/User/UserTest'
+import withAuth from '../components/utils/withAuth'
 
 const Dashboard = () => {
   var title = `Dashboard | ${companyInfo.name}`
@@ -15,4 +16,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default withAuth(Dashboard)

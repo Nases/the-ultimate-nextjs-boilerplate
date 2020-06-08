@@ -9,9 +9,9 @@ const passport = require('passport')
 // ensure auth
 router.use('/ensure-auth', (req, res) => {
   if (req.isAuthenticated()) {
-    res.send(`Authenticated, user data: ${req.user}`)
+    res.send(req.user)
   } else {
-    res.status(401).send(`Unauthenticated, user data: ${req.user}`)
+    res.status(401).send(`Unauthenticated`)
   }
 })
 
