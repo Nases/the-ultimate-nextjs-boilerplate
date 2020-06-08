@@ -1,10 +1,12 @@
 import { Component } from 'react'
 import axios from 'axios'
+// import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 
 
-const withAuth = C => {
-  // console.log('helluuu')
-  // console.log(props)
+const withAuth = (C) => {
+  // const userData = useUser()
+  // const dispatchUserData = useDispatchUser()
+
   return class ensureAuth extends Component {
     render() {
       return <C />
@@ -16,7 +18,11 @@ const withAuth = C => {
 export async function getServerSideProps() {
   console.log('hellu 2')
 
-  return { props: { asd: 'asd' } }
+  return {
+    props: {
+      hello: 'world',
+    },
+  }
 
   // axios.post('http://localhost:5000/ensure-auth', {
   //   asd: 'asd'
