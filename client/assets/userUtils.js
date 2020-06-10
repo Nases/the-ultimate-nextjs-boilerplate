@@ -1,10 +1,23 @@
+import axios from 'axios'
 
-const uri = 'http://localhost:5000/login'
+
+const uri = 'http://localhost:5000/'
 
 const userUtils = {
-  login: () => {
-    const p = new Promise((resolve, reject) => {
-      reject('promise rejected!')
+  login: (email, password) => {
+    const p = axios.post(uri + 'login', {
+      email: email,
+      password: password
+    }, {
+      withCredentials: true
+    })
+    return p
+  },
+  signUp: (email, password, confirmPassword) => {
+    const p = axios.post(uri + 'signup', {
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword
     })
     return p
   }

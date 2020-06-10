@@ -5,6 +5,7 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from './partials/Button'
 import { SignUpSchema } from '../../assets/validation/schemas'
+import userUtils from '../../assets/userUtils'
 
 
 const SignUpForm = () => (
@@ -18,16 +19,13 @@ const SignUpForm = () => (
       }}
       validationSchema={SignUpSchema}
       onSubmit={(values, { setSubmitting, setFieldError }) => {
-        axios.post('http://localhost:5000/signup', {
-          email: values.email,
-          password: values.password,
-          confirmPassword: values.confirmPassword
-        })
+        userUtils.signUp(values.email, values.password, values.confirmPassword)
           .then(response => {
             console.log(response)
             setSubmitting(false)
           })
           .catch((error) => {
+            console.log(error)
             setFieldError('serverError', error.response.data)
             setSubmitting(false)
           })

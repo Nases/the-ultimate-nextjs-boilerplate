@@ -12,11 +12,6 @@ import userUtils from '../../assets/userUtils'
 const LoginForm = () => {
   // const userData = useUser()
   const dispatchUserData = useDispatchUser()
-  userUtils.login().then(response => {
-    console.log(response)
-  }).catch(err => {
-    console.log(err)
-  })
 
 
 
@@ -30,12 +25,7 @@ const LoginForm = () => {
         }}
         validationSchema={LoginSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          axios.post('http://localhost:5000/login', {
-            email: values.email,
-            password: values.password
-          }, {
-            withCredentials: true
-          })
+          userUtils.login(values.email, values.password)
             .then(response => {
               dispatchUserData({
                 type: 'UPDATE_USER',
