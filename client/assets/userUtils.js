@@ -20,6 +20,12 @@ const userUtils = {
       confirmPassword: confirmPassword
     })
     return p
+  },
+  ensureAuth: () => {
+    const p = axios.post(uri + 'ensure-auth', null, {
+      withCredentials: true
+    })
+    return p
   }
 }
 
