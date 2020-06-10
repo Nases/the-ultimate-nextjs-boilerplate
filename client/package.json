@@ -15,7 +15,7 @@
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-ga": "^2.7.0",
+    "react-ga": "^3.0.0",
     "react-modal": "^3.11.2",
     "react-transition-group": "^4.4.1",
     "yup": "^0.29.1"

@@ -3,13 +3,27 @@ import axios from 'axios'
 // import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 
 
-const withAuth = (C) => {
-  // const userData = useUser()
-  // const dispatchUserData = useDispatchUser()
+// const withAuth = (C) => {
+//   // const userData = useUser()
+//   // const dispatchUserData = useDispatchUser()
+
+//   return class ensureAuth extends Component {
+//     render() {
+//       // console.log(props)
+//       return <C />
+//       // return props
+//     }
+//   }
+// }
+
+const withAuth = (props) => {
+  console.log(props)
 
   return class ensureAuth extends Component {
     render() {
-      return <C />
+      // console.log(props)
+      // return <C />
+      return props
     }
   }
 }

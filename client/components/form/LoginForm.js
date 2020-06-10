@@ -6,11 +6,19 @@ import FormErrorMessage from './partials/FormErrorMessage'
 import Button from './partials/Button'
 import { LoginSchema } from '../../assets/validation/schemas'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import userUtils from '../../assets/userUtils'
 
 
 const LoginForm = () => {
   // const userData = useUser()
   const dispatchUserData = useDispatchUser()
+  userUtils.login().then(response => {
+    console.log(response)
+  }).catch(err => {
+    console.log(err)
+  })
+
+
 
   return (
     <div>
@@ -38,7 +46,7 @@ const LoginForm = () => {
             })
             .catch(error => {
               console.log(error)
-              // setFieldError('serverError', error.response.data)
+              setFieldError('serverError', error.response.data)
               setSubmitting(false)
             })
         }}
