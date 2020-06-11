@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { mainMenuItems } from './menu-items'
 
-export default ({ children, href, isMobile = false }) => {
+const MainMenuLink = ({ children, href, isMobile = false }) => {
   const router = useRouter()
   if (isMobile) {
     return (
@@ -21,3 +22,17 @@ export default ({ children, href, isMobile = false }) => {
     )
   }
 }
+
+const MainMenuLinks = ({ isMobile }) => {
+  return (
+    mainMenuItems.map(value => {
+      return (
+        <MainMenuLink key={value.href} href={value.href} isMobile={isMobile}>
+          {value.name}
+        </MainMenuLink>
+      )
+    })
+  )
+}
+
+export default MainMenuLinks

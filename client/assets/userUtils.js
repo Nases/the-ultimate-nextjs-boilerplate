@@ -21,8 +21,8 @@ const userUtils = {
     })
     return p
   },
-  ensureAuth: () => {
-    const p = axios.post(uri + 'ensure-auth', null, {
+  getUserData: () => {
+    const p = axios.post(uri + 'get-user-data', null, {
       withCredentials: true
     })
     return p

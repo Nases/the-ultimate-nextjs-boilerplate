@@ -15,9 +15,9 @@ const reducer = (state, action) => {
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
-    id: 'this will be id',
-    email: 'asdasd@asd.asd',
-    password: 'asdasd'
+    id: '',
+    email: '',
+    password: ''
   })
   return (
     <UserDispatchContext.Provider value={dispatch}>

@@ -8,7 +8,7 @@ const GetUserData = ({ children }) => {
   const dispatchUserData = useDispatchUser()
 
   useEffect(() => {
-    userUtils.ensureAuth()
+    userUtils.getUserData()
       .then(response => {
         if (userData._id !== response.data._id) {
           dispatchUserData({ type: 'UPDATE_USER', userData: response.data })
@@ -16,7 +16,7 @@ const GetUserData = ({ children }) => {
         console.log(response)
       })
       .catch(error => {
-        console.log(error)
+        // console.log('do nothing')
       })
   })
   return (

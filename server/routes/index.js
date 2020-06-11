@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
 // ensure auth
-router.use('/ensure-auth', (req, res) => {
+router.use('/get-user-data', (req, res) => {
   if (req.isAuthenticated()) {
     res.send(req.user)
   } else {
