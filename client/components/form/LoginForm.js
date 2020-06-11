@@ -28,7 +28,7 @@ const LoginForm = () => {
           userUtils.login(values.email, values.password)
             .then(response => {
               dispatchUserData({
-                type: 'UPDATE_USER',
+                type: 'LOGIN',
                 userData: response.data
               })
               console.log(response.data)

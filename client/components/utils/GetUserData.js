@@ -11,7 +11,7 @@ const GetUserData = ({ children }) => {
     userUtils.getUserData()
       .then(response => {
         if (userData._id !== response.data._id) {
-          dispatchUserData({ type: 'UPDATE_USER', userData: response.data })
+          dispatchUserData({ type: 'LOGIN', userData: response.data })
         }
         console.log(response)
       })

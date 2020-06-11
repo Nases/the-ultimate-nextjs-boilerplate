@@ -5,8 +5,13 @@ const UserDispatchContext = createContext()
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'UPDATE_USER':
-      state = action.userData
+    case 'LOGIN':
+      state.isAuth = true
+      state.isLoading = false
+      state.data = action.userData
+      return { ...state }
+    case 'UPDATE':
+      state.data = action.userData
       return { ...state }
     default:
       throw new Error(`Unknown action: ${action.type}`)
@@ -15,9 +20,13 @@ const reducer = (state, action) => {
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
-    id: '',
-    email: '',
-    password: ''
+    isAuth: false,
+    isLoading: true,
+    data: {
+      id: '',
+      email: '',
+      password: ''
+    }
   })
   return (
     <UserDispatchContext.Provider value={dispatch}>
