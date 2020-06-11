@@ -17,7 +17,7 @@ const UserTest = () => {
 
   return (
     <div>
-      <strong>User authenticated:</strong>
+      <strong>User authenticated:</strong> {userId ? 'true' : 'false'}
       <br />
       <strong>User id:</strong> {userId}
       <br />
