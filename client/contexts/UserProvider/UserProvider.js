@@ -13,6 +13,9 @@ const reducer = (state, action) => {
     case 'UPDATE':
       state.data = action.userData
       return { ...state }
+    case 'SET_IS_LOADING_FALSE':
+      state.isLoading = false
+      return { ...state }
     default:
       throw new Error(`Unknown action: ${action.type}`)
   }

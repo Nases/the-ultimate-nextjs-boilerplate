@@ -16,9 +16,9 @@ const GetUserData = ({ children }) => {
         console.log(response)
       })
       .catch(error => {
-        // console.log('do nothing')
+        dispatchUserData({ type: 'SET_IS_LOADING_FALSE' })
       })
-  })
+  }, [])
   return (
     <>
       {children}

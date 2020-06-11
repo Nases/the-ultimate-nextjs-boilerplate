@@ -1,19 +1,14 @@
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 
 const UserTest = () => {
-  const userData = useUser()
+  const user = useUser()
+  const userData = user.data
+  const isLoading = user.isLoading
   const dispatchUserData = useDispatchUser()
 
   const userId = userData._id
   const userEmail = userData.email
   const userPassword = userData.password
-
-  // const closeModal = () => {
-  //   dispatchAuthModal({ type: 'CLOSE_SIGN_UP_MODAL' })
-  // }
-  // const openLoginModal = e => {
-  //   dispatchAuthModal({ type: 'OPEN_LOGIN_MODAL' })
-  // }
 
   return (
     <div>
@@ -24,6 +19,8 @@ const UserTest = () => {
       <strong>User email:</strong> {userEmail}
       <br />
       <strong>User password:</strong> {userPassword}
+      <br />
+      <strong>isLoading:</strong> {isLoading ? 'yes' : 'no'}
     </div>
   )
 }

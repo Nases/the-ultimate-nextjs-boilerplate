@@ -36,6 +36,7 @@ const LoginForm = () => {
             })
             .catch(error => {
               console.log(error)
+              dispatchUserData({ type: 'SET_IS_LOADING_FALSE' })
               setFieldError('serverError', error.response.data)
               setSubmitting(false)
             })
