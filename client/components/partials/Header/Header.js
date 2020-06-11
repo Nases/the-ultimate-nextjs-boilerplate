@@ -5,7 +5,7 @@ import { LoginButton, LoginModal } from './Login'
 import { SignUpButton, SignUpModal } from './SignUp'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import MainMenuLinks from './MainMenuLinks'
-import UserMenuLinks from './UserMenuLinks'
+import ProfileMenuLinks from './ProfileMenuLinks'
 
 
 const Header = () => {
@@ -92,7 +92,7 @@ const Header = () => {
                 >
                   <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
                     <div className="py-1 rounded-md bg-white shadow-xs">
-                      <UserMenuLinks />
+                      <ProfileMenuLinks />
                     </div>
                   </div>
                 </Transition>
@@ -147,7 +147,7 @@ const Header = () => {
               </div>
             </div>
             <div className="mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-              <UserMenuLinks isMobile={true} />
+              <ProfileMenuLinks isMobile={true} />
             </div>
           </div>
 

@@ -23,7 +23,7 @@ const UserMenuLink = ({ children, href, isMobile = false }) => {
   }
 }
 
-const UserMenuLinks = ({ isMobile }) => {
+const ProfileMenuLinks = ({ isMobile }) => {
   return (
     profileMenuItems.map(value => {
       return (
@@ -35,4 +35,4 @@ const UserMenuLinks = ({ isMobile }) => {
   )
 }
 
-export default UserMenuLinks
+export default ProfileMenuLinks
