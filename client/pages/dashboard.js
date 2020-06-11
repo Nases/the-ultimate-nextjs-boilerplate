@@ -13,24 +13,13 @@ const Dashboard = () => {
   var title = `Dashboard | ${companyInfo.name}`
   var description = 'Dashboard'
 
-  const ensureAuth = () => {
-    userUtils.ensureAuth()
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
   return (
     <Layout title={title} description={description}>
-      <EnsureAuth>
-        <div className='max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8'>
-          <Button onClick={ensureAuth}>hello</Button>
-          <UserTest />
-        </div>
-      </EnsureAuth>
+      {/* <EnsureAuth> */}
+      <div className='max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8'>
+        <UserTest />
+      </div>
+      {/* </EnsureAuth> */}
     </Layout>
   )
 }

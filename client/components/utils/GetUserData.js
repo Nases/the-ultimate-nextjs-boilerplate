@@ -1,0 +1,29 @@
+import { useEffect } from 'react'
+import userUtils from '../../assets/userUtils'
+import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+
+
+const GetUserData = ({ children }) => {
+  const userData = useUser()
+  const dispatchUserData = useDispatchUser()
+
+  useEffect(() => {
+    userUtils.ensureAuth()
+      .then(response => {
+        if (userData._id !== response.data._id) {
+          dispatchUserData({ type: 'UPDATE_USER', userData: response.data })
+        }
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  })
+  return (
+    <>
+      {children}
+    </>
+  )
+}
+
+export default GetUserData
