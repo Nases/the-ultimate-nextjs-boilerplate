@@ -7,11 +7,14 @@ import Button from './partials/Button'
 import { LoginSchema } from '../../assets/validation/schemas'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import userUtils from '../../assets/userUtils'
+import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
+
 
 
 const LoginForm = () => {
   // const userData = useUser()
   const dispatchUserData = useDispatchUser()
+  const dispatchAuthModal = useDispatchAuthModal()
 
 
 
@@ -31,12 +34,20 @@ const LoginForm = () => {
                 type: 'LOGIN',
                 userData: response.data
               })
+              dispatchAuthModal({
+                type: 'CLOSE_LOGIN_MODAL'
+              })
               console.log(response.data)
               setSubmitting(false)
             })
             .catch(error => {
               console.log(error)
-              dispatchUserData({ type: 'SET_IS_LOADING_FALSE' })
+              dispatchUserData({
+                type: 'SET_IS_LOADING_FALSE'
+              })
+              dispatchAuthModal({
+                type: 'CLOSE_LOGIN_MODAL'
+              })
               setFieldError('serverError', error.response.data)
               setSubmitting(false)
             })

@@ -26,6 +26,12 @@ const userUtils = {
       withCredentials: true
     })
     return p
+  },
+  signOut: () => {
+    const p = axios.post(uri + 'sign-out', null, {
+      withCredentials: true
+    })
+    return p
   }
 }
 
