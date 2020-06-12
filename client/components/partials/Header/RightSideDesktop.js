@@ -4,7 +4,6 @@ import Transition from "../../utils/Transition.js"
 import { LoginButton, LoginModal } from './Login'
 import { SignUpButton, SignUpModal } from './SignUp'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
-import MainMenuLinks from './MainMenuLinks'
 import ProfileMenuLinks from './ProfileMenuLinks'
 
 
@@ -12,59 +11,45 @@ import ProfileMenuLinks from './ProfileMenuLinks'
 
 
 const RightSideDesktop = () => {
-
   const userData = useUser()
 
-  // profile dropdown logic start
   const [desktopProfileMenuIsOpen, setDesktopProfileMenuIsOpen] = useState(false)
-  const [mobileMenuIsOpen, setmobileMenuIsOpen] = useState(false)
   const desktopProfileMenuNode = useRef()
-  const mobileMenuNode = useRef()
-  const mobileProfileMenuButtonNode = useRef()
 
   useEffect(() => {
-    if (userData._id) {
-      document.addEventListener("mousedown", handleProfileMenuClick)
-      document.addEventListener("keydown", handleEscClick)
-    }
+    document.addEventListener("mousedown", handleProfileMenuClick)
+    document.addEventListener("keydown", handleEscClick)
 
     return () => {
-      if (userData._id) {
-        document.removeEventListener("mousedown", handleProfileMenuClick)
-        document.removeEventListener("keydown", handleEscClick)
-      }
+      document.removeEventListener("mousedown", handleProfileMenuClick)
+      document.removeEventListener("keydown", handleEscClick)
     }
   }, [])
   const toggleDropdown = () => {
     setDesktopProfileMenuIsOpen(!desktopProfileMenuIsOpen)
-    setmobileMenuIsOpen(!mobileMenuIsOpen)
   }
 
   const handleProfileMenuClick = e => {
-    if (!desktopProfileMenuNode.current.contains(e.target)) {
-      // outside click 
-      setDesktopProfileMenuIsOpen(false)
-    }
-    if (!mobileMenuNode.current.contains(e.target) && !mobileProfileMenuButtonNode.current.contains(e.target)) {
-      // outside click 
-      setmobileMenuIsOpen(false)
+    if (userData.isAuth) {
+      if (!desktopProfileMenuNode.current.contains(e.target)) {
+        // outside click 
+        setDesktopProfileMenuIsOpen(false)
+      }
     }
   }
+
   const handleEscClick = e => {
     if (e.keyCode === 27) {
       setDesktopProfileMenuIsOpen(false)
-      setmobileMenuIsOpen(false)
     }
   }
-  // profile dropdown end
 
 
   return (
     <>
       {
         userData.isAuth ?
-          //   {/* logged in */ }
-          // {/* profile dropdown */}
+          //   {/* logged in */ }=
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <div ref={desktopProfileMenuNode} className="ml-3 relative">
               <div>
@@ -90,8 +75,7 @@ const RightSideDesktop = () => {
             </div>
           </div>
           :
-          // {/* logged out */}
-          // {/* show Log In & Sign Up button */}
+          // {/* signed out */}
           <div className='inline-flex items-center'>
             <span className="inline-flex">
               <LoginButton />

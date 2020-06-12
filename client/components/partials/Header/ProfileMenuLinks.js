@@ -15,7 +15,7 @@ const UserMenuLink = ({ children, href, isMobile = false }) => {
   } else {
     return (
       <Link href={href}>
-        <a className={`${router.pathname == href ? 'cursor-default border-primary text-primary' : 'border-transparent hover:border-gray-300 text-gray-700 hover:bg-gray-100'} block border-l-2 px-4 py-2 font-primary font-semibold text-sm leading-5 transition duration-150 ease-in-out`}>
+        <a className={`${router.pathname == href ? 'text-primary' : 'hover:border-gray-300 text-gray-700 hover:bg-gray-100'} block px-4 py-2 font-primary font-semibold text-sm leading-5 transition duration-150 ease-in-out`}>
           {children}
         </a>
       </Link>
