@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import { useMobileMenu, useDispatchMobileMenu } from '../../../contexts/MobileMenuProvider/MobileMenuProvider'
 import MainMenuLinks from './MainMenuLinks'
@@ -6,48 +6,26 @@ import ProfileMenuLinks from './ProfileMenuLinks'
 
 
 const MobileMenuButton = () => {
-  const userData = useUser()
   const mobileMenuState = useMobileMenu()
   const mobileMenuIsActive = mobileMenuState.isActive
   const dispatchMobileMenu = useDispatchMobileMenu()
   const mobileProfileMenuButtonNode = useRef()
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleProfileMenuClick)
-    document.addEventListener("keydown", handleEscClick)
-
-    return () => {
-      document.removeEventListener("mousedown", handleProfileMenuClick)
-      document.removeEventListener("keydown", handleEscClick)
-    }
-  }, [])
-
-  const handleProfileMenuClick = e => {
-    if (userData.isAuth) {
-      if (!mobileProfileMenuButtonNode.current.contains(e.target)) {
-        // outside click 
-        dispatchMobileMenu({ type: 'CLOSE' })
-      }
-    }
+  const openDropdown = () => {
+    dispatchMobileMenu({ type: 'OPEN' })
   }
 
-  const handleEscClick = e => {
-    if (e.keyCode === 27) {
-      dispatchMobileMenu({ type: 'CLOSE' })
-    }
-  }
-
-  const toggleDropdown = () => {
-    dispatchMobileMenu({ type: 'TOGGLE' })
+  const closeDropdown = () => {
+    dispatchMobileMenu({ type: 'CLOSE' })
   }
 
   return (
     <div className='inline-flex sm:hidden items-center justify-center '>
-      <button ref={mobileProfileMenuButtonNode} onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 rounded-md text-common-lighter transition duration-150 ease-in-out">
-        <svg className={`${mobileMenuIsActive ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
+      <button ref={mobileProfileMenuButtonNode} className="inline-flex items-center justify-center p-2 rounded-md text-common-lighter transition duration-150 ease-in-out">
+        <svg onClick={openDropdown} className={`${mobileMenuIsActive ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg className={`${mobileMenuIsActive ? 'block' : 'hidden'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
+        <svg onClick={closeDropdown} className={`${mobileMenuIsActive ? 'block' : 'hidden'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
@@ -73,11 +51,9 @@ const RightSideMobile = () => {
   }, [])
 
   const handleProfileMenuClick = e => {
-    if (userData.isAuth) {
-      if (!mobileMenuNode.current.contains(e.target)) {
-        // outside click 
-        dispatchMobileMenu({ type: 'CLOSE' })
-      }
+    if (!mobileMenuNode.current.contains(e.target)) {
+      // outside click 
+      dispatchMobileMenu({ type: 'CLOSE' })
     }
   }
 

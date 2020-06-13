@@ -5,8 +5,8 @@ const MobileMenuDispatchContext = createContext()
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'TOGGLE':
-      state.isActive = !state.isActive
+    case 'OPEN':
+      state.isActive = true
       return { ...state }
     case 'CLOSE':
       state.isActive = false
