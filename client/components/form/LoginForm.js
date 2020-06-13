@@ -1,5 +1,4 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import axios from 'axios'
 import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
@@ -31,24 +30,21 @@ const LoginForm = () => {
         onSubmit={(values, { setSubmitting, setFieldError }) => {
           userUtils.login(values.email, values.password)
             .then(response => {
-              dispatchUserData({
-                type: 'LOGIN',
-                userData: response.data
-              })
+              // dispatchUserData({
+              //   type: 'LOGIN',
+              //   userData: response.data
+              // })
               dispatchAuthModal({
                 type: 'CLOSE_LOGIN_MODAL'
               })
-              Router.push('/dashboard')
-              console.log(response.data)
+              Router.reload('/dashboard')
+              // console.log(response.data)
               setSubmitting(false)
             })
             .catch(error => {
-              console.log(error)
+              // console.log(error)
               dispatchUserData({
                 type: 'SET_IS_LOADING_FALSE'
-              })
-              dispatchAuthModal({
-                type: 'CLOSE_LOGIN_MODAL'
               })
               setFieldError('serverError', error.response.data)
               setSubmitting(false)
