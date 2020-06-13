@@ -79,7 +79,6 @@ const Header = () => {
 
             <RightSideDesktop />
 
-
             {/* mobile menu button */}
             <div className="-mr-2 flex items-center sm:hidden">
               <button ref={mobileProfileMenuButtonNode} onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 rounded-md text-common-lighter hover:text-common-light hover:bg-gray-100 transition duration-150 ease-in-out">

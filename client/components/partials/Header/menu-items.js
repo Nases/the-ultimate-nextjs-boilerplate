@@ -20,6 +20,6 @@ export const profileMenuItems = [
   },
   {
     name: 'Sign out',
-    href: '/c'
+    href: '/sign-out'
   }
 ]

@@ -2,8 +2,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { profileMenuItems } from './menu-items'
 
-const UserMenuLink = ({ children, href, isMobile = false }) => {
+const UserMenuLink = ({ children, href, onClick, isMobile = false }) => {
   const router = useRouter()
+
+
   if (isMobile) {
     return (
       <Link href={href}>
@@ -22,6 +24,7 @@ const UserMenuLink = ({ children, href, isMobile = false }) => {
     )
   }
 }
+
 
 const ProfileMenuLinks = ({ isMobile }) => {
   return (

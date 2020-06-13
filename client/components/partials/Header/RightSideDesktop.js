@@ -1,13 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
 import Transition from "../../utils/Transition.js"
 import { LoginButton, LoginModal } from './Login'
 import { SignUpButton, SignUpModal } from './SignUp'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import ProfileMenuLinks from './ProfileMenuLinks'
-
-
-
 
 
 const RightSideDesktop = () => {
@@ -49,7 +45,7 @@ const RightSideDesktop = () => {
     <>
       {
         userData.isAuth ?
-          //   {/* logged in */ }=
+          // logged in
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <div ref={desktopProfileMenuNode} className="ml-3 relative">
               <div>
@@ -75,7 +71,7 @@ const RightSideDesktop = () => {
             </div>
           </div>
           :
-          // {/* signed out */}
+          // signed out
           <div className='inline-flex items-center'>
             <span className="inline-flex">
               <LoginButton />
