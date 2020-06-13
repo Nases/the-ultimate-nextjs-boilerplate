@@ -2,17 +2,25 @@ import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
 import LoginForm from '../../form/LoginForm'
 
-export const LoginButton = () => {
+export const LoginButton = (isMobile = false) => {
   const dispatchAuthModal = useDispatchAuthModal()
   const openLoginModal = e => {
     dispatchAuthModal({ type: 'OPEN_LOGIN_MODAL' })
   }
 
-  return (
-    <button onClick={openLoginModal} type="button" className="inline-flex items-center font-primary font-semibold uppercase hover:text-primary h-10 px-3 py-2 text-sm leading-4 font-medium text-common-dark transition ease-in-out duration-150">
-      Log In
-    </button>
-  )
+  if (isMobile) {
+    return (
+      <button onClick={openLoginModal} type="button" className="block mt-1 px-4 py-2 hover:border-gray-300  text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out">
+        Log In
+      </button>
+    )
+  } else {
+    return (
+      <button onClick={openLoginModal} type="button" className="inline-flex items-center font-primary font-semibold uppercase hover:text-primary h-10 px-3 py-2 text-sm leading-4 font-medium text-common-dark transition ease-in-out duration-150">
+        Log In
+      </button>
+    )
+  }
 }
 
 export const LoginModal = () => {
