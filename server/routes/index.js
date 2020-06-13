@@ -17,7 +17,7 @@ router.use('/get-user-data', (req, res) => {
 
 router.use('/sign-out', (req, res) => {
   req.session.destroy(error => {
-    error ? console.log(error) : console.log('Signed out')
+    if (error) throw error
     res.send(true)
   })
 })

@@ -77,7 +77,9 @@ const Header = () => {
               </div>
             </div>
 
-            <RightSideDesktop />
+            <div className="hidden sm:ml-6 sm:flex sm:items-center">
+              <RightSideDesktop />
+            </div>
 
             {/* mobile menu button */}
             <div className="-mr-2 flex items-center sm:hidden">

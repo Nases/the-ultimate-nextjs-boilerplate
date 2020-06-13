@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { profileMenuItems } from './menu-items'
 
-const UserMenuLink = ({ children, href, onClick, isMobile = false }) => {
+const UserMenuLink = ({ children, href, isMobile = false }) => {
   const router = useRouter()
 
 
