@@ -2,27 +2,17 @@ import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
 import SignUpForm from '../../form/SignUpForm'
 
-export const SignUpButton = (isMobile = false) => {
+export const SignUpButton = ({ isMobile = false }) => {
   const dispatchAuthModal = useDispatchAuthModal()
   const openModal = () => {
     dispatchAuthModal({ type: 'OPEN_SIGN_UP_MODAL' })
   }
 
-  if (isMobile) {
-    return (
-      <button onClick={openModal} type="button" className="block mt-1 px-4 py-2 hover:border-gray-300  text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out">
-        Sign Up
-      </button>
-    )
-  }
-  else {
-    return (
-      <button onClick={openModal} type="button" className="inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition ease-in-out duration-150">
-        Sign Up
-      </button>
-    )
-  }
-
+  return (
+    <button onClick={openModal} type="button" className={isMobile ? 'block mt-1 px-4 py-2 hover:border-gray-300 text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out' : 'inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition ease-in-out duration-150'}>
+      Sign Up
+    </button>
+  )
 }
 
 export const SignUpModal = () => {

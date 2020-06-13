@@ -8,6 +8,7 @@ import { LoginSchema } from '../../assets/validation/schemas'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
+import Router from 'next/router'
 
 
 
@@ -37,6 +38,7 @@ const LoginForm = () => {
               dispatchAuthModal({
                 type: 'CLOSE_LOGIN_MODAL'
               })
+              Router.push('/dashboard')
               console.log(response.data)
               setSubmitting(false)
             })

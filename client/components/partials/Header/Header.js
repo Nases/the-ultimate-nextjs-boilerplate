@@ -1,8 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import MainMenuLinks from './MainMenuLinks'
-import ProfileMenuLinks from './ProfileMenuLinks'
 import RightSideDesktop from './RightSideDesktop'
 import RightSideMobile, { MobileMenuButton } from './RightSideMobile'
 

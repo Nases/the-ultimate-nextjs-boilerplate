@@ -7,8 +7,8 @@ const GetUserData = ({ children }) => {
   const userData = useUser()
   const dispatchUserData = useDispatchUser()
 
-  useEffect(() => {
-    userUtils.getUserData()
+  useEffect(async () => {
+    await userUtils.getUserData()
       .then(response => {
         if (userData._id !== response.data._id) {
           dispatchUserData({ type: 'LOGIN', userData: response.data })
