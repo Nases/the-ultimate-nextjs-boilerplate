@@ -14,6 +14,11 @@ router.use('/get-user-data', (req, res) => {
   }
 })
 
+router.use('/user', (req, res) => {
+  console.log(req.session)
+  res.send(req.user)
+})
+
 router.use('/sign-out', (req, res) => {
   req.session.destroy(error => {
     if (error) throw error
@@ -36,12 +41,11 @@ router.post('/login', (req, res, next) => {
         if (err) return next(err)
         if (!user) {
           res.status(406).send('Email or password is wrong.')
-          // return res.redirect('/login')
         }
+
         req.logIn(user, err => {
-          if (err) { return next(err) }
-          // return res.redirect('/users/' + user.username)
-          // console.log(user)
+          if (err) throw err
+          console.log(user)
           res.send(user)
         })
       })(req, res, next)
@@ -78,12 +82,11 @@ router.post('/signup', (req, res, next) => {
               // Save user to mongodb
               newUser.save()
                 .then(user => {
-                  console.log(user)
+                  console.log(req.session)
                   req.logIn(user, err => {
-                    if (err) throw err
-                    // return res.redirect('/users/' + user.username)
-                    console.log('Successfuly logged in.')
-                    console.log(user)
+                    if (err) throw error
+                    // req.session.user = req.user
+                    console.log(req.session)
                     res.send(user)
                   })
                 })

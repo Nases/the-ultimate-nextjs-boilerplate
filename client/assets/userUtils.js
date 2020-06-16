@@ -18,6 +18,8 @@ const userUtils = {
       email: email,
       password: password,
       confirmPassword: confirmPassword
+    }, {
+      withCredentials: true
     })
     return p
   },

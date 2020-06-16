@@ -29,6 +29,8 @@ mongoose
 
 // parse application/json
 app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: true }))
+
 
 
 // Express session middleware
@@ -36,7 +38,8 @@ app.use(
   session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {}
     // cookie: { secure: true }
   })
 )
