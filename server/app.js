@@ -45,16 +45,6 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-// Flash messages middleware
-// app.use(flash())
-
-// assign flash messages to global variables
-// app.use((req, res, next) => {
-//   Object.entries(req.flash()).map(([type, info]) => {
-//     res.locals[type] = info
-//   })
-//   next()
-// })
 
 app.use('/', require('./routes/index'))
 
