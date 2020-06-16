@@ -7,6 +7,7 @@ import { SignUpSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
+import Router from 'next/router'
 
 
 const SignUpForm = () => {
@@ -23,18 +24,19 @@ const SignUpForm = () => {
           confirmPassword: '',
           serverError: ''
         }}
+        validateOnBlur={false}
         validationSchema={SignUpSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
           userUtils.signUp(values.email, values.password, values.confirmPassword)
             .then(response => {
-              // dispatchUserData({
-              //   type: 'LOGIN',
-              //   userData: response.data
-              // })
-              dispatchAuthModal({
-                type: 'CLOSE_REGISTER_MODAL'
+              dispatchUserData({
+                type: 'LOGIN',
+                userData: response.data
               })
-              Router.reload('/dashboard')
+              dispatchAuthModal({
+                type: 'CLOSE_SIGN_UP_MODAL'
+              })
+              Router.push('/dashboard')
               // console.log(response)
               setSubmitting(false)
             })

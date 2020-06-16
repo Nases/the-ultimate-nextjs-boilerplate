@@ -26,18 +26,19 @@ const LoginForm = () => {
           password: '',
           serverError: ''
         }}
+        validateOnBlur={false}
         validationSchema={LoginSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
           userUtils.login(values.email, values.password)
             .then(response => {
-              // dispatchUserData({
-              //   type: 'LOGIN',
-              //   userData: response.data
-              // })
+              dispatchUserData({
+                type: 'LOGIN',
+                userData: response.data
+              })
               dispatchAuthModal({
                 type: 'CLOSE_LOGIN_MODAL'
               })
-              Router.reload('/dashboard')
+              Router.push('/dashboard')
               // console.log(response.data)
               setSubmitting(false)
             })

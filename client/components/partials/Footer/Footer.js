@@ -7,7 +7,7 @@ export default () => {
       <div className="footer bg-white mt-16">
         <div className='absolute text-center -mt-5 min-w-full'>
           <a href='https://hasansefaozalp.com/' target='_blank'>
-            <i className="fas fa-kiwi-bird fa-lg text-common-lighter hover:text-purple-600"></i>
+            <i aria-hidden className="fas fa-kiwi-bird fa-lg text-common-lighter hover:text-purple-600"></i>
           </a>
         </div>
         <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -22,7 +22,7 @@ export default () => {
                 Making the world a better place through constructing elegant hierarchies.
               </p>
               <p>
-                <i className="fas fa-envelope text-common-lighter"></i>
+                <i aria-hidden className="fas fa-envelope text-common-lighter"></i>
                 <span className="text-common-light">
                   {` ${companyInfo.email}`}
                 </span>
@@ -181,7 +181,7 @@ export default () => {
           </div>
           <div className="md:grid md:grid-cols-2 mt-12 border-t border-common pt-8">
             <p className="text-base leading-6 text-common-lighter md:text-left">
-              Made with <i className="fas fa-heart hover:text-red-600"></i> & <i className="fas fa-coffee hover:text-yellow-700"></i> in California.
+              Made with <i aria-hidden className="fas fa-heart hover:text-red-600"></i> & <i aria-hidden className="fas fa-coffee hover:text-yellow-700"></i> in California.
             </p>
             <p className="text-base leading-6 text-common-lighter md:text-right">
               &copy;

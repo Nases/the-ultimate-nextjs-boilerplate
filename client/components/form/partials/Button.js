@@ -6,7 +6,7 @@ const Button = (props) => {
           <span>
             {props.children}
           </span>
-          <i class="fas fa-spinner fa-spin fa-lg hidden m-auto"></i>
+          <i aria-hidden className="fas fa-spinner fa-spin fa-lg hidden m-auto"></i>
         </button>
       </span>
     </div >

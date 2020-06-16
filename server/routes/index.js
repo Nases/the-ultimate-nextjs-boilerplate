@@ -42,6 +42,7 @@ router.post('/login', (req, res, next) => {
         req.logIn(user, err => {
           if (err) { return next(err) }
           // return res.redirect('/users/' + user.username)
+          // console.log(user)
           res.send(user)
         })
       })(req, res, next)
@@ -52,7 +53,7 @@ router.post('/login', (req, res, next) => {
 })
 
 // sign up POST
-router.post('/signup', (req, res) => {
+router.post('/signup', (req, res, next) => {
   const { email, password, confirmPassword } = req.body
 
   SignUpSchema.validate({
@@ -78,7 +79,14 @@ router.post('/signup', (req, res) => {
               // Save user to mongodb
               newUser.save()
                 .then(user => {
-                  res.send('success')
+                  console.log(user)
+                  req.logIn(user, err => {
+                    if (err) throw err
+                    // return res.redirect('/users/' + user.username)
+                    console.log('Successfuly logged in.')
+                    console.log(user)
+                    res.send(user)
+                  })
                 })
                 .catch(err => {
                   throw err
