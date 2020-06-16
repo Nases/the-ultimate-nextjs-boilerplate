@@ -42,10 +42,8 @@ router.post('/login', (req, res, next) => {
         if (!user) {
           res.status(406).send('Email or password is wrong.')
         }
-
         req.logIn(user, err => {
           if (err) throw err
-          console.log(user)
           res.send(user)
         })
       })(req, res, next)
@@ -56,7 +54,7 @@ router.post('/login', (req, res, next) => {
 })
 
 // sign up POST
-router.post('/signup', (req, res, next) => {
+router.post('/signup', (req, res) => {
   const { email, password, confirmPassword } = req.body
 
   SignUpSchema.validate({
@@ -82,11 +80,8 @@ router.post('/signup', (req, res, next) => {
               // Save user to mongodb
               newUser.save()
                 .then(user => {
-                  console.log(req.session)
                   req.logIn(user, err => {
                     if (err) throw error
-                    // req.session.user = req.user
-                    console.log(req.session)
                     res.send(user)
                   })
                 })

@@ -19,7 +19,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 require('./config/passport')(passport)
 
 mongoose
-  .connect('mongodb+srv://nases2:DtpEkmjqcWvV3DQ1@nases-group-llc-bophr.azure.mongodb.net/test?retryWrites=true&w=majority', {
+  .connect('mongodb+srv://nases2:DtpEkmjqcWvV3DQ1@nases-group-llc-bophr.azure.mongodb.net/auth-boilerplate?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -29,8 +29,6 @@ mongoose
 
 // parse application/json
 app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: true }))
-
 
 
 // Express session middleware
@@ -38,8 +36,7 @@ app.use(
   session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true,
-    cookie: {}
+    saveUninitialized: true
     // cookie: { secure: true }
   })
 )

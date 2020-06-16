@@ -133,5 +133,6 @@ button:focus {
 
 
 
+
 /* add custom component classes before utilities (tailwindcss suggestion) */
 @tailwind utilities;

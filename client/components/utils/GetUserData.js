@@ -14,7 +14,7 @@ const GetUserData = ({ children }) => {
           if (userData._id !== response.data._id) {
             dispatchUserData({ type: 'LOGIN', userData: response.data })
           }
-          console.log(response)
+          // console.log(response)
         })
         .catch(error => {
           dispatchUserData({ type: 'SET_IS_LOADING_FALSE' })

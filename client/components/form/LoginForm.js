@@ -10,13 +10,10 @@ import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProv
 import Router from 'next/router'
 
 
-
 const LoginForm = () => {
   // const userData = useUser()
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
-
-
 
   return (
     <div>
