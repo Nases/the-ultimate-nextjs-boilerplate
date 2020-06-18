@@ -19,7 +19,7 @@ const Password = () => {
 
   const InfoMenu = () => {
     return (
-      <div className='grid grid-cols-6 gap-4'>
+      <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
         <div className='col-span-1 text-common text-sm'>
           Password
         </div>
@@ -36,7 +36,7 @@ const Password = () => {
       <div className="bg-white px-4 py-5 border-b border-gray-100">
         <div className="flex items-center justify-between flex-wrap sm:flex-no-wrap">
           <div>
-            <h3 className="text-lg uppercase font-bold text-common-dark">
+            <h3 className="text-lg uppercase font-bold text-common-dark mb-0">
               Password
             </h3>
             <p className='text-common-light text-sm mt-1'>

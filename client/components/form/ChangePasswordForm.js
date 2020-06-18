@@ -53,20 +53,32 @@ const ChangePassword = ({ closeAltMenu }) => {
         {({ isSubmitting, values }) => (
           <Form>
             <ErrorMessage name="serverError" component={FormErrorMessage} />
-            <div>
-              <Label htmlFor="currentPassword">Current Password</Label>
-              <Field id='currentPassword' type="password" name="currentPassword" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
-              <ErrorMessage name="currentPassword" component={FormErrorMessage} />
+            <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
+              <div className='col-span-1 text-common text-sm'>
+                <Label htmlFor="currentPassword">Current Password</Label>
+              </div>
+              <div className='col-span-5 text-common'>
+                <Field id='currentPassword' type="password" name="currentPassword" placeholder='Enter current password' as={Input} />
+                <ErrorMessage name="currentPassword" component={FormErrorMessage} />
+              </div>
             </div>
-            <div>
-              <Label htmlFor="password">Password</Label>
-              <Field id='password' type="password" name="password" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
-              <ErrorMessage name="password" component={FormErrorMessage} />
+            <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
+              <div className='col-span-1 text-common text-sm'>
+                <Label htmlFor="password">New Password</Label>
+              </div>
+              <div className='col-span-5 text-common'>
+                <Field id='password' type="password" name="password" placeholder='Enter new password' as={Input} />
+                <ErrorMessage name="password" component={FormErrorMessage} />
+              </div>
             </div>
-            <div>
-              <Label htmlFor="confirmPassword">Confirm password</Label>
-              <Field id='confirmPassword' type="password" name="confirmPassword" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
-              <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
+            <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
+              <div className='col-span-1 text-common text-sm'>
+                <Label htmlFor="confirmPassword">Confirm password</Label>
+              </div>
+              <div className='col-span-5 text-common'>
+                <Field id='confirmPassword' type="password" name="confirmPassword" placeholder='Re-enter new password' as={Input} />
+                <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
+              </div>
             </div>
             <Button type="submit" disabled={isSubmitting}>
               Sign Up
