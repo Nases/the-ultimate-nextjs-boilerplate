@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const { SignUpSchema, LoginSchema } = require('../assets/validation/schemas')
+const { SignUpSchema, LoginSchema, ChangePasswordSchema } = require('../assets/validation/schemas')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
@@ -10,7 +10,7 @@ router.use('/get-user-data', (req, res) => {
   if (req.isAuthenticated()) {
     res.send(req.user)
   } else {
-    res.status(401).send(`Unauthenticated`)
+    res.status(401).send('Unauthenticated')
   }
 })
 
@@ -99,10 +99,43 @@ router.post('/signup', (req, res) => {
 })
 
 router.post('/change-password', (req, res) => {
-  const { currentPassword, password, confirmPassword } = req.body
+  if (req.isAuthenticated()) {
+    const { currentPassword, newPassword, confirmNewPassword } = req.body
+    ChangePasswordSchema.validate({
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+      confirmNewPassword: confirmNewPassword
+    }).then(values => {
+      bcrypt.compare(currentPassword, req.user.password).then(isMatch => {
+        if (isMatch) {
+          bcrypt.genSalt(10, (err, salt) => {
+            if (err) throw err
+            bcrypt.hash(newPassword, salt, (err, hash) => {
+              if (err) throw err
+              User.update({
+                email: req.user.email
+              }, {
+                password: hash
+              }, (err, raw) => {
+                if (err) throw err
+                res.send('everything went fine')
+              })
+            })
+          })
+        } else {
+          res.status(406).send('Wrong password.')
+        }
+      }).catch(err => {
+        res.status(406).send('Something went wrong, please try again later.')
+      })
+    }).catch(error => {
+      console.log(error)
+      res.status(406).send('Something went wrong, please try again later.')
+    })
 
-
-
+  } else {
+    res.status(401).send('Unauthenticated')
+  }
 })
 
 

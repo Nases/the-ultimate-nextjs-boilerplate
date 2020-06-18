@@ -9,6 +9,9 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  lastPasswordUpdate: {
+    type: Date
+  },
   date: {
     type: Date,
     default: Date.now

@@ -23,4 +23,18 @@ const LoginSchema = yup.object().shape({
     .required('Required')
 })
 
-module.exports = { SignUpSchema, LoginSchema }
+const ChangePasswordSchema = yup.object().shape({
+  currentPassword: yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(24, 'Password can be maximum 24 characters')
+    .required('Required'),
+  newPassword: yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(24, 'Password can be maximum 24 characters')
+    .required('Required'),
+  confirmNewPassword: yup.string()
+    .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
+    .required('Required'),
+})
+
+module.exports = { SignUpSchema, LoginSchema, ChangePasswordSchema }

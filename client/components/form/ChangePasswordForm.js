@@ -3,7 +3,7 @@ import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from './partials/Button'
-import { SignUpSchema } from '../../assets/validation/schemas'
+import { ChangePasswordSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
@@ -20,31 +20,31 @@ const ChangePassword = ({ closeAltMenu }) => {
       <Formik
         initialValues={{
           currentPassword: '',
-          password: '',
-          confirmPassword: '',
+          newPassword: '',
+          confirmNewPassword: '',
           serverError: ''
         }}
         validateOnBlur={false}
-        validationSchema={SignUpSchema}
+        validationSchema={ChangePasswordSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.signUp(values.currentPassword, values.password, values.confirmPassword)
+          userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
             .then(response => {
-              dispatchUserData({
-                type: 'LOGIN',
-                userData: response.data
-              })
-              dispatchAuthModal({
-                type: 'CLOSE_SIGN_UP_MODAL'
-              })
-              Router.push('/dashboard')
-              // console.log(response)
+              // dispatchUserData({
+              //   type: 'LOGIN',
+              //   userData: response.data
+              // })
+              // dispatchAuthModal({
+              //   type: 'CLOSE_SIGN_UP_MODAL'
+              // })
+              // Router.push('/dashboard')
+              console.log(response)
               setSubmitting(false)
             })
             .catch((error) => {
-              // console.log(error)
-              dispatchUserData({
-                type: 'SET_IS_LOADING_FALSE'
-              })
+              console.log(error)
+              // dispatchUserData({
+              //   type: 'SET_IS_LOADING_FALSE'
+              // })
               setFieldError('serverError', error.response.data)
               setSubmitting(false)
             })
@@ -53,7 +53,7 @@ const ChangePassword = ({ closeAltMenu }) => {
         {({ isSubmitting, values }) => (
           <Form>
             <ErrorMessage name="serverError" component={FormErrorMessage} />
-            <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
+            <div className='md:grid md:grid-cols-6 md:gap-4 mb-3'>
               <div className='col-span-1 text-common text-sm'>
                 <Label htmlFor="currentPassword">Current Password</Label>
               </div>
@@ -62,30 +62,36 @@ const ChangePassword = ({ closeAltMenu }) => {
                 <ErrorMessage name="currentPassword" component={FormErrorMessage} />
               </div>
             </div>
-            <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
+            <div className='md:grid md:grid-cols-6 md:gap-4 mb-3'>
               <div className='col-span-1 text-common text-sm'>
-                <Label htmlFor="password">New Password</Label>
+                <Label htmlFor="newPassword">New Password</Label>
               </div>
               <div className='col-span-5 text-common'>
-                <Field id='password' type="password" name="password" placeholder='Enter new password' as={Input} />
-                <ErrorMessage name="password" component={FormErrorMessage} />
+                <Field id='newPassword' type="password" name="newPassword" placeholder='Enter new password' as={Input} />
+                <ErrorMessage name="newPassword" component={FormErrorMessage} />
               </div>
             </div>
-            <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
+            <div className='md:grid md:grid-cols-6 md:gap-4'>
               <div className='col-span-1 text-common text-sm'>
-                <Label htmlFor="confirmPassword">Confirm password</Label>
+                <Label htmlFor="confirmNewPassword">Confirm password</Label>
               </div>
               <div className='col-span-5 text-common'>
-                <Field id='confirmPassword' type="password" name="confirmPassword" placeholder='Re-enter new password' as={Input} />
-                <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
+                <Field id='confirmNewPassword' type="password" name="confirmNewPassword" placeholder='Re-enter new password' as={Input} />
+                <ErrorMessage name="confirmNewPassword" component={FormErrorMessage} />
               </div>
             </div>
-            <Button type="submit" disabled={isSubmitting}>
-              Sign Up
-            </Button>
-            <Button onClick={closeAltMenu} secondary={true}>
-              Cancel
-            </Button>
+            <div className='md:grid md:grid-cols-6 md:gap-4'>
+              <div className='col-start-2'>
+                <Button type="submit" disabled={isSubmitting}>
+                  Sign Up
+                </Button>
+              </div>
+              <div>
+                <Button onClick={closeAltMenu} secondary={true}>
+                  Cancel
+                </Button>
+              </div>
+            </div>
           </Form>
         )}
       </Formik>

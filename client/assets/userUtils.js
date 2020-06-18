@@ -23,6 +23,16 @@ const userUtils = {
     })
     return p
   },
+  changePassword: (currentPassword, newPassword, confirmNewPassword) => {
+    const p = axios.post(uri + 'change-password', {
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+      confirmNewPassword: confirmNewPassword
+    }, {
+      withCredentials: true
+    })
+    return p
+  },
   getUserData: () => {
     const p = axios.post(uri + 'get-user-data', null, {
       withCredentials: true

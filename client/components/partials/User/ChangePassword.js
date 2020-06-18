@@ -6,7 +6,7 @@ import ChangePasswordForm from '../../form/ChangePasswordForm'
 
 
 
-const Password = () => {
+const ChangePassword = () => {
   const [altMenuActive, setAltMenuActive] = useState(false)
 
   const openAltMenu = () => {
@@ -19,7 +19,7 @@ const Password = () => {
 
   const InfoMenu = () => {
     return (
-      <div className='sm:grid sm:grid-cols-6 sm:gap-4'>
+      <div className='md:grid md:grid-cols-6 md:gap-4'>
         <div className='col-span-1 text-common text-sm'>
           Password
         </div>
@@ -33,7 +33,7 @@ const Password = () => {
 
   return (
     <div className="rounded overflow-hidden shadow-md">
-      <div className="bg-white px-4 py-5 border-b border-gray-100">
+      <div className="bg-white px-6 py-5 border-b border-gray-100">
         <div className="flex items-center justify-between flex-wrap sm:flex-no-wrap">
           <div>
             <h3 className="text-lg uppercase font-bold text-common-dark mb-0">
@@ -58,4 +58,4 @@ const Password = () => {
   )
 }
 
-export default Password
+export default ChangePassword
