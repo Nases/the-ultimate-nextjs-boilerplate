@@ -98,6 +98,13 @@ router.post('/signup', (req, res) => {
     })
 })
 
+router.post('/change-password', (req, res) => {
+  const { currentPassword, password, confirmPassword } = req.body
+
+
+
+})
+
 
 
 module.exports = router

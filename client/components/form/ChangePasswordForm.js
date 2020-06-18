@@ -3,43 +3,44 @@ import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from './partials/Button'
-import { LoginSchema } from '../../assets/validation/schemas'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import { SignUpSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
+import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import Router from 'next/router'
 
 
-const LoginForm = () => {
-  // const userData = useUser()
+const ChangePassword = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
+
 
   return (
     <div>
       <Formik
         initialValues={{
-          email: '',
+          currentPassword: '',
           password: '',
+          confirmPassword: '',
           serverError: ''
         }}
         validateOnBlur={false}
-        validationSchema={LoginSchema}
+        validationSchema={SignUpSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.login(values.email, values.password)
+          userUtils.signUp(values.currentPassword, values.password, values.confirmPassword)
             .then(response => {
               dispatchUserData({
                 type: 'LOGIN',
                 userData: response.data
               })
               dispatchAuthModal({
-                type: 'CLOSE_LOGIN_MODAL'
+                type: 'CLOSE_SIGN_UP_MODAL'
               })
               Router.push('/dashboard')
-              // console.log(response.data)
+              // console.log(response)
               setSubmitting(false)
             })
-            .catch(error => {
+            .catch((error) => {
               // console.log(error)
               dispatchUserData({
                 type: 'SET_IS_LOADING_FALSE'
@@ -53,17 +54,22 @@ const LoginForm = () => {
           <Form>
             <ErrorMessage name="serverError" component={FormErrorMessage} />
             <div>
-              <Label htmlFor="email">Email address</Label>
-              <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />
-              <ErrorMessage name="email" component={FormErrorMessage} />
+              <Label htmlFor="currentPassword">Current Password</Label>
+              <Field id='currentPassword' type="password" name="currentPassword" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
+              <ErrorMessage name="currentPassword" component={FormErrorMessage} />
             </div>
             <div>
               <Label htmlFor="password">Password</Label>
               <Field id='password' type="password" name="password" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
               <ErrorMessage name="password" component={FormErrorMessage} />
             </div>
+            <div>
+              <Label htmlFor="confirmPassword">Confirm password</Label>
+              <Field id='confirmPassword' type="password" name="confirmPassword" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
+              <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
+            </div>
             <Button type="submit" disabled={isSubmitting}>
-              Log In
+              Sign Up
             </Button>
           </Form>
         )}
@@ -72,4 +78,9 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+
+
+
+
+
+export default ChangePassword

@@ -1,8 +1,7 @@
 import Layout from '../components/Layout'
 import companyInfo from '../assets/company-info'
-import UserTest from '../components/partials/User/UserTest'
 import EnsureAuth from '../components/utils/EnsureAuth'
-
+import ChangePasswordForm from '../components/form/ChangePasswordForm'
 
 const Dashboard = () => {
 
@@ -13,7 +12,8 @@ const Dashboard = () => {
     <EnsureAuth>
       <Layout title={title} description={description}>
         <div className='max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8'>
-          <UserTest />
+          Change Password
+          <ChangePasswordForm />
         </div>
       </Layout>
     </EnsureAuth>

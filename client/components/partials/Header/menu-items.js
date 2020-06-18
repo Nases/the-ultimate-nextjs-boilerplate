@@ -7,16 +7,16 @@ export const mainMenuItems = [
 
 export const profileMenuItems = [
   {
-    name: 'Your Profile',
-    href: '/'
-  },
-  {
     name: 'Dashboard',
     href: '/dashboard'
   },
   {
+    name: 'Profile',
+    href: '/profile'
+  },
+  {
     name: 'Settings',
-    href: '/b'
+    href: '/settings'
   },
   {
     name: 'Sign out',
