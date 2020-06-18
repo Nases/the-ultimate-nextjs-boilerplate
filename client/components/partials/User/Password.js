@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ButtonFlat from '../../form/partials/ButtonFlat'
 import Button from '../../form/partials/Button'
+import ChangePasswordForm from '../../form/ChangePasswordForm'
 
 
 
@@ -18,7 +19,7 @@ const Password = () => {
 
   const InfoMenu = () => {
     return (
-      <div className="bg-gray-50 grid grid-cols-6 gap-4 px-6 py-8">
+      <div className='grid grid-cols-6 gap-4'>
         <div className='col-span-1 text-common text-sm'>
           Password
         </div>
@@ -50,7 +51,9 @@ const Password = () => {
           </div>
         </div>
       </div>
-      {altMenuActive ? '' : <InfoMenu />}
+      <div className="bg-gray-50 px-6 py-8">
+        {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} /> : <InfoMenu />}
+      </div>
     </div>
   )
 }

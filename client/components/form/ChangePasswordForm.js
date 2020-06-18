@@ -10,7 +10,7 @@ import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProv
 import Router from 'next/router'
 
 
-const ChangePassword = () => {
+const ChangePassword = ({ closeAltMenu }) => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
 
@@ -70,6 +70,9 @@ const ChangePassword = () => {
             </div>
             <Button type="submit" disabled={isSubmitting}>
               Sign Up
+            </Button>
+            <Button onClick={closeAltMenu}>
+              Cancel
             </Button>
           </Form>
         )}

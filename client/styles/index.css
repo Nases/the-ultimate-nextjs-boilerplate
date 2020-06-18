@@ -3,7 +3,7 @@
 @tailwind components;
 /* purgecss end ignore */
 
-@variants hover {
+@variants hover, focus, active {
   .text-common-dark {
     @apply text-gray-900;
   }
@@ -33,6 +33,9 @@
   }
   .bg-primary-dark {
     @apply bg-orange-600;
+  }
+  .bg-primary-darker {
+    @apply bg-orange-700;
   }
   .bg-secondary {
     @apply bg-indigo-500;
