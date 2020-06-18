@@ -13,6 +13,9 @@
   .text-primary-dark {
     @apply text-orange-600;
   }
+  .text-primary-darker {
+    @apply text-orange-700;
+  }
   .text-secondary {
     @apply text-indigo-500;
   }
@@ -42,6 +45,12 @@
   }
   .border-primary {
     @apply border-orange-500;
+  }
+  .border-primary-dark {
+    @apply border-orange-600;
+  }
+  .border-primary-darker {
+    @apply border-orange-700;
   }
   .border-common {
     @apply border-gray-200;

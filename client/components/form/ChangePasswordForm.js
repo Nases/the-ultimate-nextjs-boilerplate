@@ -83,7 +83,7 @@ const ChangePassword = ({ closeAltMenu }) => {
             <Button type="submit" disabled={isSubmitting}>
               Sign Up
             </Button>
-            <Button onClick={closeAltMenu}>
+            <Button onClick={closeAltMenu} secondary={true}>
               Cancel
             </Button>
           </Form>
