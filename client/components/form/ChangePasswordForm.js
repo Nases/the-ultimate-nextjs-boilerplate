@@ -83,7 +83,7 @@ const ChangePassword = ({ closeAltMenu }) => {
             <div className='md:grid md:grid-cols-6 md:gap-4'>
               <div className='col-start-2'>
                 <Button type="submit" disabled={isSubmitting}>
-                  Sign Up
+                  Save
                 </Button>
               </div>
               <div>

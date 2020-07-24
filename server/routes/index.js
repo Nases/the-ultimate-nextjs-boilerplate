@@ -38,14 +38,15 @@ router.post('/login', (req, res, next) => {
   })
     .then(values => {
       passport.authenticate('local', (err, user, info) => {
-        if (err) return next(err)
+        if (err) throw err
         if (!user) {
           res.status(406).send('Email or password is wrong.')
+        } else {
+          req.logIn(user, err => {
+            if (err) throw err
+            res.send(user)
+          })
         }
-        req.logIn(user, err => {
-          if (err) throw err
-          res.send(user)
-        })
       })(req, res, next)
     })
     .catch(err => {
@@ -118,7 +119,7 @@ router.post('/change-password', (req, res) => {
                 password: hash
               }, (err, raw) => {
                 if (err) throw err
-                res.send('everything went fine')
+                res.send('Password changed successfully.')
               })
             })
           })
