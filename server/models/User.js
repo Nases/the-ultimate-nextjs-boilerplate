@@ -17,7 +17,8 @@ const UserSchema = mongoose.Schema({
     default: Date.now
   },
   passwordLastUpdated: {
-    type: Date
+    type: Date,
+    default: Date.now
   }
 })
 

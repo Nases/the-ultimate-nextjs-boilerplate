@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import ButtonFlat from '../../form/partials/ButtonFlat'
-import Button from '../../form/partials/Button'
 import ChangePasswordForm from '../../form/ChangePasswordForm'
-
+import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
+const moment = require('moment')
 
 
 
 const ChangePassword = () => {
   const [altMenuActive, setAltMenuActive] = useState(false)
+  const user = useUser()
+  const userData = user.data
+  const userPasswordLastUpdated = moment(userData.passwordLastUpdated).format('MMM DD, YYYY')
+
 
   const openAltMenu = () => {
     setAltMenuActive(true)
@@ -24,7 +28,8 @@ const ChangePassword = () => {
           Password
         </div>
         <div className='col-span-5 text-common'>
-          Last updated May 17, 2017
+          Last updated {' '}
+          {userPasswordLastUpdated}
         </div>
       </div>
     )
