@@ -25,6 +25,7 @@ const SignUpForm = () => {
           serverError: ''
         }}
         validateOnBlur={false}
+        validateOnChange={false}
         validationSchema={SignUpSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
           userUtils.signUp(values.email, values.password, values.confirmPassword)

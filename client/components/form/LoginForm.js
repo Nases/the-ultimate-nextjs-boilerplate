@@ -24,6 +24,7 @@ const LoginForm = () => {
           serverError: ''
         }}
         validateOnBlur={false}
+        validateOnChange={false}
         validationSchema={LoginSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
           userUtils.login(values.email, values.password)

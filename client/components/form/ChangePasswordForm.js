@@ -2,12 +2,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
+import FormSuccessMessage from './partials/FormSuccessMessage'
 import Button from './partials/Button'
 import { ChangePasswordSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
-import Router from 'next/router'
 
 
 const ChangePassword = ({ closeAltMenu }) => {
@@ -22,11 +22,13 @@ const ChangePassword = ({ closeAltMenu }) => {
           currentPassword: '',
           newPassword: '',
           confirmNewPassword: '',
-          serverError: ''
+          serverError: '',
+          successMessage: ''
         }}
         validateOnBlur={false}
+        validateOnChange={false}
         validationSchema={ChangePasswordSchema}
-        onSubmit={(values, { setSubmitting, setFieldError }) => {
+        onSubmit={(values, { setSubmitting, setFieldError, setFieldValue }) => {
           userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
             .then(response => {
               // dispatchUserData({
@@ -37,6 +39,7 @@ const ChangePassword = ({ closeAltMenu }) => {
               //   type: 'CLOSE_SIGN_UP_MODAL'
               // })
               // Router.push('/dashboard')
+              setFieldValue('successMessage', response.data)
               console.log(response)
               setSubmitting(false)
             })
@@ -52,6 +55,7 @@ const ChangePassword = ({ closeAltMenu }) => {
       >
         {({ isSubmitting, values }) => (
           <Form>
+            <Field type="text" name="successMessage" as={FormSuccessMessage} />
             <ErrorMessage name="serverError" component={FormErrorMessage} />
             <div className='md:grid md:grid-cols-6 md:gap-4 mb-3'>
               <div className='col-span-1 text-common text-sm'>
