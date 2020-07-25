@@ -6,6 +6,20 @@ import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
 
 const moment = require('moment')
 
+const CardTitle = ({ children }) => {
+  return (
+    <h3 className="text-lg uppercase font-bold text-common-dark mb-0">{children}</h3>
+  )
+}
+
+const CardSubtitle = ({ children }) => {
+  return (
+    <p className='text-common-light text-sm mt-1'>
+      {children}
+    </p>
+  )
+}
+
 
 const UserOptionsCard = () => {
   const [altMenuActive, setAltMenuActive] = useState(false)
