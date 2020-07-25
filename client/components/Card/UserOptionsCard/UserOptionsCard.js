@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import ButtonFlat from '../form/partials/ButtonFlat'
-import ChangePasswordForm from '../form/ChangePasswordForm'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
-import FormSuccessMessage from '../form/partials/FormSuccessMessage'
+import ButtonFlat from '../../form/partials/ButtonFlat'
+import ChangePasswordForm from '../../form/ChangePasswordForm'
+import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
+import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
 
 const moment = require('moment')
 

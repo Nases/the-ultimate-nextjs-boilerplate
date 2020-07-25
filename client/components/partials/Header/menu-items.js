@@ -11,11 +11,7 @@ export const profileMenuItems = [
     href: '/dashboard'
   },
   {
-    name: 'Profile',
-    href: '/profile'
-  },
-  {
-    name: 'Settings',
+    name: 'Account Settings',
     href: '/settings'
   },
   {
