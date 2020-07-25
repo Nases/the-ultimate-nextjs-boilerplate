@@ -18,6 +18,9 @@ const reducer = (state, action) => {
     case 'UPDATE':
       state.data = action.userData
       return { ...state }
+    case 'UPDATE_PASSWORD_LAST_UPDATED':
+      state.data.passwordLastUpdated = action.passwordLastUpdated
+      return { ...state }
     case 'SET_IS_LOADING_FALSE':
       state.isLoading = false
       return { ...state }
@@ -33,7 +36,8 @@ export const UserProvider = ({ children }) => {
     data: {
       id: '',
       email: '',
-      password: ''
+      password: '',
+      passwordLastUpdated: ''
     }
   })
   return (

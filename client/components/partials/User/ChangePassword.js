@@ -2,16 +2,17 @@ import { useState } from 'react'
 import ButtonFlat from '../../form/partials/ButtonFlat'
 import ChangePasswordForm from '../../form/ChangePasswordForm'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
-const moment = require('moment')
+import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
 
+const moment = require('moment')
 
 
 const ChangePassword = () => {
   const [altMenuActive, setAltMenuActive] = useState(false)
+  const [successMessage, setSuccessMessage] = useState(false)
   const user = useUser()
   const userData = user.data
   const userPasswordLastUpdated = moment(userData.passwordLastUpdated).format('MMM DD, YYYY')
-
 
   const openAltMenu = () => {
     setAltMenuActive(true)
@@ -19,6 +20,13 @@ const ChangePassword = () => {
 
   const closeAltMenu = () => {
     setAltMenuActive(false)
+  }
+
+  const showSuccessMessage = message => {
+    setSuccessMessage(message)
+    setTimeout(() => {
+      setSuccessMessage(false)
+    }, 5000);
   }
 
   const InfoMenu = () => {
@@ -34,7 +42,6 @@ const ChangePassword = () => {
       </div>
     )
   }
-
 
   return (
     <div className="rounded overflow-hidden shadow-md">
@@ -57,7 +64,8 @@ const ChangePassword = () => {
         </div>
       </div>
       <div className="bg-gray-50 px-6 py-8">
-        {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} /> : <InfoMenu />}
+        {successMessage ? <FormSuccessMessage value={successMessage} /> : ''}
+        {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
       </div>
     </div>
   )
