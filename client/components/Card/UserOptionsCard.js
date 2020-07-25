@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import ButtonFlat from '../../form/partials/ButtonFlat'
-import ChangePasswordForm from '../../form/ChangePasswordForm'
-import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
-import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
+import ButtonFlat from '../form/partials/ButtonFlat'
+import ChangePasswordForm from '../form/ChangePasswordForm'
+import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import FormSuccessMessage from '../form/partials/FormSuccessMessage'
 
 const moment = require('moment')
 
 
-const ChangePassword = () => {
+const UserOptionsCard = () => {
   const [altMenuActive, setAltMenuActive] = useState(false)
   const [successMessage, setSuccessMessage] = useState(false)
   const user = useUser()
@@ -71,4 +71,4 @@ const ChangePassword = () => {
   )
 }
 
-export default ChangePassword
+export default UserOptionsCard

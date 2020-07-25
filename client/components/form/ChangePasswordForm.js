@@ -6,12 +6,10 @@ import Button from './partials/Button'
 import { ChangePasswordSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
-import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 
 
 const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
-  const dispatchAuthModal = useDispatchAuthModal()
 
 
   return (
@@ -27,7 +25,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
         validateOnBlur={false}
         validateOnChange={false}
         validationSchema={ChangePasswordSchema}
-        onSubmit={(values, { setSubmitting, setFieldError, setFieldValue }) => {
+        onSubmit={(values, { setSubmitting, setFieldError }) => {
           userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
             .then(response => {
               dispatchUserData({
@@ -36,20 +34,16 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
               })
               showSuccessMessage(response.data)
               closeAltMenu()
-              console.log(response)
               setSubmitting(false)
             })
             .catch((error) => {
               console.log(error)
-              // dispatchUserData({
-              //   type: 'SET_IS_LOADING_FALSE'
-              // })
               setFieldError('serverError', error.response.data)
               setSubmitting(false)
             })
         }}
       >
-        {({ isSubmitting, values }) => (
+        {({ isSubmitting }) => (
           <Form>
             <ErrorMessage name="serverError" component={FormErrorMessage} />
             <div className='md:grid md:grid-cols-6 md:gap-4 mb-3'>
@@ -86,7 +80,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
                 </Button>
               </div>
               <div>
-                <Button onClick={closeAltMenu} secondary={true}>
+                <Button onClick={closeAltMenu} color='secondary'>
                   Cancel
                 </Button>
               </div>
@@ -97,10 +91,6 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
     </div >
   )
 }
-
-
-
-
 
 
 export default ChangePassword
