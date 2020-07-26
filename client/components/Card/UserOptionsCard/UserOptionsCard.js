@@ -51,23 +51,29 @@ const UserOptionsCard = () => {
 
   return (
     <Card>
-      <CardHeader>
-        <div>
-          <CardTitle>
-            Password
-          </CardTitle>
-          <CardSubtitle>
-            We recommend updating your password periodically to prevent unauthorized access.
-          </CardSubtitle>
-        </div>
-        <div className={altMenuActive && 'hidden'}>
-          <UpdateButton onClick={openAltMenu} />
-        </div>
-      </CardHeader>
-      <CardBody>
-        {successMessage && <FormSuccessMessage value={successMessage} />}
-        {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
-      </CardBody>
+      {(sayHe) => {
+        return (
+          <>
+            <CardHeader>
+              <div>
+                <CardTitle>
+                  Password
+              </CardTitle>
+                <CardSubtitle>
+                  We recommend updating your password periodically to prevent unauthorized access.
+              </CardSubtitle>
+              </div>
+              <div className={altMenuActive && 'hidden'}>
+                <UpdateButton onClick={openAltMenu} />
+              </div>
+            </CardHeader>
+            <CardBody>
+              {successMessage && <FormSuccessMessage value={successMessage} />}
+              {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
+            </CardBody>
+          </>
+        )
+      }}
     </Card>
   )
 }
