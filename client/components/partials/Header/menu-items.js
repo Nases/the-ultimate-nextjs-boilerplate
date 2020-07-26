@@ -8,14 +8,17 @@ export const mainMenuItems = [
 export const profileMenuItems = [
   {
     name: 'Dashboard',
-    href: '/dashboard'
+    href: '/dashboard',
+    icon: 'carrot'
   },
   {
     name: 'Account Settings',
-    href: '/settings'
+    href: '/settings',
+    icon: 'cog'
   },
   {
-    name: 'Sign out',
-    href: '/sign-out'
+    name: 'Log Out',
+    href: '/sign-out',
+    icon: 'sign-out-alt'
   }
 ]
