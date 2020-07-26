@@ -46,9 +46,7 @@ const UserOptionsCard = () => {
                   We recommend updating your password periodically to prevent unauthorized access.
                 </CardSubtitle>
               </div>
-              <div className={altMenuActive && 'hidden'}>
-                <UpdateButton onClick={openAltMenu} />
-              </div>
+              <UpdateButton onClick={openAltMenu} altMenuActive={altMenuActive} />
             </CardHeader>
             <CardBody>
               {successMessage && <FormSuccessMessage value={successMessage} />}
