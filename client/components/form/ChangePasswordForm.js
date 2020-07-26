@@ -49,7 +49,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
         {({ isSubmitting }) => (
           <Form>
             <ErrorMessage name="serverError" component={FormErrorMessage} />
-            <CardBodyRow>
+            <CardBodyRow mb>
               <CardBodyKey>
                 <Label htmlFor="currentPassword">Current Password</Label>
               </CardBodyKey>
@@ -58,7 +58,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
                 <ErrorMessage name="currentPassword" component={FormErrorMessage} />
               </CardBodyValue>
             </CardBodyRow>
-            <CardBodyRow>
+            <CardBodyRow mb>
               <CardBodyKey>
                 <Label htmlFor="newPassword">New Password</Label>
               </CardBodyKey>
@@ -67,7 +67,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
                 <ErrorMessage name="newPassword" component={FormErrorMessage} />
               </CardBodyValue>
             </CardBodyRow>
-            <CardBodyRow>
+            <CardBodyRow mb>
               <CardBodyKey>
                 <Label htmlFor="confirmNewPassword">Confirm password</Label>
               </CardBodyKey>
