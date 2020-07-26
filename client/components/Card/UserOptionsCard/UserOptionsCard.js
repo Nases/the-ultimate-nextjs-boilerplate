@@ -17,23 +17,6 @@ const moment = require('moment')
 
 
 const UserOptionsCard = () => {
-  const [altMenuActive, setAltMenuActive] = useState(false)
-  const [successMessage, setSuccessMessage] = useState(false)
-
-  const openAltMenu = () => {
-    setAltMenuActive(true)
-  }
-
-  const closeAltMenu = () => {
-    setAltMenuActive(false)
-  }
-
-  const showSuccessMessage = message => {
-    setSuccessMessage(message)
-    setTimeout(() => {
-      setSuccessMessage(false)
-    }, 5000);
-  }
 
   const InfoMenu = () => {
     return (
@@ -51,17 +34,17 @@ const UserOptionsCard = () => {
 
   return (
     <Card>
-      {(sayHe) => {
+      {({ altMenuActive, successMessage, openAltMenu, closeAltMenu, showSuccessMessage }) => {
         return (
           <>
             <CardHeader>
               <div>
                 <CardTitle>
                   Password
-              </CardTitle>
+                </CardTitle>
                 <CardSubtitle>
                   We recommend updating your password periodically to prevent unauthorized access.
-              </CardSubtitle>
+                </CardSubtitle>
               </div>
               <div className={altMenuActive && 'hidden'}>
                 <UpdateButton onClick={openAltMenu} />

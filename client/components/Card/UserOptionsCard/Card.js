@@ -19,14 +19,9 @@ const Card = (props) => {
     }, 5000);
   }
 
-  const sayHello = () => {
-    console.log('Hello')
-  }
-
-
   return (
     <div className="rounded overflow-hidden shadow-md mb-7">
-      {props.children(sayHello)}
+      {props.children({ altMenuActive, successMessage, openAltMenu, closeAltMenu, showSuccessMessage })}
     </div>
   )
 }
