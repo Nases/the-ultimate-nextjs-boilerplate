@@ -1,7 +1,3 @@
-import { useState } from 'react'
-import Button from '../../Button/Button'
-import ChangePasswordForm from '../../form/ChangePasswordForm'
-import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
 import Card from './Card'
 import CardHeader from './CardHeader'
@@ -12,11 +8,13 @@ import CardBody from './CardBody'
 import CardBodyKey from './CardBodyKey'
 import CardBodyValue from './CardBodyValue'
 import CardBodyRow from './CardBodyRow'
-
 const moment = require('moment')
 
+import ChangePasswordForm from '../../form/ChangePasswordForm'
+import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 
-const UserOptionsCard = () => {
+
+const Template = () => {
 
   const InfoMenu = () => {
     return (
@@ -49,7 +47,7 @@ const UserOptionsCard = () => {
               <UpdateButton onClick={openAltMenu} altMenuActive={altMenuActive} />
             </CardHeader>
             <CardBody>
-              {successMessage && <FormSuccessMessage value={successMessage} />}
+              <FormSuccessMessage value={successMessage} />
               {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
             </CardBody>
           </>
@@ -59,4 +57,4 @@ const UserOptionsCard = () => {
   )
 }
 
-export default UserOptionsCard
+export default Template
