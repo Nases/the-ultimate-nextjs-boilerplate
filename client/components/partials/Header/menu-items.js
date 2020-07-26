@@ -9,7 +9,7 @@ export const profileMenuItems = [
   {
     name: 'Dashboard',
     href: '/dashboard',
-    icon: 'carrot'
+    icon: 'chart-line'
   },
   {
     name: 'Account Settings',
