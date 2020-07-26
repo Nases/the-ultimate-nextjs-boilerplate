@@ -1,32 +1,24 @@
 import { useState } from 'react'
-import ButtonFlat from '../../form/partials/ButtonFlat'
+import Button from '../../Button/Button'
 import ChangePasswordForm from '../../form/ChangePasswordForm'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
+import Card from './Card'
+import CardHeader from './CardHeader'
+import CardTitle from './CardTitle'
+import CardSubtitle from './CardSubtitle'
+import UpdateButton from './UpdateButton'
+import CardBody from './CardBody'
+import CardBodyKey from './CardBodyKey'
+import CardBodyValue from './CardBodyValue'
+import CardBodyRow from './CardBodyRow'
 
 const moment = require('moment')
-
-const CardTitle = ({ children }) => {
-  return (
-    <h3 className="text-lg uppercase font-bold text-common-dark mb-0">{children}</h3>
-  )
-}
-
-const CardSubtitle = ({ children }) => {
-  return (
-    <p className='text-common-light text-sm mt-1'>
-      {children}
-    </p>
-  )
-}
 
 
 const UserOptionsCard = () => {
   const [altMenuActive, setAltMenuActive] = useState(false)
   const [successMessage, setSuccessMessage] = useState(false)
-  const user = useUser()
-  const userData = user.data
-  const userPasswordLastUpdated = moment(userData.passwordLastUpdated).format('MMM DD, YYYY')
 
   const openAltMenu = () => {
     setAltMenuActive(true)
@@ -45,43 +37,38 @@ const UserOptionsCard = () => {
 
   const InfoMenu = () => {
     return (
-      <div className='md:grid md:grid-cols-6 md:gap-4'>
-        <div className='col-span-1 text-common text-sm'>
+      <CardBodyRow>
+        <CardBodyKey>
           Password
-        </div>
-        <div className='col-span-5 text-common'>
+        </CardBodyKey>
+        <CardBodyValue>
           Last updated {' '}
-          {userPasswordLastUpdated}
-        </div>
-      </div>
+          Some value here
+        </CardBodyValue>
+      </CardBodyRow>
     )
   }
 
   return (
-    <div className="rounded overflow-hidden shadow-md mb-7">
-      <div className="bg-white px-6 py-5 border-b border-gray-100">
-        <div className="flex items-center justify-between flex-wrap sm:flex-no-wrap">
-          <div>
-            <h3 className="text-lg uppercase font-bold text-common-dark mb-0">
-              Password
-            </h3>
-            <p className='text-common-light text-sm mt-1'>
-              We recommend updating your password periodically to prevent unauthorized access.
-            </p>
-          </div>
-          <div className={altMenuActive && 'hidden'}>
-            <ButtonFlat onClick={openAltMenu}>
-              <i className="fas fa-edit"></i>
-              Update
-            </ButtonFlat>
-          </div>
+    <Card>
+      <CardHeader>
+        <div>
+          <CardTitle>
+            Password
+          </CardTitle>
+          <CardSubtitle>
+            We recommend updating your password periodically to prevent unauthorized access.
+          </CardSubtitle>
         </div>
-      </div>
-      <div className="bg-gray-50 px-6 py-8">
+        <div className={altMenuActive && 'hidden'}>
+          <UpdateButton onClick={openAltMenu} />
+        </div>
+      </CardHeader>
+      <CardBody>
         {successMessage && <FormSuccessMessage value={successMessage} />}
         {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
-      </div>
-    </div>
+      </CardBody>
+    </Card>
   )
 }
 

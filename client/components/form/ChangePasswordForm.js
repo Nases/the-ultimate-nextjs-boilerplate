@@ -2,10 +2,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
-import Button from './partials/Button'
+import Button from '../Button/Button'
 import { ChangePasswordSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
+import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
+import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 
 
 const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
@@ -46,34 +49,34 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
         {({ isSubmitting }) => (
           <Form>
             <ErrorMessage name="serverError" component={FormErrorMessage} />
-            <div className='md:grid md:grid-cols-6 md:gap-4 mb-3'>
-              <div className='col-span-1 text-common text-sm'>
+            <CardBodyRow>
+              <CardBodyKey>
                 <Label htmlFor="currentPassword">Current Password</Label>
-              </div>
-              <div className='col-span-5 text-common'>
+              </CardBodyKey>
+              <CardBodyValue>
                 <Field id='currentPassword' type="password" name="currentPassword" placeholder='Enter current password' as={Input} />
                 <ErrorMessage name="currentPassword" component={FormErrorMessage} />
-              </div>
-            </div>
-            <div className='md:grid md:grid-cols-6 md:gap-4 mb-3'>
-              <div className='col-span-1 text-common text-sm'>
+              </CardBodyValue>
+            </CardBodyRow>
+            <CardBodyRow>
+              <CardBodyKey>
                 <Label htmlFor="newPassword">New Password</Label>
-              </div>
-              <div className='col-span-5 text-common'>
+              </CardBodyKey>
+              <CardBodyValue>
                 <Field id='newPassword' type="password" name="newPassword" placeholder='Enter new password' as={Input} />
                 <ErrorMessage name="newPassword" component={FormErrorMessage} />
-              </div>
-            </div>
-            <div className='md:grid md:grid-cols-6 md:gap-4'>
-              <div className='col-span-1 text-common text-sm'>
+              </CardBodyValue>
+            </CardBodyRow>
+            <CardBodyRow>
+              <CardBodyKey>
                 <Label htmlFor="confirmNewPassword">Confirm password</Label>
-              </div>
-              <div className='col-span-5 text-common'>
+              </CardBodyKey>
+              <CardBodyValue>
                 <Field id='confirmNewPassword' type="password" name="confirmNewPassword" placeholder='Re-enter new password' as={Input} />
                 <ErrorMessage name="confirmNewPassword" component={FormErrorMessage} />
-              </div>
-            </div>
-            <div className='md:grid md:grid-cols-6 md:gap-4'>
+              </CardBodyValue>
+            </CardBodyRow>
+            <CardBodyRow>
               <div className='col-start-2'>
                 <Button type="submit" disabled={isSubmitting}>
                   Save
@@ -84,7 +87,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
                   Cancel
                 </Button>
               </div>
-            </div>
+            </CardBodyRow>
           </Form>
         )}
       </Formik>
