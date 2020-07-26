@@ -1,4 +1,5 @@
-import Button from '../Button/Button'
+import Buttons from './Buttons'
+import FormElements from './FormElements'
 
 const Divider = () => {
   return (
@@ -10,16 +11,9 @@ const ComponentShowcase = () => {
   return (
     <>
       <Divider />
-      <div>
-        <h2>Buttons</h2>
-        <div className='grid grid-cols-6 gap-4'>
-          <Button>Primary</Button>
-          <Button color='secondary'>Secondary</Button>
-          <Button color='link'>Link</Button>
-          <Button color='gamifyPrimary'>Gamify Primary</Button>
-        </div>
-        <Divider />
-      </div>
+      <Buttons />
+      <Divider />
+      <FormElements />
     </>
   )
 }
