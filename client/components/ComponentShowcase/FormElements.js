@@ -6,10 +6,11 @@ import FormSuccessMessage from '../form/partials/FormSuccessMessage'
 const FormElements = () => {
   return (
     <>
-      <Label htmlFor='input'>Label</Label>
-      <Input id='input' />
+      <h2>Form Elements</h2>
+      <FormSuccessMessage>Form Success Message</FormSuccessMessage>
       <FormErrorMessage>Form Error Message</FormErrorMessage>
-      <FormSuccessMessage value='Form Success Message' /> {/* fail */}
+      <Label htmlFor='input'>Label</Label>
+      <Input id='input' placeholder='Input' />
     </>
   )
 }

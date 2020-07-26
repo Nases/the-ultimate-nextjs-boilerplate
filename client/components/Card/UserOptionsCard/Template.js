@@ -47,7 +47,7 @@ const Template = () => {
               <UpdateButton onClick={openAltMenu} altMenuActive={altMenuActive} />
             </CardHeader>
             <CardBody>
-              <FormSuccessMessage value={successMessage} />
+              <FormSuccessMessage>{successMessage}</FormSuccessMessage>
               {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
             </CardBody>
           </>

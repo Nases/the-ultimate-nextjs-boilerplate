@@ -5,7 +5,7 @@ import EnsureAuth from '../components/utils/EnsureAuth'
 import ComponentShowcase from '../components/ComponentShowcase/ComponentShowcase'
 
 
-const Dashboard = () => {
+const Debug = () => {
 
   var title = `Dashboard | ${companyInfo.name}`
   var description = 'Dashboard'
@@ -23,4 +23,4 @@ const Dashboard = () => {
 }
 
 
-export default Dashboard
+export default Debug

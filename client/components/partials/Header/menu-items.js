@@ -7,9 +7,9 @@ export const mainMenuItems = [
 
 export const profileMenuItems = [
   {
-    name: 'Dashboard',
-    href: '/dashboard',
-    icon: 'chart-line'
+    name: 'Debug',
+    href: '/debug',
+    icon: 'magic'
   },
   {
     name: 'Account Settings',
