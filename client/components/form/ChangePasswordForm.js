@@ -78,7 +78,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             </CardBodyRow>
             <CardBodyRow>
               <div className='col-start-2'>
-                <Button type="submit" disabled={isSubmitting}>
+                <Button type="submit" disabled={isSubmitting} color='gamifyPrimary'>
                   Save
                 </Button>
               </div>

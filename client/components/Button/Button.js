@@ -3,8 +3,10 @@ const Button = (props) => {
   const colors = {
     primary: 'mt-6 text-white bg-primary hover:bg-primary-dark active:bg-primary-darker',
     secondary: 'mt-6 text-primary bg-white border border-primary hover:text-primary-dark hover:border-primary-dark active:text-primary-darker active:border-primary-darker',
-    link: 'text-common-dark font-semibold hover:text-primary'
+    link: 'text-common-dark font-semibold hover:text-primary',
+    gamifyPrimary: 'mt-6 text-white border border-b-4 border-primary-dark bg-primary hover:bg-primary-dark active:bg-primary-darker'
   }
+
   const defaultColor = colors['primary']
 
   return (
