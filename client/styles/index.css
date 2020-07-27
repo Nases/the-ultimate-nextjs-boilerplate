@@ -3,6 +3,9 @@
 @tailwind components;
 /* purgecss end ignore */
 
+/* primary color orange-500 */
+/* secondary color indigo-500 */
+
 @variants hover, focus, active {
   .text-common-dark {
     @apply text-gray-900;
