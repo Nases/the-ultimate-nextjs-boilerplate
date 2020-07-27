@@ -4,7 +4,7 @@ const Button = (props) => {
     primary: 'text-white bg-primary hover:bg-primary-dark active:bg-primary-darker',
     secondary: 'text-primary bg-white border border-primary hover:text-primary-dark hover:border-primary-dark active:text-primary-darker active:border-primary-darker',
     link: 'text-common-dark font-semibold hover:text-primary',
-    gamifyPrimary: 'text-white border border-b-4 border-primary-dark bg-primary hover:bg-primary active:bg-primary-darker'
+    gamifyPrimary: 'text-white border-b-4 border-primary-dark bg-primary hover:bg-primary-dark hover:border-primary-darker active:border-b-0 active:border-t-4'
   }
 
   const defaultColor = colors['primary']
