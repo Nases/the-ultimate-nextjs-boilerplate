@@ -4,9 +4,12 @@ const UserTest = () => {
   const user = useUser()
 
   return (
-    <pre>
-      {JSON.stringify(user, null, 3)}
-    </pre>
+    <>
+      <h2>User Context</h2>
+      <pre>
+        {JSON.stringify(user, null, 3)}
+      </pre>
+    </>
   )
 }
 

@@ -69,7 +69,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             </CardBodyRow>
             <CardBodyRow mb>
               <CardBodyKey>
-                <Label htmlFor="confirmNewPassword">Confirm password</Label>
+                <Label htmlFor="confirmNewPassword">Confirm Password</Label>
               </CardBodyKey>
               <CardBodyValue>
                 <Field id='confirmNewPassword' type="password" name="confirmNewPassword" placeholder='Re-enter new password' as={Input} />
