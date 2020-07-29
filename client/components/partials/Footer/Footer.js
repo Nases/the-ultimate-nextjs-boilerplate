@@ -6,7 +6,7 @@ export default () => {
     <>
       <div className="footer bg-white mt-16">
         <div className='absolute text-center -mt-5 min-w-full'>
-          <a href='https://hasansefaozalp.com/' target='_blank'>
+          <a href='https://hasansefaozalp.com/' rel="noopener" target='_blank'>
             <i aria-hidden className="fas fa-kiwi-bird fa-lg text-common-lighter hover:text-purple-600"></i>
           </a>
         </div>

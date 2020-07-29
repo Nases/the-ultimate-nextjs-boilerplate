@@ -1,0 +1,7 @@
+user-agent: * 
+disallow: 
+allow: /
+
+# sitemap: [absoluteURL]
+# sitemap: https://tobeupdated.com/sitemap.xml/
+# https://developers.google.com/search/reference/robots_txt
