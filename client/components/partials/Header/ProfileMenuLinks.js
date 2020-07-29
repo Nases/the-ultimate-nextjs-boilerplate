@@ -1,10 +1,9 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { profileMenuItems } from './menu-items'
+import { profileMenuItems } from '../../../assets/menu-items'
 
 const UserMenuLink = ({ children, href, isMobile = false }) => {
   const router = useRouter()
-
 
   if (isMobile) {
     return (
