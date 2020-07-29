@@ -187,8 +187,6 @@ router.post('/forgot_password', (req, res) => {
     text: "Hello world?",
     html: "<b>Hello world?</b>",
   })
-    .then(console.log('wee it worked'))
-    .catch(console.error)
 
   res.send('weeeee forgot password progresssssss')
 })
