@@ -150,12 +150,12 @@ router.post('/forgot_password', (req, res) => {
 
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // true for 465, false for other ports
+      host: process.env.MAIL_HOST,
+      port: parseInt(process.env.MAIL_PORT, 10),
+      secure: !(process.env.MAIL_SECURE === 'false'), // true for 465, false for other ports
       auth: {
-        user: 'nextjsexpressboilerplate@gmail.com', // generated ethereal user
-        pass: 'qweqweaA', // generated ethereal password
+        user: process.env.MAIL_USER_NAME, // generated ethereal user
+        pass: process.env.MAIL_PASSWORD, // generated ethereal password
       },
     })
 
@@ -176,9 +176,9 @@ router.post('/forgot_password', (req, res) => {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
 
-  // main().catch(console.error)
+  main().catch(console.error)
 
-  res.send(process.env.MAIL_HOST)
+  res.send('weeeee forgot password progresssssss')
 })
 
 

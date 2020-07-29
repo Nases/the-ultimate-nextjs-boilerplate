@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: '../.env' })
 
 const express = require('express')
 const cors = require('cors')
@@ -19,7 +19,7 @@ app.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 require('./config/passport')(passport)
 
 mongoose
-  .connect('mongodb+srv://nases2:DtpEkmjqcWvV3DQ1@nases-group-llc-bophr.azure.mongodb.net/auth-boilerplate?retryWrites=true&w=majority', {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
