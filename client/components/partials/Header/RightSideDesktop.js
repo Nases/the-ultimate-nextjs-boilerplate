@@ -76,14 +76,12 @@ const RightSideDesktop = () => {
           :
           // signed out
           <div className='inline-flex items-center'>
-            <span className="inline-flex">
-              <LoginButton />
-              <LoginModal />
-            </span>
-            <span className="inline-flex rounded-md shadow-sm items-center ml-2">
+            <LoginButton />
+            <span className="ml-2">
               <SignUpButton />
-              <SignUpModal />
             </span>
+            <LoginModal />
+            <SignUpModal />
             <ForgotPasswordModal />
           </div>
       }

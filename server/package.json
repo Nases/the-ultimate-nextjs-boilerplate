@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
-    "dev": "nodemon app.js"
+    "start": "NODE_ENV=production && node app.js",
+    "dev": "SET NODE_ENV=development && nodemon app.js"
   },
   "author": "Hasan Sefa Ozalp",
   "license": "MIT",

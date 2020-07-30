@@ -12,13 +12,17 @@ const UserSchema = mongoose.Schema({
   lastPasswordUpdate: {
     type: Date
   },
-  date: {
+  registrationDate: {
     type: Date,
     default: Date.now
   },
   passwordLastUpdated: {
     type: Date,
     default: Date.now
+  },
+  forgotPasswordToken: {
+    type: String,
+    default: null
   }
 })
 

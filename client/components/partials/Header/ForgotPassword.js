@@ -48,7 +48,7 @@ export const ForgotPasswordModal = () => {
         <div className="mt-3">
           <div className="text-sm leading-5 text-right">
             <span className='text-common' >
-              Already have an account?
+              Just remembered?
             </span>
             {' '}
             <button onClick={openLoginModal} className="font-medium text-primary hover:text-primary-dark transition ease-in-out duration-150">

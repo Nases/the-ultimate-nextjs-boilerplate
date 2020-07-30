@@ -37,7 +37,7 @@ const SignUpForm = () => {
               dispatchAuthModal({
                 type: 'CLOSE_SIGN_UP_MODAL'
               })
-              Router.push('/dashboard')
+              Router.push('/debug')
               // console.log(response)
               setSubmitting(false)
             })

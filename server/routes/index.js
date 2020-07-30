@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const { SignUpSchema, LoginSchema, ChangePasswordSchema } = require('../assets/validation/schemas')
+const { SignUpSchema, LoginSchema, ChangePasswordSchema, ForgotPasswordSchema } = require('../assets/validation/schemas')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
+
 
 // ensure auth
 router.use('/get-user-data', (req, res) => {
@@ -26,9 +27,6 @@ router.use('/sign-out', (req, res) => {
   })
 })
 
-
-
-// login POST
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body
 
@@ -54,7 +52,6 @@ router.post('/login', (req, res, next) => {
     })
 })
 
-// sign up POST
 router.post('/signup', (req, res) => {
   const { email, password, confirmPassword } = req.body
 
@@ -140,42 +137,48 @@ router.post('/change-password', (req, res) => {
   }
 })
 
-
 router.post('/forgot-password', (req, res) => {
-  const { email, password, confirmPassword } = req.body
+  const { email } = req.body
 
-  SignUpSchema.validate({
-    email: email,
-    password: password,
-    confirmPassword: confirmPassword
+  ForgotPasswordSchema.validate({
+    email: email
   })
     .then(values => {
       User.exists({ email }, (err, exists) => {
-        if (exists) {
-          // User email exists
-          res.status(406).send('This email is already registered.')
-        } else {
+        if (!exists) {
           // User email does not exist
-          bcrypt.genSalt(10, (err, salt) => {
+          res.status(406).send('This email is not registered.')
+        } else {
+          // User email exists
+          const crypto = require('crypto')
+
+          crypto.randomBytes(64, (err, buffer) => {
             if (err) throw err
-            bcrypt.hash(password, salt, (err, hash) => {
+            var randomToken = buffer.toString('hex')
+            User.updateOne({
+              email: email
+            }, {
+              forgotPasswordToken: randomToken
+            }, (err, raw) => {
               if (err) throw err
-              const newUser = new User({
-                email,
-                password: hash
+
+              const { sendMail } = require('../assets/mailer')
+              sendMail({
+                to: email,
+                subject: "Password Recovery",
+                text: 'Please use the link to recover your password: ',
+                html: "<b>Hello world?</b>",
               })
-              // Save user to mongodb
-              newUser.save()
-                .then(user => {
-                  req.logIn(user, err => {
-                    if (err) throw error
-                    res.send(user)
-                  })
-                })
-                .catch(err => {
-                  throw err
-                })
+                .then(() => console.log('yey email sent'))
+                .catch(err => console.log(err))
+
+              res.send('weeeee forgot password progresssssss')
+
+
             })
+
+
+
           })
         }
       })
@@ -186,60 +189,18 @@ router.post('/forgot-password', (req, res) => {
 })
 
 
-
-
-
-
-
-
-
-
-
-const nodemailer = require("nodemailer")
-
-async function sendMail({
-  from,
-  to,
-  subject,
-  text,
-  html,
-}) {
-  let transporter = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: parseInt(process.env.MAIL_PORT, 10),
-    secure: !(process.env.MAIL_SECURE === 'false'),
-    auth: {
-      user: process.env.MAIL_USER_NAME,
-      pass: process.env.MAIL_PASSWORD,
-    },
-  })
-
-  let info = await transporter.sendMail({
-    from: from || process.env.MAIL_NAME,
-    to: to,
-    subject: subject,
-    text: text,
-    html: html,
-  }, (err, info) => {
-    if (err) {
-      console.log(err)
-    } else if (info) {
-      console.log(info)
-    }
-  })
-}
-
-
-router.post('/forgot_password', (req, res) => {
-  sendMail({
-    to: "hasan@hasansefaozalp.com",
-    subject: "Hello ✔ test test",
-    text: "Hello world?",
-    html: "<b>Hello world?</b>",
-  })
-
-  res.send('weeeee forgot password progresssssss')
+router.post('/test', (req, res) => {
+  res.send(process.env.NODE_ENV)
 })
+
+
+
+
+
+
+
+
+
 
 
 
