@@ -1,11 +1,12 @@
 import axios from 'axios'
+import companyInfo from './company-info'
 
 
-const uri = 'http://localhost:5000/'
+const serverURI = companyInfo.serverURI
 
 const userUtils = {
   login: (email, password) => {
-    const p = axios.post(uri + 'login', {
+    const p = axios.post(serverURI + 'login', {
       email: email,
       password: password
     }, {
@@ -14,7 +15,7 @@ const userUtils = {
     return p
   },
   signUp: (email, password, confirmPassword) => {
-    const p = axios.post(uri + 'signup', {
+    const p = axios.post(serverURI + 'signup', {
       email: email,
       password: password,
       confirmPassword: confirmPassword
@@ -24,7 +25,7 @@ const userUtils = {
     return p
   },
   changePassword: (currentPassword, newPassword, confirmNewPassword) => {
-    const p = axios.post(uri + 'change-password', {
+    const p = axios.post(serverURI + 'change-password', {
       currentPassword: currentPassword,
       newPassword: newPassword,
       confirmNewPassword: confirmNewPassword
@@ -34,7 +35,7 @@ const userUtils = {
     return p
   },
   forgotPassword: (email) => {
-    const p = axios.post(uri + 'forgot-password', {
+    const p = axios.post(serverURI + 'forgot-password', {
       email: email,
     }, {
       withCredentials: true
@@ -42,13 +43,13 @@ const userUtils = {
     return p
   },
   getUserData: () => {
-    const p = axios.post(uri + 'get-user-data', null, {
+    const p = axios.post(serverURI + 'get-user-data', null, {
       withCredentials: true
     })
     return p
   },
   signOut: () => {
-    const p = axios.post(uri + 'sign-out', null, {
+    const p = axios.post(serverURI + 'sign-out', null, {
       withCredentials: true
     })
     return p

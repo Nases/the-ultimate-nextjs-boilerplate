@@ -7,5 +7,4 @@ const companyInfo = {
   serverURI: (process.env.NODE_ENV === 'development') ? process.env.SERVER_URI_DEVELOPMENT : process.env.SERVER_URI_PRODUCTION
 }
 
-
-export default companyInfo
+module.exports = { companyInfo }

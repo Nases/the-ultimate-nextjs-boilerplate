@@ -137,6 +137,9 @@ router.post('/change-password', (req, res) => {
   }
 })
 
+
+
+
 router.post('/forgot-password', (req, res) => {
   const { email } = req.body
 
@@ -163,22 +166,20 @@ router.post('/forgot-password', (req, res) => {
               if (err) throw err
 
               const { sendMail } = require('../assets/mailer')
-              sendMail({
-                to: email,
-                subject: "Password Recovery",
-                text: 'Please use the link to recover your password: ',
-                html: "<b>Hello world?</b>",
-              })
-                .then(() => console.log('yey email sent'))
-                .catch(err => console.log(err))
-
+              const { companyInfo } = require('../assets/company-info')
+              const recoveryLink = `${companyInfo.clientURI}forgot-password/?email=${email}&forgotPasswordToken=${randomToken}`
+              // sendMail({
+              //   to: email,
+              //   subject: "Password Recovery",
+              //   text: 'Please use the link to recover your password: ',
+              //   html: "<b>Hello world?</b>",
+              // })
+              //   .then(() => console.log('yey email sent'))
+              //   .catch(err => console.log(err))
+              console.log(recoveryLink)
               res.send('weeeee forgot password progresssssss')
 
-
             })
-
-
-
           })
         }
       })
@@ -190,7 +191,9 @@ router.post('/forgot-password', (req, res) => {
 
 
 router.post('/test', (req, res) => {
-  res.send(process.env.NODE_ENV)
+  const { companyInfo } = require('../assets/company-info')
+
+  res.send(companyInfo)
 })
 
 
