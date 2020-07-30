@@ -69,7 +69,7 @@ const LoginForm = () => {
           </Form>
         )}
       </Formik>
-    </div >
+    </div>
   )
 }
 

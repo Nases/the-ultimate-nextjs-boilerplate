@@ -51,7 +51,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             <ErrorMessage name="serverError" component={FormErrorMessage} />
             <CardBodyRow mb>
               <CardBodyKey>
-                <Label htmlFor="currentPassword">Current Password</Label>
+                <Label htmlFor="currentPassword" variant='left'>Current Password</Label>
               </CardBodyKey>
               <CardBodyValue>
                 <Field id='currentPassword' type="password" name="currentPassword" placeholder='Enter current password' as={Input} />
@@ -60,7 +60,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             </CardBodyRow>
             <CardBodyRow mb>
               <CardBodyKey>
-                <Label htmlFor="newPassword">New Password</Label>
+                <Label htmlFor="newPassword" variant='left'>New Password</Label>
               </CardBodyKey>
               <CardBodyValue>
                 <Field id='newPassword' type="password" name="newPassword" placeholder='Enter new password' as={Input} />
@@ -69,7 +69,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             </CardBodyRow>
             <CardBodyRow mb>
               <CardBodyKey>
-                <Label htmlFor="confirmNewPassword">Confirm Password</Label>
+                <Label htmlFor="confirmNewPassword" variant='left'>Confirm Password</Label>
               </CardBodyKey>
               <CardBodyValue>
                 <Field id='confirmNewPassword' type="password" name="confirmNewPassword" placeholder='Re-enter new password' as={Input} />
