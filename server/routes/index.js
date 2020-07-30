@@ -116,7 +116,8 @@ router.post('/change-password', (req, res) => {
               User.update({
                 email: req.user.email
               }, {
-                password: hash
+                password: hash,
+                passwordLastUpdated: Date.now()
               }, (err, raw) => {
                 if (err) throw err
                 res.send('Password changed successfully.')

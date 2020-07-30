@@ -1,74 +1,63 @@
-import { useState } from 'react'
-import ButtonFlat from '../../form/partials/ButtonFlat'
+import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
+import Card from '../../../components/Card/UserOptionsCard/Card'
+import CardHeader from '../../../components/Card/UserOptionsCard/CardHeader'
+import CardTitle from '../../../components/Card/UserOptionsCard/CardTitle'
+import CardSubtitle from '../../../components/Card/UserOptionsCard/CardSubtitle'
+import UpdateButton from '../../../components/Card/UserOptionsCard/UpdateButton'
+import CardBody from '../../../components/Card/UserOptionsCard/CardBody'
+import CardBodyKey from '../../../components/Card/UserOptionsCard/CardBodyKey'
+import CardBodyValue from '../../../components/Card/UserOptionsCard/CardBodyValue'
+import CardBodyRow from '../../../components/Card/UserOptionsCard/CardBodyRow'
+
 import ChangePasswordForm from '../../form/ChangePasswordForm'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
-import FormSuccessMessage from '../../form/partials/FormSuccessMessage'
-
 const moment = require('moment')
 
 
-const ChangePassword = () => {
-  const [altMenuActive, setAltMenuActive] = useState(false)
-  const [successMessage, setSuccessMessage] = useState(false)
+const Template = () => {
   const user = useUser()
   const userData = user.data
   const userPasswordLastUpdated = moment(userData.passwordLastUpdated).format('MMM DD, YYYY')
 
-  const openAltMenu = () => {
-    setAltMenuActive(true)
-  }
-
-  const closeAltMenu = () => {
-    setAltMenuActive(false)
-  }
-
-  const showSuccessMessage = message => {
-    setSuccessMessage(message)
-    setTimeout(() => {
-      setSuccessMessage(false)
-    }, 5000);
-  }
-
   const InfoMenu = () => {
     return (
-      <div className='md:grid md:grid-cols-6 md:gap-4'>
-        <div className='col-span-1 text-common text-sm'>
+      <CardBodyRow>
+        <CardBodyKey>
           Password
-        </div>
-        <div className='col-span-5 text-common'>
+        </CardBodyKey>
+        <CardBodyValue>
           Last updated {' '}
           {userPasswordLastUpdated}
-        </div>
-      </div>
+        </CardBodyValue>
+      </CardBodyRow>
     )
   }
 
   return (
-    <div className="rounded overflow-hidden shadow-md mb-7">
-      <div className="bg-white px-6 py-5 border-b border-gray-100">
-        <div className="flex items-center justify-between flex-wrap sm:flex-no-wrap">
-          <div>
-            <h3 className="text-lg uppercase font-bold text-common-dark mb-0">
-              Password
-            </h3>
-            <p className='text-common-light text-sm mt-1'>
-              We recommend updating your password periodically to prevent unauthorized access.
-            </p>
-          </div>
-          <div className={altMenuActive && 'hidden'}>
-            <ButtonFlat onClick={openAltMenu}>
-              <i className="fas fa-edit"></i>
-              Update
-            </ButtonFlat>
-          </div>
-        </div>
-      </div>
-      <div className="bg-gray-50 px-6 py-8">
-        {successMessage && <FormSuccessMessage value={successMessage} />}
-        {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
-      </div>
-    </div>
+    <Card>
+      {({ altMenuActive, successMessage, openAltMenu, closeAltMenu, showSuccessMessage }) => {
+        return (
+          <>
+            <CardHeader>
+              <div>
+                <CardTitle>
+                  Password
+                </CardTitle>
+                <CardSubtitle>
+                  We recommend updating your password periodically to prevent unauthorized access.
+                </CardSubtitle>
+              </div>
+              <UpdateButton onClick={openAltMenu} altMenuActive={altMenuActive} />
+            </CardHeader>
+            <CardBody>
+              <FormSuccessMessage>{successMessage}</FormSuccessMessage>
+              {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
+            </CardBody>
+          </>
+        )
+      }}
+    </Card>
   )
 }
 
-export default ChangePassword
+export default Template
