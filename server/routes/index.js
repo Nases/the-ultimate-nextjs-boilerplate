@@ -176,7 +176,7 @@ router.post('/forgot-password', (req, res) => {
               // })
               //   .then(() => console.log('yey email sent'))
               //   .catch(err => console.log(err))
-              console.log(recoveryLink)
+
               res.send('weeeee forgot password progresssssss')
 
             })
@@ -187,6 +187,10 @@ router.post('/forgot-password', (req, res) => {
     .catch(err => {
       res.status(406).send('Something went wrong, please try again later.')
     })
+})
+
+router.get('/forgot-password', (req, res) => {
+  res.send(JSON.stringify(req.query))
 })
 
 
