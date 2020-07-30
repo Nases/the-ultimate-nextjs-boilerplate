@@ -63,7 +63,7 @@ const LoginForm = () => {
               <Field id='password' type="password" name="password" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
               <ErrorMessage name="password" component={FormErrorMessage} />
             </div>
-            <Button type="submit" disabled={isSubmitting} className='mt-6'>
+            <Button type="submit" color='gamifyPrimary' disabled={isSubmitting} className='mt-6'>
               Log In
             </Button>
           </Form>
