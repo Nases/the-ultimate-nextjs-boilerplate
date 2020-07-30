@@ -8,6 +8,7 @@ const EnsureAuth = ({ children }) => {
   const dispatchUserData = useDispatchUser()
 
   const isAuth = userData.isAuth
+  const isLoading = userData.isLoading
 
   const redirectNonAuth = () => {
     if (!isAuth) {
@@ -16,8 +17,8 @@ const EnsureAuth = ({ children }) => {
   }
 
   useEffect(() => {
-    redirectNonAuth()
-  }, [])
+    if (!isLoading) redirectNonAuth()
+  }, [isLoading])
   return (
     <>
       {isAuth ? children : ''}
