@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Transition from "../../utils/Transition.js"
 import { LoginButton, LoginModal } from './Login'
 import { SignUpButton, SignUpModal } from './SignUp'
+import { ForgotPasswordModal } from './ForgotPassword'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import ProfileMenuLinks from './ProfileMenuLinks'
 
@@ -83,6 +84,7 @@ const RightSideDesktop = () => {
               <SignUpButton />
               <SignUpModal />
             </span>
+            <ForgotPasswordModal />
           </div>
       }
     </>

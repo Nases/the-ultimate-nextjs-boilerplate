@@ -1,26 +1,26 @@
 import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
-import SignUpForm from '../../form/SignUpForm'
+import ForgotPasswordForm from '../../form/ForgotPasswordForm'
 
-export const SignUpButton = ({ isMobile = false }) => {
+export const ForgotPassword = ({ isMobile = false }) => {
   const dispatchAuthModal = useDispatchAuthModal()
-  const openModal = () => {
-    dispatchAuthModal({ type: 'OPEN_SIGN_UP_MODAL' })
+  const openLoginModal = () => {
+    dispatchAuthModal({ type: 'OPEN_LOGIN_MODAL' })
   }
 
   return (
-    <button onClick={openModal} type="button" className={isMobile ? 'block mt-1 px-4 py-2 hover:border-gray-300 text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out' : 'inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition ease-in-out duration-150'}>
-      Sign Up
-    </button>
+    <button onClick={openLoginModal} type="button" className={isMobile ? "block mt-1 px-4 py-2 hover:border-gray-300 text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out" : "inline-flex items-center font-primary font-semibold uppercase hover:text-primary h-10 px-3 py-2 text-sm leading-4 font-medium text-common-dark transition ease-in-out duration-150"} >
+      Log In
+    </button >
   )
 }
 
-export const SignUpModal = () => {
+export const ForgotPasswordModal = () => {
   const authModal = useAuthModal()
   const dispatchAuthModal = useDispatchAuthModal()
-  const modalIsOpen = authModal.signUpModal.active
-  const closeModal = () => {
-    dispatchAuthModal({ type: 'CLOSE_SIGN_UP_MODAL' })
+  const modalIsOpen = authModal.forgotPasswordModal.active
+  const closeForgotPasswordModal = () => {
+    dispatchAuthModal({ type: 'CLOSE_FORGOT_PASSWORD_MODAL' })
   }
   const openLoginModal = () => {
     dispatchAuthModal({ type: 'OPEN_LOGIN_MODAL' })
@@ -34,17 +34,17 @@ export const SignUpModal = () => {
       className='m-auto w-11/12 md:w-440px border border-solid border-gray-300 outline-none overflow-auto bg-white rounded-lg'
       overlayClassName='fixed top-0 bottom-0 left-0 right-0 bg-white bg-opacity-75 flex'
       isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-      contentLabel="Sign Up Modal"
+      onRequestClose={closeForgotPasswordModal}
+      contentLabel="Forgot Password Modal"
     >
       <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">
         <div className="underline-primary text-center">
-          <i className="text-primary fas fa-user-plus fa-3x"></i>
+          <i className="text-primary fas fa-sign-in-alt fa-3x"></i>
           <h2 className="text-common mt-6 text-3xl leading-9 font-extrabold">
-            Sign Up
+            Forgot Password
           </h2>
         </div>
-        <SignUpForm />
+        <ForgotPasswordForm />
         <div className="mt-3">
           <div className="text-sm leading-5 text-right">
             <span className='text-common' >
@@ -57,6 +57,6 @@ export const SignUpModal = () => {
           </div>
         </div>
       </div>
-    </Modal>
+    </Modal >
   )
 }

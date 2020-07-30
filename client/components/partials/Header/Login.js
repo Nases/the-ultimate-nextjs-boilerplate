@@ -4,7 +4,7 @@ import LoginForm from '../../form/LoginForm'
 
 export const LoginButton = ({ isMobile = false }) => {
   const dispatchAuthModal = useDispatchAuthModal()
-  const openLoginModal = e => {
+  const openLoginModal = () => {
     dispatchAuthModal({ type: 'OPEN_LOGIN_MODAL' })
   }
 
@@ -19,11 +19,14 @@ export const LoginModal = () => {
   const authModal = useAuthModal()
   const dispatchAuthModal = useDispatchAuthModal()
   const modalIsOpen = authModal.loginModal.active
-  const closeLoginModal = e => {
+  const closeLoginModal = () => {
     dispatchAuthModal({ type: 'CLOSE_LOGIN_MODAL' })
   }
-  const openSignUpModal = e => {
+  const openSignUpModal = () => {
     dispatchAuthModal({ type: 'OPEN_SIGN_UP_MODAL' })
+  }
+  const openForgotPasswordModal = () => {
+    dispatchAuthModal({ type: 'OPEN_FORGOT_PASSWORD_MODAL' })
   }
 
   // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
@@ -50,7 +53,7 @@ export const LoginModal = () => {
             <button onClick={openSignUpModal} className="font-medium text-common-dark hover:text-primary transition ease-in-out duration-150">
               Create an account
             </button>
-            <button className="font-medium text-common-dark hover:text-primary transition ease-in-out duration-150">
+            <button onClick={openForgotPasswordModal} className="font-medium text-common-dark hover:text-primary transition ease-in-out duration-150">
               Forgot password
             </button>
           </div>
