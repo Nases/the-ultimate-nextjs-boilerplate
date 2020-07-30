@@ -19,9 +19,10 @@ const EnsureAuth = ({ children }) => {
   useEffect(() => {
     if (!isLoading) redirectNonAuth()
   }, [isLoading])
+
   return (
     <>
-      {isAuth ? children : ''}
+      {isAuth && children}
     </>
   )
 }
