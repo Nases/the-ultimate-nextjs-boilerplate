@@ -148,11 +148,9 @@ router.post('/forgot-password', (req, res) => {
   })
     .then(values => {
       User.exists({ email }, (err, exists) => {
-        if (!exists) {
-          // User email does not exist
+        if (!exists) { // User email does not exist
           res.status(406).send('This email is not registered.')
-        } else {
-          // User email exists
+        } else { // User email exists
           const crypto = require('crypto')
 
           crypto.randomBytes(64, (err, buffer) => {
@@ -168,17 +166,20 @@ router.post('/forgot-password', (req, res) => {
               const { sendMail } = require('../assets/mailer')
               const { companyInfo } = require('../assets/company-info')
               const recoveryLink = `${companyInfo.clientURI}forgot-password/?email=${email}&forgotPasswordToken=${randomToken}`
-              // sendMail({
-              //   to: email,
-              //   subject: "Password Recovery",
-              //   text: 'Please use the link to recover your password: ',
-              //   html: "<b>Hello world?</b>",
-              // })
-              //   .then(() => console.log('yey email sent'))
-              //   .catch(err => console.log(err))
-
-              res.send('weeeee forgot password progresssssss')
-
+              sendMail({
+                // to: email,
+                to: 'hasan@hasansefaozalp.com',
+                subject: "Password Recovery",
+                text: 'Please use the link to recover your password: ' + recoveryLink,
+                html: 'Please use the link to recover your password: ' + recoveryLink,
+              })
+                .then(() => {
+                  res.send('Recovery email sent, please check you email.')
+                })
+                .catch(err => {
+                  console.log(err)
+                  res.status(406).send('Something went wrong, please try again later.')
+                })
             })
           })
         }
@@ -190,7 +191,11 @@ router.post('/forgot-password', (req, res) => {
 })
 
 router.get('/forgot-password', (req, res) => {
-  res.send(JSON.stringify(req.query))
+  const { email, forgotPasswordToken } = req.query
+  ForgotPasswordSchema.validate({
+    email: email
+  })
+  res.send(email)
 })
 
 

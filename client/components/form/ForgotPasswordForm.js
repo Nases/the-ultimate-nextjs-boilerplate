@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Input from './partials/Input'
 import Label from './partials/Label'
@@ -16,6 +17,8 @@ const LoginForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
 
+  const [successMessage, setSuccessMessage] = useState('')
+
   return (
     <div>
       <Formik
@@ -30,22 +33,11 @@ const LoginForm = () => {
         onSubmit={(values, { setSubmitting, setFieldError }) => {
           userUtils.forgotPassword(values.email)
             .then(response => {
-              // dispatchUserData({
-              //   type: 'LOGIN',
-              //   userData: response.data
-              // })
-              // dispatchAuthModal({
-              //   type: 'CLOSE_LOGIN_MODAL'
-              // })
-              // Router.push('/debug')
-              // console.log(response.data)
+              console.log(response)
+              setSuccessMessage(response.data)
               setSubmitting(false)
             })
             .catch(error => {
-              // console.log(error)
-              // dispatchUserData({
-              //   type: 'SET_IS_LOADING_FALSE'
-              // })
               setFieldError('serverError', error.response.data)
               setSubmitting(false)
             })
@@ -53,7 +45,7 @@ const LoginForm = () => {
       >
         {({ isSubmitting, values }) => (
           <Form>
-            <FormSuccessMessage></FormSuccessMessage>
+            <FormSuccessMessage>{successMessage}</FormSuccessMessage>
             <ErrorMessage name="serverError" component={FormErrorMessage} />
             <div>
               <Label htmlFor="email">Email address</Label>

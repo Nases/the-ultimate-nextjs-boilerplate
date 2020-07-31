@@ -39,7 +39,7 @@ export const ForgotPasswordModal = () => {
     >
       <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">
         <div className="underline-primary text-center">
-          <i className="text-primary fas fa-sign-in-alt fa-3x"></i>
+          <i className="text-primary fas fa-unlock fa-3x"></i>
           <h2 className="text-common mt-6 text-3xl leading-9 font-extrabold">
             Forgot Password
           </h2>
