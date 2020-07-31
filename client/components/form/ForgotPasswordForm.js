@@ -9,7 +9,6 @@ import { ForgotPasswordSchema } from '../../assets/validation/schemas'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
-import Router from 'next/router'
 
 
 const LoginForm = () => {
@@ -24,17 +23,17 @@ const LoginForm = () => {
       <Formik
         initialValues={{
           email: '',
-          password: '',
           serverError: ''
         }}
         validateOnBlur={false}
         validateOnChange={false}
         validationSchema={ForgotPasswordSchema}
-        onSubmit={(values, { setSubmitting, setFieldError }) => {
+        onSubmit={(values, { setSubmitting, setFieldError, resetForm }) => {
           userUtils.forgotPassword(values.email)
             .then(response => {
               console.log(response)
-              setSuccessMessage(response.data)
+              resetForm()
+              setSuccessMessage(`Recovery email sent to ${values.email}, please check you email.`)
               setSubmitting(false)
             })
             .catch(error => {

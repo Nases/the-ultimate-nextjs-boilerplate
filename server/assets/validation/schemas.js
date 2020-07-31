@@ -43,4 +43,12 @@ const ForgotPasswordSchema = yup.object().shape({
     .required('Required'),
 })
 
-module.exports = { SignUpSchema, LoginSchema, ChangePasswordSchema, ForgotPasswordSchema }
+const ForgotPasswordChangePasswordEnsureSchema = yup.object().shape({
+  email: yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  forgotPasswordToken: yup.string()
+    .required()
+})
+
+module.exports = { SignUpSchema, LoginSchema, ChangePasswordSchema, ForgotPasswordSchema, ForgotPasswordChangePasswordEnsureSchema }

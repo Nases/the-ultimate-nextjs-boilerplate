@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const { SignUpSchema, LoginSchema, ChangePasswordSchema, ForgotPasswordSchema } = require('../assets/validation/schemas')
+const { SignUpSchema, LoginSchema, ChangePasswordSchema, ForgotPasswordSchema, ForgotPasswordChangePasswordEnsureSchema } = require('../assets/validation/schemas')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
@@ -165,10 +165,9 @@ router.post('/forgot-password', (req, res) => {
 
               const { sendMail } = require('../assets/mailer')
               const { companyInfo } = require('../assets/company-info')
-              const recoveryLink = `${companyInfo.clientURI}forgot-password/?email=${email}&forgotPasswordToken=${randomToken}`
+              const recoveryLink = `${companyInfo.clientURI}forgot-password?email=${email}&forgotPasswordToken=${randomToken}`
               sendMail({
-                // to: email,
-                to: 'hasan@hasansefaozalp.com',
+                to: email,
                 subject: "Password Recovery",
                 text: 'Please use the link to recover your password: ' + recoveryLink,
                 html: 'Please use the link to recover your password: ' + recoveryLink,
@@ -190,12 +189,33 @@ router.post('/forgot-password', (req, res) => {
     })
 })
 
-router.get('/forgot-password', (req, res) => {
-  const { email, forgotPasswordToken } = req.query
-  ForgotPasswordSchema.validate({
-    email: email
+router.post('/ensure-forgot-password-change-password', (req, res) => {
+  const { email, forgotPasswordToken } = req.body
+  ForgotPasswordChangePasswordEnsureSchema.validate({
+    email: email,
+    forgotPasswordToken: forgotPasswordToken
   })
-  res.send(email)
+    .then((values) => {
+      User.exists({
+        email: email,
+        forgotPasswordToken: forgotPasswordToken
+      })
+        .then(exists => {
+          if (exists) {
+            console.log(values)
+            res.send(values)
+          } else {
+            res.status(406).send('Given email and Forgot Password Token does not match.')
+          }
+        })
+        .catch(err => {
+          if (err) throw err
+        })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(406).send('Something went wrong, please try again later.')
+    })
 })
 
 
