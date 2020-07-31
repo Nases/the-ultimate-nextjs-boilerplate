@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Input from './partials/Input'
 import Label from './partials/Label'
@@ -11,29 +10,10 @@ import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 
-import { useRouter } from 'next/router'
 
 
 const ForgotPasswordChangePassword = () => {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(true)
-  const { email, forgotPasswordToken } = router.query
-  console.log(forgotPasswordToken)
-
-  useEffect(() => {
-    userUtils.ensureForgotPasswordChangePassword(email, forgotPasswordToken)
-      .then(() => {
-
-      })
-      .catch(err => {
-        console.log(err)
-      })
-
-  }, [])
-
-
   const dispatchUserData = useDispatchUser()
-
 
 
   return (
