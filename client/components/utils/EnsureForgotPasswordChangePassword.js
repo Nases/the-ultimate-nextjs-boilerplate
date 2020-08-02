@@ -6,13 +6,12 @@ const EnsureForgotPasswordChangePassword = ({ children }) => {
 
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
+  const [isFirstLoad, setIsFirstLoad] = useState(true)
   const { email, forgotPasswordToken } = router.query
-  console.log(router.query)
-  console.log(Object.keys(router.query).length)
 
   useEffect(() => {
+
     if (email && forgotPasswordToken) {
-      console.log('yo yo 2')
       userUtils.ensureForgotPasswordChangePassword(email, forgotPasswordToken)
         .then(() => {
           setIsLoading(false)
@@ -21,11 +20,11 @@ const EnsureForgotPasswordChangePassword = ({ children }) => {
           // console.log(err)
           Router.push('/')
         })
-    } else if (Object.keys(router.query).length > 0) {
-      console.log('yo yo')
+    } else if (Object.keys(router.query).length >= 0 && !isFirstLoad) {
       if (!email && !forgotPasswordToken) Router.push('/')
     }
-  }, [email, forgotPasswordToken])
+    setIsFirstLoad(false)
+  })
 
 
   return (
