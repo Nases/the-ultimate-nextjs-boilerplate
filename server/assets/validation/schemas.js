@@ -48,6 +48,7 @@ const ForgotPasswordChangePasswordEnsureSchema = yup.object().shape({
     .email('Invalid email')
     .required('Required'),
   forgotPasswordToken: yup.string()
+    .min(20)
     .required()
 })
 

@@ -220,7 +220,8 @@ router.post('/forgot-password-change-password', (req, res) => {
                         email: email
                       }, {
                         password: hash,
-                        passwordLastUpdated: Date.now()
+                        passwordLastUpdated: Date.now(),
+                        forgotPasswordToken: null
                       }, (err, raw) => {
                         if (err) throw err
                         res.send('Password changed successfully.')

@@ -20,7 +20,7 @@ const EnsureForgotPasswordChangePassword = ({ children }) => {
           Router.push('/')
         })
     } else if (Object.keys(router.query).length >= 0 && !isFirstLoad) {
-      if (!email && !forgotPasswordToken) Router.push('/')
+      if (!email || !forgotPasswordToken) Router.push('/')
     }
     setIsFirstLoad(false)
   })
