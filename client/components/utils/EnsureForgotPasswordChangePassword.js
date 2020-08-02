@@ -10,7 +10,6 @@ const EnsureForgotPasswordChangePassword = ({ children }) => {
   const { email, forgotPasswordToken } = router.query
 
   useEffect(() => {
-
     if (email && forgotPasswordToken) {
       userUtils.ensureForgotPasswordChangePassword(email, forgotPasswordToken)
         .then(() => {
@@ -25,7 +24,6 @@ const EnsureForgotPasswordChangePassword = ({ children }) => {
     }
     setIsFirstLoad(false)
   })
-
 
   return (
     <>
