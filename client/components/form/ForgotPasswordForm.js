@@ -33,7 +33,7 @@ const LoginForm = () => {
             .then(response => {
               console.log(response)
               resetForm()
-              setSuccessMessage(`Recovery email sent to ${values.email}, please check you email.`)
+              setSuccessMessage(`Recovery email sent to ${values.email}, please check your email.`)
               setSubmitting(false)
             })
             .catch(error => {

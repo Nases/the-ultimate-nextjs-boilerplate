@@ -42,6 +42,18 @@ const userUtils = {
     })
     return p
   },
+  forgotPasswordChangePassword: (email, forgotPasswordToken, currentPassword, newPassword, confirmNewPassword) => {
+    const p = axios.post(serverURI + 'forgot-password-change-password', {
+      email: email,
+      forgotPasswordToken: forgotPasswordToken,
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+      confirmNewPassword: confirmNewPassword
+    }, {
+      withCredentials: true
+    })
+    return p
+  },
   ensureForgotPasswordChangePassword: (email, forgotPasswordToken) => {
     const p = axios.post(serverURI + 'ensure-forgot-password-change-password', {
       email: email,

@@ -9,12 +9,12 @@ import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvid
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
-
-
+import { useRouter } from 'next/router'
 
 const ForgotPasswordChangePassword = () => {
   const dispatchUserData = useDispatchUser()
-
+  const router = useRouter()
+  const { email, forgotPasswordToken } = router.query
 
   return (
     <div>
@@ -30,8 +30,9 @@ const ForgotPasswordChangePassword = () => {
         validateOnChange={false}
         validationSchema={ChangePasswordSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
+          userUtils.forgotPasswordChangePassword(email, forgotPasswordToken, values.currentPassword, values.newPassword, values.confirmNewPassword)
             .then(response => {
+              console.log(response)
               setSubmitting(false)
             })
             .catch((error) => {
