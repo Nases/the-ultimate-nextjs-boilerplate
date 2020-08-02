@@ -259,6 +259,7 @@ router.post('/ensure-forgot-password-change-password', (req, res) => {
     forgotPasswordToken: forgotPasswordToken
   })
     .then((values) => {
+      if (forgotPasswordToken === null) console.log('forgotPasswordToken is null')
       User.exists({
         email: email,
         forgotPasswordToken: forgotPasswordToken

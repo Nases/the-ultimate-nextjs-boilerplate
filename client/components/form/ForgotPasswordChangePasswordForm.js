@@ -29,10 +29,11 @@ const ForgotPasswordChangePassword = () => {
         validateOnBlur={false}
         validateOnChange={false}
         validationSchema={ChangePasswordSchema}
-        onSubmit={(values, { setSubmitting, setFieldError }) => {
+        onSubmit={(values, { setSubmitting, setFieldError, resetForm }) => {
           userUtils.forgotPasswordChangePassword(email, forgotPasswordToken, values.currentPassword, values.newPassword, values.confirmNewPassword)
             .then(response => {
               console.log(response)
+              resetForm()
               setSubmitting(false)
             })
             .catch((error) => {
