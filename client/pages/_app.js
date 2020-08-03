@@ -1,5 +1,6 @@
 import '../styles/index.css'
 import '../node_modules/nprogress/nprogress.css'
+import 'balloon-css';
 import { AuthModalProvider } from '../contexts/AuthModalProvider/AuthModalProvider'
 import { UserProvider } from '../contexts/UserProvider/UserProvider'
 import { MobileMenuProvider } from '../contexts/MobileMenuProvider/MobileMenuProvider'
