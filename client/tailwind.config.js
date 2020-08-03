@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   variants: {
-    borderWidth: ['responsive', 'hover', 'focus', 'active'],
+    borderWidth: ['responsive', 'hover', 'focus', 'active']
   },
   theme: {
     extend: {

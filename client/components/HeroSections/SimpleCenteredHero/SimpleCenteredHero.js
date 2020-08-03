@@ -1,3 +1,5 @@
+import Button from '../../Button/Button'
+
 const SimpleCenteredHero = () => {
   return (
     <div className="relative bg-gray-50 overflow-hidden">
@@ -8,12 +10,12 @@ const SimpleCenteredHero = () => {
               Data to enrich your
               <br className="xl:hidden" />
               {' '}
-              <span className="text-indigo-600">online business</span>
+              <span className="text-primary">online business</span>
             </h2>
             <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
             </p>
-            <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+            {/* <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
                 <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                   Get started
@@ -23,6 +25,14 @@ const SimpleCenteredHero = () => {
                 <a href="#" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
                   Live demo
                 </a>
+              </div>
+            </div> */}
+            <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+              <div className="rounded-md shadow">
+                <Button color='gamifyPrimary'>Get started</Button>
+              </div>
+              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                <Button color='gamifySecondary'>Live demo</Button>
               </div>
             </div>
           </div>

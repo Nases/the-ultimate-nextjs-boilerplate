@@ -10,6 +10,10 @@ const Buttons = () => {
         <Button color='link'>Link</Button>
         <Button color='gamifyPrimary'>Gamify Primary</Button>
       </div>
+      <br />
+      <div className='grid grid-cols-4 gap-4'>
+        <Button color='gamifySecondary'>Gamify Secondary</Button>
+      </div>
     </div>
   )
 }
