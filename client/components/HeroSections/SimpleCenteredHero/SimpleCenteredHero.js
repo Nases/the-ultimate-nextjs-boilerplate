@@ -29,10 +29,10 @@ const SimpleCenteredHero = () => {
             </div> */}
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
-                <Button color='gamifyPrimary'>Get started</Button>
+                <Button color='gamifyPrimary' size='xl'>Get started</Button>
               </div>
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                <Button color='gamifySecondary'>Live demo</Button>
+                <Button color='gamifySecondary' size='xl'>Live demo</Button>
               </div>
             </div>
           </div>

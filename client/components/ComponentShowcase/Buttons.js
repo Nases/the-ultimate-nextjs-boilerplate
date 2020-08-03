@@ -4,10 +4,10 @@ const Buttons = () => {
   return (
     <div>
       <h2>Buttons</h2>
-      <div className='grid grid-cols-4 gap-4'>
-        <Button size='sm'>Small</Button>
-        <Button size='md'>Medium</Button>
-        <Button size='lg'>Large</Button>
+      <div>
+        <Button className='mr-4' size='sm'>Small</Button>
+        <Button className='mr-4' size='md'>Medium</Button>
+        <Button className='mr-4' size='lg'>Large</Button>
         <Button size='xl'>X-Large</Button>
       </div>
       <br />
