@@ -1,4 +1,5 @@
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
+import LayoutIndent from '../components/Layout/LayoutIndent'
 import companyInfo from '../assets/company-info'
 
 const Template = () => {
@@ -7,7 +8,9 @@ const Template = () => {
 
   return (
     <Layout title={title} description={description}>
+      <LayoutIndent>
 
+      </LayoutIndent>
     </Layout>
   )
 }

@@ -1,11 +1,13 @@
-import Layout from '../../components/Layout'
+import Layout from '../../components/Layout/Layout'
+import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
-export default () => {
+
+const Terms = () => {
   var title = `Terms and Conditions | ${companyInfo.name}`
   var description = 'See our terms of our service and how they relate to you.'
   return (
     <Layout title={title} description={description}>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LayoutIndent>
         <div class="max-w-3xl mx-auto">
           <div className='text-common-dark bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
             <h1>Terms and Conditions</h1>
@@ -88,7 +90,9 @@ export default () => {
             <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
             <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p></div>
         </div>
-      </div>
+      </LayoutIndent>
     </Layout >
   )
 }
+
+export default Terms

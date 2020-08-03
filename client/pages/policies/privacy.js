@@ -1,12 +1,13 @@
-import Layout from '../../components/Layout'
+import Layout from '../../components/Layout/Layout'
+import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
 
-export default () => {
+const Privacy = () => {
   var title = `Privacy Policy | ${companyInfo.name}`
   var description = 'See our privacy policy and how it relates to you.'
   return (
     <Layout title={title} description={description}>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LayoutIndent>
         <div class="max-w-3xl mx-auto">
           <div className='text-common-dark bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
             <h1>Privacy Policy</h1>
@@ -61,7 +62,9 @@ export default () => {
             <p>{companyInfo.name} does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
           </div>
         </div>
-      </div>
+      </LayoutIndent>
     </Layout>
   )
 }
+
+export default Privacy

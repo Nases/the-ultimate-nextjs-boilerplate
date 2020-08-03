@@ -1,4 +1,5 @@
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
+import LayoutIndent from '../components/Layout/LayoutIndent'
 import companyInfo from '../assets/company-info'
 
 export default () => {
@@ -7,7 +8,7 @@ export default () => {
 
   return (
     <Layout title={title} description={description}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LayoutIndent>
         <div className="max-w-3xl mx-auto mt-1/6">
           <svg
             id="fd59ce54-f850-4dfc-bc34-dd7d379d600e"
@@ -301,7 +302,7 @@ export default () => {
           </svg>
           <h1 className='text-center text-gray-600'>Page Not Found</h1>
         </div>
-      </div>
+      </LayoutIndent>
     </Layout>
   )
 }

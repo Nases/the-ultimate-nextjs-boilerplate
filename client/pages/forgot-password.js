@@ -1,4 +1,5 @@
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
+import LayoutIndent from '../components/Layout/LayoutIndent'
 import companyInfo from '../assets/company-info'
 import ForgotPasswordChangePasswordForm from '../components/form/ForgotPasswordChangePasswordForm'
 import EnsureForgotPasswordChangePassword from '../components/utils/EnsureForgotPasswordChangePassword'
@@ -12,9 +13,9 @@ const ForgotPassword = () => {
   return (
     <EnsureForgotPasswordChangePassword>
       <Layout title={title} description={description}>
-        <div className='max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8'>
+        <LayoutIndent>
           <ForgotPasswordChangePasswordForm />
-        </div>
+        </LayoutIndent>
       </Layout>
     </EnsureForgotPasswordChangePassword>
   )
