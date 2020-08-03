@@ -1,6 +1,6 @@
 const CardTitle = ({ children }) => {
   return (
-    <h3 className="text-lg uppercase font-bold text-common-dark mb-0">
+    <h3 className="text-xl uppercase font-bold text-common-dark mb-0">
       {children}
     </h3>
   )

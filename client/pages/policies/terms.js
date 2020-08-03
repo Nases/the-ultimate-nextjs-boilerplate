@@ -24,7 +24,7 @@ const Terms = () => {
         <div className='prose max-w-none text-common bg-white py-6 md:py-10 md:px-8 my-6 px-6 rounded-lg'>
           <h1>Terms and Conditions</h1>
           <h3>Last updated on {lastUpdated}</h3>
-          <p>Welcome to {companyInfo.name}!</p>
+          <p>Welcome to {companyInfo.name}.</p>
           <p>These terms and conditions outline the rules and regulations for the use of {companyInfo.website}'s Website, located at {companyInfo.website}.</p>
           <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use {companyInfo.name} if you do not agree to take all of the terms and conditions stated on this page.</p>
           <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>

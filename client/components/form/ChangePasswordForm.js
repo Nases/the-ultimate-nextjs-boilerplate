@@ -55,8 +55,9 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
               </CardBodyKey>
               <CardBodyValue>
                 <Field id='currentPassword' type="password" name="currentPassword" placeholder='Enter current password' as={Input} />
-                <ErrorMessage name="currentPassword" component={FormErrorMessage} />
               </CardBodyValue>
+              <ErrorMessage name="currentPassword" component={FormErrorMessage} />
+
             </CardBodyRow>
             <CardBodyRow mb>
               <CardBodyKey>
