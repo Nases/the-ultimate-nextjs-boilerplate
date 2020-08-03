@@ -39,7 +39,7 @@ const SignUpForm = () => {
               })
               Router.push('/debug')
               // console.log(response)
-              setSubmitting(false)
+              // setSubmitting(false)
             })
             .catch((error) => {
               // console.log(error)

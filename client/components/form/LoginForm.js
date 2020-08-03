@@ -38,7 +38,7 @@ const LoginForm = () => {
               })
               Router.push('/debug')
               // console.log(response.data)
-              setSubmitting(false)
+              // setSubmitting(false)
             })
             .catch(error => {
               // console.log(error)
