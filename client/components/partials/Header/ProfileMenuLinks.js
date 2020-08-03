@@ -30,7 +30,7 @@ const ProfileMenuLinks = ({ isMobile }) => {
     profileMenuItems.map(value => {
       return (
         <UserMenuLink key={value.href} href={value.href} isMobile={isMobile}>
-          <i class={`fas fa-${value.icon}`}></i>{' '}
+          <i className={`fas fa-${value.icon}`}></i>{' '}
           {value.name}
         </UserMenuLink>
       )

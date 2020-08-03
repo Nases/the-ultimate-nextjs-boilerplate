@@ -53,7 +53,7 @@ const RightSideDesktop = () => {
                 <span>
                   {userData.data.email}
                   {' '}
-                  {desktopProfileMenuIsOpen ? <i class="fas fa-angle-up"></i> : <i class="fas fa-angle-down"></i>}
+                  {desktopProfileMenuIsOpen ? <i className="fas fa-angle-up"></i> : <i className="fas fa-angle-down"></i>}
                 </span>
               </button>
             </div>

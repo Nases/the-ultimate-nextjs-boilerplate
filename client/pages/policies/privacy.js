@@ -8,7 +8,7 @@ const Privacy = () => {
   return (
     <Layout title={title} description={description}>
       <LayoutIndent>
-        <div class="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className='text-common-dark bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
             <h1>Privacy Policy</h1>
             <p>At {companyInfo.name}, accessible from {companyInfo.website}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by {companyInfo.name} and how we use it.</p>

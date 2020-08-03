@@ -8,7 +8,7 @@ const Terms = () => {
   return (
     <Layout title={title} description={description}>
       <LayoutIndent>
-        <div class="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className='text-common-dark bg-white py-2 px-6 my-6 mx-4 rounded-lg'>
             <h1>Terms and Conditions</h1>
             <p>Welcome to {companyInfo.name}!</p>

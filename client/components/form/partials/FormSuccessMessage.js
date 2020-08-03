@@ -4,7 +4,7 @@ const FormSuccessMessage = (props) => {
     <>
       {props.children ?
         <div {...props} className="block mb-3 mt-3 text-sm font-medium leading-5 text-green-600 ">
-          <i class="fas fa-check-circle"></i>{' '}
+          <i className="fas fa-check-circle"></i>{' '}
           {props.children}
         </div>
         : ''
