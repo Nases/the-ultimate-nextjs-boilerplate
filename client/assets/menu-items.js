@@ -13,7 +13,7 @@ export const profileMenuItems = [
   },
   {
     name: 'Account Settings',
-    href: '/settings',
+    href: '/account-settings',
     icon: 'cog'
   },
   {
