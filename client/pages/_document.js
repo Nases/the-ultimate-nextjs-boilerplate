@@ -16,7 +16,7 @@ class MyDocument extends Document {
           <script src="https://kit.fontawesome.com/c9c5a1adc4.js" crossOrigin="anonymous"></script>
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
         </Head>
-        <body className='bg-gray-50'>
+        <body className='bg-gray-100'>
           <Main />
           <NextScript />
         </body>
