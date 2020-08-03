@@ -69,7 +69,7 @@ const SignUpForm = () => {
               <Field id='confirmPassword' type="password" name="confirmPassword" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
               <ErrorMessage name="confirmPassword" component={FormErrorMessage} />
             </div>
-            <Button type="submit" color='gamifyPrimary' disabled={isSubmitting} className='mt-6'>
+            <Button type="submit" color='gamifyPrimary' disabled={isSubmitting} className='mt-6 w-full'>
               Sign Up
             </Button>
           </Form>

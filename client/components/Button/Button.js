@@ -9,23 +9,26 @@ const Button = (props) => {
   }
 
   const sizes = {
-    sm: '',
-    md: '',
-    lg: '',
-    xl: ''
+    sm: 'py-2 px-3 text-sm',
+    md: 'py-2 px-4 text-sm',
+    lg: 'py-3 px-6 text-base',
+    xl: 'py-4 px-8 text-base'
   }
 
   const defaultColor = colors['primary']
   const defaultSize = sizes['md']
 
+  const { className, disabled, color, size, children, ...rest } = props
+
   return (
     <button
-      {...props}
+      {...rest}
       className={`
-        ${props.disabled && 'button-disabled opacity-50 cursor-default'}
-        ${colors[props.color] || defaultColor}
-        w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md transition duration-150 ease-in-out
-        ${props.className}
+        ${disabled && 'button-disabled opacity-50 cursor-default'}
+        ${colors[color] || defaultColor}
+        ${sizes[size] || defaultSize}
+        inline-flex justify-center font-medium rounded-md transition duration-150 ease-in-out
+        ${className}
       `}
     >
       <span>

@@ -83,7 +83,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
                 </Button>
               </div>
               <div>
-                <Button onClick={closeAltMenu} color='secondary' className='mt-3'>
+                <Button onClick={closeAltMenu} color='gamifySecondary' className='mt-3'>
                   Cancel
                 </Button>
               </div>

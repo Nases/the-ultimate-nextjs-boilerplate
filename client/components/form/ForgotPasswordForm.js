@@ -51,7 +51,7 @@ const LoginForm = () => {
               <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />
               <ErrorMessage name="email" component={FormErrorMessage} />
             </div>
-            <Button type="submit" color='gamifyPrimary' disabled={isSubmitting} className='mt-6'>
+            <Button type="submit" color='gamifyPrimary' disabled={isSubmitting} className='mt-6 w-full'>
               Send Recovery Email
             </Button>
           </Form>
