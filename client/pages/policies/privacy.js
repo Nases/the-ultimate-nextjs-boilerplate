@@ -1,7 +1,6 @@
 import Layout from '../../components/Layout/Layout'
 import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
-
 import BreadCrumbNav from '../../components/BreadCrumbs/BreadCrumbNav'
 import BreadCrumb from '../../components/BreadCrumbs/BreadCrumb'
 import BreadCrumbSeparator from '../../components/BreadCrumbs/BreadCrumbSeparator'
@@ -13,8 +12,6 @@ const Privacy = () => {
   return (
     <Layout title={title} description={description}>
       <LayoutIndent>
-
-
         <BreadCrumbNav>
           <BreadCrumb href="/">
             Home
@@ -24,8 +21,6 @@ const Privacy = () => {
             Privacy
           </BreadCrumb>
         </BreadCrumbNav>
-
-
         <div className='prose max-w-none text-common bg-white py-6 md:py-10 md:px-8 my-6 px-6 rounded-lg'>
           <h1>Privacy Policy</h1>
           <h3>Last updated on {lastUpdated}</h3>
