@@ -2,6 +2,10 @@ import Layout from '../../components/Layout/Layout'
 import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
 
+import BreadCrumbNav from '../../components/BreadCrumbs/BreadCrumbNav'
+import BreadCrumb from '../../components/BreadCrumbs/BreadCrumb'
+import BreadCrumbSeparator from '../../components/BreadCrumbs/BreadCrumbSeparator'
+
 const Privacy = () => {
   var title = `Privacy Policy | ${companyInfo.name}`
   var description = 'See our privacy policy and how it relates to you.'
@@ -10,17 +14,16 @@ const Privacy = () => {
     <Layout title={title} description={description}>
       <LayoutIndent>
 
-        <nav className="flex items-center text-sm leading-5 font-medium">
-          <a href="/components#product-marketing" className="text-gray-500 hover:text-gray-700 focus:outline-none focus:underline transition duration-150 ease-in-out">
+
+        <BreadCrumbNav>
+          <BreadCrumb href="/">
             Home
-          </a>
-          <svg className="flex-shrink-0 mx-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path>
-          </svg>
-          <a href="/components#product-marketing-sections" className="text-gray-500 hover:text-gray-700 focus:outline-none focus:underline transition duration-150 ease-in-out">
+          </BreadCrumb>
+          <BreadCrumbSeparator />
+          <BreadCrumb href="/policies/privacy">
             Privacy
-          </a>
-        </nav>
+          </BreadCrumb>
+        </BreadCrumbNav>
 
 
         <div className='prose max-w-none text-common bg-white py-6 md:py-10 md:px-8 my-6 px-6 rounded-lg'>
