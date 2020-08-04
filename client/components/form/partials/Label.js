@@ -2,7 +2,7 @@ const Label = ({ children, htmlFor, variant }) => {
 
   const variants = {
     top: 'ml-1 mt-3',
-    left: ''
+    left: 'mt-3'
   }
 
   const defaultVariant = variants['top']

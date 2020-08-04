@@ -25,7 +25,7 @@ const Template = () => {
         <CardBodyKey>
           Password
         </CardBodyKey>
-        <CardBodyValue>
+        <CardBodyValue className='md:-ml-10'>
           Last updated {' '}
           {userPasswordLastUpdated}
         </CardBodyValue>

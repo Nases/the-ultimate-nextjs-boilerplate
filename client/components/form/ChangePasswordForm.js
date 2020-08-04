@@ -55,9 +55,8 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
               </CardBodyKey>
               <CardBodyValue>
                 <Field id='currentPassword' type="password" name="currentPassword" placeholder='Enter current password' as={Input} />
+                <ErrorMessage name="currentPassword" component={FormErrorMessage} />
               </CardBodyValue>
-              <ErrorMessage name="currentPassword" component={FormErrorMessage} />
-
             </CardBodyRow>
             <CardBodyRow mb>
               <CardBodyKey>
@@ -78,12 +77,12 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
               </CardBodyValue>
             </CardBodyRow>
             <CardBodyRow>
-              <div className='col-start-2'>
+              <div className='col-start-4 col-span-2'>
                 <Button type="submit" disabled={isSubmitting} color='gamifyPrimary' className='mt-3 w-full'>
                   Save
                 </Button>
               </div>
-              <div>
+              <div className='col-span-2'>
                 <Button onClick={closeAltMenu} color='gamifySecondary' className='mt-3 w-full'>
                   Cancel
                 </Button>
@@ -92,7 +91,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
           </Form>
         )}
       </Formik>
-    </div >
+    </div>
   )
 }
 
