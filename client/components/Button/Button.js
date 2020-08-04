@@ -27,8 +27,8 @@ const Button = (props) => {
         inline-flex justify-center font-medium rounded-md transition duration-150 ease-in-out
         ${sizes[size] || defaultSize}
         ${colors[color] || defaultColor}
-        ${disabled && 'button-disabled opacity-50 cursor-default'}
-        ${className}
+        ${disabled ? 'button-disabled opacity-50 cursor-default' : ''}
+        ${className || ''}
       `}
     >
       <span>
