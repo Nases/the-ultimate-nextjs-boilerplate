@@ -22,6 +22,11 @@ const Buttons = () => {
         <Button color='gamifyPrimary'>Gamify Primary</Button>
         <Button color='gamifySecondary'>Gamify Secondary</Button>
       </div>
+      <br />
+      <div>
+        <Button>Primary</Button>
+        <Button disabled>Disabled Loading</Button>
+      </div>
     </div>
   )
 }
