@@ -7,8 +7,6 @@ import { LoginButton } from './Login'
 import { SignUpButton } from './SignUp'
 
 
-
-
 const MobileMenuButton = () => {
   const mobileMenuState = useMobileMenu()
   const mobileMenuIsActive = mobileMenuState.isActive
@@ -51,6 +49,7 @@ const RightSideMobile = () => {
     return () => {
       document.removeEventListener("mousedown", handleProfileMenuClick)
       document.removeEventListener("keydown", handleEscClick)
+      dispatchMobileMenu({ type: 'CLOSE' })
     }
   }, [])
 

@@ -22,6 +22,7 @@ const RightSideDesktop = () => {
       document.removeEventListener("keydown", handleEscClick)
     }
   }, [])
+
   const toggleDropdown = () => {
     setDesktopProfileMenuIsOpen(!desktopProfileMenuIsOpen)
   }
