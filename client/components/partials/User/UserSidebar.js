@@ -19,7 +19,7 @@ const UserSideBarItem = ({ children, href, icon }) => {
 
 const UserSidebar = () => {
   return (
-    <div className="flex flex-col flex-grow shadow-md bg-white overflow-y-auto rounded-md">
+    <div className="flex flex-col flex-grow shadow-md bg-white overflow-y-auto rounded-md mb-6">
       <nav className="bg-white">
         {profileMenuItems.map(value => {
           if (value.name !== 'Log Out') {
