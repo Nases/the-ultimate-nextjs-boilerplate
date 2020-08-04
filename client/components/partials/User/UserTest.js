@@ -6,7 +6,7 @@ const UserTest = () => {
   return (
     <>
       <h2>User Context</h2>
-      <pre>
+      <pre className='overflow-scroll'>
         {JSON.stringify(user, null, 3)}
       </pre>
     </>
