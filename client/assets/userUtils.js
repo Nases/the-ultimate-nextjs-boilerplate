@@ -34,6 +34,14 @@ const userUtils = {
     })
     return p
   },
+  changeEmail: (email) => {
+    const p = axios.post(serverURI + 'change-email', {
+      email: email
+    }, {
+      withCredentials: true
+    })
+    return p
+  },
   forgotPassword: (email) => {
     const p = axios.post(serverURI + 'forgot-password', {
       email: email,

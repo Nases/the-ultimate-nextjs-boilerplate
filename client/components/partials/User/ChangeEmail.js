@@ -9,25 +9,24 @@ import CardBodyKey from '../../../components/Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../../../components/Card/UserOptionsCard/CardBodyValue'
 import CardBodyRow from '../../../components/Card/UserOptionsCard/CardBodyRow'
 
-import ChangePasswordForm from '../../form/ChangePasswordForm'
+import ChangeEmailForm from '../../form/ChangeEmailForm'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 const moment = require('moment')
 
 
-const ChangePassword = () => {
+const ChangeEmail = () => {
   const user = useUser()
   const userData = user.data
-  const userPasswordLastUpdated = moment(userData.passwordLastUpdated).format('MMM DD, YYYY')
+  const userEmail = userData.email
 
   const InfoMenu = () => {
     return (
       <CardBodyRow>
         <CardBodyKey>
-          Password
+          Email
         </CardBodyKey>
         <CardBodyValue className='lg:-ml-16'>
-          Last updated {' '}
-          {userPasswordLastUpdated}
+          {userEmail}
         </CardBodyValue>
       </CardBodyRow>
     )
@@ -41,17 +40,14 @@ const ChangePassword = () => {
             <CardHeader>
               <div>
                 <CardTitle>
-                  Password
+                  Email
                 </CardTitle>
-                <CardSubtitle>
-                  We recommend updating your password periodically to prevent unauthorized access.
-                </CardSubtitle>
               </div>
               <UpdateButton onClick={openAltMenu} altMenuActive={altMenuActive} />
             </CardHeader>
             <CardBody>
               <FormSuccessMessage>{successMessage}</FormSuccessMessage>
-              {altMenuActive ? <ChangePasswordForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
+              {altMenuActive ? <ChangeEmailForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
             </CardBody>
           </>
         )
@@ -60,4 +56,4 @@ const ChangePassword = () => {
   )
 }
 
-export default ChangePassword
+export default ChangeEmail

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const { SignUpSchema, LoginSchema, ChangePasswordSchema, ForgotPasswordSchema, ForgotPasswordChangePasswordEnsureSchema } = require('../assets/validation/schemas')
+const { SignUpSchema, LoginSchema, ChangePasswordSchema, ChangeEmailSchema, ForgotPasswordSchema, ForgotPasswordChangePasswordEnsureSchema } = require('../assets/validation/schemas')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
@@ -132,6 +132,47 @@ router.post('/change-password', (req, res) => {
       res.status(406).send('Something went wrong, please try again later.')
     })
 
+  } else {
+    res.status(401).send('Unauthenticated')
+  }
+})
+
+
+router.post('/change-email', (req, res) => {
+  if (req.isAuthenticated()) {
+    const { email } = req.body
+    ChangeEmailSchema.validate({
+      email: email
+    }).then(values => {
+      if (email === req.user.email) {
+        res.status(406).send('The new e-mail address must be different from your current one.')
+      } else {
+        User.exists({
+          email: email
+        })
+          .then(userExists => {
+            if (userExists) {
+              res.status(406).send('This email is already registered.')
+            } else {
+              User.updateOne({
+                email: req.user.email
+              }, {
+                email: email
+              }, (err, raw) => {
+                if (err) throw err
+                res.send('Email successfully changed.')
+              })
+            }
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(406).send('Something went wrong, please try again later.')
+          })
+      }
+    }).catch(error => {
+      console.log(error)
+      res.status(406).send('Something went wrong, please try again later.')
+    })
   } else {
     res.status(401).send('Unauthenticated')
   }

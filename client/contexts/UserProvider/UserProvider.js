@@ -18,6 +18,9 @@ const reducer = (state, action) => {
     case 'UPDATE':
       state.data = action.userData
       return { ...state }
+    case 'UPDATE_EMAIL':
+      state.data.email = action.email
+      return { ...state }
     case 'UPDATE_PASSWORD_LAST_UPDATED':
       state.data.passwordLastUpdated = action.passwordLastUpdated
       return { ...state }

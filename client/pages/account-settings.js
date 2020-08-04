@@ -4,6 +4,7 @@ import companyInfo from '../assets/company-info'
 import EnsureAuth from '../components/utils/EnsureAuth'
 import UserLayout from '../components/partials/User/UserLayout'
 import ChangePassword from '../components/partials/User/ChangePassword'
+import ChangeEmail from '../components/partials/User/ChangeEmail'
 
 const Dashboard = () => {
 
@@ -16,6 +17,7 @@ const Dashboard = () => {
         <LayoutIndent>
           <UserLayout>
             <ChangePassword />
+            <ChangeEmail />
           </UserLayout>
         </LayoutIndent>
       </Layout>

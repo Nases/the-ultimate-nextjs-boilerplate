@@ -38,6 +38,12 @@ export const ChangePasswordSchema = yup.object().shape({
     .required('Required'),
 })
 
+export const ChangeEmailSchema = yup.object().shape({
+  email: yup.string()
+    .email('Invalid email')
+    .required('Required'),
+})
+
 export const ForgotPasswordSchema = yup.object().shape({
   email: yup.string()
     .email('Invalid email')
