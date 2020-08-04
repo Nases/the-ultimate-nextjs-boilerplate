@@ -6,10 +6,18 @@ const Card = (props) => {
 
   const openAltMenu = () => {
     setAltMenuActive(true)
+    document.addEventListener('keydown', handleEscClick)
   }
 
   const closeAltMenu = () => {
     setAltMenuActive(false)
+    document.removeEventListener('keydown', handleEscClick)
+  }
+
+  const handleEscClick = e => {
+    if (e.keyCode === 27) {
+      closeAltMenu()
+    }
   }
 
   const showSuccessMessage = message => {
