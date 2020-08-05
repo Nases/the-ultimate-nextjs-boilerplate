@@ -59,6 +59,13 @@ export const ChangePersonalInformationSchema = yup.object().shape({
     .required('Required'),
 })
 
+export const ChangePhoneNumberSchema = yup.object().shape({
+  phoneNumber: yup.string()
+    .min(1, 'Phone Number must be at least 6 character')
+    .max(80, 'First Name can be maximum 80 characters')
+    .required('Required')
+})
+
 export const ForgotPasswordSchema = yup.object().shape({
   email: yup.string()
     .email('Invalid email')

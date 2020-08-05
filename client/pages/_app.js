@@ -1,6 +1,9 @@
 import '../styles/index.css'
 import '../node_modules/nprogress/nprogress.css'
-import 'balloon-css';
+import 'balloon-css'
+
+import 'react-phone-number-input/style.css'
+
 import { AuthModalProvider } from '../contexts/AuthModalProvider/AuthModalProvider'
 import { UserProvider } from '../contexts/UserProvider/UserProvider'
 import { MobileMenuProvider } from '../contexts/MobileMenuProvider/MobileMenuProvider'

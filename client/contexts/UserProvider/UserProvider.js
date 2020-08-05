@@ -25,6 +25,9 @@ const reducer = (state, action) => {
       state.data.firstName = action.firstName
       state.data.lastName = action.lastName
       return { ...state }
+    case 'UPDATE_PHONE_NUMBER':
+      state.data.phoneNumber = action.phoneNumber
+      return { ...state }
     case 'UPDATE_PASSWORD_LAST_UPDATED':
       state.data.passwordLastUpdated = action.passwordLastUpdated
       return { ...state }
@@ -45,6 +48,7 @@ export const UserProvider = ({ children }) => {
       email: '',
       firstName: '',
       lastName: '',
+      phoneNumber: '',
       password: '',
       passwordLastUpdated: ''
     }

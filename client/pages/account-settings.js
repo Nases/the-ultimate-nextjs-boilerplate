@@ -6,6 +6,7 @@ import UserLayout from '../components/partials/User/UserLayout'
 import ChangePassword from '../components/partials/User/ChangePassword'
 import ChangeEmail from '../components/partials/User/ChangeEmail'
 import ChangePersonalInformation from '../components/partials/User/ChangePersonalInformation'
+import ChangePhoneNumber from '../components/partials/User/ChangePhoneNumber'
 
 const Dashboard = () => {
 
@@ -17,6 +18,7 @@ const Dashboard = () => {
       <Layout title={title} description={description}>
         <LayoutIndent>
           <UserLayout>
+            <ChangePhoneNumber />
             <ChangePassword />
             <ChangeEmail />
             <ChangePersonalInformation />
