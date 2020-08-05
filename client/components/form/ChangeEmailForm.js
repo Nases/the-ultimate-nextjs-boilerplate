@@ -24,6 +24,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
       <Formik
         initialValues={{
           email: userEmail,
+          password: '',
           serverError: '',
           successMessage: ''
         }}
@@ -31,7 +32,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
         validateOnChange={false}
         validationSchema={ChangeEmailSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.changeEmail(values.email)
+          userUtils.changeEmail(values.email, values.password)
             .then(response => {
               dispatchUserData({
                 type: 'UPDATE_EMAIL',
@@ -56,8 +57,17 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
                 <Label htmlFor="email" variant='left'>Email</Label>
               </CardBodyKey>
               <CardBodyValue>
-                <Field id='email' type="email" name="email" as={Input} />
+                <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />
                 <ErrorMessage name="email" component={FormErrorMessage} />
+              </CardBodyValue>
+            </CardBodyRow>
+            <CardBodyRow mb>
+              <CardBodyKey>
+                <Label htmlFor="password" variant='left'>Password</Label>
+              </CardBodyKey>
+              <CardBodyValue>
+                <Field id='password' type="password" name="password" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
+                <ErrorMessage name="password" component={FormErrorMessage} />
               </CardBodyValue>
             </CardBodyRow>
             <CardBodyRow>

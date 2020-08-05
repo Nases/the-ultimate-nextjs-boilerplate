@@ -9,6 +9,22 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  firstName: {
+    type: String,
+    default: null
+  },
+  lastName: {
+    type: String,
+    default: null
+  },
+  phoneNumber: {
+    type: String,
+    default: null
+  },
+  address: {
+    type: String,
+    default: null
+  },
   lastPasswordUpdate: {
     type: Date
   },

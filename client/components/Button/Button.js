@@ -18,11 +18,12 @@ const Button = (props) => {
   const defaultColor = colors['primary']
   const defaultSize = sizes['md']
 
-  const { className, disabled, color, size, children, ...rest } = props
+  const { className, disabled, color, size, children, type, ...rest } = props
 
   return (
     <button
       {...rest}
+      type={type || 'button'}
       className={`
         inline-flex justify-center font-medium rounded-md transition duration-150 ease-in-out
         ${sizes[size] || defaultSize}
