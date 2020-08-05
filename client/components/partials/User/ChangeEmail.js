@@ -11,7 +11,6 @@ import CardBodyRow from '../../../components/Card/UserOptionsCard/CardBodyRow'
 
 import ChangeEmailForm from '../../form/ChangeEmailForm'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
-const moment = require('moment')
 
 
 const ChangeEmail = () => {
