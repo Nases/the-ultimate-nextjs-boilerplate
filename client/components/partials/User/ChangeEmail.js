@@ -24,7 +24,7 @@ const ChangeEmail = () => {
         <CardBodyKey>
           Email
         </CardBodyKey>
-        <CardBodyValue className='lg:-ml-16'>
+        <CardBodyValue>
           {userEmail}
         </CardBodyValue>
       </CardBodyRow>

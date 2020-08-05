@@ -25,7 +25,7 @@ const ChangePassword = () => {
         <CardBodyKey>
           Password
         </CardBodyKey>
-        <CardBodyValue className='lg:-ml-16'>
+        <CardBodyValue>
           Last updated {' '}
           {userPasswordLastUpdated}
         </CardBodyValue>
