@@ -21,6 +21,10 @@ const reducer = (state, action) => {
     case 'UPDATE_EMAIL':
       state.data.email = action.email
       return { ...state }
+    case 'UPDATE_PERSONAL_INFORMATION':
+      state.data.firstName = action.firstName
+      state.data.lastName = action.lastName
+      return { ...state }
     case 'UPDATE_PASSWORD_LAST_UPDATED':
       state.data.passwordLastUpdated = action.passwordLastUpdated
       return { ...state }
@@ -39,6 +43,8 @@ export const UserProvider = ({ children }) => {
     data: {
       id: '',
       email: '',
+      firstName: '',
+      lastName: '',
       password: '',
       passwordLastUpdated: ''
     }

@@ -3,7 +3,7 @@ import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
-import { ChangePasswordSchema } from '../../assets/validation/schemas'
+import { ChangePersonalInformationSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
@@ -14,26 +14,30 @@ import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
 
+  const user = useUser()
+  const userData = user.data
+  const firstName = userData.firstName || ''
+  const lastName = userData.lastName || ''
 
   return (
     <div>
       <Formik
         initialValues={{
-          currentPassword: '',
-          newPassword: '',
-          confirmNewPassword: '',
+          firstName: firstName,
+          lastName: lastName,
           serverError: '',
           successMessage: ''
         }}
         validateOnBlur={false}
         validateOnChange={false}
-        validationSchema={ChangePasswordSchema}
+        validationSchema={ChangePersonalInformationSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
+          userUtils.changePersonalInformation(values.firstName, values.lastName)
             .then(response => {
               dispatchUserData({
-                type: 'UPDATE_PASSWORD_LAST_UPDATED',
-                passwordLastUpdated: Date.now()
+                type: 'UPDATE_PERSONAL_INFORMATION',
+                firstName: values.firstName,
+                lastName: values.lastName
               })
               showSuccessMessage(response.data)
               setSubmitting(false)
@@ -51,29 +55,20 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             <ErrorMessage name="serverError" component={FormErrorMessage} />
             <CardBodyRow mb>
               <CardBodyKey>
-                <Label htmlFor="currentPassword" variant='left'>Current Password</Label>
+                <Label htmlFor="firstName" variant='left'>First Name</Label>
               </CardBodyKey>
               <CardBodyValue>
-                <Field id='currentPassword' type="password" name="currentPassword" placeholder='Enter current password' as={Input} />
-                <ErrorMessage name="currentPassword" component={FormErrorMessage} />
+                <Field id='firstName' type="firstName" name="firstName" placeholder='First Name' as={Input} />
+                <ErrorMessage name="firstName" component={FormErrorMessage} />
               </CardBodyValue>
             </CardBodyRow>
             <CardBodyRow mb>
               <CardBodyKey>
-                <Label htmlFor="newPassword" variant='left'>New Password</Label>
+                <Label htmlFor="lastName" variant='left'>Last Name</Label>
               </CardBodyKey>
               <CardBodyValue>
-                <Field id='newPassword' type="password" name="newPassword" placeholder='Enter new password' as={Input} />
-                <ErrorMessage name="newPassword" component={FormErrorMessage} />
-              </CardBodyValue>
-            </CardBodyRow>
-            <CardBodyRow mb>
-              <CardBodyKey>
-                <Label htmlFor="confirmNewPassword" variant='left'>Confirm Password</Label>
-              </CardBodyKey>
-              <CardBodyValue>
-                <Field id='confirmNewPassword' type="password" name="confirmNewPassword" placeholder='Re-enter new password' as={Input} />
-                <ErrorMessage name="confirmNewPassword" component={FormErrorMessage} />
+                <Field id='lastName' type="lastName" name="lastName" placeholder='Last Name' as={Input} />
+                <ErrorMessage name="lastName" component={FormErrorMessage} />
               </CardBodyValue>
             </CardBodyRow>
             <CardBodyRow>

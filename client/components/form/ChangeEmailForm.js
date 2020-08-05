@@ -39,8 +39,8 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
                 email: values.email
               })
               showSuccessMessage(response.data)
-              closeAltMenu()
               setSubmitting(false)
+              closeAltMenu()
             })
             .catch((error) => {
               console.log(error)
@@ -54,7 +54,7 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             <ErrorMessage name="serverError" component={FormErrorMessage} />
             <CardBodyRow mb>
               <CardBodyKey>
-                <Label htmlFor="email" variant='left'>Email</Label>
+                <Label htmlFor="email" variant='left'>New Email</Label>
               </CardBodyKey>
               <CardBodyValue>
                 <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />

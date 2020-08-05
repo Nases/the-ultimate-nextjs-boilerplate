@@ -43,6 +43,15 @@ const userUtils = {
     })
     return p
   },
+  changePersonalInformation: (firstName, lastName) => {
+    const p = axios.post(serverURI + 'change-personal-information', {
+      firstName: firstName,
+      lastName: lastName
+    }, {
+      withCredentials: true
+    })
+    return p
+  },
   forgotPassword: (email) => {
     const p = axios.post(serverURI + 'forgot-password', {
       email: email,

@@ -9,14 +9,22 @@ import CardBodyKey from '../../../components/Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../../../components/Card/UserOptionsCard/CardBodyValue'
 import CardBodyRow from '../../../components/Card/UserOptionsCard/CardBodyRow'
 
-import ChangeEmailForm from '../../form/ChangeEmailForm'
+import ChangePersonalInformationForm from '../../form/ChangePersonalInformationForm'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 
 
 const ChangePersonalInformation = () => {
   const user = useUser()
   const userData = user.data
-  const userName = (userData.firstName || '') + ' ' + (userData.lastName || '')
+  const firstName = userData.firstName
+  const lastName = userData.lastName
+
+  var userName
+  if (!firstName && !lastName) {
+    userName = 'Update your information'
+  } else {
+    userName = (userData.firstName || '') + ' ' + (userData.lastName || '')
+  }
 
   const InfoMenu = () => {
     return (
@@ -46,7 +54,7 @@ const ChangePersonalInformation = () => {
             </CardHeader>
             <CardBody>
               <FormSuccessMessage>{successMessage}</FormSuccessMessage>
-              {altMenuActive ? <ChangeEmailForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
+              {altMenuActive ? <ChangePersonalInformationForm closeAltMenu={closeAltMenu} showSuccessMessage={showSuccessMessage} /> : <InfoMenu />}
             </CardBody>
           </>
         )

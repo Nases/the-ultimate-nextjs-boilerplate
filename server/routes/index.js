@@ -1,7 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const { SignUpSchema, LoginSchema, ChangePasswordSchema, ChangeEmailSchema, ForgotPasswordSchema, ForgotPasswordChangePasswordEnsureSchema } = require('../assets/validation/schemas')
+const {
+  SignUpSchema,
+  LoginSchema,
+  ChangePasswordSchema,
+  ChangeEmailSchema,
+  ChangePersonalInformationSchema,
+  ForgotPasswordSchema,
+  ForgotPasswordChangePasswordEnsureSchema
+} = require('../assets/validation/schemas')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
@@ -307,6 +315,34 @@ router.post('/forgot-password-change-password', (req, res) => {
       console.log(err)
       res.status(406).send('Something went wrong, please try again later.')
     })
+})
+
+
+router.post('/change-personal-information', (req, res) => {
+  if (req.isAuthenticated()) {
+    const { firstName, lastName } = req.body
+    ChangePersonalInformationSchema.validate({
+      firstName: firstName,
+      lastName: lastName
+    }).then(values => {
+      User.updateOne({
+        email: req.user.email
+      }, {
+        firstName: firstName,
+        lastName: lastName
+      }).then((raw, err) => {
+        if (err) throw err
+        res.send('Personal information successfully updated.')
+      }).catch(err => {
+        res.status(406).send('Something went wrong, please try again later.')
+      })
+    }).catch(error => {
+      console.log(error)
+      res.status(406).send('Something went wrong, please try again later.')
+    })
+  } else {
+    res.status(401).send('Unauthenticated')
+  }
 })
 
 
