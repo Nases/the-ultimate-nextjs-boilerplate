@@ -1,4 +1,5 @@
 const LocalStrategy = require("passport-local").Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 const bcrypt = require("bcryptjs")
 
 // Load user model
@@ -36,6 +37,35 @@ module.exports = passport => {
       }
     )
   )
+
+
+  // get keys from env
+  passport.use(new FacebookStrategy({
+    clientID: 632779907666090,
+    clientSecret: 'f153be7b8981ca1f24a3b854fa959f32',
+    callbackURL: "/callback"
+  },
+    (accessToken, refreshToken, profile, done) => {
+      // User.findOrCreate(..., function (err, user) {
+      //   if (err) { return done(err); }
+      //   done(null, user);
+      // });
+      // console.log(accessToken)
+      // console.log(refreshToken)
+      console.log(profile)
+      done(null, profile)
+    }
+  ))
+
+
+
+
+
+
+
+
+
+
   passport.serializeUser((user, done) => {
     done(null, user.id)
   })

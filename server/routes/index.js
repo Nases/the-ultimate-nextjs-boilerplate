@@ -377,13 +377,17 @@ router.post('/ensure-forgot-password-change-password', (req, res) => {
 })
 
 
-router.post('/test', (req, res) => {
-  const { companyInfo } = require('../assets/company-info')
+// router.get('/test', (req, res, next) => {
+//   passport.authenticate('facebook')
+//   res.send('helluuu')
+// })
 
-  res.send(companyInfo)
-})
+router.get('/test', passport.authenticate('facebook'))
 
-
+router.get('/callback', (req, res) => passport.authenticate('facebook', {
+  successRedirect: '/success',
+  failureRedirect: '/fail'
+}))
 
 
 
