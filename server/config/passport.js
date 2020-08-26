@@ -43,7 +43,7 @@ module.exports = passport => {
   passport.use(new FacebookStrategy({
     clientID: 632779907666090,
     clientSecret: 'f153be7b8981ca1f24a3b854fa959f32',
-    callbackURL: "/callback"
+    callbackURL: "http://localhost:5000/asdasd"
   },
     (accessToken, refreshToken, profile, done) => {
       // User.findOrCreate(..., function (err, user) {
@@ -53,7 +53,8 @@ module.exports = passport => {
       // console.log(accessToken)
       // console.log(refreshToken)
       console.log(profile)
-      done(null, profile)
+      // done(null, profile)
+      // done(null, { 'profile': 'asd' })
     }
   ))
 
