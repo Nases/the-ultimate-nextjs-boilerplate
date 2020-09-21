@@ -6,6 +6,21 @@ const bcrypt = require("bcryptjs")
 const User = require("../models/User")
 
 module.exports = passport => {
+
+
+  passport.serializeUser((user, done) => {
+    console.log(`serialize user called with user: ${user}`)
+    done(null, user.id)
+  })
+
+  passport.deserializeUser((id, done) => {
+    console.log(`deserialize user called with id: ${id}`)
+    User.findById(id, (err, user) => {
+      done(err, user)
+    })
+  })
+
+
   passport.use(
     new LocalStrategy(
       { usernameField: "email", passwordField: "password", passReqToCallback: true },
@@ -59,21 +74,4 @@ module.exports = passport => {
   ))
 
 
-
-
-
-
-
-
-
-
-  passport.serializeUser((user, done) => {
-    done(null, user.id)
-  })
-
-  passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-      done(err, user)
-    })
-  })
 }

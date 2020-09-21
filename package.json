@@ -1,22 +1,42 @@
 {
-  "name": "serverless-nextjs-express-starter",
+  "name": "nextjs-express-auth-starter",
   "version": "1.0.0",
-  "description": "Simple authentication app leveraging express",
-  "main": "index.js",
   "scripts": {
-    "save": "git add -A && git commit -m '⭐️' && git push -u origin master",
-    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
-    "start": "concurrently \"cd client && npm run start\" \"cd server && npm run start\""
+    "dev": "nodemon server.js",
+    "start": "next build && next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Nases/serverless-nextjs-express-starter.git"
+  "dependencies": {
+    "@tailwindcss/typography": "^0.2.0",
+    "@tailwindcss/ui": "^0.3.0",
+    "axios": "^0.19.2",
+    "balloon-css": "^1.2.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "formik": "^2.1.4",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.5",
+    "next": "^9.4.4",
+    "nodemailer": "^6.4.11",
+    "nprogress": "^0.2.0",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-ga": "^3.0.0",
+    "react-modal": "^3.11.2",
+    "react-phone-number-input": "^3.0.25",
+    "react-transition-group": "^4.4.1",
+    "yup": "^0.29.3"
   },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Nases/serverless-nextjs-express-starter/issues"
-  },
-  "homepage": "https://github.com/Nases/serverless-nextjs-express-starter#readme",
-  "dependencies": {}
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.2.0",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.4.6"
+  }
 }
