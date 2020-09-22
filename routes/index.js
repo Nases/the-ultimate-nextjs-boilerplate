@@ -405,6 +405,7 @@ router.post('/ensure-forgot-password-change-password', (req, res) => {
 
 
 router.get('/test', (req, res, next) => {
+  console.log(process.env.ENV_LOCAL_VARIABLE)
   res.send('helluuu')
 })
 
