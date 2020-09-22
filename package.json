@@ -2,7 +2,8 @@
   "name": "nextjs-express-auth-starter",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "node server.js",
+    "dev-client": "next dev",
     "start": "next build && next start"
   },
   "dependencies": {

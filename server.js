@@ -27,7 +27,7 @@ app.prepare().then(() => {
     .catch(err => console.log(err))
 
   server.use(bodyParser.json())
-  require('./config/passport')(passport)
+  require('./assets/config/passport')(passport)
 
 
   server.use(
@@ -49,7 +49,7 @@ app.prepare().then(() => {
   server.use(passport.initialize())
   server.use(passport.session())
 
-  server.use('/api', require('./routes/index'))
+  server.use('/api', require('./assets/routes/index'))
 
   server.all('*', (req, res) => {
     return handle(req, res)

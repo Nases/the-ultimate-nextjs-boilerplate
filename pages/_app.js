@@ -1,4 +1,4 @@
-import '../styles/index.css'
+import '../assets/styles/index.css'
 import '../node_modules/nprogress/nprogress.css'
 import 'balloon-css'
 

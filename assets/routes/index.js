@@ -9,7 +9,7 @@ const {
   ChangePersonalInformationSchema,
   ForgotPasswordSchema,
   ForgotPasswordChangePasswordEnsureSchema
-} = require('../assets/validation/schemas')
+} = require('../validation/schemas')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
