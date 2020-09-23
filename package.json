@@ -5,7 +5,8 @@
     "dev": "node server.js",
     "dev-nodemon": "nodemon server.js",
     "dev-client": "next dev",
-    "start": "next build && next start"
+    "start": "next build && next start",
+    "save": "git add . && git commit -m '⭐️' && git push -u origin master"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.2.0",

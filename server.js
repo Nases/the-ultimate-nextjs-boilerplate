@@ -6,7 +6,6 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
 const bodyParser = require('body-parser')
-
 const next = require('next')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
