@@ -4,7 +4,7 @@ import companyInfo from '../assets/company-info'
 import Svg404 from '../components/svg/Svg404'
 import Link from 'next/link'
 
-export default () => {
+const NotFound = () => {
   var title = `Page Not Found | ${companyInfo.name}`
   var description = 'This page does not exist.'
 
@@ -25,3 +25,5 @@ export default () => {
     </Layout>
   )
 }
+
+export default NotFound

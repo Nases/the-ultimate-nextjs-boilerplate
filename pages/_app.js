@@ -4,6 +4,7 @@ import 'balloon-css'
 
 import 'react-phone-number-input/style.css'
 
+import Head from 'next/head'
 import { AuthModalProvider } from '../contexts/AuthModalProvider/AuthModalProvider'
 import { UserProvider } from '../contexts/UserProvider/UserProvider'
 import { MobileMenuProvider } from '../contexts/MobileMenuProvider/MobileMenuProvider'
@@ -25,15 +26,20 @@ Router.onRouteChangeError = () => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <UserProvider>
-      <AuthModalProvider>
-        <MobileMenuProvider>
-          <GetUserData>
-            <Component {...pageProps} />
-          </GetUserData>
-        </MobileMenuProvider>
-      </AuthModalProvider>
-    </UserProvider>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width,height=device-height initial-scale=1" />
+      </Head>
+      <UserProvider>
+        <AuthModalProvider>
+          <MobileMenuProvider>
+            <GetUserData>
+              <Component {...pageProps} />
+            </GetUserData>
+          </MobileMenuProvider>
+        </AuthModalProvider>
+      </UserProvider>
+    </>
   )
 }
 

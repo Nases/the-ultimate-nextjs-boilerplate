@@ -19,7 +19,7 @@ const { serialize, parse } = require('cookie')
 
 // ensure auth
 router.use('/get-user-data', (req, res) => {
-
+  // req.session.passport = { user: "5f606c4be7788e07f0d23efd" }
   console.log('Start req.session')
   console.log(req.session)
   console.log('End req.session')
@@ -62,7 +62,9 @@ router.post('/login', (req, res, next) => {
           req.logIn(user, err => {
             if (err) throw err
 
-
+            // req.session.passport = { user: user.id }
+            // console.log('req.logIn called.')
+            // console.log(req.session)
             // const TOKEN_NAME = 'token'
             // const MAX_AGE = 60 * 60 * 8 // 8 hours
             // const cookie = serialize(TOKEN_NAME, 'token', {

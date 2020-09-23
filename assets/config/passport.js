@@ -9,7 +9,7 @@ module.exports = passport => {
 
 
   passport.serializeUser((user, done) => {
-    console.log(`serialize user called with user: ${user}`)
+    console.log(`serialize user called with user: ${user.id}`)
     done(null, user.id)
   })
 

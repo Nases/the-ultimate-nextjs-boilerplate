@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "node server.js",
+    "dev-nodemon": "nodemon server.js",
     "dev-client": "next dev",
     "start": "next build && next start"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.2.0",
-    "@tailwindcss/ui": "^0.3.0",
-    "axios": "^0.19.2",
+    "@tailwindcss/ui": "^0.6.2",
+    "axios": "^0.20.0",
     "balloon-css": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -17,10 +18,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "formik": "^2.1.4",
-    "moment": "^2.27.0",
-    "mongoose": "^5.10.5",
-    "next": "^9.4.4",
+    "formik": "^2.1.5",
+    "moment": "^2.29.0",
+    "mongoose": "^5.10.6",
+    "next": "^9.5.3",
     "nodemailer": "^6.4.11",
     "nprogress": "^0.2.0",
     "passport": "^0.4.1",
@@ -29,15 +30,15 @@
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-ga": "^3.0.0",
+    "react-ga": "^3.1.2",
     "react-modal": "^3.11.2",
-    "react-phone-number-input": "^3.0.25",
+    "react-phone-number-input": "^3.0.27",
     "react-transition-group": "^4.4.1",
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.2.0",
+    "@fullhuman/postcss-purgecss": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.8.10"
   }
 }
