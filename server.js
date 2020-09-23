@@ -40,6 +40,7 @@ app.prepare().then(() => {
     require('./assets/routes/index')
   )
 
+
   server.all('*', (req, res) => {
     return handle(req, res)
   })
