@@ -29,7 +29,7 @@ app.prepare().then(() => {
 
   server.use('/api',
     session({
-      secret: 'secret',
+      secret: 'secret', // make this long env variable
       resave: true,
       saveUninitialized: true,
       cookie: {
