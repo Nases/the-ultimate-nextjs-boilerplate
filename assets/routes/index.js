@@ -14,19 +14,8 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
 
-const { serialize, parse } = require('cookie')
-
-
 // ensure auth
 router.use('/get-user-data', (req, res) => {
-  // req.session.passport = { user: "5f606c4be7788e07f0d23efd" }
-  console.log('Start req.session')
-  console.log(req.session)
-  console.log('End req.session')
-  console.log('Start req.user')
-  console.log(req.user)
-  console.log('End req.user')
-
   if (req.isAuthenticated()) {
     res.send(req.user)
   } else {
@@ -61,24 +50,6 @@ router.post('/login', (req, res, next) => {
         } else {
           req.logIn(user, err => {
             if (err) throw err
-
-            // req.session.passport = { user: user.id }
-            // console.log('req.logIn called.')
-            // console.log(req.session)
-            // const TOKEN_NAME = 'token'
-            // const MAX_AGE = 60 * 60 * 8 // 8 hours
-            // const cookie = serialize(TOKEN_NAME, 'token', {
-            //   maxAge: MAX_AGE,
-            //   expires: new Date(Date.now() + MAX_AGE * 1000),
-            //   httpOnly: true,
-            //   secure: process.env.NODE_ENV === 'production',
-            //   path: '/',
-            //   sameSite: 'lax',
-            // })
-
-            // res.setHeader('Set-Cookie', cookie)
-
-
             res.send(user)
           })
         }

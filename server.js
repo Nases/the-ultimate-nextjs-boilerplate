@@ -16,8 +16,7 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
-  server.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
-
+  // server.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
 
   mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -29,27 +28,19 @@ app.prepare().then(() => {
   server.use(bodyParser.json())
   require('./assets/config/passport')(passport)
 
-
-  server.use(
+  server.use('/api',
     session({
-      secret: 'secret', // keep this inside env var
+      secret: 'secret',
       resave: true,
       saveUninitialized: true,
-      cookie: { secure: false }
-      // cookie: {
-      //   maxAge: 60 * 60 * 8, // 8 hours,
-      //   httpOnly: true,
-      //   secure: process.env.NODE_ENV === 'production',
-      //   path: '/',
-      //   sameSite: 'lax',
-      // },
-    })
+      cookie: {
+        secure: process.env.NODE_ENV === 'production'
+      }
+    }), passport.initialize(),
+    passport.session(),
+    require('./assets/routes/index')
   )
 
-  server.use(passport.initialize())
-  server.use(passport.session())
-
-  server.use('/api', require('./assets/routes/index'))
 
   server.all('*', (req, res) => {
     return handle(req, res)
