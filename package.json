@@ -5,6 +5,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
+    "start-dev": "node server.js",
     "dev-nodemon": "nodemon server.js",
     "dev-client": "next dev",
     "save": "git add . && git commit -m '⭐️' && git push -u origin master"

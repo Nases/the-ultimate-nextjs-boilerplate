@@ -29,7 +29,7 @@ app.prepare().then(() => {
 
   server.use('/api',
     session({
-      secret: 'secret', // make this long env variable
+      secret: process.env.SESSION_SECRET,
       resave: true,
       saveUninitialized: true,
       cookie: {
@@ -44,6 +44,6 @@ app.prepare().then(() => {
     return handle(req, res)
   })
 
-  // const PORT = parseInt(process.env.PORT, 10) || 3000
-  // server.listen(PORT, console.log(`Server started on port ${PORT}`))
+  const PORT = parseInt(process.env.PORT, 10) || 3000
+  server.listen(PORT, console.log(`Server started on port ${PORT}`))
 })

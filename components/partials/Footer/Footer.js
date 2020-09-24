@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import companyInfo from '../../../assets/company-info'
 
-export default () => {
+const Footer = () => {
   return (
     <>
       <div className="footer bg-white mt-16">
@@ -208,3 +208,5 @@ export default () => {
     </>
   )
 }
+
+export default Footer
