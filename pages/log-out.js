@@ -4,11 +4,11 @@ import userUtils from '../assets/userUtils'
 import Router from 'next/router'
 
 
-const SignOut = () => {
+const LogOut = () => {
   const userDataDispatch = useDispatchUser()
 
-  const signOut = async () => {
-    await userUtils.signOut()
+  const logOut = async () => {
+    await userUtils.logOut()
       .then(response => {
         // console.log(response)
         userDataDispatch({ type: 'SIGN_OUT' })
@@ -20,10 +20,10 @@ const SignOut = () => {
   }
 
   useEffect(() => {
-    signOut()
+    logOut()
     Router.push('/')
   }, [])
   return ('')
 }
 
-export default SignOut
+export default LogOut

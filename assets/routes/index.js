@@ -28,7 +28,7 @@ router.use('/user', (req, res) => {
   res.send(req.user)
 })
 
-router.use('/sign-out', (req, res) => {
+router.use('/log-out', (req, res) => {
   req.session.destroy(error => {
     if (error) throw error
     res.send(true)

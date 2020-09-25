@@ -87,8 +87,8 @@ const userUtils = {
     })
     return p
   },
-  signOut: () => {
-    const p = axios.post(serverURI + 'sign-out', null, {
+  logOut: () => {
+    const p = axios.post(serverURI + 'log-out', null, {
       withCredentials: true
     })
     return p

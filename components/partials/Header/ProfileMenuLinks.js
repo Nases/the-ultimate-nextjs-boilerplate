@@ -29,10 +29,13 @@ const ProfileMenuLinks = ({ isMobile }) => {
   return (
     profileMenuItems.map(value => {
       return (
-        <UserMenuLink key={value.href} href={value.href} isMobile={isMobile}>
-          <i className={`fas fa-${value.icon}`}></i>{' '}
-          {value.name}
-        </UserMenuLink>
+        <>
+          {value.name == 'Log Out' ? <hr className='mt-1' /> : ''}
+          <UserMenuLink key={value.href} href={value.href} isMobile={isMobile}>
+            <i className={`fas fa-${value.icon}`}></i>{' '}
+            {value.name}
+          </UserMenuLink>
+        </>
       )
     })
   )
