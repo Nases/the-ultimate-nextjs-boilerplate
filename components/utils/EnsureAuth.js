@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import { useEffect } from 'react'
+import { useUser } from '../../contexts/UserProvider/UserProvider'
 import Router from 'next/router'
 
 
 const EnsureAuth = ({ children }) => {
   const userData = useUser()
-  const dispatchUserData = useDispatchUser()
 
   const isAuth = userData.isAuth
   const isLoading = userData.isLoading
+  const roleId = userData.data.roleId
+
+  console.log(roleId)
 
   const redirectNonAuth = () => {
     if (!isAuth) {
