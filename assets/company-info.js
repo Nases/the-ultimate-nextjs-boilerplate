@@ -3,9 +3,9 @@ const companyInfo = {
   email: 'info@nasesgroup.com',
   address: 'Los Angeles 90025',
   website: 'nasesgroup.com',
-  clientURI: (process.env.NODE_ENV === 'development') ? process.env.NEXT_PUBLIC_CLIENT_URI_DEVELOPMENT : process.env.NEXT_PUBLIC_CLIENT_URI_PRODUCTION,
-  serverURI: (process.env.NODE_ENV === 'development') ? process.env.NEXT_PUBLIC_SERVER_URI_DEVELOPMENT : process.env.NEXT_PUBLIC_SERVER_URI_PRODUCTION
+  clientURI: (process.env.NODE_ENV === 'production') ? process.env.NEXT_PUBLIC_CLIENT_URI_PRODUCTION : process.env.NEXT_PUBLIC_CLIENT_URI_DEVELOPMENT,
+  serverURI: (process.env.NODE_ENV === 'production') ? process.env.NEXT_PUBLIC_SERVER_URI_PRODUCTION : process.env.NEXT_PUBLIC_SERVER_URI_DEVELOPMENT
 }
 
 
-export default companyInfo
+module.exports = companyInfo

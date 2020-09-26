@@ -27,8 +27,8 @@ router.post('/', (req, res) => {
             }, (err, raw) => {
               if (err) throw err
 
-              const { sendMail } = require('../assets/mailer')
-              const { companyInfo } = require('../assets/company-info')
+              const { sendMail } = require('../../utils/mailer')
+              const companyInfo = require('../../company-info')
               const recoveryLink = `${companyInfo.clientURI}forgot-password?email=${email}&forgotPasswordToken=${randomToken}`
               sendMail({
                 to: email,

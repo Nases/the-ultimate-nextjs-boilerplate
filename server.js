@@ -27,6 +27,8 @@ app.prepare().then(() => {
   server.use(bodyParser.json())
   require('./assets/config/passport')(passport)
 
+  // we have to explicitly define route /api here in order for session to work
+  // otherwise (using '/' and defining '/api' in index) session will reset on every refresh from client
   server.use('/api',
     session({
       secret: process.env.SESSION_SECRET,
