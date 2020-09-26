@@ -14,16 +14,12 @@ import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
 
-  const user = useUser()
-  const userData = user.data
-  const userEmail = userData.email
-
 
   return (
     <div>
       <Formik
         initialValues={{
-          email: userEmail,
+          email: '',
           password: '',
           serverError: '',
           successMessage: ''
