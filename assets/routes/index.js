@@ -14,51 +14,6 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
 
-// ensure auth
-router.use('/get-user-data', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.send(req.user)
-  } else {
-    res.status(401).send('Unauthenticated')
-  }
-})
-
-router.use('/user', (req, res) => {
-  console.log(req.session)
-  res.send(req.user)
-})
-
-router.use('/log-out', (req, res) => {
-  req.session.destroy(error => {
-    if (error) throw error
-    res.send(true)
-  })
-})
-
-router.post('/login', (req, res, next) => {
-  const { email, password } = req.body
-
-  LoginSchema.validate({
-    email: email,
-    password: password
-  })
-    .then(values => {
-      passport.authenticate('local', (err, user, info) => {
-        if (err) throw err
-        if (!user) {
-          res.status(406).send('Email or password is wrong.')
-        } else {
-          req.logIn(user, err => {
-            if (err) throw err
-            res.send(user)
-          })
-        }
-      })(req, res, next)
-    })
-    .catch(err => {
-      res.status(406).send('Something went wrong, please try again later.')
-    })
-})
 
 router.post('/signup', (req, res) => {
   const { email, password, confirmPassword } = req.body
@@ -377,11 +332,6 @@ router.post('/ensure-forgot-password-change-password', (req, res) => {
 })
 
 
-router.get('/test', (req, res, next) => {
-  console.log(process.env.ENV_LOCAL_VARIABLE)
-  res.send('helluuu')
-})
-
 router.get('/callback', (req, res) => passport.authenticate('facebook', {
   successRedirect: '/success',
   failureRedirect: '/fail'
@@ -389,7 +339,7 @@ router.get('/callback', (req, res) => passport.authenticate('facebook', {
 
 
 
-
+router.use('/', require('./api/index'))
 
 
 
