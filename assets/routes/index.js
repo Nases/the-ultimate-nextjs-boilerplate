@@ -2,10 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const {
-  SignUpSchema,
-  LoginSchema,
   ChangePasswordSchema,
-  ChangeEmailSchema,
   ChangePersonalInformationSchema,
   ForgotPasswordSchema,
   ForgotPasswordChangePasswordEnsureSchema
@@ -15,147 +12,9 @@ const passport = require('passport')
 
 
 
-router.post('/signup', (req, res) => {
-  const { email, password, confirmPassword } = req.body
-
-  SignUpSchema.validate({
-    email: email,
-    password: password,
-    confirmPassword: confirmPassword
-  })
-    .then(values => {
-      User.exists({ email }, (err, exists) => {
-        if (exists) {
-          // User email exists
-          res.status(406).send('This email is already registered.')
-        } else {
-          // User email does not exist
-          bcrypt.genSalt(10, (err, salt) => {
-            if (err) throw err
-            bcrypt.hash(password, salt, (err, hash) => {
-              if (err) throw err
-              const newUser = new User({
-                email,
-                password: hash
-              })
-              // Save user to mongodb
-              newUser.save()
-                .then(user => {
-                  req.logIn(user, err => {
-                    if (err) throw error
-                    res.send(user)
-                  })
-                })
-                .catch(err => {
-                  throw err
-                })
-            })
-          })
-        }
-      })
-    })
-    .catch(err => {
-      res.status(406).send('Something went wrong, please try again later.')
-    })
-})
-
-router.post('/change-password', (req, res) => {
-  if (req.isAuthenticated()) {
-    const { currentPassword, newPassword, confirmNewPassword } = req.body
-    ChangePasswordSchema.validate({
-      currentPassword: currentPassword,
-      newPassword: newPassword,
-      confirmNewPassword: confirmNewPassword
-    }).then(values => {
-      bcrypt.compare(newPassword, req.user.password).then(isMatch => {
-        if (!isMatch) {
-          bcrypt.compare(currentPassword, req.user.password).then(isMatch => {
-            if (isMatch) {
-              bcrypt.genSalt(10, (err, salt) => {
-                if (err) throw err
-                bcrypt.hash(newPassword, salt, (err, hash) => {
-                  if (err) throw err
-                  User.updateOne({
-                    email: req.user.email
-                  }, {
-                    password: hash,
-                    passwordLastUpdated: Date.now()
-                  }, (err, raw) => {
-                    if (err) throw err
-                    res.send('Password changed successfully.')
-                  })
-                })
-              })
-            } else {
-              res.status(406).send('Wrong password.')
-            }
-          }).catch(err => {
-            res.status(406).send('Something went wrong, please try again later.')
-          })
-        } else {
-          res.status(406).send('The new password must be different from your current one.')
-        }
-      }).catch(err => {
-        res.status(406).send('Something went wrong, please try again later.')
-      })
-    }).catch(error => {
-      console.log(error)
-      res.status(406).send('Something went wrong, please try again later.')
-    })
-  } else {
-    res.status(401).send('Unauthenticated')
-  }
-})
 
 
-router.post('/change-email', (req, res) => {
-  if (req.isAuthenticated()) {
-    const { email, password } = req.body
-    ChangeEmailSchema.validate({
-      email: email,
-      password: password
-    }).then(values => {
-      if (email !== req.user.email) {
-        User.exists({
-          email: email
-        })
-          .then(userExists => {
-            if (!userExists) {
-              bcrypt.compare(password, req.user.password).then(isMatch => {
-                if (isMatch) {
-                  User.updateOne({
-                    email: req.user.email
-                  }, {
-                    email: email
-                  }, (err, raw) => {
-                    if (err) throw err
-                    res.send('Email successfully changed.')
-                  })
-                } else {
-                  res.status(406).send('Wrong password.')
-                }
-              }).catch(err => {
-                res.status(406).send('Something went wrong, please try again later.')
-              })
-            } else {
-              res.status(406).send('This email is already registered.')
-            }
-          })
-          .catch(err => {
-            console.log(err)
-            res.status(406).send('Something went wrong, please try again later.')
-          })
-      } else {
-        res.status(406).send('The new e-mail address must be different from your current one.')
-      }
-    }).catch(error => {
-      console.log(error)
-      res.status(406).send('Something went wrong, please try again later.')
-    })
-  } else {
-    res.status(401).send('Unauthenticated')
-  }
-})
+
 
 
 router.post('/forgot-password', (req, res) => {
