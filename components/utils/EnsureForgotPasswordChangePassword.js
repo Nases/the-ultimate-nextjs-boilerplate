@@ -1,28 +1,40 @@
 import { useState, useEffect } from 'react'
 import userUtils from '../../assets/userUtils'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
 const EnsureForgotPasswordChangePassword = ({ children }) => {
 
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
-  const [isFirstLoad, setIsFirstLoad] = useState(true)
-  const { email, forgotPasswordToken } = router.query
+
 
   useEffect(() => {
-    if (email && forgotPasswordToken) {
+    var { email, forgotPasswordToken } = router.query
+
+    if (router.query && email && forgotPasswordToken) {
       userUtils.ensureForgotPasswordChangePassword(email, forgotPasswordToken)
         .then(() => {
           setIsLoading(false)
         })
         .catch(err => {
           // console.log(err)
-          Router.push('/')
+          router.push('/')
         })
-    } else if (Object.keys(router.query).length >= 0 && !isFirstLoad) {
-      if (!email || !forgotPasswordToken) Router.push('/')
     }
-    // setIsFirstLoad(false)
+
+    const ensure = (q) => {
+      console.log('dafuq')
+      console.log(q)
+      if (!q.email) {
+        console.log(q)
+        router.push('/')
+      }
+    }
+
+    setTimeout(() => {
+      ensure(router.query)
+    }, 5000)
+
   })
 
   return (

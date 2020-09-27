@@ -91,7 +91,7 @@ const ForgotPasswordChangePassword = () => {
                 </CardBodyValue>
               </CardBodyRow>
               <CardBodyRow>
-                <div className='col-start-2'>
+                <div className='col-span-2'>
                   <Button type="submit" disabled={isSubmitting} color='gamifyPrimary' className='mt-3'>
                     Change Password
                 </Button>
