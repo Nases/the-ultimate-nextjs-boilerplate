@@ -5,6 +5,7 @@ import UserLayout from '../../components/partials/User/UserLayout'
 import StatsContainer from '../../components/Stats/StatsContainer'
 import Stats from '../../components/Stats/Stats'
 import TotalUsersStats from '../../components/Stats/TotalUsersStats'
+import Select from '../../components/Select/Select'
 
 
 const Dashboard = () => {
@@ -15,6 +16,8 @@ const Dashboard = () => {
     <Layout title={title} description={description}>
       <LayoutIndent>
         <UserLayout>
+
+
           <h3 className="text-lg leading-6 font-medium text-gray-900">
             Last 30 days
           </h3>
@@ -23,6 +26,10 @@ const Dashboard = () => {
             <Stats />
             <Stats />
           </StatsContainer>
+          <div className='mt-10'>
+            <Select />
+          </div>
+
         </UserLayout>
       </LayoutIndent>
     </Layout>
