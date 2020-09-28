@@ -15,6 +15,7 @@ const SelectTemplate = () => {
 
   return (
     <Select
+      className='w-60'
       defaultValue={selectedOption}
       onChange={setSelectedOption}
       options={options}
