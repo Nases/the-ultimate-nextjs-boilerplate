@@ -2,6 +2,7 @@ import Layout from '../../components/Layout/Layout'
 import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
 import UserLayout from '../../components/partials/User/UserLayout'
+import Stats from '../../components/dataDisplay/Stats'
 
 
 const Dashboard = () => {
@@ -12,7 +13,7 @@ const Dashboard = () => {
     <Layout title={title} description={description}>
       <LayoutIndent>
         <UserLayout>
-          Dashboard
+          <Stats />
         </UserLayout>
       </LayoutIndent>
     </Layout>
