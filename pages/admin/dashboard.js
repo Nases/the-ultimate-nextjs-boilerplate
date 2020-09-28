@@ -6,6 +6,7 @@ import StatsContainer from '../../components/Stats/StatsContainer'
 import Stats from '../../components/Stats/Stats'
 import TotalUsersStats from '../../components/Stats/TotalUsersStats'
 import Select from '../../components/Select/Select'
+import SelectTemplate from '../../components/Select/SelectTemplate'
 
 
 const Dashboard = () => {
@@ -27,7 +28,8 @@ const Dashboard = () => {
             <Stats />
           </StatsContainer>
           <div className='mt-10'>
-            <Select />
+            {/* <Select /> */}
+            <SelectTemplate />
           </div>
 
         </UserLayout>
