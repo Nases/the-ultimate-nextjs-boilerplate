@@ -10,9 +10,6 @@ const SelectTemplate = () => {
 
   const [selectedOption, setSelectedOption] = useState(null)
 
-  console.log(selectedOption)
-
-
   return (
     <Select
       className='w-60'

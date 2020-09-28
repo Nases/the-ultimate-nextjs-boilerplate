@@ -13,6 +13,10 @@ const SelectComponent = (props) => {
       "&:hover": {
         borderColor: "#transparent"
       },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      borderRadius: '0.5rem'
     })
   }
 
