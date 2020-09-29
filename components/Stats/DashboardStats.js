@@ -29,7 +29,7 @@ const DashboardStats = () => {
         days
       </h3>
       <StatsContainer>
-        <TotalUsersStats daysBefore={7} />
+        <TotalUsersStats daysBefore={selectedOption.value} />
         <Stats />
         <Stats />
       </StatsContainer>
