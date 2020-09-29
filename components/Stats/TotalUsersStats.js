@@ -10,7 +10,7 @@ const TotalUsersStats = ({ daysBefore }) => {
   useEffect(() => {
     axios.get(companyInfo.serverURI + 'count-users').then(value => setCurrent(value.data))
     axios.get(companyInfo.serverURI + `count-users/last-${daysBefore}-days`).then(value => setFrom(value.data))
-  }, [])
+  }, [daysBefore])
 
   return (
     <Stats
