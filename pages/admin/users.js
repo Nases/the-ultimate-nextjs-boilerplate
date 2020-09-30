@@ -3,6 +3,7 @@ import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
 import UserLayout from '../../components/partials/User/UserLayout'
 import Table from '../../components/Table/Table'
+import TableTemplate from '../../components/Table/TableTemplate'
 
 
 const Users = () => {
@@ -13,7 +14,7 @@ const Users = () => {
     <Layout title={title} description={description}>
       <LayoutIndent>
         <UserLayout>
-          <Table />
+          <TableTemplate />
         </UserLayout>
       </LayoutIndent>
     </Layout>
