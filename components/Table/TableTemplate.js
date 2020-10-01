@@ -6,16 +6,17 @@ import TableRow from './TableRow'
 
 const TableTemplate = () => {
 
-  const options = ['Email', 'Title', 'Email', 'Role', '']
+  const headOptions = ['Email', 'Title', 'Email', 'Role', '']
+  const rowOptions = ['Jane Cooper', 'Regional Paradigm Technician', 'jane.cooper@example.com', 'Admin']
 
 
   return (
     <Table>
-      <TableHead options={options} />
+      <TableHead options={headOptions} />
       <TableBody>
-        <TableRow />
-        <TableRow />
-        <TableRow />
+        <TableRow options={rowOptions} />
+        <TableRow options={rowOptions} />
+        <TableRow options={rowOptions} />
       </TableBody>
     </Table>
   )
