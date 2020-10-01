@@ -17,8 +17,7 @@ const User = () => {
     <Layout title={title} description={description}>
       <LayoutIndent>
         <UserLayout>
-          <UserDetails />
-          {id || ''}
+          <UserDetails id={id} />
         </UserLayout>
       </LayoutIndent>
     </Layout>
