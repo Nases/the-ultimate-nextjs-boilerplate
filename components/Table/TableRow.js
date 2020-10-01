@@ -1,5 +1,6 @@
+import Link from 'next/link'
 
-const TableRow = ({ options }) => {
+const TableRow = ({ options, detailsLink }) => {
   return (
     <tr className="bg-white border-b">
       {options.map(value => {
@@ -10,7 +11,9 @@ const TableRow = ({ options }) => {
         )
       })}
       <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-        <a href="#" className="text-indigo-600 hover:text-indigo-900">Edit</a>
+        <Link href={detailsLink}>
+          <a className="text-indigo-600 hover:text-indigo-900">Details</a>
+        </Link>
       </td>
     </tr>
   )
