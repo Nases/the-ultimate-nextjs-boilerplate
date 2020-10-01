@@ -1,5 +1,5 @@
 
-const Badge = ({ color, size, children }) => {
+const Badge = (props) => {
   const colors = {
     default: 'bg-gray-100 text-gray-800',
     red: 'bg-red-100 text-red-800',
@@ -18,9 +18,12 @@ const Badge = ({ color, size, children }) => {
     large: 'px-3 py-0.5 text-sm leading-5'
   }
 
+  const { className, color, size, children, ...rest } = props
+
+
   return (
     <>
-      <span className={`inline-flex items-center rounded-full font-medium ${sizes[size || 'small']} ${colors[color || 'default']}`}>
+      <span {...rest} className={`inline-flex items-center rounded-full font-medium ${sizes[size || 'small']} ${colors[color || 'default']} ${className || ''}`}>
         {children}
       </span>
     </>
