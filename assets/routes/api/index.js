@@ -9,6 +9,7 @@ router.use('/change-password', require('./change-password'))
 router.use('/change-email', require('./change-email'))
 router.use('/change-personal-information', require('./change-personal-information'))
 router.use('/count-users', require('./count-users'))
+router.use('/users', require('./users'))
 
 router.use('/forgot-password', require('./forgot-password'))
 router.use('/forgot-password-change-password', require('./forgot-password-change-password'))
