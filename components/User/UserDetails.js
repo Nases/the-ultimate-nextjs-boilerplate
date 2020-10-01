@@ -9,7 +9,7 @@ const UserDetails = ({ id }) => {
         <Button className='pt-0 pb-0' color='link'>
           <Link href='/admin/users'>
             <a>
-              <i aria-hidden class="fas fa-long-arrow-alt-left"></i>
+              <i aria-hidden className="fas fa-long-arrow-alt-left"></i>
               {' '}
               Back
             </a>
