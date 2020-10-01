@@ -6,8 +6,8 @@ import TableRow from './TableRow'
 
 const TableTemplate = () => {
 
-  const headOptions = ['Email', 'Role']
-  const rowOptions = ['jane.cooper@example.com', 'Admin']
+  const headOptions = ['Email', 'Role', 'Role']
+  const rowOptions = ['jane.cooper@example.com', 'Admin', 'Admin']
 
 
   return (
