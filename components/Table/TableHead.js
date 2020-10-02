@@ -6,7 +6,7 @@ const TableHead = ({ options }) => {
       <tr>
         {options.map(value => {
           return (
-            <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider" key={value}>
               {value}
             </th>
           )

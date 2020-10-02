@@ -15,8 +15,8 @@ const TableTemplate = () => {
       <TableHead options={headOptions} />
       <TableBody>
         <TableRow options={rowOptions} detailsLink={`/admin/user/${123123}`} />
-        <TableRow options={rowOptions} detailsLink={`/admin/user/${123123}`} />
-        <TableRow options={rowOptions} detailsLink={`/admin/user/${123123}`} />
+        <TableRow options={rowOptions} detailsLink={`/admin/user/${222}`} />
+        <TableRow options={rowOptions} detailsLink={`/admin/user/${1313}`} />
       </TableBody>
     </Table>
   )

@@ -7,14 +7,13 @@ import axios from 'axios'
 import companyInfo from '../../assets/company-info'
 
 
-const TableTemplate = () => {
+const UsersTable = () => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
     axios.get(companyInfo.serverURI + 'users').then(value => setUsers(value.data))
   }, [])
 
-  console.log(users)
 
 
   const headOptions = ['Email']
@@ -27,7 +26,7 @@ const TableTemplate = () => {
       <TableBody>
         {users.map(value => {
           return (
-            <TableRow options={[value.email]} detailsLink={`/admin/user/${123123}`} />
+            <TableRow options={[value.email]} detailsLink={`/admin/user/${value._id}`} key={value._id} />
           )
         })}
       </TableBody>
@@ -35,4 +34,4 @@ const TableTemplate = () => {
   )
 }
 
-export default TableTemplate
+export default UsersTable
