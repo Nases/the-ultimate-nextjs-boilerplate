@@ -14,7 +14,23 @@ const UserDetails = ({ id }) => {
       .catch(err => console.log(err))
   }, [user])
 
-  console.log(user)
+
+  const UserDetailsRow = ({ title, value }) => {
+    return (
+      <div className="px-4 py-5 sm:p-0 border-b border-gray-200">
+        <dl>
+          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
+            <dt className="text-sm leading-5 font-medium text-gray-500">
+              {title}
+            </dt>
+            <dd className={`mt-1 text-sm leading-5 ${value ? 'text-gray-900' : 'text-gray-400'} sm:mt-0 sm:col-span-2`}>
+              {value || 'Unknown'}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    )
+  }
 
 
   return (
@@ -44,18 +60,8 @@ const UserDetails = ({ id }) => {
               User ID: {user._id}
             </p>
           </div>
-          <div className="px-4 py-5 sm:p-0">
-            <dl>
-              <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
-                <dt className="text-sm leading-5 font-medium text-gray-500">
-                  Full name
-              </dt>
-                <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                  Margot Foster
-              </dd>
-              </div>
-            </dl>
-          </div>
+          <UserDetailsRow title={'First name'} value={user.firstName} />
+          <UserDetailsRow title={'Last name'} value={user.lastName} />
         </div>
       </> : 'Something went wrong, please try again later.'
   )
