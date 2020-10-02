@@ -3,7 +3,7 @@ var router = require('express').Router()
 const yup = require('yup')
 
 
-router.get('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
   var { id } = req.query
 
   const schema = yup.object().shape({
