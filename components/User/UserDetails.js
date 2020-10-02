@@ -1,8 +1,17 @@
+import { useState, useEffect } from 'react'
 import Badge from '../Badge/Badge'
 import Button from '../Button/Button'
 import Link from 'next/link'
+import axios from 'axios'
+import companyInfo from '../../assets/company-info'
 
 const UserDetails = ({ id }) => {
+  console.log(companyInfo)
+  useEffect(() => {
+    axios.get(companyInfo.serverURI + `user?id=${id}`).then(value => { console.log(value.data[0]) })
+  }, [])
+
+
   return (
     <>
       <div className="mb-1">
