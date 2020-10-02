@@ -15,7 +15,7 @@ const UsersTable = () => {
     axios.get(companyInfo.serverURI + 'users').then(value => setUsers(value.data))
   }, [])
 
-  const headOptions = ['Email', 'Registration Date']
+  const headOptions = ['Email', 'Registration Date', '']
 
   return (
     <Table>

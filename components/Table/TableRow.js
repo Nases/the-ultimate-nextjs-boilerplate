@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Badge from '../Badge/Badge'
 
 const TableRow = ({ options, detailsLink }) => {
   const router = useRouter()
@@ -12,6 +13,11 @@ const TableRow = ({ options, detailsLink }) => {
           </td>
         )
       })}
+      <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+        <Badge color='green' size='small'>
+          Subscriber
+        </Badge>
+      </td>
     </tr>
   )
 }
