@@ -20,7 +20,7 @@ const UsersTable = () => {
   useEffect(() => {
     axios.get(`${companyInfo.serverURI}users?sort=${sort}&limit=${limit}&skip=${(currentPage - 1) * limit}`)
       .then(value => setUsers(value.data))
-  }, [sort])
+  }, [sort, currentPage, limit])
 
   const toggleSort = () => {
     (sort === 'asc') ? setSort('desc') : setSort('asc')
