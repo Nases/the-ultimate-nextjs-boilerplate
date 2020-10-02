@@ -13,8 +13,12 @@ const UsersTable = () => {
   const [users, setUsers] = useState([])
   const [sort, setSort] = useState('asc')
 
+  const [totalUsersCount, setTotalUsersCount] = useState(0)
+  const [limit, setLimit] = useState(20)
+  const [currentPage, setCurrentPage] = useState(1)
+
   useEffect(() => {
-    axios.get(companyInfo.serverURI + 'users?sort=' + sort)
+    axios.get(`${companyInfo.serverURI}users?sort=${sort}&limit=${limit}&skip=${(currentPage - 1) * limit}`)
       .then(value => setUsers(value.data))
   }, [sort])
 
@@ -41,8 +45,8 @@ const UsersTable = () => {
             )
           })}
         </TableBody>
+        <TablePagination />
       </Table>
-      <TablePagination />
     </>
   )
 }
