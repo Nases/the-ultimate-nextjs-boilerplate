@@ -9,10 +9,10 @@ const UserDetails = ({ id }) => {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    axios.post(companyInfo.serverURI + `user?id=${id}`)
+    user || axios.post(companyInfo.serverURI + `user?id=${id}`)
       .then(value => setUser(value.data[0]))
       .catch(err => console.log(err))
-  }, [])
+  }, [user])
 
   console.log(user)
 
@@ -38,7 +38,7 @@ const UserDetails = ({ id }) => {
               {' '}
               <Badge color='green'>
                 Customer
-            </Badge>
+              </Badge>
             </h3>
             <p className="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
               User ID: {user._id}
