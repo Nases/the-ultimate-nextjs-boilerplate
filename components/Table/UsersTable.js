@@ -6,6 +6,7 @@ import TableRow from './TableRow'
 import axios from 'axios'
 import companyInfo from '../../assets/company-info'
 import moment from 'moment'
+import TablePagination from './TablePagination'
 
 
 const UsersTable = () => {
@@ -24,22 +25,25 @@ const UsersTable = () => {
   const headOptions = ['Email', 'Registration Date', '']
 
   return (
-    <Table>
-      <TableHead options={headOptions} toggleSort={toggleSort} />
-      <TableBody>
-        {users.map(value => {
-          const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
-          return (
-            <TableRow
-              options={rowOptions}
-              detailsLink={`/admin/user/${value._id}`}
-              subscriber={users.subscriber}
-              key={value._id}
-            />
-          )
-        })}
-      </TableBody>
-    </Table>
+    <>
+      <Table>
+        <TableHead options={headOptions} toggleSort={toggleSort} />
+        <TableBody>
+          {users.map(value => {
+            const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
+            return (
+              <TableRow
+                options={rowOptions}
+                detailsLink={`/admin/user/${value._id}`}
+                subscriber={users.subscriber}
+                key={value._id}
+              />
+            )
+          })}
+        </TableBody>
+      </Table>
+      <TablePagination />
+    </>
   )
 }
 

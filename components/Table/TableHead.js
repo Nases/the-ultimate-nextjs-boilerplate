@@ -6,7 +6,7 @@ const TableHead = ({ options, toggleSort }) => {
 
   useEffect(() => {
 
-  }, [])
+  }, [isReversed])
 
   return (
     <thead className='bg-gray-500 text-white'>
