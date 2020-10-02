@@ -4,6 +4,7 @@ import Button from '../Button/Button'
 import Link from 'next/link'
 import axios from 'axios'
 import companyInfo from '../../assets/company-info'
+import moment from 'moment'
 
 const UserDetails = ({ id }) => {
   const [user, setUser] = useState(null)
@@ -12,6 +13,7 @@ const UserDetails = ({ id }) => {
     user || axios.post(companyInfo.serverURI + `user?id=${id}`)
       .then(value => setUser(value.data[0]))
       .catch(err => console.log(err))
+
   }, [user])
 
 
@@ -62,6 +64,7 @@ const UserDetails = ({ id }) => {
           </div>
           <UserDetailsRow title={'First name'} value={user.firstName} />
           <UserDetailsRow title={'Last name'} value={user.lastName} />
+          <UserDetailsRow title={'Registration date'} value={moment(user.registrationDate).format('DD MMM YYYY')} />
         </div>
       </> : 'Something went wrong, please try again later.'
   )

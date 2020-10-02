@@ -5,6 +5,7 @@ import TableBody from './TableBody'
 import TableRow from './TableRow'
 import axios from 'axios'
 import companyInfo from '../../assets/company-info'
+import moment from 'moment'
 
 
 const UsersTable = () => {
@@ -14,19 +15,20 @@ const UsersTable = () => {
     axios.get(companyInfo.serverURI + 'users').then(value => setUsers(value.data))
   }, [])
 
-
-
-  const headOptions = ['Email']
-  const rowOptions = ['jane.cooper@example.com']
-
+  const headOptions = ['Email', 'Registration Date']
 
   return (
     <Table>
       <TableHead options={headOptions} />
       <TableBody>
         {users.map(value => {
+          const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
           return (
-            <TableRow options={[value.email]} detailsLink={`/admin/user/${value._id}`} key={value._id} />
+            <TableRow
+              options={rowOptions}
+              detailsLink={`/admin/user/${value._id}`}
+              key={value._id}
+            />
           )
         })}
       </TableBody>
