@@ -2,8 +2,7 @@ import Layout from '../../components/Layout/Layout'
 import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
 import UserLayout from '../../components/partials/User/UserLayout'
-import Table from '../../components/Table/Table'
-import TableTemplate from '../../components/Table/TableTemplate'
+import UsersTable from '../../components/Table/UsersTable'
 
 
 const Users = () => {
@@ -14,7 +13,7 @@ const Users = () => {
     <Layout title={title} description={description}>
       <LayoutIndent>
         <UserLayout>
-          <TableTemplate />
+          <UsersTable />
         </UserLayout>
       </LayoutIndent>
     </Layout>
