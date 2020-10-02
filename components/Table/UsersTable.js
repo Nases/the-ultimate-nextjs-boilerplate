@@ -45,7 +45,7 @@ const UsersTable = () => {
             )
           })}
         </TableBody>
-        <TablePagination />
+        <TablePagination totalUsersCount={totalUsersCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </Table>
     </>
   )
