@@ -8,13 +8,13 @@ const TableRow = ({ options, detailsLink, subscriber }) => {
     <tr onClick={() => router.push(detailsLink)} className="bg-white border-b hover:bg-gray-50 cursor-pointer">
       {options.map(value => {
         return (
-          <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900" key={detailsLink}>
+          <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900" key={detailsLink + value}>
             {value}
           </td>
         )
       })}
-      <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-        <Badge color={`${subscriber ? 'green' : 'blue'}`} size='small'>
+      <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+        <Badge color={subscriber ? 'green' : 'blue'} size='small'>
           {subscriber ? 'Subscriber' : 'Non-Subscriber'}
         </Badge>
       </td>

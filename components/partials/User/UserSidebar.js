@@ -12,7 +12,7 @@ const UserSideBarItem = ({ children, href, icon }) => {
           <i className={`fas fa-${icon} fa-lg`}></i>
         </div>
         <div>{children}</div>
-        {(children == 'Users' && router.pathname == '/admin/user/[id]') ? <div className='ml-auto text-primary-dark'><i class="fas fa-ellipsis-h"></i></div> : ''}
+        {(children == 'Users' && router.pathname == '/admin/user/[id]') ? <div className='ml-auto text-primary-dark'><i className="fas fa-ellipsis-h"></i></div> : ''}
       </a>
     </Link>
   )

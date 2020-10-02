@@ -10,16 +10,22 @@ import moment from 'moment'
 
 const UsersTable = () => {
   const [users, setUsers] = useState([])
+  const [sort, setSort] = useState('asc')
 
   useEffect(() => {
-    axios.get(companyInfo.serverURI + 'users').then(value => setUsers(value.data))
-  }, [])
+    axios.get(companyInfo.serverURI + 'users?sort=' + sort)
+      .then(value => setUsers(value.data))
+  }, [sort])
+
+  const toggleSort = () => {
+    (sort === 'asc') ? setSort('desc') : setSort('asc')
+  }
 
   const headOptions = ['Email', 'Registration Date', '']
 
   return (
     <Table>
-      <TableHead options={headOptions} />
+      <TableHead options={headOptions} toggleSort={toggleSort} />
       <TableBody>
         {users.map(value => {
           const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
@@ -27,6 +33,7 @@ const UsersTable = () => {
             <TableRow
               options={rowOptions}
               detailsLink={`/admin/user/${value._id}`}
+              subscriber={users.subscriber}
               key={value._id}
             />
           )

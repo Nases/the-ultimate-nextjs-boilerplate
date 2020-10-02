@@ -1,14 +1,38 @@
+import { useState, useEffect } from 'react'
 
-const TableHead = ({ options }) => {
+
+const TableHead = ({ options, toggleSort }) => {
+  const [isReversed, setIsReversed] = useState(false)
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <thead className='bg-gray-500 text-white'>
       <tr>
         {options.map(value => {
           return (
-            <th className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider" key={value}>
-              {value}
-            </th>
+            value === 'Registration Date' ?
+              <th
+                onClick={() => {
+                  toggleSort()
+                  setIsReversed(!isReversed)
+                }}
+                className='px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider cursor-pointer'
+                key={value}
+              >
+                {value}
+                {' '}
+                {isReversed ? <i aria-hidden className="fas fa-angle-down"></i> : <i aria-hidden className="fas fa-angle-up"></i>}
+              </th>
+              :
+              <th
+                className='px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider'
+                key={value}
+              >
+                {value}
+              </th>
           )
         })}
       </tr>
