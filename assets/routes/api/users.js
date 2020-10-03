@@ -6,7 +6,6 @@ const yup = require('yup')
 router.get('/', (req, res, next) => {
   var { limit, sort, skip } = req.query
 
-
   const schema = yup.object().shape({
     limit: yup
       .number()
@@ -31,15 +30,16 @@ router.get('/', (req, res, next) => {
         .sort({ _id: (sort === 'asc' ? -1 : 1) })
         .skip(values.skip || 0)
         .limit(values.limit || 20)
-        .then(value => { res.send(value) })
+        .then(value => res.send(value))
         .catch(err => res.send(err))
     })
     .catch(err => res.send(err.errors))
+})
 
-
-
-
-
+router.post('/count', (req, res) => {
+  User.countDocuments()
+    .then(value => res.send(String(value)))
+    .catch(err => res.send(err))
 })
 
 module.exports = router

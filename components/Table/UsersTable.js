@@ -20,6 +20,10 @@ const UsersTable = () => {
   useEffect(() => {
     axios.get(`${companyInfo.serverURI}users?sort=${sort}&limit=${limit}&skip=${(currentPage - 1) * limit}`)
       .then(value => setUsers(value.data))
+      .catch(err => console.log(err))
+    totalUsersCount || axios.post(`${companyInfo.serverURI}users/count`)
+      .then(value => setTotalUsersCount(value.data))
+      .catch(err => console.log(err))
   }, [sort, currentPage, limit])
 
   const toggleSort = () => {
@@ -44,8 +48,8 @@ const UsersTable = () => {
               />
             )
           })}
+          <TablePagination totalUsersCount={totalUsersCount} currentPage={currentPage} setCurrentPage={setCurrentPage} limit={limit} />
         </TableBody>
-        <TablePagination totalUsersCount={totalUsersCount} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </Table>
     </>
   )
