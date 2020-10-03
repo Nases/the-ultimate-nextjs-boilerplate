@@ -14,7 +14,7 @@ const UsersTable = () => {
   const [sort, setSort] = useState('asc')
 
   const [totalUsersCount, setTotalUsersCount] = useState(0)
-  const [limit, setLimit] = useState(20)
+  const [limit, setLimit] = useState(2)
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
