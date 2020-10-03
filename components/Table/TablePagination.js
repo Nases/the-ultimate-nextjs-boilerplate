@@ -52,7 +52,6 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
       }
       pagesToRender || setPagesToRender(pagesArray)
     }
-    console.log(currentPage)
   }, [totalUsersCount, pagesToRender, currentPage])
 
   const previousPage = () => {
