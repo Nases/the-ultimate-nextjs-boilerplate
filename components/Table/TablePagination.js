@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 
 
+
+const PageNumber = ({ active, children, onClick }) => {
+  return (
+    <a onClick={onClick} className={`${active ? 'bg-primary font-bold text-white' : 'bg-white font-medium text-gray-700 hover:bg-gray-50'} -ml-px relative inline-flex items-center px-4 py-2 cursor-pointer border border-gray-300 text-sm leading-5 focus:outline-none`}>
+      {children}
+    </a>
+  )
+}
+
 const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }) => {
-
-  const PageNumber = ({ active, children, onClick }) => {
-    return (
-      <a onClick={onClick} className={`${active ? 'bg-primary font-bold text-white' : 'bg-white font-medium text-gray-700 hover:bg-gray-50'} -ml-px relative inline-flex items-center px-4 py-2 cursor-pointer border border-gray-300 text-sm leading-5 focus:outline-none`}>
-        {children}
-      </a>
-    )
-  }
-
   const [pagesToRender, setPagesToRender] = useState(null)
 
   useEffect(() => {
@@ -23,7 +23,8 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
       }
       pagesToRender || setPagesToRender(pagesArray)
     }
-  }, [totalUsersCount, pagesToRender])
+    console.log(currentPage)
+  }, [totalUsersCount, pagesToRender, currentPage])
 
   const previousPage = () => {
     currentPage !== 1 ? setCurrentPage(currentPage - 1) : null
@@ -64,13 +65,65 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
                     </svg>
                   </a>
                   {
-                    pagesToRender.map(value => {
-                      return (
-                        <PageNumber onClick={() => setCurrentPage(value)} active={currentPage === value} key={value}>
-                          {value}
-                        </PageNumber>
-                      )
-                    })
+                    (((pagesToRender.length - currentPage) <= 4) || (pagesToRender.lenght <= 6))
+                      ?
+                      pagesToRender.map(value => {
+                        return (
+                          <PageNumber onClick={() => setCurrentPage(value)} active={currentPage === value} key={value}>
+                            {value}
+                          </PageNumber>
+                        )
+                      })
+                      :
+                      (currentPage === 1)
+                        ?
+                        <>
+                          <PageNumber onClick={() => setCurrentPage(1)} active={currentPage === 1}>
+                            {1}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(2)} active={currentPage === 2}>
+                            {2}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(3)} active={currentPage === 3}>
+                            {3}
+                          </PageNumber>
+                          <span className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700">
+                            ...
+                          </span>
+                          <PageNumber onClick={() => setCurrentPage(pagesToRender.length - 2)} active={currentPage === pagesToRender.length - 2} key={pagesToRender.length - 2}>
+                            {pagesToRender.length - 2}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(pagesToRender.length - 1)} active={currentPage === pagesToRender.length - 1} key={pagesToRender.length - 1}>
+                            {pagesToRender.length - 1}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(pagesToRender.length)} active={currentPage === pagesToRender.length} key={pagesToRender.length}>
+                            {pagesToRender.length}
+                          </PageNumber>
+                        </>
+                        :
+                        <>
+                          <PageNumber onClick={() => setCurrentPage(currentPage - 1)} active={currentPage === currentPage - 1} key={currentPage - 1}>
+                            {currentPage - 1}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(currentPage)} active={currentPage === currentPage} key={currentPage}>
+                            {currentPage}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(currentPage + 1)} active={currentPage === currentPage + 1} key={currentPage + 1}>
+                            {currentPage + 1}
+                          </PageNumber>
+                          <span className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700">
+                            ...
+                          </span>
+                          <PageNumber onClick={() => setCurrentPage(pagesToRender.length - 2)} active={currentPage === pagesToRender.length - 2} key={pagesToRender.length - 2}>
+                            {pagesToRender.length - 2}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(pagesToRender.length - 1)} active={currentPage === pagesToRender.length - 1} key={pagesToRender.length - 1}>
+                            {pagesToRender.length - 1}
+                          </PageNumber>
+                          <PageNumber onClick={() => setCurrentPage(pagesToRender.length)} active={currentPage === pagesToRender.length} key={pagesToRender.length}>
+                            {pagesToRender.length}
+                          </PageNumber>
+                        </>
                   }
                   {/* <span className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700">
                     ...
