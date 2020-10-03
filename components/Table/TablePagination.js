@@ -22,36 +22,23 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
 
   const PageNumbers = () => {
     var last4Pages = ['...', pagesToRender.length - 2, pagesToRender.length - 1, pagesToRender.length]
+    var pages = (((pagesToRender.length - currentPage) <= 4) || (pagesToRender.length <= 6))
+      ? pagesToRender.slice(-6)
+      : (currentPage === 1)
+        ? [1, 2, 3, ...last4Pages]
+        : [currentPage - 1, currentPage, currentPage + 1, ...last4Pages]
     return (
-      (((pagesToRender.length - currentPage) <= 4) || (pagesToRender.length <= 6))
-        ?
-        pagesToRender.slice(-6).map(value => {
-          return (
+      pages.map(value => {
+        return (
+          value !== '...'
+            ?
             <PageNumber onClick={() => setCurrentPage(value)} active={currentPage === value} key={value}>
               {value}
             </PageNumber>
-          )
-        })
-        :
-        <>
-          {
-            (
-              (currentPage === 1)
-                ? [1, 2, 3, ...last4Pages]
-                : [currentPage - 1, currentPage, currentPage + 1, ...last4Pages]
-            ).map(value => {
-              return (
-                value !== '...'
-                  ?
-                  <PageNumber onClick={() => setCurrentPage(value)} active={currentPage === value} key={value}>
-                    {value}
-                  </PageNumber>
-                  :
-                  <More key={value} />
-              )
-            })
-          }
-        </>
+            :
+            <More key={value} />
+        )
+      })
     )
   }
 
