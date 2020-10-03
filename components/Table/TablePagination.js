@@ -65,9 +65,9 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
                     </svg>
                   </a>
                   {
-                    (((pagesToRender.length - currentPage) <= 4) || (pagesToRender.lenght <= 6))
+                    (((pagesToRender.length - currentPage) <= 4) || (pagesToRender.length <= 6))
                       ?
-                      pagesToRender.map(value => {
+                      pagesToRender.slice(-6).map(value => {
                         return (
                           <PageNumber onClick={() => setCurrentPage(value)} active={currentPage === value} key={value}>
                             {value}
