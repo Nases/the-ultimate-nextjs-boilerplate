@@ -48,7 +48,7 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
                   {' '}
                   to
                   {' '}
-                  <span className="font-bold">{limit * currentPage}</span>
+                  <span className="font-bold">{(currentPage === pagesToRender.length) ? totalUsersCount : limit * currentPage}</span>
                   {' '}
                   of
                   {' '}
