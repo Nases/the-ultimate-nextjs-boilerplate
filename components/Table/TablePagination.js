@@ -21,6 +21,7 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
   }
 
   const PageNumbers = () => {
+    var last4Pages = ['...', pagesToRender.length - 2, pagesToRender.length - 1, pagesToRender.length]
     return (
       (((pagesToRender.length - currentPage) <= 4) || (pagesToRender.length <= 6))
         ?
@@ -32,10 +33,13 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
           )
         })
         :
-        (currentPage === 1)
-          ?
-          <>
-            {[1, 2, 3, '...', pagesToRender.length - 2, pagesToRender.length - 1, pagesToRender.length].map(value => {
+        <>
+          {
+            (
+              (currentPage === 1)
+                ? [1, 2, 3, ...last4Pages]
+                : [currentPage - 1, currentPage, currentPage + 1, ...last4Pages]
+            ).map(value => {
               return (
                 value !== '...'
                   ?
@@ -45,22 +49,9 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
                   :
                   <More key={value} />
               )
-            })}
-          </>
-          :
-          <>
-            {[currentPage - 1, currentPage, currentPage + 1, '...', pagesToRender.length - 2, pagesToRender.length - 1, pagesToRender.length].map(value => {
-              return (
-                value !== '...'
-                  ?
-                  <PageNumber onClick={() => setCurrentPage(value)} active={currentPage === value} key={value}>
-                    {value}
-                  </PageNumber>
-                  :
-                  <More key={value} />
-              )
-            })}
-          </>
+            })
+          }
+        </>
     )
   }
 
