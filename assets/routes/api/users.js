@@ -57,5 +57,12 @@ lastDaysAllowed.map(value => {
   )
 })
 
+router.post('/search/email', (req, res) => {
+  var { email } = req.query
+  User.find({ email: { $regex: email, $options: "i" } })
+    .then(value => res.send(value))
+    .catch(err => res.send(err))
+})
+
 
 module.exports = router

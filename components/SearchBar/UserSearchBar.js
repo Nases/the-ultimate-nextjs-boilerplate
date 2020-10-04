@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SearchBar from './SearchBar'
+import companyInfo from '../../assets/company-info'
+import axios from 'axios'
 
 
 const UserSearchBar = () => {
   const [searchedValue, setSearchedValue] = useState()
-  console.log(searchedValue)
+
+  useEffect(() => {
+    axios.post(`${companyInfo.serverURI}users/search/email?email=${searchedValue}`).then(value => console.log(value.data))
+  }, [searchedValue])
 
   return (
     <SearchBar
