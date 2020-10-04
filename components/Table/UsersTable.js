@@ -7,6 +7,7 @@ import axios from 'axios'
 import companyInfo from '../../assets/company-info'
 import moment from 'moment'
 import TablePagination from './TablePagination'
+import Select from '../Select/Select'
 
 
 const UsersTable = () => {
@@ -14,17 +15,30 @@ const UsersTable = () => {
   const [sort, setSort] = useState('asc')
 
   const [totalUsersCount, setTotalUsersCount] = useState(0)
-  const [limit, setLimit] = useState(20)
   const [currentPage, setCurrentPage] = useState(1)
 
+
+  const limitOptions = [
+    { value: '2', label: '2' },
+    { value: '20', label: '20' },
+    { value: '50', label: '50' },
+    { value: '100', label: '100' },
+    { value: '500', label: '500' },
+    { value: '1000', label: '1000' }
+  ]
+  const [limitSelectedOption, setLimitSelectedOption] = useState(limitOptions[1])
+
+
   useEffect(() => {
-    axios.post(`${companyInfo.serverURI}users?sort=${sort}&limit=${limit}&skip=${(currentPage - 1) * limit}`)
+    axios.post(`${companyInfo.serverURI}users?sort=${sort}&limit=${limitSelectedOption.value}&skip=${(currentPage - 1) * limitSelectedOption.value}`)
       .then(value => setUsers(value.data))
       .catch(err => console.log(err))
+
     totalUsersCount || axios.post(`${companyInfo.serverURI}users/count`)
       .then(value => setTotalUsersCount(value.data))
       .catch(err => console.log(err))
-  }, [sort, currentPage, limit])
+
+  }, [sort, currentPage, limitSelectedOption])
 
   const toggleSort = () => {
     (sort === 'asc') ? setSort('desc') : setSort('asc')
@@ -34,6 +48,13 @@ const UsersTable = () => {
 
   return (
     <>
+      <Select
+        className='inline-grid w-24 mx-1'
+        defaultValue={limitSelectedOption}
+        onChange={setLimitSelectedOption}
+        options={limitOptions}
+      />
+
       <Table>
         <TableHead options={headOptions} toggleSort={toggleSort} />
         <TableBody>
@@ -48,7 +69,7 @@ const UsersTable = () => {
               />
             )
           })}
-          <TablePagination totalUsersCount={totalUsersCount} currentPage={currentPage} setCurrentPage={setCurrentPage} limit={limit} />
+          <TablePagination totalUsersCount={totalUsersCount} currentPage={currentPage} setCurrentPage={setCurrentPage} limit={limitSelectedOption.value} />
         </TableBody>
       </Table>
     </>

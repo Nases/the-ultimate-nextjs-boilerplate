@@ -36,7 +36,7 @@ const Stats = ({ name, current, from }) => {
           {name || 'Total Subscribers'}
         </dt>
         {
-          ((current >= 0) && (from >= 0)) ?
+          (Number.isInteger(current) && Number.isInteger(from)) ?
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
               <div className="flex items-baseline text-2xl leading-8 font-semibold text-indigo-600">
                 {current}

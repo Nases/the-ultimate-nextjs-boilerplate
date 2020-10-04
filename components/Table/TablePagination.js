@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }) => {
   const [pagesToRender, setPagesToRender] = useState(null)
-
+  console.log(limit)
   const More = () => {
     return (
       <span className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700">
@@ -50,9 +50,9 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
       for (var i = 1; i <= totalNumberOfPages; i++) {
         pagesArray.push(i)
       }
-      pagesToRender || setPagesToRender(pagesArray)
+      setPagesToRender(pagesArray)
     }
-  }, [totalUsersCount, pagesToRender, currentPage])
+  }, [totalUsersCount, currentPage, limit])
 
   const previousPage = () => {
     currentPage !== 1 ? setCurrentPage(currentPage - 1) : null
