@@ -5,7 +5,7 @@ const { calculateEarlierDate } = require('../../utils/calculations')
 
 
 router.post('/', (req, res, next) => {
-  var { limit, sort, skip } = req.query
+  var { limit, sort, skip, email } = req.query
 
   const schema = yup.object().shape({
     limit: yup
@@ -19,15 +19,20 @@ router.post('/', (req, res, next) => {
       .number()
       .min(0, 'Skip must be at least 0')
       .max(99999999, 'Skip can be maximum 99999999'),
+    email: yup
+      .string()
+      .min(0, 'Email must be at least 1 characters long')
+      .max(200, 'Email can be maximum 200 characters long'),
   })
 
   schema.validate({
     limit: limit,
     sort: sort,
-    skip: skip
+    skip: skip,
+    email: email
   })
     .then(values => {
-      User.find()
+      User.find(email ? { email: { $regex: email, $options: "i" } } : {})
         .sort({ _id: (sort === 'asc' ? -1 : 1) })
         .skip(values.skip || 0)
         .limit(values.limit || 20)
@@ -55,13 +60,6 @@ lastDaysAllowed.map(value => {
       }, (err, count) => { res.send(count.toString()) })
     })
   )
-})
-
-router.post('/search/email', (req, res) => {
-  var { email } = req.query
-  User.find({ email: { $regex: email, $options: "i" } })
-    .then(value => res.send(value))
-    .catch(err => res.send(err))
 })
 
 

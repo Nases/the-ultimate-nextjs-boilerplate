@@ -18,6 +18,7 @@ const UsersTable = () => {
   const [totalUsersCount, setTotalUsersCount] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
+  const [searchedEmail, setSearchedEmail] = useState('')
 
   const limitOptions = [
     { value: '2', label: '2' },
@@ -31,15 +32,16 @@ const UsersTable = () => {
 
 
   useEffect(() => {
-    axios.post(`${companyInfo.serverURI}users?sort=${sort}&limit=${limitSelectedOption.value}&skip=${(currentPage - 1) * limitSelectedOption.value}`)
+    axios.post(`${companyInfo.serverURI}users?sort=${sort}&limit=${limitSelectedOption.value}&skip=${(currentPage - 1) * limitSelectedOption.value}&email=${searchedEmail}`)
       .then(value => setUsers(value.data))
       .catch(err => console.log(err))
+
 
     totalUsersCount || axios.post(`${companyInfo.serverURI}users/count`)
       .then(value => setTotalUsersCount(value.data))
       .catch(err => console.log(err))
 
-  }, [sort, currentPage, limitSelectedOption])
+  }, [sort, currentPage, limitSelectedOption, searchedEmail])
 
   const toggleSort = () => {
     (sort === 'asc') ? setSort('desc') : setSort('asc')
@@ -50,7 +52,7 @@ const UsersTable = () => {
   return (
     <>
       <div className='mb-2 flex items-center justify-between'>
-        <UserSearchBar />
+        <UserSearchBar setSearchedEmail={setSearchedEmail} />
         <span>
           Limit:
           <Select
