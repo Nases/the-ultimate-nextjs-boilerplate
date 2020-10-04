@@ -8,7 +8,7 @@ import companyInfo from '../../assets/company-info'
 import moment from 'moment'
 import TablePagination from './TablePagination'
 import Select from '../Select/Select'
-import Search from '../Search/Search'
+import UserSearchBar from '../SearchBar/UserSearchBar'
 
 
 const UsersTable = () => {
@@ -50,7 +50,7 @@ const UsersTable = () => {
   return (
     <>
       <div className='mb-2 flex items-center justify-between'>
-        <Search />
+        <UserSearchBar />
         <span>
           Limit:
           <Select
