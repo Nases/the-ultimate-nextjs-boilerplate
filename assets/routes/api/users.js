@@ -2,6 +2,7 @@ const User = require('../../models/User')
 var router = require('express').Router()
 const yup = require('yup')
 const { calculateEarlierDate } = require('../../utils/calculations')
+const { schema } = require('../../models/User')
 
 
 router.post('/', (req, res, next) => {
@@ -21,7 +22,7 @@ router.post('/', (req, res, next) => {
       .max(99999999, 'Skip can be maximum 99999999'),
     email: yup
       .string()
-      .min(0, 'Email must be at least 1 characters long')
+      .min(0, 'Email must be at least 0 characters long')
       .max(200, 'Email can be maximum 200 characters long'),
   })
 
@@ -43,9 +44,26 @@ router.post('/', (req, res, next) => {
 })
 
 router.post('/count', (req, res) => {
-  User.countDocuments()
-    .then(value => res.send(String(value)))
-    .catch(err => res.send(err))
+  var { email } = req.query
+
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .min(0, 'Email must be at least 0 characters long')
+      .max(200, 'Email can be maximum 200 characters long'),
+  })
+
+  schema.validate({
+    email: email
+  })
+    .then(values => {
+      User.find(email ? { email: { $regex: email, $options: "i" } } : {})
+        .countDocuments()
+        .then(value => res.send(String(value)))
+        .catch(err => res.send(err))
+    })
+    .catch(err => res.send(err.errors))
+
 })
 
 const lastDaysAllowed = [7, 30, 60, 180, 360]

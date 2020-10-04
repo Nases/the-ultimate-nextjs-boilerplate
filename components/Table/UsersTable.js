@@ -29,15 +29,14 @@ const UsersTable = () => {
     { value: '1000', label: '1000' }
   ]
   const [limitSelectedOption, setLimitSelectedOption] = useState(limitOptions[1])
-
+  console.log('test yooo')
 
   useEffect(() => {
     axios.post(`${companyInfo.serverURI}users?sort=${sort}&limit=${limitSelectedOption.value}&skip=${(currentPage - 1) * limitSelectedOption.value}&email=${searchedEmail}`)
       .then(value => setUsers(value.data))
       .catch(err => console.log(err))
 
-
-    totalUsersCount || axios.post(`${companyInfo.serverURI}users/count`)
+    axios.post(`${companyInfo.serverURI}users/count?email=${searchedEmail}`)
       .then(value => setTotalUsersCount(value.data))
       .catch(err => console.log(err))
 
