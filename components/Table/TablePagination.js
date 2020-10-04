@@ -72,7 +72,7 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
                 <p className="text-sm leading-5 text-gray-700">
                   Showing
                   {' '}
-                  <span className="font-bold">{(limit * (currentPage - 1)) + 1}</span>
+                  <span className="font-bold">{(totalUsersCount === 0) ? 0 : (limit * (currentPage - 1)) + 1}</span>
                   {' '}
                   to
                   {' '}
