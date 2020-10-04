@@ -4,7 +4,7 @@ import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
-import { ChangePasswordSchema } from '../../assets/validation/schemas'
+import { ForgotPasswordChangePasswordSchema } from '../../assets/validation/schemas'
 import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
@@ -36,7 +36,6 @@ const ForgotPasswordChangePassword = () => {
         <h2>Recover Password</h2>
         <Formik
           initialValues={{
-            currentPassword: '',
             newPassword: '',
             confirmNewPassword: '',
             serverError: '',
@@ -44,9 +43,9 @@ const ForgotPasswordChangePassword = () => {
           }}
           validateOnBlur={false}
           validateOnChange={false}
-          validationSchema={ChangePasswordSchema}
+          validationSchema={ForgotPasswordChangePasswordSchema}
           onSubmit={(values, { setSubmitting, setFieldError, resetForm }) => {
-            userUtils.forgotPasswordChangePassword(email, forgotPasswordToken, values.currentPassword, values.newPassword, values.confirmNewPassword)
+            userUtils.forgotPasswordChangePassword(email, forgotPasswordToken, values.newPassword, values.confirmNewPassword)
               .then(response => {
                 console.log(response)
                 setPasswordChanged(true)
@@ -63,15 +62,6 @@ const ForgotPasswordChangePassword = () => {
           {({ isSubmitting }) => (
             <Form>
               <ErrorMessage name="serverError" component={FormErrorMessage} />
-              <CardBodyRow mb='true'>
-                <CardBodyKey>
-                  <Label htmlFor="currentPassword" variant='left'>Current Password</Label>
-                </CardBodyKey>
-                <CardBodyValue>
-                  <Field id='currentPassword' type="password" name="currentPassword" placeholder='Enter current password' as={Input} />
-                  <ErrorMessage name="currentPassword" component={FormErrorMessage} />
-                </CardBodyValue>
-              </CardBodyRow>
               <CardBodyRow mb='true'>
                 <CardBodyKey>
                   <Label htmlFor="newPassword" variant='left'>New Password</Label>

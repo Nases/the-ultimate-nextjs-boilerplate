@@ -1,7 +1,12 @@
 var router = require('express').Router()
 const User = require('../../models/User')
-const { ForgotPasswordSchema } = require('../../validation/schemas')
-
+const bcrypt = require('bcryptjs')
+const {
+  ForgotPasswordSchema,
+  ForgotPasswordChangePasswordSchema,
+  ForgotPasswordChangePasswordEnsureSchema,
+  ChangePasswordSchema
+} = require('../../validation/schemas')
 
 
 router.post('/', (req, res) => {
@@ -49,6 +54,90 @@ router.post('/', (req, res) => {
       })
     })
     .catch(err => {
+      res.status(406).send('Something went wrong, please try again later.')
+    })
+})
+
+
+router.post('/change-password', (req, res) => {
+  const { email, forgotPasswordToken, newPassword, confirmNewPassword } = req.body
+
+  ForgotPasswordChangePasswordEnsureSchema.validate({
+    email: email,
+    forgotPasswordToken: forgotPasswordToken
+  })
+    .then((values) => {
+      User.findOne({
+        email: email,
+        forgotPasswordToken: forgotPasswordToken
+      })
+        .then(values => {
+          if (values) {
+            ForgotPasswordChangePasswordSchema.validate({
+              newPassword: newPassword,
+              confirmNewPassword: confirmNewPassword
+            }).then(values => {
+              bcrypt.genSalt(10, (err, salt) => {
+                if (err) throw err
+                bcrypt.hash(newPassword, salt, (err, hash) => {
+                  if (err) throw err
+                  User.updateOne({
+                    email: email
+                  }, {
+                    password: hash,
+                    passwordLastUpdated: Date.now(),
+                    forgotPasswordToken: null
+                  }, (err, raw) => {
+                    if (err) throw err
+                    res.send('Password changed successfully.')
+                  })
+                })
+              })
+            }).catch(error => {
+              console.log(error)
+              res.status(406).send('Something went wrong, please try again later.')
+            })
+          } else {
+            res.status(406).send('Given email and Forgot Password Token does not match.')
+          }
+        })
+        .catch(err => {
+          if (err) throw err
+        })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(406).send('Something went wrong, please try again later.')
+    })
+})
+
+
+router.post('/ensure-change-password', (req, res) => {
+  const { email, forgotPasswordToken } = req.body
+  ForgotPasswordChangePasswordEnsureSchema.validate({
+    email: email,
+    forgotPasswordToken: forgotPasswordToken
+  })
+    .then((values) => {
+      if (forgotPasswordToken === null) console.log('forgotPasswordToken is null')
+      User.exists({
+        email: email,
+        forgotPasswordToken: forgotPasswordToken
+      })
+        .then(exists => {
+          if (exists) {
+            console.log(values)
+            res.send(values)
+          } else {
+            res.status(406).send('Given email and Forgot Password Token does not match.')
+          }
+        })
+        .catch(err => {
+          if (err) throw err
+        })
+    })
+    .catch(err => {
+      console.log(err)
       res.status(406).send('Something went wrong, please try again later.')
     })
 })

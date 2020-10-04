@@ -21,9 +21,7 @@ const UserDetails = ({ id }) => {
         console.log(err)
         setIsLoading(false)
       })
-
-  }, [user])
-
+  }, [user, isLoading])
 
   const UserDetailsRow = ({ title, value }) => {
     return (
@@ -41,7 +39,6 @@ const UserDetails = ({ id }) => {
       </div>
     )
   }
-
 
   return (
     isLoading ? <Skeleton className='mb-2' height={24} count={5} /> :

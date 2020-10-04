@@ -1,9 +1,10 @@
 const User = require('../../models/User')
 var router = require('express').Router()
 const yup = require('yup')
+const { calculateEarlierDate } = require('../../utils/calculations')
 
 
-router.get('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
   var { limit, sort, skip } = req.query
 
   const schema = yup.object().shape({
@@ -41,5 +42,20 @@ router.post('/count', (req, res) => {
     .then(value => res.send(String(value)))
     .catch(err => res.send(err))
 })
+
+const lastDaysAllowed = [7, 30, 60, 180, 360]
+
+lastDaysAllowed.map(value => {
+  return (
+    router.post(`/count/last-${value}-days`, (req, res) => {
+      User.countDocuments({
+        registrationDate: {
+          $gte: calculateEarlierDate(value)
+        }
+      }, (err, count) => { res.send(count.toString()) })
+    })
+  )
+})
+
 
 module.exports = router

@@ -37,6 +37,16 @@ const ChangePasswordSchema = yup.object().shape({
     .required('Required'),
 })
 
+const ForgotPasswordChangePasswordSchema = yup.object().shape({
+  newPassword: yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(24, 'Password can be maximum 24 characters')
+    .required('Required'),
+  confirmNewPassword: yup.string()
+    .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
+    .required('Required'),
+})
+
 const ChangeEmailSchema = yup.object().shape({
   email: yup.string()
     .email('Invalid email')
@@ -80,5 +90,6 @@ module.exports = {
   ChangeEmailSchema,
   ChangePersonalInformationSchema,
   ForgotPasswordSchema,
+  ForgotPasswordChangePasswordSchema,
   ForgotPasswordChangePasswordEnsureSchema
 }

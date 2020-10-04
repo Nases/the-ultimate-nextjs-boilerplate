@@ -18,7 +18,7 @@ const UsersTable = () => {
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    axios.get(`${companyInfo.serverURI}users?sort=${sort}&limit=${limit}&skip=${(currentPage - 1) * limit}`)
+    axios.post(`${companyInfo.serverURI}users?sort=${sort}&limit=${limit}&skip=${(currentPage - 1) * limit}`)
       .then(value => setUsers(value.data))
       .catch(err => console.log(err))
     totalUsersCount || axios.post(`${companyInfo.serverURI}users/count`)
