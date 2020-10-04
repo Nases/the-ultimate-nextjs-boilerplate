@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }) => {
   const [pagesToRender, setPagesToRender] = useState(null)
-  console.log(limit)
+
   const More = () => {
     return (
       <span className="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700">

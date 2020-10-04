@@ -8,6 +8,7 @@ import companyInfo from '../../assets/company-info'
 import moment from 'moment'
 import TablePagination from './TablePagination'
 import Select from '../Select/Select'
+import Search from '../Search/Search'
 
 
 const UsersTable = () => {
@@ -48,13 +49,18 @@ const UsersTable = () => {
 
   return (
     <>
-      <Select
-        className='inline-grid w-24 mx-1'
-        defaultValue={limitSelectedOption}
-        onChange={setLimitSelectedOption}
-        options={limitOptions}
-      />
-
+      <div className='mb-2 flex items-center justify-between'>
+        <Search />
+        <span>
+          Limit:
+          <Select
+            className='inline-grid w-24 mx-1'
+            defaultValue={limitSelectedOption}
+            onChange={setLimitSelectedOption}
+            options={limitOptions}
+          />
+        </span>
+      </div>
       <Table>
         <TableHead options={headOptions} toggleSort={toggleSort} />
         <TableBody>
