@@ -2,8 +2,9 @@ import Skeleton from 'react-loading-skeleton'
 
 const Stats = ({ name, current, from }) => {
 
-  const Percentage = ({ current, }) => {
-    var percentage = (((current - from) / from) * 100).toFixed(0)
+  const Percentage = () => {
+
+    var percentage = ((current - from) / (from) * 100).toFixed(0)
     return (
       <>
         {
@@ -35,12 +36,12 @@ const Stats = ({ name, current, from }) => {
           {name || 'Total Subscribers'}
         </dt>
         {
-          (current && from) ?
+          ((current >= 0) && (from >= 0)) ?
             <dd className="mt-1 flex justify-between items-baseline md:block lg:flex">
               <div className="flex items-baseline text-2xl leading-8 font-semibold text-indigo-600">
-                {current || '71,897'}
+                {current}
                 <span className="ml-2 text-sm leading-5 font-medium text-gray-500">
-                  from {from || '70,946'}
+                  from {from}
                 </span>
               </div>
               <Percentage current={current} from={from} />
