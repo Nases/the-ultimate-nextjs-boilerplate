@@ -54,7 +54,7 @@ const UsersTable = () => {
         <span>
           Limit:
           <Select
-            className='inline-grid w-24 mx-1'
+            className='inline-grid w-24 ml-1'
             defaultValue={limitSelectedOption}
             onChange={setLimitSelectedOption}
             options={limitOptions}
