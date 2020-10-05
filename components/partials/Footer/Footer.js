@@ -4,7 +4,7 @@ import companyInfo from '../../../assets/company-info'
 const Footer = () => {
   return (
     <>
-      <div className="footer bg-white mt-16">
+      <div className="footer bg-white">
         <div className='absolute text-center -mt-5 min-w-full'>
           <i aria-hidden className="fas fa-kiwi-bird fa-lg text-common-lighter hover:text-primary"></i>
         </div>

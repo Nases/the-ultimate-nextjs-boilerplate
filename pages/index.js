@@ -3,6 +3,7 @@ import LayoutIndent from '../components/Layout/LayoutIndent'
 import companyInfo from '../assets/company-info'
 import FloatBottomBanner from '../components/banners/FloatBottomBanner'
 import SimpleCenteredHero from '../components/HeroSections/SimpleCenteredHero/SimpleCenteredHero'
+import CTAJustified from '../components/CTA/CTAJustified'
 
 const Index = () => {
   var title = `Default title | ${companyInfo.name}`
@@ -70,6 +71,7 @@ const Index = () => {
           </div>
         </div>
       </LayoutIndent>
+      <CTAJustified />
     </Layout>
   )
 }

@@ -21,13 +21,13 @@ export const profileMenuItems = [
   },
   {
     name: 'Debug',
-    href: '/debug',
+    href: '/admin/debug',
     icon: 'magic',
-    roleIdRequired: [1, 2]
+    roleIdRequired: [2]
   },
   {
     name: 'Account Settings',
-    href: '/account-settings',
+    href: '/user/account-settings',
     icon: 'cog',
     roleIdRequired: [1, 2]
   },
