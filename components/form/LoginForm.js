@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Input from './partials/Input'
 import Label from './partials/Label'
@@ -7,13 +8,19 @@ import { LoginSchema } from '../../assets/validation/schemas'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
-import Router from 'next/router'
+import router from 'next/router'
 
 
 const LoginForm = () => {
   // const userData = useUser()
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
+
+  const loginRedirectPath = '/admin/dashboard'
+
+  useEffect(() => {
+    router.prefetch(loginRedirectPath)
+  }, [])
 
   return (
     <div>
@@ -36,7 +43,7 @@ const LoginForm = () => {
               dispatchAuthModal({
                 type: 'CLOSE_LOGIN_MODAL'
               })
-              Router.push('/debug')
+              router.push(loginRedirectPath)
               // console.log(response.data)
               // setSubmitting(false)
             })
