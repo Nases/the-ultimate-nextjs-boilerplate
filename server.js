@@ -35,7 +35,8 @@ app.prepare().then(() => {
       resave: true,
       saveUninitialized: true,
       cookie: {
-        secure: process.env.NODE_ENV === 'production'
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax'
       }
     }), passport.initialize(),
     passport.session(),
