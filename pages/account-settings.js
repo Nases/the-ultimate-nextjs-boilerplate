@@ -13,7 +13,7 @@ const Dashboard = () => {
   var description = 'Profile'
 
   return (
-    <EnsureAuth>
+    <EnsureAuth roleIdRequired={[1, 2]}>
       <Layout title={title} description={description}>
         <LayoutIndent>
           <UserLayout>

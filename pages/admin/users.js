@@ -3,6 +3,7 @@ import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
 import UserLayout from '../../components/partials/User/UserLayout'
 import UsersTable from '../../components/Table/UsersTable'
+import EnsureAuth from '../../components/utils/EnsureAuth'
 
 
 const Users = () => {
@@ -10,13 +11,15 @@ const Users = () => {
   var description = 'Admin - users'
 
   return (
-    <Layout title={title} description={description}>
-      <LayoutIndent>
-        <UserLayout>
-          <UsersTable />
-        </UserLayout>
-      </LayoutIndent>
-    </Layout>
+    <EnsureAuth roleIdRequired={[2]}>
+      <Layout title={title} description={description}>
+        <LayoutIndent>
+          <UserLayout>
+            <UsersTable />
+          </UserLayout>
+        </LayoutIndent>
+      </Layout>
+    </EnsureAuth>
   )
 }
 

@@ -13,7 +13,7 @@ const Debug = () => {
   var description = 'Dashboard'
 
   return (
-    <EnsureAuth>
+    <EnsureAuth roleIdRequired={[1, 2]}>
       <Layout title={title} description={description}>
         <LayoutIndent>
           <UserLayout>

@@ -3,6 +3,7 @@ import LayoutIndent from '../../components/Layout/LayoutIndent'
 import companyInfo from '../../assets/company-info'
 import UserLayout from '../../components/partials/User/UserLayout'
 import DashboardStats from '../../components/Stats/DashboardStats'
+import EnsureAuth from '../../components/utils/EnsureAuth'
 
 
 const Dashboard = () => {
@@ -10,13 +11,15 @@ const Dashboard = () => {
   var description = 'Admin dashboard'
 
   return (
-    <Layout title={title} description={description}>
-      <LayoutIndent>
-        <UserLayout>
-          <DashboardStats />
-        </UserLayout>
-      </LayoutIndent>
-    </Layout>
+    <EnsureAuth roleIdRequired={[2]}>
+      <Layout title={title} description={description}>
+        <LayoutIndent>
+          <UserLayout>
+            <DashboardStats />
+          </UserLayout>
+        </LayoutIndent>
+      </Layout>
+    </EnsureAuth>
   )
 }
 
