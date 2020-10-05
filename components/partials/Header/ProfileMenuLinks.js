@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { profileMenuItems } from '../../../assets/menu-items'
+import { useUser } from '../../../contexts/UserProvider/UserProvider'
 
 const UserMenuLink = ({ children, href, isMobile = false }) => {
   const router = useRouter()
@@ -26,17 +27,22 @@ const UserMenuLink = ({ children, href, isMobile = false }) => {
 
 
 const ProfileMenuLinks = ({ isMobile }) => {
+  const userData = useUser()
+  const roleId = userData.data.roleId
+
   return (
     profileMenuItems.map(value => {
-      return (
-        <span key={value.href}>
-          {value.name == 'Log Out' ? <hr className='mt-1 mb-1' /> : ''}
-          <UserMenuLink href={value.href} isMobile={isMobile}>
-            <i className={`fas fa-${value.icon}`}></i>{' '}
-            {value.name}
-          </UserMenuLink>
-        </span>
-      )
+      if (value.roleIdRequired.includes(roleId)) {
+        return (
+          <span key={value.href}>
+            {value.name == 'Log Out' ? <hr className='mt-1 mb-1' /> : ''}
+            <UserMenuLink href={value.href} isMobile={isMobile}>
+              <i className={`fas fa-${value.icon}`}></i>{' '}
+              {value.name}
+            </UserMenuLink>
+          </span>
+        )
+      }
     })
   )
 }
