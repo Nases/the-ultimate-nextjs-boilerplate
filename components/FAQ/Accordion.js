@@ -26,9 +26,9 @@ const AccordionItem = () => {
   const [active, setActive] = useState(false)
 
   return (
-    <div className="mt-6 border-b border-gray-200 pb-6">
+    <div onClick={() => setActive(prevState => !prevState)} className="py-6 border-b border-gray-200 cursor-pointer">
       <dt className="text-lg leading-7">
-        <button onClick={() => setActive(prevState => !prevState)} className="text-left w-full flex justify-between items-start text-gray-400 focus:outline-none">
+        <button className="text-left w-full flex justify-between items-start text-gray-400 focus:outline-none">
           <span className="font-medium text-gray-900">
             What's the best thing about Switzerland?
           </span>
@@ -40,12 +40,12 @@ const AccordionItem = () => {
         </button>
       </dt>
       <dd
-        className='mt-2 pr-12 overflow-hidden transition-all duration-200 ease-linear'
+        className='pr-12 overflow-hidden transition-all duration-200 ease-linear'
         style={{
           maxHeight: active ? 100 : 0
         }}
       >
-        <p className="text-base leading-6 text-gray-500">
+        <p className="text-base leading-6 text-gray-500 mt-2">
           I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
         </p>
       </dd>
