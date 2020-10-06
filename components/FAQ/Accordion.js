@@ -17,7 +17,7 @@ const Accordion = ({ children }) => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
