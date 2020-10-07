@@ -1,6 +1,6 @@
 import Accordion from './Accordion'
 
-const FAQCenteredAccordion = () => {
+const FAQAccordion = () => {
   return (
     <>
       <Accordion>
@@ -25,4 +25,4 @@ const FAQCenteredAccordion = () => {
   )
 }
 
-export default FAQCenteredAccordion
+export default FAQAccordion
