@@ -1,7 +1,6 @@
 import { useState, createContext, useContext } from 'react'
 
 const Accordion = ({ children }) => {
-  const [active, setActive] = useState(false)
 
   return (
     <div className="bg-gray-50">
