@@ -30,7 +30,13 @@ async function dbConnect() {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+  }).then(() => {
+    console.log('MongoDB connected')
+    next()
   })
+    .catch(err => {
+      console.log(err)
+    })
 
   connection.isConnected = db.connections[0].readyState
 }
