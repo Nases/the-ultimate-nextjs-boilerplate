@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
-const dbConnect = (req, res, next) => {
-  mongoose.connect(process.env.MONGODB_URI, {
+export default async function dbConnect(req, res, next) {
+  await mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -14,4 +14,3 @@ const dbConnect = (req, res, next) => {
     })
 }
 
-export default dbConnect
