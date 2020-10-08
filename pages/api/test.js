@@ -7,7 +7,6 @@ import mongoose from 'mongoose'
 const handler = nextConnect()
 
 handler.use(auth)
-handler.use(dbConnect)
 handler.use((req, res) => {
   var User = mongoose.model('User')
   User.find().then(value => res.send(value))
