@@ -25,6 +25,7 @@ passport.use(
     (req, username, password, done) => {
       // Here you lookup the user in your DB and compare the password/hashed password
       const user = findUserByUsername(req, username)
+      console.log('passport local stretegy called')
       // Security-wise, if you hashed the password earlier, you must verify it
       // if (!user || await argon2.verify(user.password, password))
       if (!user || user.password !== password) {
