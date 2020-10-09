@@ -1,8 +1,8 @@
 import axios from 'axios'
-import companyInfo from './company-info'
+import settings from './settings'
 
 
-const serverURI = companyInfo.serverURI
+const serverURI = settings.serverURI
 
 const userUtils = {
   login: (email, password) => {

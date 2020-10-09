@@ -1,10 +1,17 @@
-const User = require('../../models/User')
-var router = require('express').Router()
+const { calculateEarlierDate } = require('../../assets/utils/calculations')
 const yup = require('yup')
-const { calculateEarlierDate } = require('../../utils/calculations')
+import nextConnect from 'next-connect'
+import auth from '../../assets/middleware/auth'
+import dbConnect from '../../assets/middleware/dbConnect'
+import User from '../../assets/models/User'
 
 
-router.post('/', (req, res, next) => {
+const handler = nextConnect()
+
+handler.use(auth)
+handler.use((req, res) => {
+  dbConnect()
+
   var { limit, sort, skip, email } = req.query
 
   const schema = yup.object().shape({
@@ -42,7 +49,9 @@ router.post('/', (req, res, next) => {
     .catch(err => res.send(err.errors))
 })
 
-router.post('/count', (req, res) => {
+
+
+handler.use('/count', (req, res) => {
   var { email } = req.query
 
   const schema = yup.object().shape({
@@ -62,14 +71,13 @@ router.post('/count', (req, res) => {
         .catch(err => res.send(err))
     })
     .catch(err => res.send(err.errors))
-
 })
 
 const lastDaysAllowed = [7, 30, 60, 180, 360]
 
 lastDaysAllowed.map(value => {
   return (
-    router.post(`/count/last-${value}-days`, (req, res) => {
+    handler.use(`/count/last-${value}-days`, (req, res) => {
       User.countDocuments({
         registrationDate: {
           $gte: calculateEarlierDate(value)
@@ -80,4 +88,5 @@ lastDaysAllowed.map(value => {
 })
 
 
-module.exports = router
+
+export default handler
