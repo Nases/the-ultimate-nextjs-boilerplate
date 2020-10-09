@@ -41,7 +41,7 @@ handler.use((req, res) => {
               newUser.save()
                 .then(user => {
                   req.logIn(user, err => {
-                    if (err) throw error
+                    if (err) throw err
                     res.send(user)
                   })
                 })
