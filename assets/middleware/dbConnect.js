@@ -32,6 +32,7 @@ async function dbConnect() {
     useFindAndModify: false,
   }).then(() => {
     console.log('MongoDB connected')
+    // next()
   })
     .catch(err => {
       console.log(err)

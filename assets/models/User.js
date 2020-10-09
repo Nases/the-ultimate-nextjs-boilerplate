@@ -42,6 +42,11 @@ const UserSchema = mongoose.Schema({
   }
 })
 
-const User = mongoose.model('User', UserSchema)
+let User
+try {
+  User = mongoose.model('User')
+} catch (err) {
+  User = mongoose.model('User', UserSchema)
+}
 
 module.exports = User
