@@ -32,7 +32,7 @@ async function dbConnect() {
     useFindAndModify: false,
   }).then(() => {
     console.log('MongoDB connected')
-    connection.isConnected = db.connections[0].readyState
+    // connection.isConnected = db.connections[0].readyState
     // next()
   })
     .catch(err => {
