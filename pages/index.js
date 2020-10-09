@@ -7,8 +7,8 @@ import Feature2x2 from '../components/Feature/Feature2x2'
 import FAQAccordion from '../components/FAQ/FAQAccordion'
 
 const Index = () => {
-  var title = `Default title | ${companyInfo.name}`
-  var description = 'Default description'
+  var title = `The Ultimate Next.js Boilerplate | ${companyInfo.name}`
+  var description = 'Production ready, one click deployable Next.js Boilerplate. Free and up for grabs to anyone!'
 
   return (
     <Layout title={title} description={description}>
