@@ -1,6 +1,5 @@
 const bcrypt = require('bcryptjs')
 const { ChangeEmailSchema } = require('../../assets/validation/schemas')
-
 import nextConnect from 'next-connect'
 import auth from '../../assets/middleware/auth'
 import dbConnect from '../../assets/middleware/dbConnect'
