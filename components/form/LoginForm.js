@@ -9,14 +9,13 @@ import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvid
 import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
+import settings from '../../assets/settings'
 
 
 const LoginForm = () => {
-  // const userData = useUser()
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
-
-  const loginRedirectPath = '/admin/dashboard'
+  const loginRedirectPath = settings.customerLoginRedirectPath
 
   useEffect(() => {
     router.prefetch(loginRedirectPath)

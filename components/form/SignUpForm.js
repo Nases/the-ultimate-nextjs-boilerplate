@@ -8,11 +8,13 @@ import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import Router from 'next/router'
+import settings from '../../assets/settings'
 
 
 const SignUpForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
+  const signUpRedirectPath = settings.customerSignUpRedirectPath
 
 
   return (
@@ -37,7 +39,7 @@ const SignUpForm = () => {
               dispatchAuthModal({
                 type: 'CLOSE_SIGN_UP_MODAL'
               })
-              Router.push('/debug')
+              Router.push(signUpRedirectPath)
               // console.log(response)
               // setSubmitting(false)
             })
