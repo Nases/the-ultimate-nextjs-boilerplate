@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const UserSchema = mongoose.Schema({
   roleId: {
     type: Number,
-    default: 1
+    default: 2
   },
   email: {
     type: String,

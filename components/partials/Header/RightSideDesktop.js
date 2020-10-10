@@ -6,6 +6,7 @@ import { ForgotPasswordModal } from './ForgotPassword'
 import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
 import ProfileMenuLinks from './ProfileMenuLinks'
 import Badge from '../../Badge/Badge'
+import Tooltip from '../../Tooltip/Tooltip'
 
 
 const RightSideDesktop = () => {
@@ -52,7 +53,7 @@ const RightSideDesktop = () => {
           <>
             {
               userData.data.roleId === 2
-                ? <Badge color='teal'>Admin</Badge>
+                ? <Tooltip data='Logged in as Admin'><Badge color='teal'>Admin</Badge></Tooltip>
                 : ''
             }
             <div ref={desktopProfileMenuNode} className="ml-3 relative">
