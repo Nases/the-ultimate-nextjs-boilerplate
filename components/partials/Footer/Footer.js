@@ -185,9 +185,17 @@ const Footer = () => {
               &copy;
               {new Date().getFullYear()}
               {' '}
-              <Link href="/">
-                <a className='hover:text-common'>
+              <Link href="https://hasansefaozalp.com/">
+                <a target='blank' className='hover:text-common'>
                   {companyInfo.name}.
+                </a>
+              </Link>
+              <Link href={companyInfo.github} >
+                <a target='blank' className='hover:text-common'>
+                  {' '}
+                  Open source project
+                  {' '}
+                  <i aria-hidden className="fab fa-github"></i>
                 </a>
               </Link>
             </p>
