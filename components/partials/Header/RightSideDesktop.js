@@ -52,7 +52,7 @@ const RightSideDesktop = () => {
           // logged in
           <>
             {
-              userData.data.roleId === 2
+              (userData.data.roleId === 2)
                 ? <Tooltip data='Logged in as Admin'><Badge color='teal'>Admin</Badge></Tooltip>
                 : ''
             }
