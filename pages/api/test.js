@@ -11,7 +11,5 @@ handler.use((req, res) => {
   res.send('this is index')
 })
 
-handler.use('/hey', (req, res) => res.send('/hey works!!!'))
-
 
 export default handler
