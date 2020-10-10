@@ -20,9 +20,9 @@ export const profileMenuItems = [
     roleIdRequired: [2]
   },
   {
-    name: 'Debug',
-    href: '/admin/debug',
-    icon: 'magic',
+    name: 'Components',
+    href: '/admin/components',
+    icon: 'th',
     roleIdRequired: [2]
   },
   {

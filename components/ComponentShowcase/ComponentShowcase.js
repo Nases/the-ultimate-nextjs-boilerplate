@@ -13,19 +13,9 @@ const Divider = () => {
 const ComponentShowcase = () => {
   return (
     <>
-      <Divider />
       <Buttons />
       <Divider />
       <FormElements />
-      <Divider />
-      <h2>Login Form</h2>
-      <LoginForm />
-      <Divider />
-      <h2>Sign Up Form</h2>
-      <SignUpForm />
-      <Divider />
-      <h2>Forgot Password Form</h2>
-      <ForgotPasswordForm />
     </>
   )
 }

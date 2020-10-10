@@ -145,5 +145,6 @@ input[type="password"] {
 
 
 
+
 /* add custom component classes before utilities (tailwindcss suggestion) */
 @tailwind utilities;

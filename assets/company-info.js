@@ -1,6 +1,6 @@
 const companyInfo = {
-  name: 'Nases Group LLC',
-  email: 'info@nasesgroup.com',
+  name: 'Hasan Sefa Ozalp',
+  email: 'hasan@hasansefaozalp.com',
   address: 'Los Angeles 90025',
   website: 'nextjsboilerplate.com',
   clientURI: (process.env.NODE_ENV === 'production') ? 'https://nextjsboilerplate.com/' : 'http://localhost:3000/',
