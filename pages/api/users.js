@@ -1,4 +1,3 @@
-const { calculateEarlierDate } = require('../../assets/utils/calculations')
 const yup = require('yup')
 import nextConnect from 'next-connect'
 import auth from '../../assets/middleware/auth'
@@ -47,22 +46,6 @@ handler.use((req, res) => {
         .catch(err => res.send(err))
     })
     .catch(err => res.send(err.errors))
-})
-
-
-
-const lastDaysAllowed = [7, 30, 60, 180, 360]
-
-lastDaysAllowed.map(value => {
-  return (
-    handler.use(`/count/last-${value}-days`, (req, res) => {
-      User.countDocuments({
-        registrationDate: {
-          $gte: calculateEarlierDate(value)
-        }
-      }, (err, count) => { res.send(count.toString()) })
-    })
-  )
 })
 
 

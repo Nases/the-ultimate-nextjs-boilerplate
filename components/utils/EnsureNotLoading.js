@@ -10,7 +10,8 @@ const EnsureNotLoading = ({ children }) => {
 
   return (
     <>
-      {!isLoading && children}
+      {/* {!isLoading && children} */}
+      {isLoading ? 'Loading' : children}
     </>
   )
 }
