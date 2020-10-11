@@ -8,7 +8,7 @@ Development environment requirements :
 ## Installation
 
 Setting up your development environment on your local machine :
-```
+```bash
 git clone https://github.com/Nases/the-ultimate-nextjs-boilerplate
 cd the-ultimate-nextjs-boilerplate
 npm install
