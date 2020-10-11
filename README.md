@@ -1,3 +1,2 @@
-# Express Authentication App
+# The Ultimate Next.js Boilerplate
 
-Simple authentication app leveraging express

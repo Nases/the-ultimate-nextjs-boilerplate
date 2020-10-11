@@ -1,5 +1,5 @@
 import Layout from '../components/Layout/Layout'
-import companyInfo from '../assets/company-info'
+import { companyInfo } from '../assets/settings'
 import FloatBottomBanner from '../components/banners/FloatBottomBanner'
 import SimpleCenteredHero from '../components/HeroSections/SimpleCenteredHero/SimpleCenteredHero'
 import CTAJustified from '../components/CTA/CTAJustified'

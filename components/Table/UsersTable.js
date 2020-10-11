@@ -4,7 +4,7 @@ import TableHead from './TableHead'
 import TableBody from './TableBody'
 import TableRow from './TableRow'
 import axios from 'axios'
-import companyInfo from '../../assets/company-info'
+import settings from '../../assets/settings'
 import moment from 'moment'
 import TablePagination from './TablePagination'
 import Select from '../Select/Select'
@@ -32,7 +32,7 @@ const UsersTable = () => {
   const [limitSelectedOption, setLimitSelectedOption] = useState(limitOptions[1])
 
   useEffect(() => {
-    axios.post(`${companyInfo.serverURI}users?sort=${sort}&limit=${limitSelectedOption.value}&skip=${(currentPage - 1) * limitSelectedOption.value}&email=${searchedEmail}`)
+    axios.post(`${settings.serverURI}users?sort=${sort}&limit=${limitSelectedOption.value}&skip=${(currentPage - 1) * limitSelectedOption.value}&email=${searchedEmail}`)
       .then(value => {
         setUsers(value.data)
         setSearchLoading(false)
@@ -42,7 +42,7 @@ const UsersTable = () => {
         setSearchLoading(false)
       })
 
-    axios.post(`${companyInfo.serverURI}users/count?email=${searchedEmail}`)
+    axios.post(`${settings.serverURI}users/count?email=${searchedEmail}`)
       .then(value => setTotalUsersCount(value.data))
       .catch(err => console.log(err))
 

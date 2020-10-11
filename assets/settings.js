@@ -5,4 +5,22 @@ const settings = {
   customerSignUpRedirectPath: '/user/account-settings'
 }
 
-export default settings
+const companyInfo = {
+  name: 'Hasan Sefa Ozalp',
+  email: 'hasan@hasansefaozalp.com',
+  address: 'Los Angeles 90025',
+  website: 'nextjsboilerplate.com',
+  github: 'https://github.com/Nases/nextjs-express-auth-starter'
+}
+
+// routePermissions is not in use yet
+const routePermissions = {
+  '/user/account-settings': [1, 2],
+  '/admin/debug': [2],
+  '/admin/dastboard': [2],
+  '/admin/users': [2],
+  '/admin/user': [2],
+}
+
+
+export { settings as default, routePermissions, companyInfo }

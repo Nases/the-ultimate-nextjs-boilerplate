@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout/Layout'
 import LayoutIndent from '../../components/Layout/LayoutIndent'
-import companyInfo from '../../assets/company-info'
+import { companyInfo } from '../../assets/settings'
 import UserLayout from '../../components/partials/User/UserLayout'
 import DashboardStats from '../../components/Stats/DashboardStats'
 import EnsureAuth from '../../components/utils/EnsureAuth'

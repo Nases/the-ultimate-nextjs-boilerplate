@@ -3,7 +3,7 @@ import Badge from '../Badge/Badge'
 import Button from '../Button/Button'
 import Link from 'next/link'
 import axios from 'axios'
-import companyInfo from '../../assets/company-info'
+import settings from '../../assets/settings'
 import moment from 'moment'
 import Skeleton from 'react-loading-skeleton'
 
@@ -12,7 +12,7 @@ const UserDetails = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    user || axios.post(companyInfo.serverURI + `user?id=${id}`)
+    user || axios.post(settings.serverURI + `user?id=${id}`)
       .then(value => {
         setUser(value.data[0])
         setIsLoading(false)

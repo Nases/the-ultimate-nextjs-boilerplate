@@ -1,6 +1,6 @@
 import Layout from '../components/Layout/Layout'
 import LayoutIndent from '../components/Layout/LayoutIndent'
-import companyInfo from '../assets/company-info'
+import { companyInfo } from '../assets/settings'
 import ForgotPasswordChangePasswordForm from '../components/form/ForgotPasswordChangePasswordForm'
 import EnsureForgotPasswordChangePassword from '../components/utils/EnsureForgotPasswordChangePassword'
 

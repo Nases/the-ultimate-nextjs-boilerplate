@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout/Layout'
 import LayoutIndent from '../../components/Layout/LayoutIndent'
-import companyInfo from '../../assets/company-info'
+import { companyInfo } from '../../assets/settings'
 import BreadCrumbNav from '../../components/BreadCrumbs/BreadCrumbNav'
 import BreadCrumb from '../../components/BreadCrumbs/BreadCrumb'
 import BreadCrumbSeparator from '../../components/BreadCrumbs/BreadCrumbSeparator'
