@@ -2,10 +2,10 @@
 
 The goal of [The Ultimate Next.js Boilerplate](https://nextjsboilerplate.com/) is to provide an advanced code base to start Next.js projects.
 
-## Installation
-
 Development environment requirements :
 - [Node.js](https://nodejs.org/en/download/)
+
+## Installation
 
 Setting up your development environment on your local machine :
 ```
