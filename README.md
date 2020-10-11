@@ -13,9 +13,12 @@ git clone https://github.com/Nases/the-ultimate-nextjs-boilerplate
 cd the-ultimate-nextjs-boilerplate
 npm install
 cp .env.local.example .env.local
+
 # Update .env.local
 # Update /assets/settings.js
+
 npm run dev
+
 # go to http://localhost:3000/
 # Voila
 ```
