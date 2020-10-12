@@ -9,9 +9,11 @@ import { AuthModalProvider } from '../contexts/AuthModalProvider/AuthModalProvid
 import { UserProvider } from '../contexts/UserProvider/UserProvider'
 import { MobileMenuProvider } from '../contexts/MobileMenuProvider/MobileMenuProvider'
 import GetUserData from '../components/utils/GetUserData'
-
 import NProgress from 'nprogress'
 import Router from 'next/router'
+
+import { ApolloProvider } from '@apollo/client'
+import { useApollo } from '../assets/graphql/client'
 
 NProgress.configure({ showSpinner: false })
 Router.onRouteChangeStart = () => {
@@ -25,20 +27,24 @@ Router.onRouteChangeError = () => {
 }
 
 function MyApp({ Component, pageProps }) {
+  const apolloClient = useApollo(pageProps.initialApolloState)
+
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width,height=device-height initial-scale=1" />
       </Head>
-      <UserProvider>
-        <AuthModalProvider>
-          <MobileMenuProvider>
-            <GetUserData>
-              <Component {...pageProps} />
-            </GetUserData>
-          </MobileMenuProvider>
-        </AuthModalProvider>
-      </UserProvider>
+      <ApolloProvider client={apolloClient}>
+        <UserProvider>
+          <AuthModalProvider>
+            <MobileMenuProvider>
+              <GetUserData>
+                <Component {...pageProps} />
+              </GetUserData>
+            </MobileMenuProvider>
+          </AuthModalProvider>
+        </UserProvider>
+      </ApolloProvider>
     </>
   )
 }
