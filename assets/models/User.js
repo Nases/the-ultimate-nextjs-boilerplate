@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const UserSchema = mongoose.Schema({
+export const UserSchema = mongoose.Schema({
   roleId: {
     type: Number,
     default: 2
@@ -49,4 +49,6 @@ try {
   User = mongoose.model('User', UserSchema)
 }
 
+
 module.exports = User
+module.exports.UserSchema = UserSchema

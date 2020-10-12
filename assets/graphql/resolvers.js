@@ -3,10 +3,17 @@
 // import { setLoginSession, getLoginSession } from '../lib/auth'
 // import { removeTokenCookie } from '../lib/auth-cookies'
 
+import dbConnect from '../middleware/dbConnect'
+import User from '../models/User'
+
+
 export const resolvers = {
   Query: {
     async test() {
-      return 'test success yooooo GraphQL YO'
+      dbConnect()
+      // return 'asd'
+      const returnValue = await User.find({ email: 'qwe@qwe.qwe' })
+      return returnValue[0]._id
     },
     //   async viewer(_parent, _args, context, _info) {
     //     try {
