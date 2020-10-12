@@ -4,12 +4,12 @@
 
 The goal of [The Ultimate Next.js Boilerplate](https://nextjsboilerplate.com/) is to provide an advanced code base to start Next.js projects.
 
-Development environment requirements :
+Development environment requirements:
 - [Node.js](https://nodejs.org/en/download/)
 
 ## Installation
 
-Setting up your development environment on your local machine :
+Setting up your development environment on your local machine:
 ```bash
 git clone https://github.com/Nases/the-ultimate-nextjs-boilerplate
 cd the-ultimate-nextjs-boilerplate

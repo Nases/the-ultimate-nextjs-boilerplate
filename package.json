@@ -11,9 +11,11 @@
     "save": "git add . && git commit -m '⭐️' && git push -u origin master"
   },
   "dependencies": {
+    "@apollo/client": "^3.2.3",
     "@hapi/iron": "^6.0.0",
     "@tailwindcss/typography": "^0.2.0",
     "@tailwindcss/ui": "^0.6.2",
+    "apollo-server-micro": "^2.18.2",
     "axios": "^0.20.0",
     "balloon-css": "^1.2.0",
     "bcryptjs": "^2.4.3",
@@ -25,6 +27,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "formik": "^2.1.5",
+    "graphql": "^15.3.0",
     "moment": "^2.29.0",
     "mongoose": "^5.10.6",
     "next": "^9.5.3",
@@ -35,6 +38,7 @@
     "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-ga": "^3.1.2",
