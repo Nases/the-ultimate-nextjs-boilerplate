@@ -9,12 +9,24 @@ import User from '../models/User'
 
 export const resolvers = {
   Query: {
-    async test() {
+    test(obj, args, context, info) {
       dbConnect()
-      // return 'asd'
-      const returnValue = await User.find({ email: 'qwe@qwe.qwe' })
-      return returnValue[0]._id
+      return User.find({ email: 'qwe@qwe.qwe' }).then(value => {
+        console.log(value[0])
+        return (
+          value[0]
+        )
+      })
     },
+    user(obj, { id }, context, info) {
+      dbConnect()
+      console.log(id)
+      return User.find({ _id: id }).then(value => {
+        return (
+          value[0]
+        )
+      })
+    }
     //   async viewer(_parent, _args, context, _info) {
     //     try {
     //       const session = await getLoginSession(context.req)

@@ -1,11 +1,6 @@
 import { gql } from '@apollo/client'
 
 export const typeDefs = gql`
-  # type User {
-  #   id: ID!
-  #   email: String!
-  #   createdAt: Int!
-  # }
   type User {
     _id: ID
     roleId: Int
@@ -34,10 +29,10 @@ export const typeDefs = gql`
     user: User!
   }
   type Query {
-    user(id: ID!): User!
+    user(id: String!): User
     users: [User]!
     viewer: User
-    test: String
+    test: User
   }
   type Mutation {
     signUp(input: SignUpInput!): SignUpPayload!

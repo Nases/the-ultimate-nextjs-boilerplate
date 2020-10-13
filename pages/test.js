@@ -3,18 +3,14 @@ import LayoutIndent from '../components/Layout/LayoutIndent'
 import { companyInfo } from '../assets/settings'
 
 import { gql, useQuery } from '@apollo/client'
-
-const TestQuery = gql`
-  query TestQuery {
-    test
-  }
-`
+import { UserQuery } from '../assets/graphql/queries'
 
 const Template = () => {
   var title = `Default title | ${companyInfo.name}`
   var description = 'Default description.'
 
-  const { data, loading, error } = useQuery(TestQuery)
+
+  const { data, loading, error } = useQuery(UserQuery)
   console.log(data)
 
   return (
