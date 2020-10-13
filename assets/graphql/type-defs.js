@@ -17,6 +17,10 @@ export const typeDefs = gql`
   input SignUpInput {
     email: String!
     password: String!
+    confirmPassword: String!
+  }
+  input TestInput {
+    ey: String
   }
   input SignInInput {
     email: String!
@@ -30,12 +34,13 @@ export const typeDefs = gql`
   }
   type Query {
     user(id: String!): User
-    users: [User]!
+    users: [User]
     viewer: User
     test: User
   }
   type Mutation {
-    signUp(input: SignUpInput!): SignUpPayload!
+    signUp(ey: String, yo: String): User
+    # signUp(input: SignUpInput!): SignUpPayload!
     signIn(input: SignInInput!): SignInPayload!
     signOut: Boolean!
   }

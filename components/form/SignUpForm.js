@@ -10,11 +10,15 @@ import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProv
 import Router from 'next/router'
 import settings from '../../assets/settings'
 
+import { gql, useMutation } from '@apollo/client'
+
 
 const SignUpForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
   const signUpRedirectPath = settings.customerSignUpRedirectPath
+
+  // const SignUpMutation
 
 
   return (
