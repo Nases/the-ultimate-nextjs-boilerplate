@@ -18,8 +18,17 @@ const SignUpForm = () => {
   const dispatchAuthModal = useDispatchAuthModal()
   const signUpRedirectPath = settings.customerSignUpRedirectPath
 
-  // const SignUpMutation
+  const SignUpMutation = gql`
+    mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
+      signUp(email: $email, password: $password, confirmPassword: $confirmPassword) {
+        _id
+        email
+      }
+    }
+  `
+  const [signUp] = useMutation(SignUpMutation)
 
+  signUp()
 
   return (
     <div>
@@ -34,27 +43,36 @@ const SignUpForm = () => {
         validateOnChange={false}
         validationSchema={SignUpSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.signUp(values.email, values.password, values.confirmPassword)
-            .then(response => {
-              dispatchUserData({
-                type: 'LOGIN',
-                userData: response.data
-              })
-              dispatchAuthModal({
-                type: 'CLOSE_SIGN_UP_MODAL'
-              })
-              Router.push(signUpRedirectPath)
-              // console.log(response)
-              // setSubmitting(false)
-            })
-            .catch((error) => {
-              // console.log(error)
-              dispatchUserData({
-                type: 'SET_IS_LOADING_FALSE'
-              })
-              setFieldError('serverError', error.response.data)
-              setSubmitting(false)
-            })
+          signUp({
+            variables: {
+              email: values.email,
+              password: values.password,
+              confirmPassword: values.confirmPassword
+            }
+          })
+            .then(value => console.log(value))
+            .catch(err => console.log(err))
+          // userUtils.signUp(values.email, values.password, values.confirmPassword)
+          //   .then(response => {
+          //     dispatchUserData({
+          //       type: 'LOGIN',
+          //       userData: response.data
+          //     })
+          //     dispatchAuthModal({
+          //       type: 'CLOSE_SIGN_UP_MODAL'
+          //     })
+          //     Router.push(signUpRedirectPath)
+          //     // console.log(response)
+          //     // setSubmitting(false)
+          //   })
+          //   .catch((error) => {
+          //     // console.log(error)
+          //     dispatchUserData({
+          //       type: 'SET_IS_LOADING_FALSE'
+          //     })
+          //     setFieldError('serverError', error.response.data)
+          //     setSubmitting(false)
+          //   })
         }}
       >
         {({ isSubmitting, values }) => (

@@ -1,6 +1,3 @@
-// var router = require('express').Router()
-// const User = require('../../models/User')
-
 const { SignUpSchema } = require('../../assets/validation/schemas')
 const bcrypt = require('bcryptjs')
 import nextConnect from 'next-connect'
