@@ -6,8 +6,10 @@ const apolloServer = new ApolloServer({
   context(ctx) {
     return ctx
   },
+  // remove below when the app is ready
+  // make playground available in production
   introspection: true,
-  playground: true,
+  playground: true
 })
 
 export const config = {
