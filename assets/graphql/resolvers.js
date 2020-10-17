@@ -45,12 +45,20 @@ export const resolvers = {
     },
     async setUserData(obj, args, context, info) {
       await setUserSession(context.res, { id: 'sdasd this is id yoooo', email: '212121 this is email yo' })
-
       return 'User session might be set. Check cookie session-token cookie.'
     },
-    async logOut(obj, args, context, info) {
-      await removeSessionTokenCookie(context.res)
-      return 'Probably logged out.'
+    logOut(obj, args, context, info) {
+      return (
+        removeSessionTokenCookie(context.res).then(() => {
+          return (
+            'Logged out.'
+          )
+        }).catch(err => {
+          return (
+            'Something went wrong logging out, please try again later.'
+          )
+        })
+      )
     }
   },
   Mutation: {

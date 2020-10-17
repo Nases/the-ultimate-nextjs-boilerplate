@@ -17,13 +17,21 @@ export function setTokenCookie(res, token) {
   res.setHeader('Set-Cookie', cookie)
 }
 
-export function removeSessionTokenCookie(res) {
-  const cookie = serialize(TOKEN_NAME, '', {
-    maxAge: -1,
-    path: '/',
-  })
-
-  res.setHeader('Set-Cookie', cookie)
+export const removeSessionTokenCookie = res => {
+  return (
+    new Promise((resolve, reject) => {
+      try {
+        const cookie = serialize(TOKEN_NAME, '', {
+          maxAge: -1,
+          path: '/',
+        })
+        res.setHeader('Set-Cookie', cookie)
+        resolve()
+      } catch {
+        reject()
+      }
+    })
+  )
 }
 
 export function parseCookies(req) {
