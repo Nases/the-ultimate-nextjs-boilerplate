@@ -1,7 +1,7 @@
 import dbConnect from '../middleware/dbConnect'
 import User, { UserSchema } from '../models/User'
 
-import { setLoginSession, getLoginSession } from './auth'
+import { setUserSession, getUserSession } from './auth'
 
 export const resolvers = {
   Query: {
@@ -33,11 +33,12 @@ export const resolvers = {
       })
     },
     async getUserData(obj, args, context, info) {
-      // console.log(context.req.headers)
-      // console.log(context.req.cookies)
-      await setLoginSession(context.res, { id: 'this is id yoooo', email: 'this is email yo' })
 
-      return 'this is getUserData'
+      // await setUserSession(context.res, { id: 'this is id yoooo', email: 'this is email yo' })
+      const userSession = await getUserSession(context.req)
+      // console.log(userSession)
+
+      return JSON.stringify(userSession)
       // try {
       //   const session = await getUserSession(context.req)
       //   if (session) {
@@ -47,6 +48,11 @@ export const resolvers = {
       //   return new Error('getUserData error!')
       // }
     },
+    async setUserData(obj, args, context, info) {
+      await setUserSession(context.res, { id: 'sdasd this is id yoooo', email: '212121 this is email yo' })
+
+      return 'User session might be set. Check cookie session-token cookie.'
+    }
   },
   Mutation: {
     async signUp(obj, args, context, info) {
