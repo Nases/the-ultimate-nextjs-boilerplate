@@ -35,18 +35,16 @@ export const resolvers = {
     async getUserData(obj, args, context, info) {
 
       // await setUserSession(context.res, { id: 'this is id yoooo', email: 'this is email yo' })
-      const userSession = await getUserSession(context.req)
       // console.log(userSession)
 
-      return JSON.stringify(userSession)
-      // try {
-      //   const session = await getUserSession(context.req)
-      //   if (session) {
-      //     return JSON.stringify(session)
-      //   }
-      // } catch {
-      //   return new Error('getUserData error!')
-      // }
+      try {
+        const session = await getUserSession(context.req)
+        if (session) {
+          return JSON.stringify(session)
+        }
+      } catch {
+        return new Error('getUserData error!')
+      }
     },
     async setUserData(obj, args, context, info) {
       await setUserSession(context.res, { id: 'sdasd this is id yoooo', email: '212121 this is email yo' })
