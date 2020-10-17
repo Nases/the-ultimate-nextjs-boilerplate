@@ -1,11 +1,7 @@
 import dbConnect from '../middleware/dbConnect'
 import User, { UserSchema } from '../models/User'
 
-import nextConnect from 'next-connect'
-import auth from '../middleware/auth'
-import passport from 'passport'
-import session from './session'
-
+import { setLoginSession, getLoginSession } from './auth'
 
 export const resolvers = {
   Query: {
@@ -36,23 +32,38 @@ export const resolvers = {
         )
       })
     },
+    async getUserData(obj, args, context, info) {
+      // console.log(context.req.headers)
+      // console.log(context.req.cookies)
+      await setLoginSession(context.res, { id: 'this is id yoooo', email: 'this is email yo' })
+
+      return 'this is getUserData'
+      // try {
+      //   const session = await getUserSession(context.req)
+      //   if (session) {
+      //     return JSON.stringify(session)
+      //   }
+      // } catch {
+      //   return new Error('getUserData error!')
+      // }
+    },
   },
   Mutation: {
     async signUp(obj, args, context, info) {
       const { SignUpSchema } = require('../validation/schemas')
       const bcrypt = require('bcryptjs')
 
-      session({
-        name: 'sessFromGraphQL',
-        secret: process.env.SESSION_SECRET,
-        cookie: {
-          maxAge: 60 * 60 * 8, // 8 hours,
-          httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          path: '/',
-          sameSite: 'lax',
-        },
-      })
+      // session({
+      //   name: 'sessFromGraphQL',
+      //   secret: process.env.SESSION_SECRET,
+      //   cookie: {
+      //     maxAge: 60 * 60 * 8, // 8 hours,
+      //     httpOnly: true,
+      //     secure: process.env.NODE_ENV === 'production',
+      //     path: '/',
+      //     sameSite: 'lax',
+      //   },
+      // })
 
       // console.log(context.req)
 

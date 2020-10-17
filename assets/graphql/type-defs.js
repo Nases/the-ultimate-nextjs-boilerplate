@@ -37,6 +37,7 @@ export const typeDefs = gql`
     users: [User]
     viewer: User
     test: User
+    getUserData: String
   }
   type Mutation {
     signUp(email: String, password: String, confirmPassword: String): User
