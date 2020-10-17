@@ -7,7 +7,7 @@ const apolloServer = new ApolloServer({
     return ctx
   },
   // remove below when the app is ready
-  // make playground available in production
+  // make playground and introspection available in production
   introspection: true,
   playground: true
 })

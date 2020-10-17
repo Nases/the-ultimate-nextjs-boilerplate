@@ -39,6 +39,7 @@ export const typeDefs = gql`
     test: User
     getUserData: String
     setUserData: String
+    logOut: String
   }
   type Mutation {
     signUp(email: String, password: String, confirmPassword: String): User

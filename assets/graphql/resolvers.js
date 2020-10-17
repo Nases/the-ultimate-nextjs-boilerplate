@@ -2,6 +2,7 @@ import dbConnect from '../middleware/dbConnect'
 import User, { UserSchema } from '../models/User'
 
 import { setUserSession, getUserSession } from './auth'
+import { removeSessionTokenCookie } from './auth-cookies'
 
 export const resolvers = {
   Query: {
@@ -33,10 +34,6 @@ export const resolvers = {
       })
     },
     async getUserData(obj, args, context, info) {
-
-      // await setUserSession(context.res, { id: 'this is id yoooo', email: 'this is email yo' })
-      // console.log(userSession)
-
       try {
         const session = await getUserSession(context.req)
         if (session) {
@@ -50,24 +47,16 @@ export const resolvers = {
       await setUserSession(context.res, { id: 'sdasd this is id yoooo', email: '212121 this is email yo' })
 
       return 'User session might be set. Check cookie session-token cookie.'
+    },
+    async logOut(obj, args, context, info) {
+      await removeSessionTokenCookie(context.res)
+      return 'Probably logged out.'
     }
   },
   Mutation: {
     async signUp(obj, args, context, info) {
       const { SignUpSchema } = require('../validation/schemas')
       const bcrypt = require('bcryptjs')
-
-      // session({
-      //   name: 'sessFromGraphQL',
-      //   secret: process.env.SESSION_SECRET,
-      //   cookie: {
-      //     maxAge: 60 * 60 * 8, // 8 hours,
-      //     httpOnly: true,
-      //     secure: process.env.NODE_ENV === 'production',
-      //     path: '/',
-      //     sameSite: 'lax',
-      //   },
-      // })
 
       // console.log(context.req)
 
