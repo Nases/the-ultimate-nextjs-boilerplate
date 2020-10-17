@@ -6,6 +6,8 @@ const apolloServer = new ApolloServer({
   context(ctx) {
     return ctx
   },
+  introspection: true,
+  playground: true,
 })
 
 export const config = {
