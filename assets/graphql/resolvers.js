@@ -65,21 +65,26 @@ export const resolvers = {
     async signUp(obj, args, context, info) {
       const { SignUpSchema } = require('../validation/schemas')
       const bcrypt = require('bcryptjs')
-
       const { email, password, confirmPassword } = args
+
+      console.log('1')
 
       const user = await SignUpSchema.validate({
         email: email,
         password: password,
         confirmPassword: confirmPassword
       })
-        .then(values => {
+        .then(async function (values) {
+          console.log('2')
+          // const tryOut = setTimeout(() => {
+          //   return ('heyyy')
+          // }, (4000))
+          // return tryOut()
           User.exists({ email }, (err, exists) => {
-            console.log('1')
-
+            console.log('3')
             if (exists) {
               // User email exists
-              res.status(406).send('This email is already registered.')
+              throw new Error('This email is already registered.')
             } else {
               // User email does not exist
               bcrypt.genSalt(10, (err, salt) => {
@@ -110,12 +115,12 @@ export const resolvers = {
           })
         })
         .catch(err => {
+          console.log('fail?')
           throw err
-          res.status(406).send('Something went wrong, please try again later.')
         })
 
-      // return user
-      // return User.find({})
+      return user
+      console.log('mb did not get inside even')
     }
   },
 }
