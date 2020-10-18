@@ -31,7 +31,7 @@ const PricingCard = ({ price, description, includes, buttonColor }) => {
           })}
         </ul>
       </div>
-      <div className="pb-8 px-6 align-bottom">
+      <div className="pb-8 px-6">
         <Button className='mt-8 w-full py-3' color={buttonColor}>Upgrade & Download</Button>
       </div>
     </div>
