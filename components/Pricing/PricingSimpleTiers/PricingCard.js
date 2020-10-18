@@ -21,9 +21,8 @@ const PricingCard = ({ price, description, includes, buttonColor }) => {
           <span className="text-4xl leading-10 font-extrabold text-gray-900">{price}</span>
         </p>
         <p className="mt-4 text-sm leading-5 text-gray-500">{description}</p>
-        <Button className='mt-8 w-full py-3' color={buttonColor}>Upgrade & Download</Button>
       </div>
-      <div className="pb-8 px-6">
+      <div className="px-6">
         <ul className="mt-8 space-y-4">
           {includes?.map(value => {
             return (
@@ -31,6 +30,9 @@ const PricingCard = ({ price, description, includes, buttonColor }) => {
             )
           })}
         </ul>
+      </div>
+      <div className="pb-8 px-6 align-bottom">
+        <Button className='mt-8 w-full py-3' color={buttonColor}>Upgrade & Download</Button>
       </div>
     </div>
   )
