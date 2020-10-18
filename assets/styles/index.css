@@ -143,7 +143,10 @@ input[type="password"] {
 }
 /* nprogress page loading bar end */
 
-
+.-my-2px {
+  margin-bottom: -1px;
+  margin-top: -1px
+}
 
 
 /* add custom component classes before utilities (tailwindcss suggestion) */
