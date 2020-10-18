@@ -2,7 +2,7 @@ import { serialize, parse } from 'cookie'
 
 const TOKEN_NAME = 'session-token'
 
-export const MAX_AGE = 60 * 60 * 8 // 8 hours
+export const MAX_AGE = 60 * 60 * 24 * 365 // 365 days
 
 export function setTokenCookie(res, token) {
   const cookie = serialize(TOKEN_NAME, token, {

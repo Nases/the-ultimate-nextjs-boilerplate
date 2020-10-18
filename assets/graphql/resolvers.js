@@ -44,7 +44,7 @@ export const resolvers = {
       }
     },
     async setUserData(obj, args, context, info) {
-      await setUserSession(context.res, { id: 'sdasd this is id yoooo', email: '212121 this is email yo' })
+      await setUserSession(context.res, '5f606c4be7788e07f0d23efd')
       return 'User session might be set. Check cookie session-token cookie.'
     },
     logOut(obj, args, context, info) {
