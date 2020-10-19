@@ -6,7 +6,7 @@ const Steps = () => {
           {/* <!-- Completed Step --> */}
           <a href="#" className="group flex items-center w-full">
             <div className="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
-              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800 transition ease-in-out duration-150">
+              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-primary-600 rounded-full group-hover:bg-primary-800 transition ease-in-out duration-150">
                 <svg className="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
@@ -25,10 +25,10 @@ const Steps = () => {
         <li className="relative md:flex-1 md:flex">
           {/* <!-- Current Step --> */}
           <div className="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
-            <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-indigo-600 rounded-full">
-              <p className="text-indigo-600">02</p>
+            <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-primary-600 rounded-full">
+              <p className="text-primary-600">02</p>
             </div>
-            <p className="text-sm leading-5 font-medium text-indigo-600">Choose plan</p>
+            <p className="text-sm leading-5 font-medium text-primary-600">Choose plan</p>
           </div>
 
           <div className="hidden md:block absolute top-0 right-0 h-full w-5">
