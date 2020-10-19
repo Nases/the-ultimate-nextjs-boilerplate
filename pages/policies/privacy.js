@@ -21,7 +21,7 @@ const Privacy = () => {
             Privacy
           </BreadCrumb>
         </BreadCrumbNav>
-        <div className='prose max-w-none text-common bg-white py-6 md:py-10 md:px-8 my-6 px-6 rounded-lg'>
+        <div className='prose max-w-none text-gray-700 bg-white py-6 md:py-10 md:px-8 my-6 px-6 rounded-lg'>
           <h1>Privacy Policy</h1>
           <h3>Last updated on {lastUpdated}</h3>
           <p>At {companyInfo.name}, accessible from {companyInfo.website}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by {companyInfo.name} and how we use it.</p>

@@ -1,0 +1,227 @@
+
+
+@variants hover, focus, active {
+  .text-common-dark {
+    @apply text-gray-900;
+  }
+  .text-primary {
+    @apply text-orange-500;
+  }
+  .text-primary-dark {
+    @apply text-orange-600;
+  }
+  .text-primary-darker {
+    @apply text-orange-700;
+  }
+  .text-secondary {
+    @apply text-indigo-500;
+  }
+  .text-common {
+    @apply text-gray-700;
+  }
+  .text-common-light {
+    @apply text-gray-500;
+  }
+  .text-common-lighter {
+    @apply text-gray-400;
+  }
+  .bg-primary {
+    @apply bg-orange-500;
+  }
+  .bg-primary-light {
+    @apply bg-orange-400;
+  }
+  .bg-primary-dark {
+    @apply bg-orange-600;
+  }
+  .bg-primary-darker {
+    @apply bg-orange-700;
+  }
+  .bg-secondary {
+    @apply bg-indigo-500;
+  }
+  .border-primary {
+    @apply border-orange-500;
+  }
+  .border-primary-dark {
+    @apply border-orange-600;
+  }
+  .border-primary-darker {
+    @apply border-orange-700;
+  }
+  .border-common {
+    @apply border-gray-200;
+  }
+}
+
+
+@variants hover, focus, active {
+  .text-primary-100 {
+    @apply text-orange-100;
+  }
+  .text-primary-200 {
+    @apply text-orange-200;
+  }
+  .text-primary-300 {
+    @apply text-orange-300;
+  }
+  .text-primary-400 {
+    @apply text-orange-400;
+  }
+  .text-primary-500 {
+    @apply text-orange-500;
+  }
+  .text-primary-600 {
+    @apply text-orange-600;
+  }
+  .text-primary-700 {
+    @apply text-orange-700;
+  }
+  .text-primary-800 {
+    @apply text-orange-800;
+  }
+  .text-primary-900 {
+    @apply text-orange-900;
+  }
+  
+  .text-secondary-100 {
+    @apply text-purple-100;
+  }
+  .text-secondary-200 {
+    @apply text-purple-200;
+  }
+  .text-secondary-300 {
+    @apply text-purple-300;
+  }
+  .text-secondary-400 {
+    @apply text-purple-400;
+  }
+  .text-secondary-500 {
+    @apply text-purple-500;
+  }
+  .text-secondary-600 {
+    @apply text-purple-600;
+  }
+  .text-secondary-700 {
+    @apply text-purple-700;
+  }
+  .text-secondary-800 {
+    @apply text-purple-800;
+  }
+  .text-secondary-900 {
+    @apply text-purple-900;
+  }
+
+  
+  .bg-primary-100 {
+    @apply bg-orange-100;
+  }
+  .bg-primary-200 {
+    @apply bg-orange-200;
+  }
+  .bg-primary-300 {
+    @apply bg-orange-300;
+  }
+  .bg-primary-400 {
+    @apply bg-orange-400;
+  }
+  .bg-primary-500 {
+    @apply bg-orange-500;
+  }
+  .bg-primary-600 {
+    @apply bg-orange-600;
+  }
+  .bg-primary-700 {
+    @apply bg-orange-700;
+  }
+  .bg-primary-800 {
+    @apply bg-orange-800;
+  }
+  .bg-primary-900 {
+    @apply bg-orange-900;
+  }
+  
+  .bg-secondary-100 {
+    @apply bg-purple-100;
+  }
+  .bg-secondary-200 {
+    @apply bg-purple-200;
+  }
+  .bg-secondary-300 {
+    @apply bg-purple-300;
+  }
+  .bg-secondary-400 {
+    @apply bg-purple-400;
+  }
+  .bg-secondary-500 {
+    @apply bg-purple-500;
+  }
+  .bg-secondary-600 {
+    @apply bg-purple-600;
+  }
+  .bg-secondary-700 {
+    @apply bg-purple-700;
+  }
+  .bg-secondary-800 {
+    @apply bg-purple-800;
+  }
+  .bg-secondary-900 {
+    @apply bg-purple-900;
+  }
+  
+  .border-primary-100 {
+    @apply border-orange-100;
+  }
+  .border-primary-200 {
+    @apply border-orange-200;
+  }
+  .border-primary-300 {
+    @apply border-orange-300;
+  }
+  .border-primary-400 {
+    @apply border-orange-400;
+  }
+  .border-primary-500 {
+    @apply border-orange-500;
+  }
+  .border-primary-600 {
+    @apply border-orange-600;
+  }
+  .border-primary-700 {
+    @apply border-orange-700;
+  }
+  .border-primary-800 {
+    @apply border-orange-800;
+  }
+  .border-primary-900 {
+    @apply border-orange-900;
+  }
+  
+  .border-secondary-100 {
+    @apply border-purple-100;
+  }
+  .border-secondary-200 {
+    @apply border-purple-200;
+  }
+  .border-secondary-300 {
+    @apply border-purple-300;
+  }
+  .border-secondary-400 {
+    @apply border-purple-400;
+  }
+  .border-secondary-500 {
+    @apply border-purple-500;
+  }
+  .border-secondary-600 {
+    @apply border-purple-600;
+  }
+  .border-secondary-700 {
+    @apply border-purple-700;
+  }
+  .border-secondary-800 {
+    @apply border-purple-800;
+  }
+  .border-secondary-900 {
+    @apply border-purple-900;
+  }
+}

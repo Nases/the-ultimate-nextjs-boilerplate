@@ -6,61 +6,8 @@
 /* primary color orange-500 */
 /* secondary color indigo-500 */
 @import 'animations.css';
+@import 'colorSchema.css';
 
-
-@variants hover, focus, active {
-  .text-common-dark {
-    @apply text-gray-900;
-  }
-  .text-primary {
-    @apply text-orange-500;
-  }
-  .text-primary-dark {
-    @apply text-orange-600;
-  }
-  .text-primary-darker {
-    @apply text-orange-700;
-  }
-  .text-secondary {
-    @apply text-indigo-500;
-  }
-  .text-common {
-    @apply text-gray-700;
-  }
-  .text-common-light {
-    @apply text-gray-500;
-  }
-  .text-common-lighter {
-    @apply text-gray-400;
-  }
-  .bg-primary {
-    @apply bg-orange-500;
-  }
-  .bg-primary-light {
-    @apply bg-orange-400;
-  }
-  .bg-primary-dark {
-    @apply bg-orange-600;
-  }
-  .bg-primary-darker {
-    @apply bg-orange-700;
-  }
-  .bg-secondary {
-    @apply bg-indigo-500;
-  }
-  .border-primary {
-    @apply border-orange-500;
-  }
-  .border-primary-dark {
-    @apply border-orange-600;
-  }
-  .border-primary-darker {
-    @apply border-orange-700;
-  }
-  .border-common {
-    @apply border-gray-200;
-  }
-}
 
 .font-primary {
   font-family: Montserrat,Arial,Helvetica,sans-serif;

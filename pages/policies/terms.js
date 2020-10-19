@@ -21,7 +21,7 @@ const Terms = () => {
             Terms
           </BreadCrumb>
         </BreadCrumbNav>
-        <div className='prose max-w-none text-common bg-white py-6 md:py-10 md:px-8 my-6 px-6 rounded-lg'>
+        <div className='prose max-w-none text-gray-700 bg-white py-6 md:py-10 md:px-8 my-6 px-6 rounded-lg'>
           <h1>Terms and Conditions</h1>
           <h3>Last updated on {lastUpdated}</h3>
           <p>Welcome to {companyInfo.name}.</p>

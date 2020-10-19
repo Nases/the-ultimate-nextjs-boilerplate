@@ -8,12 +8,12 @@ const UserSideBarItem = ({ children, href, icon }) => {
 
   return (
     <Link href={href}>
-      <a className={`${(router.pathname == href || (children == 'Users' && router.pathname == '/admin/user/[id]')) ? 'border-primary-dark bg-orange-50 text-primary-dark' : 'border-transparent text-common hover:text-common-dark hover:bg-gray-100'} flex items-center px-3 py-2 text-sm leading-5 font-medium border-l-2`}>
+      <a className={`${(router.pathname == href || (children == 'Users' && router.pathname == '/admin/user/[id]')) ? 'border-primary-600 bg-orange-50 text-primary-600' : 'border-transparent text-gray-700 hover:text-gray-900 hover:bg-gray-100'} flex items-center px-3 py-2 text-sm leading-5 font-medium border-l-2`}>
         <div className="flex justify-center items-center mr-3 h-6 w-6">
           <i className={`fas fa-${icon} fa-lg`}></i>
         </div>
         <div>{children}</div>
-        {(children == 'Users' && router.pathname == '/admin/user/[id]') ? <div className='ml-auto text-primary-dark'><i className="fas fa-ellipsis-h"></i></div> : ''}
+        {(children == 'Users' && router.pathname == '/admin/user/[id]') ? <div className='ml-auto text-primary-600'><i className="fas fa-ellipsis-h"></i></div> : ''}
       </a>
     </Link>
   )
