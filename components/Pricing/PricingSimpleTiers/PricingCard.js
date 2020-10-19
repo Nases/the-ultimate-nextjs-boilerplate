@@ -13,23 +13,25 @@ const Includes = ({ children }) => {
 
 const PricingCard = ({ price, description, includes, buttonColor }) => {
   return (
-    <div className="rounded-lg shadow-sm bg-white">
-      <div className="px-6 text-center">
-        <p className="mt-8 align-top inline-flex">
-          <span className='font-bold mr-2 mt-1'>$</span>
-          {' '}
-          <span className="text-4xl leading-10 font-extrabold text-gray-900">{price}</span>
-        </p>
-        <p className="mt-4 text-sm leading-5 text-gray-500">{description}</p>
-      </div>
-      <div className="px-6">
-        <ul className="mt-8 space-y-4">
-          {includes?.map(value => {
-            return (
-              <Includes>{value}</Includes>
-            )
-          })}
-        </ul>
+    <div className="rounded-lg shadow-sm bg-white flex justify-between flex-col">
+      <div>
+        <div className="px-6 text-center">
+          <p className="mt-8 align-top inline-flex">
+            <span className='font-bold mr-2 mt-1'>$</span>
+            {' '}
+            <span className="text-4xl leading-10 font-extrabold text-gray-900">{price}</span>
+          </p>
+          <p className="mt-4 text-sm leading-5 text-gray-500">{description}</p>
+        </div>
+        <div className="px-6">
+          <ul className="mt-8 space-y-4">
+            {includes?.map(value => {
+              return (
+                <Includes>{value}</Includes>
+              )
+            })}
+          </ul>
+        </div>
       </div>
       <div className="pb-8 px-6">
         <Button className='mt-8 w-full py-3' color={buttonColor}>Upgrade & Download</Button>
