@@ -15,9 +15,9 @@ const PricingSimpleTiers = () => {
               <div className='blink mr-3 text-green-400 text-xl'>●</div>
               <div>
                 6554 people have taken
-              <br />
-              the 7 Day Trial today
-            </div>
+                <br />
+                the 7 Day Trial today
+              </div>
             </div>
           </div>
           <PricingCard

@@ -3,6 +3,7 @@ import LayoutIndent from '../components/Layout/LayoutIndent'
 import { companyInfo } from '../assets/settings'
 import PricingSimpleTiers from '../components/Pricing/PricingSimpleTiers/PricingSimpleTiers'
 import References from '../components/References/References'
+import Steps from '../components/Steps/Steps'
 
 const Pricing = () => {
   var title = `Default title | ${companyInfo.name}`
@@ -10,6 +11,7 @@ const Pricing = () => {
 
   return (
     <Layout title={title} description={description}>
+      <Steps />
       <PricingSimpleTiers />
       <References />
     </Layout>

@@ -21,13 +21,13 @@ const PricingCard = ({ price, description, includes, buttonColor }) => {
             {' '}
             <span className="text-4xl leading-10 font-extrabold text-gray-900">{price}</span>
           </p>
-          <p className="mt-4 text-sm leading-5 text-gray-500">{description}</p>
+          <p className="mt-2 text-sm leading-5 text-gray-500">{description}</p>
         </div>
         <div className="px-6">
           <ul className="mt-8 space-y-4">
             {includes?.map(value => {
               return (
-                <Includes>{value}</Includes>
+                <Includes key={value}>{value}</Includes>
               )
             })}
           </ul>
