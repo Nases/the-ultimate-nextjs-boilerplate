@@ -6,7 +6,7 @@
 /* primary color orange-500 */
 /* secondary color indigo-500 */
 @import 'animations.css';
-@import 'colorSchema.css';
+@import 'color-schema.css';
 
 
 .font-primary {
