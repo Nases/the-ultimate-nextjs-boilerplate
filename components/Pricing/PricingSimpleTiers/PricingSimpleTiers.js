@@ -9,14 +9,14 @@ const PricingSimpleTiers = () => {
           <h1 className="text-3xl font-extrabold text-gray-800 leading-10 text-center">Download Your Attention-Grabbing <br /> Resume Now!</h1>
           <p className="mt-5 md:px-32 text-xl leading-7 text-gray-400 text-center">To download your resume simply sign up for your Premium Membership. As an added bonus, you’ll gain instant access to our Premium Templates and Color Pallete.</p>
         </div>
-        <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3">
+        <div className="mt-20 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3">
           <div className='absolute -mt-12 text-sm text-gray-700'>
             <div className='flex'>
               <div className='blink mr-3 text-green-400 text-xl'>●</div>
               <div>
                 6554 people have taken
-            <br />
-            the 7 Day Trial today
+              <br />
+              the 7 Day Trial today
             </div>
             </div>
           </div>

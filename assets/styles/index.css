@@ -5,6 +5,8 @@
 
 /* primary color orange-500 */
 /* secondary color indigo-500 */
+@import 'animations.css';
+
 
 @variants hover, focus, active {
   .text-common-dark {
@@ -148,15 +150,7 @@ input[type="password"] {
   margin-top: -1px
 }
 
-@keyframes blink {
-  0% {opacity: 0;}
-  50% {opacity: 1;}
-  100% {opacity: 0;}
-}
 
-.blink {
-  animation: blink 2s infinite;
-}
 
 
 /* add custom component classes before utilities (tailwindcss suggestion) */
