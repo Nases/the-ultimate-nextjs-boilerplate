@@ -1,7 +1,7 @@
 const Steps = () => {
   return (
     <nav>
-      <ul className="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
+      <ul className="rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
         <li className="relative md:flex-1 md:flex">
           {/* <!-- Completed Step --> */}
           <a href="#" className="group flex items-center w-full">
