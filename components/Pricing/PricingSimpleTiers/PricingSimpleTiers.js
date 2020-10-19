@@ -1,6 +1,7 @@
 import PricingCard from './PricingCard'
 
 const PricingSimpleTiers = () => {
+
   return (
     <div className="bg-gray-50">
       <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -9,6 +10,16 @@ const PricingSimpleTiers = () => {
           <p className="mt-5 md:px-32 text-xl leading-7 text-gray-400 text-center">To download your resume simply sign up for your Premium Membership. As an added bonus, you’ll gain instant access to our Premium Templates and Color Pallete.</p>
         </div>
         <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3">
+          <div className='absolute -mt-12 text-sm text-gray-700'>
+            <div className='flex'>
+              <div className='blink mr-3 text-green-400 text-xl'>●</div>
+              <div>
+                6554 people have taken
+            <br />
+            the 7 Day Trial today
+            </div>
+            </div>
+          </div>
           <PricingCard
             price={2.95}
             description='7-day trial subscription'

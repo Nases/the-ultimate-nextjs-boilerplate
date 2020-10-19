@@ -143,9 +143,19 @@ input[type="password"] {
 }
 /* nprogress page loading bar end */
 
-.-my-2px {
+.-my-1px {
   margin-bottom: -1px;
   margin-top: -1px
+}
+
+@keyframes blink {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.blink {
+  animation: blink 2s infinite;
 }
 
 
