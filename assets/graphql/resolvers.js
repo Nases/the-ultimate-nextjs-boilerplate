@@ -92,9 +92,10 @@ export const resolvers = {
                   newUser.save()
                     .then(user => {
                       console.log('something is happening')
-                      setUserSession(context.res, user._id)
-                      console.log(user)
-                      return user
+                      setUserSession(context.res, user._id).then(() => {
+                        console.log(user)
+                        return user
+                      })
                     })
                     .catch(err => {
                       throw err

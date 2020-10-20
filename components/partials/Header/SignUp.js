@@ -47,11 +47,11 @@ export const SignUpModal = () => {
         <SignUpForm />
         <div className="mt-3">
           <div className="text-sm leading-5 text-right">
-            <span className='text-gray-700' >
+            <span className='text-gray-700'>
               Already have an account?
             </span>
             {' '}
-            <button onClick={openLoginModal} className="font-medium text-primary-500 hover:text-primary-600 transition ease-in-out duration-150">
+            <button onClick={openLoginModal} className="font-medium text-primary-600 hover:text-primary-700 transition ease-in-out duration-150">
               Log In
             </button>
           </div>

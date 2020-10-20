@@ -6,14 +6,26 @@ import User from '../models/User'
 const SESSION_TOKEN_SECRET = process.env.SESSION_TOKEN_SECRET
 
 
-export async function setUserSession(res, userId) {
+export const setUserSession = (res, userId) => new Promise(async (resolve, reject) => {
   const createdAt = Date.now()
   // Create a session object with a max age that we can validate later
   const obj = { userId, createdAt, maxAge: MAX_AGE }
   const token = await Iron.seal(obj, SESSION_TOKEN_SECRET, Iron.defaults)
 
-  setTokenCookie(res, token)
-}
+  await setTokenCookie(res, token)
+
+  resolve()
+})
+
+
+// export async function setUserSession(res, userId) {
+//   const createdAt = Date.now()
+//   // Create a session object with a max age that we can validate later
+//   const obj = { userId, createdAt, maxAge: MAX_AGE }
+//   const token = await Iron.seal(obj, SESSION_TOKEN_SECRET, Iron.defaults)
+
+//   setTokenCookie(res, token)
+// }
 
 // we need to get user object from db here
 export async function getUserSession(req) {
