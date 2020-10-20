@@ -15,7 +15,7 @@ const MainMenuLink = ({ children, href, isMobile = false }) => {
   } else {
     return (
       <Link href={href}>
-        <a className={`${router.pathname == href ? 'cursor-default border-primary-500 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200'} ml-8 -my-1px inline-flex items-center px-1 pt-1 border-b font-primary font-semibold text-sm leading-5 transition duration-150 ease-in-out`}>
+        <a className={`${router.pathname == href ? 'cursor-default border-primary-500 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200'} ml-8 -my-1px inline-flex items-center px-1 pt-1 border-b-2 font-primary font-semibold text-sm leading-5 transition duration-150 ease-in-out`}>
           {children}
         </a>
       </Link>

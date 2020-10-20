@@ -67,24 +67,18 @@ export const resolvers = {
       const bcrypt = require('bcryptjs')
       const { email, password, confirmPassword } = args
 
-      console.log('1')
-
-      const user = await SignUpSchema.validate({
+      return SignUpSchema.validate({
         email: email,
         password: password,
         confirmPassword: confirmPassword
       })
         .then(async function (values) {
-          console.log('2')
-          // const tryOut = setTimeout(() => {
-          //   return ('heyyy')
-          // }, (4000))
-          // return tryOut()
           User.exists({ email }, (err, exists) => {
             console.log('3')
             if (exists) {
               // User email exists
-              throw new Error('This email is already registered.')
+              console.log('This email is already registered.')
+              // throw new Error('This email is already registered.')
             } else {
               // User email does not exist
               bcrypt.genSalt(10, (err, salt) => {
@@ -118,9 +112,6 @@ export const resolvers = {
           console.log('fail?')
           throw err
         })
-
-      return user
-      console.log('mb did not get inside even')
     }
   },
 }
