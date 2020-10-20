@@ -33,8 +33,6 @@ const AccordionItem = ({ children, id }) => {
   const accordionState = useContext(AccordionStateContext)
   const setCurrentId = accordionState.setCurrentId
   const currentId = accordionState.currentId
-
-  // const [currentId, setCurrentId] = useState(null)
   var active = currentId === id
 
   return (
@@ -81,7 +79,7 @@ const AccordionBody = ({ children }) => {
 
   return (
     <dd
-      className='pr-12 overflow-hidden transition-all duration-200 ease'
+      className='pr-12 overflow-hidden transition-all duration-200 ease-linear'
       style={{
         maxHeight: active ? 100 : 0
       }}
