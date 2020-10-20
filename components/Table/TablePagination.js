@@ -14,7 +14,7 @@ const TablePagination = ({ totalUsersCount, currentPage, setCurrentPage, limit }
 
   const PageNumber = ({ active, children, onClick }) => {
     return (
-      <a onClick={onClick} className={`${active ? 'bg-primary-500 font-bold text-white' : 'bg-white font-medium text-gray-700 hover:bg-gray-50'} -ml-px relative inline-flex items-center px-4 py-2 cursor-pointer border border-gray-300 text-sm leading-5 focus:outline-none`}>
+      <a onClick={onClick} className={`${active ? 'bg-primary-600 font-bold text-white' : 'bg-white font-medium text-gray-700 hover:bg-gray-50'} -ml-px relative inline-flex items-center px-4 py-2 cursor-pointer border border-gray-300 text-sm leading-5 focus:outline-none`}>
         {children}
       </a>
     )

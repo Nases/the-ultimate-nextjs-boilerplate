@@ -58,7 +58,7 @@ const RightSideDesktop = () => {
             }
             <div ref={desktopProfileMenuNode} className="ml-3 relative">
               <div>
-                <button onClick={toggleDropdown} className="flex text-sm border-2 border-transparent rounded-full hover:text-primary-500 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                <button onClick={toggleDropdown} className="flex text-sm border-2 border-transparent rounded-full hover:text-primary-600 transition duration-150 ease-in-out" id="user-menu" aria-label="User menu" aria-haspopup="true">
                   <span>
                     {userData.data.email}
                     {' '}

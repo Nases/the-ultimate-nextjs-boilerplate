@@ -9,7 +9,7 @@ const TableHead = ({ options, toggleSort }) => {
   }, [isReversed])
 
   return (
-    <thead className='bg-teal-700 text-white'>
+    <thead className='bg-primary-700 text-white'>
       <tr>
         {options.map(value => {
           return (

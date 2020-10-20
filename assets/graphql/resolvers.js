@@ -74,7 +74,6 @@ export const resolvers = {
       })
         .then(async function (values) {
           User.exists({ email }, (err, exists) => {
-            console.log('3')
             if (exists) {
               // User email exists
               console.log('This email is already registered.')
@@ -94,11 +93,8 @@ export const resolvers = {
                     .then(user => {
                       console.log('something is happening')
                       setUserSession(context.res, user._id)
+                      console.log(user)
                       return user
-                      // req.logIn(user, err => {
-                      //   if (err) throw err
-                      //   res.send(user)
-                      // })
                     })
                     .catch(err => {
                       throw err

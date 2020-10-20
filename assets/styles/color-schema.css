@@ -56,6 +56,9 @@
     @apply text-purple-900;
   }
 
+  .bg-primary-50 {
+    @apply bg-indigo-50;
+  }
   .bg-primary-100 {
     @apply bg-indigo-100;
   }
@@ -84,6 +87,9 @@
     @apply bg-indigo-900;
   }
   
+  .bg-secondary-50 {
+    @apply bg-purple-50;
+  }
   .bg-secondary-100 {
     @apply bg-purple-100;
   }

@@ -20,15 +20,10 @@ const SignUpForm = () => {
 
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
-      signUp(email: $email, password: $password, confirmPassword: $confirmPassword) {
-        _id
-        email
-      }
+      signUp(email: $email, password: $password, confirmPassword: $confirmPassword)
     }
   `
-  const [signUp] = useMutation(SignUpMutation)
-
-  signUp()
+  const [signUp, { loading, error }] = useMutation(SignUpMutation)
 
   return (
     <div>
@@ -50,8 +45,10 @@ const SignUpForm = () => {
               confirmPassword: values.confirmPassword
             }
           })
-            .then(value => console.log(value))
-            .catch(err => console.log(err))
+
+          if (error) console.log(error)
+          if (loading) console.log('Mutation made the request, we are on loading state.')
+
           // userUtils.signUp(values.email, values.password, values.confirmPassword)
           //   .then(response => {
           //     dispatchUserData({

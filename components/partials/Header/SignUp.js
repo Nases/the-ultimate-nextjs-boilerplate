@@ -37,10 +37,10 @@ export const SignUpModal = () => {
       onRequestClose={closeModal}
       contentLabel="Sign Up Modal"
     >
-      <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">
-        <div className="underline-primary text-center">
+      <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 min-w-40">
+        <div className="text-center pb-2">
           <i className="text-primary-600 fas fa-user-plus fa-3x"></i>
-          <h2 className="text-gray-700 mt-6 text-3xl leading-9 font-extrabold">
+          <h2 className="text-gray-700 mt-4 text-3xl leading-9 font-extrabold">
             Sign Up
           </h2>
         </div>
