@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, createContext, useContext } from 'react'
 
 
 const AccordionStateContext = createContext()
@@ -7,7 +7,7 @@ const Accordion = ({ children }) => {
   const [currentId, setCurrentId] = useState(null)
 
   return (
-    <AccordionStateContext.Provider value={{ currentId: currentId, setCurrentId }}>
+    <AccordionStateContext.Provider value={{ currentId, setCurrentId }}>
       <div className="bg-gray-50">
         <div className="max-w-screen-xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
@@ -36,9 +36,9 @@ const AccordionItem = ({ children, id }) => {
   var active = currentId === id
 
   return (
-    <AccordionItemStateContext.Provider value={{ id: id, currentId: currentId }}>
+    <AccordionItemStateContext.Provider value={{ active }}>
       <div onClick={() => {
-        setCurrentId(prevState => prevState === id ? false : id)
+        setCurrentId(prevState => prevState === id ? null : id)
       }}
         className={`${active ? 'text-primary-600' : 'text-gray-900'} py-6 border-b border-gray-200 cursor-pointer hover:text-primary-600`}
       >
@@ -50,9 +50,7 @@ const AccordionItem = ({ children, id }) => {
 
 const AccordionHead = ({ children }) => {
   const accordionItemState = useContext(AccordionItemStateContext)
-  var id = accordionItemState.id
-  var currentId = accordionItemState.currentId
-  var active = currentId === id
+  var active = accordionItemState.active
 
   return (
     <dt className="text-lg leading-7">
@@ -72,10 +70,7 @@ const AccordionHead = ({ children }) => {
 
 const AccordionBody = ({ children }) => {
   const accordionItemState = useContext(AccordionItemStateContext)
-  var id = accordionItemState.id
-  var currentId = accordionItemState.currentId
-  var active = currentId === id
-  console.log('asd')
+  var active = accordionItemState.active
 
   return (
     <dd
