@@ -1,11 +1,11 @@
 const Button = (props) => {
 
   const colors = {
-    primary: 'text-white bg-primary-500 hover:bg-primary-600 active:bg-primary-700',
-    secondary: 'text-primary-500 bg-white border border-primary-500 hover:text-primary-600 hover:border-primary-600 active:text-primary-700 active:border-primary-700',
-    link: 'text-gray-900 font-semibold hover:text-primary-500 pr-0 pl-0',
-    gamifyPrimary: 'text-white border-b-4 border-primary-600 bg-primary-500 hover:bg-primary-600 hover:border-primary-800 active:border-b-0 active:border-t-4',
-    gamifySecondary: 'text-primary-500 border border-b-4 border-primary-600 bg-white hover:text-primary-600 hover:border-primary-800 active:border active:border-t-4'
+    primary: 'text-white bg-primary-600 hover:bg-primary-700 active:bg-primary-700',
+    secondary: 'text-primary-600 bg-white border border-primary-600 hover:text-primary-700 hover:border-primary-700 active:text-primary-700 active:border-primary-700',
+    link: 'text-gray-900 font-semibold hover:text-primary-600 pr-0 pl-0',
+    gamifyPrimary: 'text-white border-b-4 border-primary-800 bg-primary-600 hover:bg-primary-700 hover:border-primary-900 active:border-b-0 active:border-t-4',
+    gamifySecondary: 'text-primary-600 border border-b-4 border-primary-600 bg-white hover:text-primary-700 hover:border-primary-700 active:border active:border-t-4'
   }
 
   const sizes = {

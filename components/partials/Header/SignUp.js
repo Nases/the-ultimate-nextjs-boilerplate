@@ -9,7 +9,7 @@ export const SignUpButton = ({ isMobile = false }) => {
   }
 
   return (
-    <button onClick={openModal} type="button" className={isMobile ? 'block mt-1 px-4 py-2 hover:border-gray-300 text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out' : 'inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-500 hover:bg-primary-600 transition ease-in-out duration-150'}>
+    <button onClick={openModal} type="button" className={isMobile ? 'block mt-1 px-4 py-2 hover:border-gray-300 text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out' : 'inline-flex items-center font-primary font-semibold uppercase h-10 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 transition ease-in-out duration-150'}>
       Sign Up
     </button>
   )

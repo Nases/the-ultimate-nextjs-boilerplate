@@ -1,3 +1,5 @@
+import Button from '../Button/Button'
+
 const CTAJustified = () => {
   return (
     <>
@@ -9,16 +11,8 @@ const CTAJustified = () => {
             <span className="text-primary-600">Start your free trial today.</span>
           </h2>
           <div className="mt-8 flex lg:flex-shrink-0 lg:mt-0">
-            <div className="inline-flex rounded-md shadow">
-              <a href="#" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-                Get started
-              </a>
-            </div>
-            <div className="ml-3 inline-flex rounded-md shadow">
-              <a href="#" className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-primary-600 bg-white hover:text-primary-500 focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
-                Learn more
-              </a>
-            </div>
+            <Button className='mr-3' color='gamifyPrimary' size='lg'>Get started</Button>
+            <Button color='gamifySecondary' size='lg'>Learn more</Button>
           </div>
         </div>
       </div>
