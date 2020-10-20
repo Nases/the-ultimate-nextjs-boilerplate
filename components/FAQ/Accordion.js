@@ -28,7 +28,7 @@ const AccordionItem = ({ children }) => {
 
   return (
     <AccordionStateContext.Provider value={{ active: active }}>
-      <div onClick={() => setActive(prevState => !prevState)} className="py-6 border-b border-gray-200 cursor-pointer">
+      <div onClick={() => setActive(prevState => !prevState)} className={`${active ? 'text-primary-600' : 'text-gray-900'} py-6 border-b border-gray-200 cursor-pointer  hover:text-primary-600`}>
         {children}
       </div>
     </AccordionStateContext.Provider>
@@ -41,11 +41,11 @@ const AccordionHead = ({ active, children }) => {
 
   return (
     <dt className="text-lg leading-7">
-      <button className="text-left w-full flex justify-between items-start text-gray-400 focus:outline-none">
-        <span className="font-medium text-gray-900">
+      <button className="text-left w-full flex justify-between items-start focus:outline-none">
+        <span className='font-medium'>
           {children}
         </span>
-        <span className="ml-6 h-7 flex items-center">
+        <span className="ml-6 h-7 flex items-center text-gray-400">
           <svg className={`${active ? 'rotate-0' : 'rotate-180'} h-6 w-6 transform transition duration-200 ease-in-out`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
           </svg>

@@ -42,7 +42,7 @@ export const LoginModal = () => {
     >
       <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">
         <div className="underline-primary text-center">
-          <i className="text-primary-500 fas fa-sign-in-alt fa-3x"></i>
+          <i className="text-primary-600 fas fa-sign-in-alt fa-3x"></i>
           <h2 className="text-gray-700 mt-6 text-3xl leading-9 font-extrabold">
             Log In
           </h2>
