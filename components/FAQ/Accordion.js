@@ -29,7 +29,7 @@ const Accordion = ({ children }) => {
 
 const AccordionItemStateContext = createContext()
 
-const AccordionItem = ({ children, id }) => {
+const AccordionItem = ({ children, id, noBorderBottom }) => {
   const accordionState = useContext(AccordionStateContext)
   const setCurrentId = accordionState.setCurrentId
   const currentId = accordionState.currentId
@@ -40,7 +40,7 @@ const AccordionItem = ({ children, id }) => {
       <div onClick={() => {
         setCurrentId(prevState => prevState === id ? null : id)
       }}
-        className={`${active ? 'text-primary-600' : 'text-gray-900'} py-6 border-b border-gray-200 cursor-pointer hover:text-primary-600`}
+        className={`${active ? 'text-primary-600' : 'text-gray-900'} ${noBorderBottom ? '' : 'border-b border-gray-200'} py-6 cursor-pointer hover:text-primary-600`}
       >
         {children}
       </div>

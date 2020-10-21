@@ -28,7 +28,7 @@ const FAQAccordion = () => {
             I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.
           </Accordion.Body>
         </Accordion.Item>
-        <Accordion.Item id={4}>
+        <Accordion.Item id={4} noBorderBottom>
           <Accordion.Head>
             What's the best thing about Switzerland?
           </Accordion.Head>

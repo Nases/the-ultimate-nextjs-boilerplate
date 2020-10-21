@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='absolute text-center -mt-5 min-w-full'>
           <i aria-hidden className="fas fa-kiwi-bird fa-lg text-gray-400 hover:text-primary-600"></i>
         </div>
-        <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div className="max-w-screen-xl mx-auto py-8 px-4 sm:px-6 lg:py-12 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="xl:col-span-1">
               <Link href="/">
