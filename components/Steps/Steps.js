@@ -26,7 +26,7 @@ const Steps = () => {
           {/* <!-- Current Step --> */}
           <div className="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
             <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-primary-600 rounded-full">
-              <p className="text-primary-600">02</p>
+              <p className="text-primary-600">2</p>
             </div>
             <p className="text-sm leading-5 font-medium text-primary-600">Choose plan</p>
           </div>
@@ -43,7 +43,7 @@ const Steps = () => {
           <a href="#" className="group flex items-center">
             <div className="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
               <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400 transition ease-in-out duration-150">
-                <span className="text-gray-500 group-hover:text-gray-900 transition ease-in-out duration-150">03</span>
+                <span className="text-gray-500 group-hover:text-gray-900 transition ease-in-out duration-150">3</span>
               </div>
               <p className="text-sm leading-5 font-medium text-gray-500 group-hover:text-gray-900 transition ease-in-out duration-150">Payment details</p>
             </div>
@@ -61,7 +61,7 @@ const Steps = () => {
           <a href="#" className="group flex items-center">
             <div className="px-6 py-4 flex items-center text-sm leading-5 font-medium space-x-4">
               <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full group-hover:border-gray-400 transition ease-in-out duration-150">
-                <span className="text-gray-500 group-hover:text-gray-900 transition ease-in-out duration-150">04</span>
+                <span className="text-gray-500 group-hover:text-gray-900 transition ease-in-out duration-150">4</span>
               </div>
               <p className="text-sm leading-5 font-medium text-gray-500 group-hover:text-gray-900 transition ease-in-out duration-150">Download resume</p>
             </div>
