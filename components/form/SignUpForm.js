@@ -18,16 +18,25 @@ const SignUpForm = () => {
   const dispatchAuthModal = useDispatchAuthModal()
   const signUpRedirectPath = settings.customerSignUpRedirectPath
 
+
+
+  const UserFragment = gql`
+    fragment UserFragment on Person {
+      registrationDate
+    }
+  `
+
+
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
       signUp(email: $email, password: $password, confirmPassword: $confirmPassword) {
+        ...UserFragment
         _id
       }
     }
+    ${UserFragment}
   `
   const [signUp, { loading, error, data }] = useMutation(SignUpMutation)
-  console.log(loading)
-  console.log(data)
 
 
   return (
@@ -50,13 +59,11 @@ const SignUpForm = () => {
               confirmPassword: values.confirmPassword
             }
           }).then((value) => {
-            // console.log(data)
-            // console.log(loading)
+            console.log(value.data.signUp)
+          }).catch(err => {
+            setFieldError('serverError', err.message)
           })
-            .catch(err => setFieldError('serverError', err.message))
 
-          // if (error) setFieldError('serverError', error.message)
-          if (loading) console.log('Mutation made the request, we are on loading state.')
 
           // userUtils.signUp(values.email, values.password, values.confirmPassword)
           //   .then(response => {
