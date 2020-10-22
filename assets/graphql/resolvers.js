@@ -62,53 +62,27 @@ export const resolvers = {
     }
   },
   Mutation: {
-    async signUp(obj, args, context, info) {
+    signUp(obj, { email, password, confirmPassword }, { req, res }, info) {
       const { SignUpSchema } = require('../validation/schemas')
       const bcrypt = require('bcryptjs')
-      const { email, password, confirmPassword } = args
 
-      return SignUpSchema.validate({
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword
-      })
-        .then(async function (values) {
-          User.exists({ email }, (err, exists) => {
-            if (exists) {
-              // User email exists
-              console.log('This email is already registered.')
-              // throw new Error('This email is already registered.')
-            } else {
-              // User email does not exist
-              bcrypt.genSalt(10, (err, salt) => {
-                if (err) throw err
-                bcrypt.hash(password, salt, (err, hash) => {
-                  if (err) throw err
-                  const newUser = new User({
-                    email,
-                    password: hash
-                  })
-                  // Save user to mongodb
-                  newUser.save()
-                    .then(user => {
-                      console.log('something is happening')
-                      setUserSession(context.res, user._id).then(() => {
-                        console.log(user)
-                        return user
-                      })
-                    })
-                    .catch(err => {
-                      throw err
-                    })
-                })
-              })
-            }
-          })
-        })
-        .catch(err => {
-          console.log('fail?')
-          throw err
-        })
+      return SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
+        await User.exists({ email }).then(async exists => {
+          if (!exists) {
+            await bcrypt.genSalt(10).then(async salt => {
+              await bcrypt.hash(password, salt).then(async hash => {
+                await User({ email, password: hash }).save().then(async user => {
+                  await setUserSession(res, user._id).then(() => {
+                    console.log(user)
+                    // return user
+                    return 'user'
+                  }).catch(err => { throw err })
+                }).catch(err => { throw err })
+              }).catch(err => { throw err })
+            }).catch(err => { throw err })
+          } else { throw new Error('This email is already registered.') }
+        }).catch(err => { throw err })
+      }).catch(err => { throw err })
     }
   },
 }

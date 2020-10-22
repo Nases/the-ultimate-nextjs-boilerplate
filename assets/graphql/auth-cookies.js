@@ -17,18 +17,6 @@ export async function setTokenCookie(res, token) {
   await res.setHeader('Set-Cookie', cookie)
 }
 
-// export function setTokenCookie(res, token) {
-//   const cookie = serialize(TOKEN_NAME, token, {
-//     maxAge: MAX_AGE,
-//     expires: new Date(Date.now() + MAX_AGE * 1000),
-//     httpOnly: true,
-//     secure: process.env.NODE_ENV === 'production',
-//     path: '/',
-//     sameSite: 'lax',
-//   })
-
-//   res.setHeader('Set-Cookie', cookie)
-// }
 
 export const removeSessionTokenCookie = res => {
   return (

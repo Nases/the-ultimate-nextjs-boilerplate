@@ -23,7 +23,7 @@ const SignUpForm = () => {
       signUp(email: $email, password: $password, confirmPassword: $confirmPassword)
     }
   `
-  const [signUp, { loading, error }] = useMutation(SignUpMutation)
+  const [signUp, { loading, error, data }] = useMutation(SignUpMutation)
 
   return (
     <div>
@@ -45,6 +45,7 @@ const SignUpForm = () => {
               confirmPassword: values.confirmPassword
             }
           })
+          console.log(data)
 
           if (error) console.log(error)
           if (loading) console.log('Mutation made the request, we are on loading state.')
