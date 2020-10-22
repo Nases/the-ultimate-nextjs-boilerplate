@@ -20,7 +20,9 @@ const SignUpForm = () => {
 
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
-      signUp(email: $email, password: $password, confirmPassword: $confirmPassword)
+      signUp(email: $email, password: $password, confirmPassword: $confirmPassword) {
+        _id
+      }
     }
   `
   const [signUp, { loading, error, data }] = useMutation(SignUpMutation)

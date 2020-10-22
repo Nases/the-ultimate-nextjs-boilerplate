@@ -74,8 +74,7 @@ export const resolvers = {
                 return await User({ email, password: hash }).save().then(async user => {
                   return await setUserSession(res, user._id).then(async () => {
                     console.log(user)
-                    // return user
-                    return 'helu boi'
+                    return user
                   }).catch(err => { throw err })
                 }).catch(err => { throw err })
               }).catch(err => { throw err })
