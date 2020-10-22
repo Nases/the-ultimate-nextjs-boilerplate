@@ -62,20 +62,20 @@ export const resolvers = {
     }
   },
   Mutation: {
-    signUp(obj, { email, password, confirmPassword }, { req, res }, info) {
+    async signUp(obj, { email, password, confirmPassword }, { req, res }, info) {
       const { SignUpSchema } = require('../validation/schemas')
       const bcrypt = require('bcryptjs')
 
-      return SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
-        await User.exists({ email }).then(async exists => {
+      return await SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
+        return await User.exists({ email }).then(async exists => {
           if (!exists) {
-            await bcrypt.genSalt(10).then(async salt => {
-              await bcrypt.hash(password, salt).then(async hash => {
-                await User({ email, password: hash }).save().then(async user => {
-                  await setUserSession(res, user._id).then(() => {
+            return await bcrypt.genSalt(10).then(async salt => {
+              return await bcrypt.hash(password, salt).then(async hash => {
+                return await User({ email, password: hash }).save().then(async user => {
+                  return await setUserSession(res, user._id).then(async () => {
                     console.log(user)
                     // return user
-                    return 'user'
+                    return 'helu boi'
                   }).catch(err => { throw err })
                 }).catch(err => { throw err })
               }).catch(err => { throw err })
@@ -83,6 +83,9 @@ export const resolvers = {
           } else { throw new Error('This email is already registered.') }
         }).catch(err => { throw err })
       }).catch(err => { throw err })
+
+
+
     }
   },
 }
