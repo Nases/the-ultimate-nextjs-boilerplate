@@ -25,9 +25,6 @@ export const UserSchema = mongoose.Schema({
     type: String,
     default: null
   },
-  lastPasswordUpdate: {
-    type: Date
-  },
   registrationDate: {
     type: Date,
     default: Date.now

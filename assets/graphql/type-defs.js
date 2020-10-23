@@ -1,6 +1,8 @@
 import { gql } from '@apollo/client'
 
 export const typeDefs = gql`
+  scalar Date
+
   type User {
     _id: ID
     roleId: Int
@@ -9,9 +11,8 @@ export const typeDefs = gql`
     firstName: String
     lastName: String
     address: String
-    lastPasswordUpdate: String
-    registrationDate: String
-    passwordLastUpdated: String
+    registrationDate: Date
+    passwordLastUpdated: Date
     forgotPasswordToken: String
   }
   input SignUpInput {

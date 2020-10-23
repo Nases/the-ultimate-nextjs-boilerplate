@@ -18,6 +18,7 @@ const ChangePassword = () => {
   const user = useUser()
   const userData = user.data
   const userPasswordLastUpdated = moment(userData.passwordLastUpdated).format('MMM DD, YYYY')
+  console.log(userData)
 
   const InfoMenu = () => {
     return (

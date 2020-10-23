@@ -22,8 +22,15 @@ const SignUpForm = () => {
 
   const UserFragment = gql`
     fragment userFields on User {
-      registrationDate
+      roleId
+      email
+      password
       firstName
+      lastName
+      address
+      registrationDate
+      passwordLastUpdated
+      forgotPasswordToken
     }
   `
 
@@ -31,7 +38,6 @@ const SignUpForm = () => {
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
       signUp(email: $email, password: $password, confirmPassword: $confirmPassword) {
         ...userFields
-        _id
       }
     }
     ${UserFragment}
@@ -59,11 +65,24 @@ const SignUpForm = () => {
               confirmPassword: values.confirmPassword
             }
           }).then((value) => {
-            console.log(value.data.signUp)
+            dispatchUserData({
+              type: 'LOGIN',
+              userData: value.data.signUp
+            })
+            dispatchAuthModal({
+              type: 'CLOSE_SIGN_UP_MODAL'
+            })
+            Router.push(signUpRedirectPath)
+            // console.log(response)
+            // setSubmitting(false)
           }).catch(err => {
+            // console.log(error)
+            dispatchUserData({
+              type: 'SET_IS_LOADING_FALSE'
+            })
             setFieldError('serverError', err.message)
+            setSubmitting(false)
           })
-
 
           // userUtils.signUp(values.email, values.password, values.confirmPassword)
           //   .then(response => {
