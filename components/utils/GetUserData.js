@@ -39,7 +39,7 @@ const GetUserData = ({ children }) => {
     //     })
     // }
     // fetchUserData()
-    if (!error && !loading && data.getUserData._id) dispatchUserData({ type: 'LOGIN', userData: data.getUserData })
+    if (!error && !loading && data?.getUserData._id) dispatchUserData({ type: 'LOGIN', userData: data.getUserData })
     if (error) dispatchUserData({ type: 'SET_IS_LOADING_FALSE' })
 
   }, [loading])
