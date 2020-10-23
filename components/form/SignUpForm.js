@@ -21,16 +21,16 @@ const SignUpForm = () => {
 
 
   const UserFragment = gql`
-    fragment UserFragment on Person {
+    fragment userFields on User {
       registrationDate
+      firstName
     }
   `
-
 
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
       signUp(email: $email, password: $password, confirmPassword: $confirmPassword) {
-        ...UserFragment
+        ...userFields
         _id
       }
     }
