@@ -19,7 +19,6 @@ const SignUpForm = () => {
   const signUpRedirectPath = settings.customerSignUpRedirectPath
 
 
-
   const UserFragment = gql`
     fragment userFields on User {
       roleId
