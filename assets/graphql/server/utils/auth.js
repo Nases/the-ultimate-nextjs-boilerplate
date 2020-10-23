@@ -29,6 +29,7 @@ export async function getUserSession(req) {
 
   // Validate the expiration date of the session
   if (Date.now() < expiresAt) {
-    return User.find({ _id: session.userId }).then(value => value)
+    return User.find({ _id: session.userId }).then(value => value[0])
   }
+  return
 }

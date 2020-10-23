@@ -36,7 +36,7 @@ export const resolvers = {
       try {
         const session = await getUserSession(context.req)
         if (session) {
-          return JSON.stringify(session)
+          return session
         }
       } catch {
         return new Error('getUserData error!')

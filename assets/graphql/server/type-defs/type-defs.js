@@ -38,13 +38,12 @@ export const typeDefs = gql`
     users: [User]
     viewer: User
     test: User
-    getUserData: String
+    getUserData: User
     setUserData: String
     logOut: String
   }
   type Mutation {
     signUp(email: String, password: String, confirmPassword: String): User
-    # signUp(input: SignUpInput!): SignUpPayload!
     signIn(input: SignInInput!): SignInPayload!
     signOut: Boolean!
   }
