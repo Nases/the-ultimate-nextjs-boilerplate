@@ -11,6 +11,7 @@ import Router from 'next/router'
 import settings from '../../assets/settings'
 
 import { gql, useMutation } from '@apollo/client'
+import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
 
 const SignUpForm = () => {
@@ -18,20 +19,6 @@ const SignUpForm = () => {
   const dispatchAuthModal = useDispatchAuthModal()
   const signUpRedirectPath = settings.customerSignUpRedirectPath
 
-
-  const UserFragment = gql`
-    fragment userFields on User {
-      roleId
-      email
-      password
-      firstName
-      lastName
-      address
-      registrationDate
-      passwordLastUpdated
-      forgotPasswordToken
-    }
-  `
 
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
