@@ -1,5 +1,5 @@
-import dbConnect from '../middleware/dbConnect'
-import User, { UserSchema } from '../models/User'
+import dbConnect from './dbConnect'
+import User, { UserSchema } from '../../models/User'
 
 import { setUserSession, getUserSession } from './auth'
 import { removeSessionTokenCookie } from './auth-cookies'
@@ -63,7 +63,7 @@ export const resolvers = {
   },
   Mutation: {
     async signUp(obj, { email, password, confirmPassword }, { req, res }, info) {
-      const { SignUpSchema } = require('../validation/schemas')
+      const { SignUpSchema } = require('../../validation/schemas')
       const bcrypt = require('bcryptjs')
 
       return await SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {

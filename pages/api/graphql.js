@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server-micro'
-import { schema } from '../../assets/graphql/schema'
+import { schema } from '../../assets/graphql/server/schema'
 
 const apolloServer = new ApolloServer({
   schema,
