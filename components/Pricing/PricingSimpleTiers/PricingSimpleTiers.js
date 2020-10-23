@@ -24,19 +24,19 @@ const PricingSimpleTiers = () => {
             price={2.95}
             description='7-day trial subscription'
             includes={['Unlimited PDF Downloads', 'Unlimited Resumes', 'Unlimited Cover Letters', 'After 7 days, auto-renews to $24.95 billed every 4 weeks', 'Cancel any time', '7-day money back guarantee']}
-            buttonColor='gamifyPrimary'
+            buttonColor='primary'
           />
           <PricingCard
             price={44.95}
             description='6 months'
             includes={['Unlimited PDF Downloads', 'Unlimited Resumes', 'Unlimited Cover Letters', 'Non-recurring payment. Pay once', '7-day money back guarantee']}
-            buttonColor='gamifySecondary'
+            buttonColor='secondary'
           />
           <PricingCard
             price={74.95}
             description='12 months'
             includes={['Unlimited PDF Downloads', 'Unlimited Resumes', 'Unlimited Cover Letters', 'Non-recurring payment. Pay once', '7-day money back guarantee']}
-            buttonColor='gamifySecondary'
+            buttonColor='secondary'
           />
         </div>
         <div className='mt-6 flex justify-center items-center'>

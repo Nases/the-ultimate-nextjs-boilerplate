@@ -11,8 +11,8 @@ const CTAJustified = () => {
             <span className="text-primary-600">Start your free trial today.</span>
           </h2>
           <div className="mt-8 flex lg:flex-shrink-0 lg:mt-0">
-            <Button className='mr-3' color='gamifyPrimary' size='lg'>Get started</Button>
-            <Button color='gamifySecondary' size='lg'>Learn more</Button>
+            <Button className='mr-3' color='primary' size='lg'>Get started</Button>
+            <Button color='secondary' size='lg'>Learn more</Button>
           </div>
         </div>
       </div>

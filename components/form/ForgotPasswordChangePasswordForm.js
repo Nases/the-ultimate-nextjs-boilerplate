@@ -82,9 +82,9 @@ const ForgotPasswordChangePassword = () => {
               </CardBodyRow>
               <CardBodyRow>
                 <div className='col-span-2'>
-                  <Button type="submit" disabled={isSubmitting} color='gamifyPrimary' className='mt-3'>
+                  <Button type="submit" disabled={isSubmitting} color='primary' className='mt-3'>
                     Change Password
-                </Button>
+                  </Button>
                 </div>
               </CardBodyRow>
             </Form>

@@ -17,10 +17,10 @@ const SimpleCenteredHero = () => {
             </p>
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
-                <Button color='gamifyPrimary' size='xl' className='w-full'>Get started</Button>
+                <Button color='primary' size='xl' className='w-full'>Get started</Button>
               </div>
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                <Button color='gamifySecondary' size='xl' className='w-full'>Live demo</Button>
+                <Button color='secondary' size='xl' className='w-full'>Live demo</Button>
               </div>
             </div>
           </div>

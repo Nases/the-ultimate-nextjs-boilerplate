@@ -78,12 +78,12 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             </CardBodyRow>
             <CardBodyRow>
               <div className='col-start-3 col-span-2'>
-                <Button type="submit" disabled={isSubmitting} color='gamifyPrimary' className='mt-3 w-full'>
+                <Button type="submit" disabled={isSubmitting} color='primary' className='mt-3 w-full'>
                   Save
                 </Button>
               </div>
               <div className='col-span-2'>
-                <Button onClick={closeAltMenu} color='gamifySecondary' className='mt-3 w-full'>
+                <Button onClick={closeAltMenu} color='secondary' className='mt-3 w-full'>
                   Cancel
                 </Button>
               </div>
