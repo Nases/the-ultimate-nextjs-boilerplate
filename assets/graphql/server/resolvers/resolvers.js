@@ -1,8 +1,7 @@
-import dbConnect from './dbConnect'
-import User, { UserSchema } from '../../models/User'
-
-import { setUserSession, getUserSession } from './auth'
-import { removeSessionTokenCookie } from './auth-cookies'
+import dbConnect from '../utils/dbConnect'
+import User, { UserSchema } from '../../../models/User'
+import { setUserSession, getUserSession } from '../utils/auth'
+import { removeSessionTokenCookie } from '../utils/auth-cookies'
 
 export const resolvers = {
   Query: {
@@ -63,7 +62,7 @@ export const resolvers = {
   },
   Mutation: {
     async signUp(obj, { email, password, confirmPassword }, { req, res }, info) {
-      const { SignUpSchema } = require('../../validation/schemas')
+      const { SignUpSchema } = require('../../../validation/schemas')
       const bcrypt = require('bcryptjs')
 
       return await SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
@@ -82,9 +81,6 @@ export const resolvers = {
           } else { throw new Error('This email is already registered.') }
         }).catch(err => { throw err })
       }).catch(err => { throw err })
-
-
-
     }
   },
 }

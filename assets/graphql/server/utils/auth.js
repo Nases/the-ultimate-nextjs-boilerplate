@@ -1,6 +1,6 @@
 import Iron from '@hapi/iron'
 import { MAX_AGE, setTokenCookie, getTokenCookie } from './auth-cookies'
-import User from '../../models/User'
+import User from '../../../models/User'
 
 
 const SESSION_TOKEN_SECRET = process.env.SESSION_TOKEN_SECRET
