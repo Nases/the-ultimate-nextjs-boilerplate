@@ -51,6 +51,7 @@ const SignUpForm = () => {
               confirmPassword: values.confirmPassword
             }
           }).then((value) => {
+            console.log('1')
             dispatchUserData({
               type: 'LOGIN',
               userData: value.data.signUp
@@ -62,6 +63,7 @@ const SignUpForm = () => {
             // console.log(response)
             // setSubmitting(false)
           }).catch(err => {
+            console.log('2')
             // console.log(error)
             dispatchUserData({
               type: 'SET_IS_LOADING_FALSE'

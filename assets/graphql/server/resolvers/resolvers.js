@@ -64,9 +64,14 @@ export const resolvers = {
     async signUp(obj, { email, password, confirmPassword }, { req, res }, info) {
       const { SignUpSchema } = require('../../../validation/schemas')
       const bcrypt = require('bcryptjs')
+      dbConnect()
 
       return await SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
+        console.log('asd')
+
         return await User.exists({ email }).then(async exists => {
+          console.log('yooyoooyo')
+
           if (!exists) {
             return await bcrypt.genSalt(10).then(async salt => {
               return await bcrypt.hash(password, salt).then(async hash => {
