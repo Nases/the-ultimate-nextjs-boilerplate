@@ -49,14 +49,8 @@ export const resolvers = {
     logOut(obj, args, context, info) {
       return (
         removeSessionTokenCookie(context.res).then(() => {
-          return (
-            'Logged out.'
-          )
-        }).catch(err => {
-          return (
-            'Something went wrong logging out, please try again later.'
-          )
-        })
+          return ('Logged out.')
+        }).catch(err => { throw err })
       )
     }
   },
@@ -67,17 +61,12 @@ export const resolvers = {
       dbConnect()
 
       return await SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
-        console.log('asd')
-
         return await User.exists({ email }).then(async exists => {
-          console.log('yooyoooyo')
-
           if (!exists) {
             return await bcrypt.genSalt(10).then(async salt => {
               return await bcrypt.hash(password, salt).then(async hash => {
                 return await User({ email, password: hash }).save().then(async user => {
                   return await setUserSession(res, user._id).then(async () => {
-                    console.log(user)
                     return user
                   }).catch(err => { throw err })
                 }).catch(err => { throw err })

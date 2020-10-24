@@ -4,7 +4,6 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { SignUpSchema } from '../../assets/validation/schemas'
-import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import Router from 'next/router'
@@ -51,7 +50,6 @@ const SignUpForm = () => {
               confirmPassword: values.confirmPassword
             }
           }).then((value) => {
-            console.log('1')
             dispatchUserData({
               type: 'LOGIN',
               userData: value.data.signUp
@@ -60,39 +58,13 @@ const SignUpForm = () => {
               type: 'CLOSE_SIGN_UP_MODAL'
             })
             Router.push(signUpRedirectPath)
-            // console.log(response)
-            // setSubmitting(false)
           }).catch(err => {
-            console.log('2')
-            // console.log(error)
             dispatchUserData({
               type: 'SET_IS_LOADING_FALSE'
             })
             setFieldError('serverError', err.message)
             setSubmitting(false)
           })
-
-          // userUtils.signUp(values.email, values.password, values.confirmPassword)
-          //   .then(response => {
-          //     dispatchUserData({
-          //       type: 'LOGIN',
-          //       userData: response.data
-          //     })
-          //     dispatchAuthModal({
-          //       type: 'CLOSE_SIGN_UP_MODAL'
-          //     })
-          //     Router.push(signUpRedirectPath)
-          //     // console.log(response)
-          //     // setSubmitting(false)
-          //   })
-          //   .catch((error) => {
-          //     // console.log(error)
-          //     dispatchUserData({
-          //       type: 'SET_IS_LOADING_FALSE'
-          //     })
-          //     setFieldError('serverError', error.response.data)
-          //     setSubmitting(false)
-          //   })
         }}
       >
         {({ isSubmitting, values }) => (

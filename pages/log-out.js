@@ -2,27 +2,30 @@ import { useEffect } from 'react'
 import { useUser, useDispatchUser } from '../contexts/UserProvider/UserProvider'
 import userUtils from '../assets/userUtils'
 import Router from 'next/router'
+import { gql, useQuery } from '@apollo/client'
 
 
 const LogOut = () => {
   const userDataDispatch = useDispatchUser()
 
-  const logOut = async () => {
-    await userUtils.logOut()
-      .then(response => {
-        // console.log(response)
-        userDataDispatch({ type: 'SIGN_OUT' })
-      })
-      .catch(error => {
-        // console.log(error)
-        userDataDispatch({ type: 'SIGN_OUT' })
-      })
-  }
+  const LogOutQuery = gql`
+    query LogOutQuery {
+      logOut
+    }
+  `
+
+  const { data, loading, error } = useQuery(LogOutQuery)
+
 
   useEffect(() => {
-    logOut()
-    Router.push('/')
-  }, [])
+    if (!loading && !error && data) {
+      userDataDispatch({ type: 'SIGN_OUT' })
+      Router.push('/')
+    } else if (!loading && error) {
+      userDataDispatch({ type: 'SIGN_OUT' })
+      Router.push('/')
+    }
+  }, [loading])
   return ('')
 }
 
