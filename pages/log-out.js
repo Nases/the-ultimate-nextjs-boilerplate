@@ -19,10 +19,10 @@ const LogOut = () => {
 
   useEffect(() => {
     if (!loading && !error && data) {
-      userDataDispatch({ type: 'SIGN_OUT' })
+      userDataDispatch({ type: 'LOG_OUT' })
       Router.push('/')
     } else if (!loading && error) {
-      userDataDispatch({ type: 'SIGN_OUT' })
+      userDataDispatch({ type: 'LOG_OUT' })
       Router.push('/')
     }
   }, [loading])

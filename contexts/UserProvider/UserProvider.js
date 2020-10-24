@@ -10,7 +10,7 @@ const reducer = (state, action) => {
       state.isLoading = false
       state.data = action.userData
       return { ...state }
-    case 'SIGN_OUT':
+    case 'LOG_OUT':
       state.isAuth = false
       state.isLoading = false
       state.data = {}
