@@ -14,14 +14,10 @@ const login = async (obj, { email, password }, { req, res }, info) => {
           if (isMatch) {
             return await setUserSession(res, user._id).then(async () => {
               return user
-            })
-          } else {
-            throw new Error('Wrong password.')
-          }
-        })
-      } else {
-        throw new Error('That email is not registered.')
-      }
+            }).catch(err => { throw err })
+          } else { throw new Error('Wrong password.') }
+        }).catch(err => { throw err })
+      } else { throw new Error('That email is not registered.') }
     }).catch(err => { throw err })
   }).catch(err => { throw err })
 }
