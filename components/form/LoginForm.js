@@ -10,7 +10,8 @@ import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
 import settings from '../../assets/settings'
-import { gql, useQuery } from '@apollo/client'
+import { gql, useLazyQuery } from '@apollo/client'
+import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
 
 const LoginForm = () => {
@@ -18,10 +19,42 @@ const LoginForm = () => {
   const dispatchAuthModal = useDispatchAuthModal()
   const loginRedirectPath = settings.customerLoginRedirectPath
 
+  const LoginQuery = gql`
+    query LoginQuery($email: String, $password: String) {
+      login(email: $email, password: $password) {
+        ...userFields
+      }
+    }
+    ${UserFragment}
+  `
+
+  const [login, { data, loading, error }] = useLazyQuery(LoginQuery)
+  console.log(data)
+
+  if (data?.login?._id) {
+    dispatchUserData({
+      type: 'LOGIN',
+      userData: data.login
+    })
+    dispatchAuthModal({
+      type: 'CLOSE_LOGIN_MODAL'
+    })
+    router.push(loginRedirectPath)
+  }
+  if (error) {
+    dispatchUserData({
+      type: 'SET_IS_LOADING_FALSE'
+    })
+    // setFieldError('serverError', error)
+    // setSubmitting(false)
+  }
+
+
+
 
   useEffect(() => {
     router.prefetch(loginRedirectPath)
-  }, [])
+  }, [loading])
 
   return (
     <div>
@@ -35,27 +68,39 @@ const LoginForm = () => {
         validateOnChange={false}
         validationSchema={LoginSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.login(values.email, values.password)
-            .then(response => {
-              dispatchUserData({
-                type: 'LOGIN',
-                userData: response.data
-              })
-              dispatchAuthModal({
-                type: 'CLOSE_LOGIN_MODAL'
-              })
-              router.push(loginRedirectPath)
-              // console.log(response.data)
-              // setSubmitting(false)
-            })
-            .catch(error => {
-              // console.log(error)
-              dispatchUserData({
-                type: 'SET_IS_LOADING_FALSE'
-              })
-              setFieldError('serverError', error.response.data)
-              setSubmitting(false)
-            })
+          login({
+            variables: {
+              email: values.email,
+              password: values.password
+            }
+          })
+          setSubmitting(true)
+
+
+          // userUtils.login(values.email, values.password)
+          //   .then(response => {
+          //     dispatchUserData({
+          //       type: 'LOGIN',
+          //       userData: response.data
+          //     })
+          //     dispatchAuthModal({
+          //       type: 'CLOSE_LOGIN_MODAL'
+          //     })
+          //     router.push(loginRedirectPath)
+          //     // console.log(response.data)
+          //     // setSubmitting(false)
+          //   })
+          //   .catch(error => {
+          //     // console.log(error)
+          //     dispatchUserData({
+          //       type: 'SET_IS_LOADING_FALSE'
+          //     })
+          //     setFieldError('serverError', error.response.data)
+          //     setSubmitting(false)
+          //   })
+
+
+
         }}
       >
         {({ isSubmitting, values }) => (
