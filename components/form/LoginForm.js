@@ -10,12 +10,14 @@ import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
 import settings from '../../assets/settings'
+import { gql, useQuery } from '@apollo/client'
 
 
 const LoginForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
   const loginRedirectPath = settings.customerLoginRedirectPath
+
 
   useEffect(() => {
     router.prefetch(loginRedirectPath)

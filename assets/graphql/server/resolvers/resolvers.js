@@ -2,9 +2,11 @@ import dbConnect from '../utils/dbConnect'
 import User, { UserSchema } from '../../../models/User'
 import { setUserSession, getUserSession } from '../utils/auth'
 import { removeSessionTokenCookie } from '../utils/auth-cookies'
+import queries from './queries/queries'
 
 export const resolvers = {
   Query: {
+    ...queries,
     test(obj, args, context, info) {
       // dbConnect()
       return User.find({ email: 'qwe@qwe.qwe' }).then(value => {
@@ -41,10 +43,6 @@ export const resolvers = {
       } catch {
         return new Error('getUserData error!')
       }
-    },
-    async setUserData(obj, args, context, info) {
-      await setUserSession(context.res, '5f606c4be7788e07f0d23efd')
-      return 'User session might be set. Check cookie session-token cookie.'
     },
     logOut(obj, args, context, info) {
       return (

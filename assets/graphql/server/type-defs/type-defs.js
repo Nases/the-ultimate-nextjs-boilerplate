@@ -34,6 +34,7 @@ export const typeDefs = gql`
     user: User!
   }
   type Query {
+    login(email: String, password: String): User
     user(id: String!): User
     users: [User]
     viewer: User
