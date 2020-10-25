@@ -29,25 +29,25 @@ const LoginForm = () => {
   `
 
   const [login, { data, loading, error }] = useLazyQuery(LoginQuery)
-  console.log(data)
+  // console.log(data)
 
-  if (data?.login?._id) {
-    dispatchUserData({
-      type: 'LOGIN',
-      userData: data.login
-    })
-    dispatchAuthModal({
-      type: 'CLOSE_LOGIN_MODAL'
-    })
-    router.push(loginRedirectPath)
-  }
-  if (error) {
-    dispatchUserData({
-      type: 'SET_IS_LOADING_FALSE'
-    })
-    // setFieldError('serverError', error)
-    // setSubmitting(false)
-  }
+  // if (data?.login?._id) {
+  //   dispatchUserData({
+  //     type: 'LOGIN',
+  //     userData: data.login
+  //   })
+  //   dispatchAuthModal({
+  //     type: 'CLOSE_LOGIN_MODAL'
+  //   })
+  //   router.push(loginRedirectPath)
+  // }
+  // if (error) {
+  //   dispatchUserData({
+  //     type: 'SET_IS_LOADING_FALSE'
+  //   })
+  //   // setFieldError('serverError', error)
+  //   // setSubmitting(false)
+  // }
 
 
 
@@ -74,8 +74,10 @@ const LoginForm = () => {
               password: values.password
             }
           })
-          setSubmitting(true)
+          console.log(loading)
+          // setSubmitting(false)
 
+          // if (error) setFieldError(error)
 
           // userUtils.login(values.email, values.password)
           //   .then(response => {
@@ -103,24 +105,27 @@ const LoginForm = () => {
 
         }}
       >
-        {({ isSubmitting, values }) => (
-          <Form>
-            <ErrorMessage name="serverError" component={FormErrorMessage} />
-            <div>
-              <Label htmlFor="email">Email address</Label>
-              <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />
-              <ErrorMessage name="email" component={FormErrorMessage} />
-            </div>
-            <div>
-              <Label htmlFor="password">Password</Label>
-              <Field id='password' type="password" name="password" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
-              <ErrorMessage name="password" component={FormErrorMessage} />
-            </div>
-            <Button type="submit" color='primary' disabled={isSubmitting} className='mt-6 w-full'>
-              Log In
+        {({ isSubmitting, values, setFieldError, setSubmitting }) => {
+          // setSubmitting(false)
+          return (
+            <Form>
+              <ErrorMessage name="serverError" component={FormErrorMessage} />
+              <div>
+                <Label htmlFor="email">Email address</Label>
+                <Field id='email' type="email" name="email" placeholder='you@example.com' as={Input} />
+                <ErrorMessage name="email" component={FormErrorMessage} />
+              </div>
+              <div>
+                <Label htmlFor="password">Password</Label>
+                <Field id='password' type="password" name="password" placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;' as={Input} />
+                <ErrorMessage name="password" component={FormErrorMessage} />
+              </div>
+              <Button type="submit" color='primary' disabled={isSubmitting} className='mt-6 w-full'>
+                Log In
             </Button>
-          </Form>
-        )}
+            </Form>
+          )
+        }}
       </Formik>
     </div>
   )
