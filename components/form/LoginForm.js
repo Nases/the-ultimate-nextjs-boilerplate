@@ -10,7 +10,7 @@ import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
 import settings from '../../assets/settings'
-import { gql, useLazyQuery } from '@apollo/client'
+import { gql, useQuery, useLazyQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
 
@@ -28,8 +28,21 @@ const LoginForm = () => {
     ${UserFragment}
   `
 
-  const [login, { data, loading, error }] = useLazyQuery(LoginQuery)
-  // console.log(data)
+  const [login, { data, loading, error }] =
+    useLazyQuery(LoginQuery, {
+      onCompleted: data => { console.log(data) },
+      onError: err => { console.log(err) }
+    })
+
+
+  // const handleLogin = (variables, setSubmitting, setFieldError) => {
+  //   console.log('handle Login fired')
+  //   useQuery(LoginQuery, {
+  //     variables,
+  //     onCompleted: data => { console.log(data) },
+  //     onError: err => { console.log(err) }
+  //   })
+  // }
 
   // if (data?.login?._id) {
   //   dispatchUserData({
@@ -51,10 +64,9 @@ const LoginForm = () => {
 
 
 
-
   useEffect(() => {
     router.prefetch(loginRedirectPath)
-  }, [loading])
+  }, [])
 
   return (
     <div>
@@ -68,16 +80,19 @@ const LoginForm = () => {
         validateOnChange={false}
         validationSchema={LoginSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
+          // handleLogin({
+          //   email: values.email,
+          //   password: values.password
+          // },
+          //   setSubmitting,
+          //   setFieldError
+          // )
           login({
             variables: {
               email: values.email,
               password: values.password
             }
           })
-          console.log(loading)
-          // setSubmitting(false)
-
-          // if (error) setFieldError(error)
 
           // userUtils.login(values.email, values.password)
           //   .then(response => {
@@ -106,7 +121,6 @@ const LoginForm = () => {
         }}
       >
         {({ isSubmitting, values, setFieldError, setSubmitting }) => {
-          // setSubmitting(false)
           return (
             <Form>
               <ErrorMessage name="serverError" component={FormErrorMessage} />

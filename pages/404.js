@@ -17,7 +17,7 @@ const NotFound = () => {
           <hr />
           <Link href="/">
             <a>
-              <h2 className='text-center text-gray-600 mt-4 text-2xl md:text-4xl hover:text-primary-500'><i class="fas fa-arrow-circle-left"></i> Back to <i class="fas fa-home"></i></h2>
+              <h2 className='text-center text-gray-600 mt-4 text-2xl md:text-4xl hover:text-primary-600'><i aria-hidden className="fas fa-arrow-circle-left"></i> Back to <i aria-hidden className="fas fa-home"></i></h2>
             </a>
           </Link>
         </div>
