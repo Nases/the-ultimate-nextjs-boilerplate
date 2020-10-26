@@ -3,6 +3,7 @@ import User, { UserSchema } from '../../../models/User'
 import { setUserSession, getUserSession } from '../utils/auth'
 import { removeSessionTokenCookie } from '../utils/auth-cookies'
 import queries from './queries/queries'
+import mutations from './mutations/mutations'
 
 export const resolvers = {
   Query: {
@@ -33,46 +34,9 @@ export const resolvers = {
           value
         )
       })
-    },
-    async getUserData(obj, args, context, info) {
-      try {
-        const session = await getUserSession(context.req)
-        if (session) {
-          return session
-        }
-      } catch {
-        return new Error('getUserData error!')
-      }
-    },
-    logOut(obj, args, context, info) {
-      return (
-        removeSessionTokenCookie(context.res).then(() => {
-          return ('Logged out.')
-        }).catch(err => { throw err })
-      )
     }
   },
   Mutation: {
-    async signUp(obj, { email, password, confirmPassword }, { req, res }, info) {
-      const { SignUpSchema } = require('../../../validation/schemas')
-      const bcrypt = require('bcryptjs')
-      dbConnect()
-
-      return await SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
-        return await User.exists({ email }).then(async exists => {
-          if (!exists) {
-            return await bcrypt.genSalt(10).then(async salt => {
-              return await bcrypt.hash(password, salt).then(async hash => {
-                return await User({ email, password: hash }).save().then(async user => {
-                  return await setUserSession(res, user._id).then(async () => {
-                    return user
-                  }).catch(err => { throw err })
-                }).catch(err => { throw err })
-              }).catch(err => { throw err })
-            }).catch(err => { throw err })
-          } else { throw new Error('This email is already registered.') }
-        }).catch(err => { throw err })
-      }).catch(err => { throw err })
-    }
+    ...mutations
   },
 }
