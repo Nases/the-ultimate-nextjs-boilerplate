@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Input from './partials/Input'
 import Label from './partials/Label'
@@ -19,6 +19,8 @@ const LoginForm = () => {
   const dispatchAuthModal = useDispatchAuthModal()
   const loginRedirectPath = settings.customerLoginRedirectPath
 
+  const loginForm = useRef(null)
+
   const LoginQuery = gql`
     query LoginQuery($email: String, $password: String) {
       login(email: $email, password: $password) {
@@ -30,19 +32,26 @@ const LoginForm = () => {
 
   const [login, { data, loading, error }] =
     useLazyQuery(LoginQuery, {
-      onCompleted: data => { console.log(data) },
-      onError: err => { console.log(err) }
+      onCompleted: data => {
+        if (data?.login?._id) {
+          dispatchUserData({
+            type: 'LOGIN',
+            userData: data.login
+          })
+          dispatchAuthModal({
+            type: 'CLOSE_LOGIN_MODAL'
+          })
+          router.push(loginRedirectPath)
+        }
+      },
+      onError: err => {
+        dispatchUserData({
+          type: 'SET_IS_LOADING_FALSE'
+        })
+        loginForm.current.setFieldError('serverError', err.message)
+        loginForm.current.setSubmitting(false)
+      }
     })
-
-
-  // const handleLogin = (variables, setSubmitting, setFieldError) => {
-  //   console.log('handle Login fired')
-  //   useQuery(LoginQuery, {
-  //     variables,
-  //     onCompleted: data => { console.log(data) },
-  //     onError: err => { console.log(err) }
-  //   })
-  // }
 
   // if (data?.login?._id) {
   //   dispatchUserData({
@@ -71,6 +80,7 @@ const LoginForm = () => {
   return (
     <div>
       <Formik
+        innerRef={loginForm}
         initialValues={{
           email: '',
           password: '',
@@ -93,6 +103,7 @@ const LoginForm = () => {
               password: values.password
             }
           })
+
 
           // userUtils.login(values.email, values.password)
           //   .then(response => {
