@@ -6,7 +6,6 @@ import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { LoginSchema } from '../../assets/validation/schemas'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
-import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
 import settings from '../../assets/settings'
@@ -30,7 +29,7 @@ const LoginForm = () => {
     ${UserFragment}
   `
 
-  const [login, { data, loading, error }] =
+  const [login] =
     useLazyQuery(LoginQuery, {
       onCompleted: data => {
         if (data?.login?._id) {
@@ -42,6 +41,9 @@ const LoginForm = () => {
             type: 'CLOSE_LOGIN_MODAL'
           })
           router.push(loginRedirectPath)
+        } else {
+          loginForm.current.setFieldError('serverError', 'Something went wrong, please try again later.')
+          loginForm.current.setSubmitting(false)
         }
       },
       onError: err => {
@@ -52,25 +54,6 @@ const LoginForm = () => {
         loginForm.current.setSubmitting(false)
       }
     })
-
-  // if (data?.login?._id) {
-  //   dispatchUserData({
-  //     type: 'LOGIN',
-  //     userData: data.login
-  //   })
-  //   dispatchAuthModal({
-  //     type: 'CLOSE_LOGIN_MODAL'
-  //   })
-  //   router.push(loginRedirectPath)
-  // }
-  // if (error) {
-  //   dispatchUserData({
-  //     type: 'SET_IS_LOADING_FALSE'
-  //   })
-  //   // setFieldError('serverError', error)
-  //   // setSubmitting(false)
-  // }
-
 
 
   useEffect(() => {
@@ -89,49 +72,16 @@ const LoginForm = () => {
         validateOnBlur={false}
         validateOnChange={false}
         validationSchema={LoginSchema}
-        onSubmit={(values, { setSubmitting, setFieldError }) => {
-          // handleLogin({
-          //   email: values.email,
-          //   password: values.password
-          // },
-          //   setSubmitting,
-          //   setFieldError
-          // )
+        onSubmit={values => {
           login({
             variables: {
               email: values.email,
               password: values.password
             }
           })
-
-
-          // userUtils.login(values.email, values.password)
-          //   .then(response => {
-          //     dispatchUserData({
-          //       type: 'LOGIN',
-          //       userData: response.data
-          //     })
-          //     dispatchAuthModal({
-          //       type: 'CLOSE_LOGIN_MODAL'
-          //     })
-          //     router.push(loginRedirectPath)
-          //     // console.log(response.data)
-          //     // setSubmitting(false)
-          //   })
-          //   .catch(error => {
-          //     // console.log(error)
-          //     dispatchUserData({
-          //       type: 'SET_IS_LOADING_FALSE'
-          //     })
-          //     setFieldError('serverError', error.response.data)
-          //     setSubmitting(false)
-          //   })
-
-
-
         }}
       >
-        {({ isSubmitting, values, setFieldError, setSubmitting }) => {
+        {({ isSubmitting }) => {
           return (
             <Form>
               <ErrorMessage name="serverError" component={FormErrorMessage} />
