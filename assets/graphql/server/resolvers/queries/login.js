@@ -8,12 +8,12 @@ import { setUserSession } from '../../utils/auth'
 const login = async (obj, { email, password }, { req, res }, info) => {
   dbConnect()
 
-  return await LoginSchema.validate({ email, password }).then(async values => {
-    return await User.findOne({ email }).then(async user => {
+  return LoginSchema.validate({ email, password }).then(values => {
+    return User.findOne({ email }).then(user => {
       if (user) {
-        return await bcrypt.compare(password, user.password).then(async isMatch => {
+        return bcrypt.compare(password, user.password).then(isMatch => {
           if (isMatch) {
-            return await setUserSession(res, user._id).then(async () => {
+            return setUserSession(res, user._id).then(() => {
               return user
             }).catch(err => { throw err })
           } else { throw new Error('Wrong password.') }

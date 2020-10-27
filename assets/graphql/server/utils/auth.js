@@ -29,7 +29,7 @@ export const getUserSession = req => {
         Iron.unseal(token, SESSION_TOKEN_SECRET, Iron.defaults).then(session => {
           if (Date.now() < (session.createdAt + session.maxAge * 1000)) {
             User.find({ _id: session.userId }).then(value => resolve(value[0]))
-          } else { reject('Session token expired.') }
+          } else { reject('session-token expired.') }
         }).catch(err => console.log(err))
       } else { reject('No session-token found.') }
     })
@@ -37,11 +37,16 @@ export const getUserSession = req => {
 }
 
 
-export const isAuthenticated = async (req, roleId = []) => new Promise(async (resolve, reject) => {
-  const user = await getUserSession(req)
-  if (user) {
-    if (roleId.includes(user.roleId)) {
-      resolve(user)
-    } else { reject('Unauthorized.') }
-  } else { reject('Unauthenticated.') }
-})
+export const isAuthenticated = (req, roleId = []) => {
+  return (
+    new Promise((resolve, reject) => {
+      getUserSession(req).then(user => {
+        if (user) {
+          if (roleId.includes(user.roleId)) {
+            resolve(user)
+          } else { reject('Unauthorized.') }
+        } else { reject('Unauthenticated.') }
+      }).catch(err => reject(err))
+    })
+  )
+}
