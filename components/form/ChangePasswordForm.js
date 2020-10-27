@@ -49,10 +49,10 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             //   type: 'UPDATE_PASSWORD_LAST_UPDATED',
             //   passwordLastUpdated: Date.now()
             // })
-            console.log(data)
-            // showSuccessMessage(response.data)
+            console.log(data.data.changePassword)
+            showSuccessMessage(data.data.changePassword)
             setSubmitting(false)
-            // closeAltMenu()
+            closeAltMenu()
           }).catch(err => {
             setFieldError('serverError', err.message)
             setSubmitting(false)

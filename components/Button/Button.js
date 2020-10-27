@@ -28,15 +28,21 @@ const Button = (props) => {
         inline-flex justify-center font-medium rounded-md transition duration-150 ease-in-out
         ${sizes[size] || defaultSize}
         ${colors[color] || defaultColor}
-        ${disabled ? 'button-disabled opacity-50 cursor-default' : ''}
+        ${disabled ? 'opacity-50 cursor-default' : ''}
         ${className || ''}
       `}
     >
-      <span>
-        {props.children}
-      </span>
-
-      <i aria-hidden className="fas fa-spinner fa-spin fa-lg hidden m-auto leading-5"></i>
+      {
+        !disabled
+          ?
+          <span>
+            {props.children}
+          </span>
+          :
+          <span>
+            <i aria-hidden className="fas fa-spinner fa-spin fa-lg hidden m-auto leading-5"></i>
+          </span>
+      }
     </button>
   )
 }
