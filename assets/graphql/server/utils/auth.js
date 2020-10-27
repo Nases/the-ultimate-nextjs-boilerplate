@@ -6,30 +6,35 @@ import User from '../../../models/User'
 const SESSION_TOKEN_SECRET = process.env.SESSION_TOKEN_SECRET
 
 
-export const setUserSession = async (res, userId) => new Promise(async (resolve, reject) => {
-  const createdAt = Date.now()
-  // Create a session object with a max age that we can validate later
-  const obj = { userId, createdAt, maxAge: MAX_AGE }
-  const token = await Iron.seal(obj, SESSION_TOKEN_SECRET, Iron.defaults)
+export const setUserSession = (res, userId) => {
+  return (
+    new Promise((resolve, reject) => {
+      const createdAt = Date.now()
+      // Create a session object with a max age that we can validate later
+      const obj = { userId, createdAt, maxAge: MAX_AGE }
+      Iron.seal(obj, SESSION_TOKEN_SECRET, Iron.defaults).then(token => {
+        setTokenCookie(res, token)
+        resolve()
+      }).catch(err => reject(err))
+    })
+  )
+}
 
-  await setTokenCookie(res, token)
 
-  resolve()
-})
-
-
-export const getUserSession = async req => new Promise(async (resolve, reject) => {
-  const token = getTokenCookie(req)
-
-  if (token) {
-    const session = await Iron.unseal(token, SESSION_TOKEN_SECRET, Iron.defaults)
-    const expiresAt = session.createdAt + session.maxAge * 1000
-
-    if (Date.now() < expiresAt) {
-      User.find({ _id: session.userId }).then(value => resolve(value[0]))
-    } else { reject('Unauthenticated.') }
-  } else { reject('No session-token found.') }
-})
+export const getUserSession = req => {
+  return (
+    new Promise((resolve, reject) => {
+      const token = getTokenCookie(req)
+      if (token) {
+        Iron.unseal(token, SESSION_TOKEN_SECRET, Iron.defaults).then(session => {
+          if (Date.now() < (session.createdAt + session.maxAge * 1000)) {
+            User.find({ _id: session.userId }).then(value => resolve(value[0]))
+          } else { reject('Session token expired.') }
+        }).catch(err => console.log(err))
+      } else { reject('No session-token found.') }
+    })
+  )
+}
 
 
 export const isAuthenticated = async (req, roleId = []) => new Promise(async (resolve, reject) => {
