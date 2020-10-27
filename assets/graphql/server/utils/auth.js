@@ -30,7 +30,7 @@ export const getUserSession = req => {
           if (Date.now() < (session.createdAt + session.maxAge * 1000)) {
             User.find({ _id: session.userId }).then(value => resolve(value[0]))
           } else { reject('session-token expired.') }
-        }).catch(err => console.log(err))
+        }).catch(err => reject(err))
       } else { reject('No session-token found.') }
     })
   )

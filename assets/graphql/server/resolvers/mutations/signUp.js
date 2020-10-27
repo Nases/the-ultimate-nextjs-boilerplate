@@ -1,13 +1,10 @@
 import { SignUpSchema } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
-import dbConnect from '../../utils/dbConnect'
 import User from '../../../../models/User'
 import { setUserSession } from '../../utils/auth'
 
 
 const signUp = async (obj, { email, password, confirmPassword }, { req, res }, info) => {
-  dbConnect()
-
   return SignUpSchema.validate({ email, password, confirmPassword }).then(values => {
     return User.exists({ email }).then(exists => {
       if (!exists) {
