@@ -1,7 +1,7 @@
 import { removeSessionTokenCookie } from '../../utils/auth-cookies'
 
 
-const logOut = async (obj, args, { req, res }, info) => {
+const logOut = (obj, args, { req, res }, info) => {
   return (
     removeSessionTokenCookie(res).then(() => {
       return ('Logged out.')

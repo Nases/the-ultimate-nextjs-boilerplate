@@ -8,13 +8,13 @@ import { setUserSession } from '../../utils/auth'
 const signUp = async (obj, { email, password, confirmPassword }, { req, res }, info) => {
   dbConnect()
 
-  return await SignUpSchema.validate({ email, password, confirmPassword }).then(async values => {
-    return await User.exists({ email }).then(async exists => {
+  return SignUpSchema.validate({ email, password, confirmPassword }).then(values => {
+    return User.exists({ email }).then(exists => {
       if (!exists) {
-        return await bcrypt.genSalt(10).then(async salt => {
-          return await bcrypt.hash(password, salt).then(async hash => {
-            return await User({ email, password: hash }).save().then(async user => {
-              return await setUserSession(res, user._id).then(async () => {
+        return bcrypt.genSalt(10).then(salt => {
+          return bcrypt.hash(password, salt).then(hash => {
+            return User({ email, password: hash }).save().then(user => {
+              return setUserSession(res, user._id).then(() => {
                 return user
               }).catch(err => { throw err })
             }).catch(err => { throw err })

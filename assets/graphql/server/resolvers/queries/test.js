@@ -2,7 +2,7 @@ import User from '../../../../models/User'
 import dbConnect from '../../utils/dbConnect'
 
 
-const test = async (obj, args, context, info) => {
+const test = (obj, args, context, info) => {
   dbConnect()
 
   return User.find({ email: 'qwe@qwe.qwe' }).then(value => {
