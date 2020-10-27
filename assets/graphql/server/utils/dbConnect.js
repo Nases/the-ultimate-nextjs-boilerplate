@@ -1,12 +1,17 @@
 import mongoose from 'mongoose'
 
+var connection = {}
+
 async function dbConnect() {
+  if (connection.isConnected) return
+
   await mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-  }).then(() => {
+  }).then(db => {
     console.log('MongoDB connected')
+    connection.isConnected = db.connections[0].readyState
   }).catch(err => {
     console.log(err)
   })
