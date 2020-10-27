@@ -18,8 +18,7 @@ export const setUserSession = async (res, userId) => new Promise(async (resolve,
 })
 
 
-// we need to get user object from db here
-export async function getUserSession(req) {
+export const getUserSession = async req => {
   const token = getTokenCookie(req)
 
   if (!token) return
@@ -29,7 +28,16 @@ export async function getUserSession(req) {
 
   // Validate the expiration date of the session
   if (Date.now() < expiresAt) {
-    return User.find({ _id: session.userId }).then(value => value[0])
+    return await User.find({ _id: session.userId }).then(value => value[0])
   }
-  return
 }
+
+
+export const isAuthenticated = async (req, roleId = []) => new Promise(async (resolve, reject) => {
+  const user = await getUserSession(req)
+  if (user) {
+    if (roleId.includes(user.roleId)) {
+      resolve(user)
+    } else { reject('Unauthorized.') }
+  } else { reject('Unauthenticated.') }
+})

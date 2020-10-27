@@ -9,10 +9,19 @@ import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvid
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
+import { gql, useMutation } from '@apollo/client'
 
 
 const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
+
+  const ChangePasswordMutation = gql`
+    mutation ChangePasswordMutation($currentPassword: String, $newPassword: String, $confirmNewPassword: String) {
+      changePassword(currentPassword: $currentPassword, newPassword: $newPassword, confirmNewPassword: $confirmNewPassword)
+    }
+  `
+
+  const [changePassword] = useMutation(ChangePasswordMutation)
 
 
   return (
@@ -29,21 +38,47 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
         validateOnChange={false}
         validationSchema={ChangePasswordSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
-            .then(response => {
-              dispatchUserData({
-                type: 'UPDATE_PASSWORD_LAST_UPDATED',
-                passwordLastUpdated: Date.now()
-              })
-              showSuccessMessage(response.data)
-              setSubmitting(false)
-              closeAltMenu()
-            })
-            .catch((error) => {
-              console.log(error)
-              setFieldError('serverError', error.response.data)
-              setSubmitting(false)
-            })
+          changePassword({
+            variables: {
+              currentPassword: values.currentPassword,
+              newPassword: values.newPassword,
+              confirmNewPassword: values.confirmNewPassword
+            }
+          }).then(data => {
+            // dispatchUserData({
+            //   type: 'UPDATE_PASSWORD_LAST_UPDATED',
+            //   passwordLastUpdated: Date.now()
+            // })
+            console.log(data)
+            // showSuccessMessage(response.data)
+            setSubmitting(false)
+            // closeAltMenu()
+          }).catch(err => {
+            setFieldError('serverError', err.message)
+            setSubmitting(false)
+          })
+
+
+
+
+          // userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
+          //   .then(response => {
+          //     dispatchUserData({
+          //       type: 'UPDATE_PASSWORD_LAST_UPDATED',
+          //       passwordLastUpdated: Date.now()
+          //     })
+          //     showSuccessMessage(response.data)
+          //     setSubmitting(false)
+          //     closeAltMenu()
+          //   })
+          //   .catch((error) => {
+          //     console.log(error)
+          //     setFieldError('serverError', error.response.data)
+          //     setSubmitting(false)
+          //   })
+
+
+
         }}
       >
         {({ isSubmitting }) => (

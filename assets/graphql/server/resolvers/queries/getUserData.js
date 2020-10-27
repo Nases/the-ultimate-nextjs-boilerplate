@@ -5,6 +5,7 @@ const getUserData = async (obj, args, { req, res }, info) => {
   try {
     const session = await getUserSession(req)
     if (session) {
+      console.log(req.user)
       return session
     }
   } catch {

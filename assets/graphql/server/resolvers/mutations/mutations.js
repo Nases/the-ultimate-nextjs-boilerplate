@@ -1,7 +1,10 @@
 import signUp from './signUp'
+import changePassword from './changePassword'
+
 
 const mutations = {
-  signUp
+  signUp,
+  changePassword
 }
 
 export default mutations
