@@ -18,19 +18,18 @@ export const setUserSession = async (res, userId) => new Promise(async (resolve,
 })
 
 
-export const getUserSession = async req => {
+export const getUserSession = async req => new Promise(async (resolve, reject) => {
   const token = getTokenCookie(req)
 
-  if (!token) return
+  if (token) {
+    const session = await Iron.unseal(token, SESSION_TOKEN_SECRET, Iron.defaults)
+    const expiresAt = session.createdAt + session.maxAge * 1000
 
-  const session = await Iron.unseal(token, SESSION_TOKEN_SECRET, Iron.defaults)
-  const expiresAt = session.createdAt + session.maxAge * 1000
-
-  // Validate the expiration date of the session
-  if (Date.now() < expiresAt) {
-    return await User.find({ _id: session.userId }).then(value => value[0])
-  }
-}
+    if (Date.now() < expiresAt) {
+      User.find({ _id: session.userId }).then(value => resolve(value[0]))
+    } else { reject('Unauthenticated.') }
+  } else { reject('No session-token found.') }
+})
 
 
 export const isAuthenticated = async (req, roleId = []) => new Promise(async (resolve, reject) => {

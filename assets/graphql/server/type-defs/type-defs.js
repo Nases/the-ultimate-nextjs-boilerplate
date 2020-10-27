@@ -17,7 +17,7 @@ export const typeDefs = gql`
     forgotPasswordToken: String
   }
   type Query {
-    login(email: String!, password: String!): User
+    login(email: String, password: String): User
     test: User
     getUserData: User
     logOut: String
