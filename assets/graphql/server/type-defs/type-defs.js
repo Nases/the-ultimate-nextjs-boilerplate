@@ -26,5 +26,6 @@ export const typeDefs = gql`
     signUp(email: String, password: String, confirmPassword: String): User
     changePassword(currentPassword: String, newPassword: String, confirmNewPassword: String): String
     changeEmail(email: String, password: String): String
+    changePersonalInformation(firstName: String, lastName: String): String
   }
 `

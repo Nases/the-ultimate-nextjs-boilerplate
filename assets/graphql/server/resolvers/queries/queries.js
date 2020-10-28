@@ -11,4 +11,5 @@ const queries = {
   test
 }
 
+
 export default queries

@@ -4,11 +4,11 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { ChangePersonalInformationSchema } from '../../assets/validation/schemas'
-import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
+import { gql, useMutation } from '@apollo/client'
 
 
 const ChangePersonalInformationForm = ({ closeAltMenu, showSuccessMessage }) => {
@@ -18,6 +18,15 @@ const ChangePersonalInformationForm = ({ closeAltMenu, showSuccessMessage }) => 
   const userData = user.data
   const firstName = userData.firstName || ''
   const lastName = userData.lastName || ''
+
+
+  const ChangePersonalInformationMutation = gql`
+    mutation ChangePersonalInformationMutation($firstName: String, $lastName: String) {
+      changePersonalInformation(firstName: $firstName, lastName: $lastName)
+    }
+  `
+  const [changePersonalInformation] = useMutation(ChangePersonalInformationMutation)
+
 
   return (
     <div>
@@ -32,22 +41,23 @@ const ChangePersonalInformationForm = ({ closeAltMenu, showSuccessMessage }) => 
         validateOnChange={false}
         validationSchema={ChangePersonalInformationSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.changePersonalInformation(values.firstName, values.lastName)
-            .then(response => {
-              dispatchUserData({
-                type: 'UPDATE_PERSONAL_INFORMATION',
-                firstName: values.firstName,
-                lastName: values.lastName
-              })
-              showSuccessMessage(response.data)
-              setSubmitting(false)
-              closeAltMenu()
+          changePersonalInformation({
+            variables: {
+              firstName: values.firstName,
+              lastName: values.lastName
+            }
+          }).then(data => {
+            dispatchUserData({
+              type: 'UPDATE_PERSONAL_INFORMATION',
+              firstName: values.firstName,
+              lastName: values.lastName
             })
-            .catch((error) => {
-              console.log(error)
-              setFieldError('serverError', error.response.data)
-              setSubmitting(false)
-            })
+            showSuccessMessage(data.data.changePersonalInformation)
+            closeAltMenu()
+          }).catch(err => {
+            setFieldError('serverError', err.message)
+            setSubmitting(false)
+          })
         }}
       >
         {({ isSubmitting }) => (
