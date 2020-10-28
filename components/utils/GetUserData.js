@@ -17,7 +17,7 @@ const GetUserData = ({ children }) => {
     ${UserFragment}
   `
 
-  const { data, loading, error } = useQuery(GetUserData)
+  const { data, loading, error } = useQuery(GetUserData, { fetchPolicy: 'no-cache' })
 
   useEffect(() => {
     if (!error && !loading && data?.getUserData?._id) {

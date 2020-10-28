@@ -14,7 +14,8 @@ export default function Layout({ children, title, description }) {
   }, [])
 
   return (
-    <EnsureNotLoading>
+    // <EnsureNotLoading>
+    <>
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -24,6 +25,7 @@ export default function Layout({ children, title, description }) {
         {children}
       </div>
       <Footer />
-    </EnsureNotLoading>
+    </>
+    // </EnsureNotLoading>
   )
 }
