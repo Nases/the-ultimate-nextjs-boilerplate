@@ -4,7 +4,6 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { ChangeEmailSchema } from '../../assets/validation/schemas'
-import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
@@ -20,7 +19,6 @@ const ChangeEmailForm = ({ closeAltMenu, showSuccessMessage }) => {
       changeEmail(email: $email, password: $password)
     }
   `
-
   const [changeEmail] = useMutation(ChangeEmailMutation)
 
 
@@ -43,31 +41,19 @@ const ChangeEmailForm = ({ closeAltMenu, showSuccessMessage }) => {
               password: values.password
             }
           })
-            .then(data => console.log(data.data.changeEmail))
-            .catch(err => console.log(err.message))
-
-
-
-
-
-          // userUtils.changeEmail(values.email, values.password)
-          //   .then(response => {
-          //     dispatchUserData({
-          //       type: 'UPDATE_EMAIL',
-          //       email: values.email
-          //     })
-          //     showSuccessMessage(response.data)
-          //     setSubmitting(false)
-          //     closeAltMenu()
-          //   })
-          //   .catch((error) => {
-          //     console.log(error)
-          //     setFieldError('serverError', error.response.data)
-          //     setSubmitting(false)
-          //   })
-
-
-
+            .then(data => {
+              console.log(data.data.changeEmail)
+              dispatchUserData({
+                type: 'UPDATE_EMAIL',
+                email: values.email
+              })
+              showSuccessMessage(data.data.changeEmail)
+              closeAltMenu()
+            })
+            .catch(err => {
+              setFieldError('serverError', err.message)
+              setSubmitting(false)
+            })
         }}
       >
         {({ isSubmitting }) => (
