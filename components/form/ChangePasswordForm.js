@@ -4,16 +4,23 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { ChangePasswordSchema } from '../../assets/validation/schemas'
-import userUtils from '../../assets/userUtils'
 import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
-import { gql, useMutation } from '@apollo/client'
+import { gql, useMutation, useApolloClient } from '@apollo/client'
 
 
 const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
+
+  const client = useApolloClient()
+  console.log(client)
+  console.log(client.cache.data.data)
+
+  // client.cache.modify({
+  //   id: client.cache.identify()
+  // })
 
   const ChangePasswordMutation = gql`
     mutation ChangePasswordMutation($currentPassword: String, $newPassword: String, $confirmNewPassword: String) {
@@ -49,36 +56,12 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
             //   type: 'UPDATE_PASSWORD_LAST_UPDATED',
             //   passwordLastUpdated: Date.now()
             // })
-            console.log(data.data.changePassword)
             showSuccessMessage(data.data.changePassword)
-            setSubmitting(false)
             closeAltMenu()
           }).catch(err => {
             setFieldError('serverError', err.message)
             setSubmitting(false)
           })
-
-
-
-
-          // userUtils.changePassword(values.currentPassword, values.newPassword, values.confirmNewPassword)
-          //   .then(response => {
-          //     dispatchUserData({
-          //       type: 'UPDATE_PASSWORD_LAST_UPDATED',
-          //       passwordLastUpdated: Date.now()
-          //     })
-          //     showSuccessMessage(response.data)
-          //     setSubmitting(false)
-          //     closeAltMenu()
-          //   })
-          //   .catch((error) => {
-          //     console.log(error)
-          //     setFieldError('serverError', error.response.data)
-          //     setSubmitting(false)
-          //   })
-
-
-
         }}
       >
         {({ isSubmitting }) => (

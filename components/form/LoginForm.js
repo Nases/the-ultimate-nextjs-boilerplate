@@ -31,6 +31,7 @@ const LoginForm = () => {
 
   const [login] =
     useLazyQuery(LoginQuery, {
+      fetchPolicy: 'no-cache',
       onCompleted: data => {
         if (data?.login?._id) {
           dispatchUserData({

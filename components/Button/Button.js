@@ -40,7 +40,7 @@ const Button = (props) => {
           </span>
           :
           <span>
-            <i aria-hidden className="fas fa-spinner fa-spin fa-lg hidden m-auto leading-5"></i>
+            <i aria-hidden className="fas fa-spinner fa-spin fa-lg m-auto leading-5"></i>
           </span>
       }
     </button>
