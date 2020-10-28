@@ -11,7 +11,7 @@ import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 
 
-const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
+const ChangePersonalInformationForm = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
 
   const user = useUser()
@@ -91,4 +91,4 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
 }
 
 
-export default ChangePassword
+export default ChangePersonalInformationForm

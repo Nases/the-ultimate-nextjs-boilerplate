@@ -12,7 +12,7 @@ import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 import { useRouter } from 'next/router'
 
-const ForgotPasswordChangePassword = () => {
+const ForgotPasswordChangePasswordForm = () => {
   const dispatchUserData = useDispatchUser()
   const router = useRouter()
   const { email, forgotPasswordToken } = router.query
@@ -95,4 +95,4 @@ const ForgotPasswordChangePassword = () => {
 }
 
 
-export default ForgotPasswordChangePassword
+export default ForgotPasswordChangePasswordForm

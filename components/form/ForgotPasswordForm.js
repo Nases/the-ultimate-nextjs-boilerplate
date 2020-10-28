@@ -11,7 +11,7 @@ import userUtils from '../../assets/userUtils'
 import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 
 
-const LoginForm = () => {
+const ForgotPasswordForm = () => {
   // const userData = useUser()
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
@@ -61,4 +61,4 @@ const LoginForm = () => {
   )
 }
 
-export default LoginForm
+export default ForgotPasswordForm

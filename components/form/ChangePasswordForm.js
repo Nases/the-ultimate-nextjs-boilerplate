@@ -11,7 +11,7 @@ import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 import { gql, useMutation, useApolloClient } from '@apollo/client'
 
 
-const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
+const ChangePasswordForm = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
 
   const client = useApolloClient()
@@ -114,4 +114,4 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
 }
 
 
-export default ChangePassword
+export default ChangePasswordForm

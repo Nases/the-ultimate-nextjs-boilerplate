@@ -9,10 +9,19 @@ import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvid
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
+import { gql, useMutation } from '@apollo/client'
 
 
-const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
+const ChangeEmailForm = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
+
+  const ChangeEmailMutation = gql`
+    mutation ChangeEmailMutation($email: String, $password:String) {
+      changeEmail(email: $email, password: $password)
+    }
+  `
+
+  const [changeEmail] = useMutation(ChangeEmailMutation)
 
 
   return (
@@ -28,21 +37,37 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
         validateOnChange={false}
         validationSchema={ChangeEmailSchema}
         onSubmit={(values, { setSubmitting, setFieldError }) => {
-          userUtils.changeEmail(values.email, values.password)
-            .then(response => {
-              dispatchUserData({
-                type: 'UPDATE_EMAIL',
-                email: values.email
-              })
-              showSuccessMessage(response.data)
-              setSubmitting(false)
-              closeAltMenu()
-            })
-            .catch((error) => {
-              console.log(error)
-              setFieldError('serverError', error.response.data)
-              setSubmitting(false)
-            })
+          changeEmail({
+            variables: {
+              email: values.email,
+              password: values.password
+            }
+          })
+            .then(data => console.log(data.data.changeEmail))
+            .catch(err => console.log(err.message))
+
+
+
+
+
+          // userUtils.changeEmail(values.email, values.password)
+          //   .then(response => {
+          //     dispatchUserData({
+          //       type: 'UPDATE_EMAIL',
+          //       email: values.email
+          //     })
+          //     showSuccessMessage(response.data)
+          //     setSubmitting(false)
+          //     closeAltMenu()
+          //   })
+          //   .catch((error) => {
+          //     console.log(error)
+          //     setFieldError('serverError', error.response.data)
+          //     setSubmitting(false)
+          //   })
+
+
+
         }}
       >
         {({ isSubmitting }) => (
@@ -86,4 +111,4 @@ const ChangePassword = ({ closeAltMenu, showSuccessMessage }) => {
 }
 
 
-export default ChangePassword
+export default ChangeEmailForm

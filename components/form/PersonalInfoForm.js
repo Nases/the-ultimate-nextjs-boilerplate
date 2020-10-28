@@ -80,8 +80,4 @@ const PersonalInfoForm = () => {
 }
 
 
-
-
-
-
 export default PersonalInfoForm
