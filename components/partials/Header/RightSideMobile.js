@@ -5,6 +5,7 @@ import MainMenuLinks from './MainMenuLinks'
 import ProfileMenuLinks from './ProfileMenuLinks'
 import { LoginButton } from './Login'
 import { SignUpButton } from './SignUp'
+import Skeleton from 'react-loading-skeleton'
 
 
 const MobileMenuButton = () => {
@@ -74,20 +75,21 @@ const RightSideMobile = () => {
       </div>
       <div className="pt-3 pb-3 border-t border-gray-200">
         {
-          userData.isAuth ?
-            // logged in
-            <>
-              <div className="flex items-center px-4 text-sm font-medium leading-5 text-gray-500">{userData.data.email}</div>
-              <div className="mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                <ProfileMenuLinks isMobile={true} />
+          userData.isLoading ? <Skeleton className='ml-4' width={150} height={24} /> :
+            userData.isAuth ?
+              // logged in
+              <>
+                <div className="flex items-center px-4 text-sm font-medium leading-5 text-gray-500">{userData.data.email}</div>
+                <div className="mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                  <ProfileMenuLinks isMobile={true} />
+                </div>
+              </>
+              :
+              // signed out
+              <div>
+                <LoginButton isMobile={true} />
+                <SignUpButton isMobile={true} />
               </div>
-            </>
-            :
-            // signed out
-            <div>
-              <LoginButton isMobile={true} />
-              <SignUpButton isMobile={true} />
-            </div>
         }
       </div>
 
