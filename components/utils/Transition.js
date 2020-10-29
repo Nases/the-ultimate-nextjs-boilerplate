@@ -1,7 +1,8 @@
+import { createContext } from 'react'
 import { CSSTransition as ReactCSSTransition } from 'react-transition-group'
 import { useRef, useEffect, useContext } from 'react'
 
-const TransitionContext = React.createContext({
+const TransitionContext = createContext({
   parent: {},
 })
 
