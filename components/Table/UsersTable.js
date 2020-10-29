@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Table from './Table'
 import TableHead from './TableHead'
 import TableBody from './TableBody'
 import TableRow from './TableRow'
-import axios from 'axios'
-import settings from '../../assets/settings'
 import moment from 'moment'
 import TablePagination from './TablePagination'
 import Select from '../Select/Select'
 import UserSearchBar from '../SearchBar/UserSearchBar'
 import { gql, useQuery } from '@apollo/client'
+import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
 
 const UsersTable = () => {
@@ -32,22 +31,51 @@ const UsersTable = () => {
   ]
   const [limitSelectedOption, setLimitSelectedOption] = useState(limitOptions[1])
 
-  useEffect(() => {
-    axios.post(`${settings.serverURI}users?sort=${sort}&limit=${limitSelectedOption.value}&skip=${(currentPage - 1) * limitSelectedOption.value}&email=${searchedEmail}`)
-      .then(value => {
-        setUsers(value.data)
-        setSearchLoading(false)
-      })
-      .catch(err => {
-        console.log(err)
-        setSearchLoading(false)
-      })
+  const UsersQuery = gql`
+    query UsersQuery($limit: Int, $sort: String, $skip: Int, $email: String) {
+      users(limit: $limit, sort: $sort, skip: $skip, email: $email) {
+        ...userFields
+      }
+    }
+    ${UserFragment}
+  `
+  useQuery(UsersQuery, {
+    fetchPolicy: 'no-cache',
+    variables: {
+      sort: sort,
+      limit: Number(limitSelectedOption.value),
+      skip: ((currentPage - 1) * limitSelectedOption.value),
+      email: searchedEmail
+    },
+    onCompleted: data => {
+      setUsers(data.users)
+      setSearchLoading(false)
+    },
+    onError: err => {
+      console.log(err)
+      setSearchLoading(false)
+    }
+  })
 
-    axios.post(`${settings.serverURI}users/count?email=${searchedEmail}`)
-      .then(value => setTotalUsersCount(value.data))
-      .catch(err => console.log(err))
 
-  }, [sort, currentPage, limitSelectedOption, searchedEmail])
+  const CountUsersQuery = gql`
+    query CountUsersQuery($email: String) {
+      countUsers(email: $email)
+    }
+  `
+  useQuery(CountUsersQuery, {
+    fetchPolicy: 'no-cache',
+    variables: {
+      email: searchedEmail
+    },
+    onCompleted: data => {
+      setTotalUsersCount(data.countUsers)
+    },
+    onError: err => {
+      console.log(err)
+    }
+  })
+
 
   const toggleSort = () => {
     (sort === 'asc') ? setSort('desc') : setSort('asc')
@@ -72,7 +100,7 @@ const UsersTable = () => {
       <Table>
         <TableHead options={headOptions} toggleSort={toggleSort} />
         <TableBody>
-          {users.map(value => {
+          {users?.map(value => {
             const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
             return (
               <TableRow

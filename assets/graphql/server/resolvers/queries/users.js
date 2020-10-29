@@ -1,5 +1,5 @@
 import User from '../../../../models/User'
-import yup from 'yup'
+import * as yup from 'yup'
 
 
 const schema = yup.object().shape({
