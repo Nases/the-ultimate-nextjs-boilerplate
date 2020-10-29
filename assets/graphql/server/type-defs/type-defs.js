@@ -20,6 +20,7 @@ export const typeDefs = gql`
     login(email: String, password: String): User
     test: User
     getUserData: User
+    users: [User]
     logOut: String
   }
   type Mutation {

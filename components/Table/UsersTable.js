@@ -9,6 +9,7 @@ import moment from 'moment'
 import TablePagination from './TablePagination'
 import Select from '../Select/Select'
 import UserSearchBar from '../SearchBar/UserSearchBar'
+import { gql, useQuery } from '@apollo/client'
 
 
 const UsersTable = () => {
