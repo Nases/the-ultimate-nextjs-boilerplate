@@ -16,6 +16,9 @@ export const typeDefs = gql`
     passwordLastUpdated: Date
     forgotPasswordToken: String
   }
+  type ForgotPasswordPayload {
+    forgotPasswordForm(email: String!): String
+  }
   type Query {
     login(email: String, password: String): User
     test: User
@@ -30,5 +33,6 @@ export const typeDefs = gql`
     changePassword(currentPassword: String, newPassword: String, confirmNewPassword: String): String
     changeEmail(email: String, password: String): String
     changePersonalInformation(firstName: String, lastName: String): String
+    forgotPassword: ForgotPasswordPayload
   }
 `

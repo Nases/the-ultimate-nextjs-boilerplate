@@ -10,6 +10,7 @@ const TotalUsersStats = ({ daysBefore }) => {
     }
   `
   const { data } = useQuery(CountUsersQuery, {
+    fetchPolicy: 'no-cache',
     variables: {
       daysBefore: Number(daysBefore)
     }

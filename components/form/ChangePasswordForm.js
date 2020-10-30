@@ -14,20 +14,11 @@ import { gql, useMutation, useApolloClient } from '@apollo/client'
 const ChangePasswordForm = ({ closeAltMenu, showSuccessMessage }) => {
   const dispatchUserData = useDispatchUser()
 
-  const client = useApolloClient()
-  console.log(client)
-  console.log(client.cache.data.data)
-
-  // client.cache.modify({
-  //   id: client.cache.identify()
-  // })
-
   const ChangePasswordMutation = gql`
     mutation ChangePasswordMutation($currentPassword: String, $newPassword: String, $confirmNewPassword: String) {
       changePassword(currentPassword: $currentPassword, newPassword: $newPassword, confirmNewPassword: $confirmNewPassword)
     }
   `
-
   const [changePassword] = useMutation(ChangePasswordMutation)
 
 
@@ -52,10 +43,10 @@ const ChangePasswordForm = ({ closeAltMenu, showSuccessMessage }) => {
               confirmNewPassword: values.confirmNewPassword
             }
           }).then(data => {
-            // dispatchUserData({
-            //   type: 'UPDATE_PASSWORD_LAST_UPDATED',
-            //   passwordLastUpdated: Date.now()
-            // })
+            dispatchUserData({
+              type: 'UPDATE_PASSWORD_LAST_UPDATED',
+              passwordLastUpdated: Date.now()
+            })
             showSuccessMessage(data.data.changePassword)
             closeAltMenu()
           }).catch(err => {
