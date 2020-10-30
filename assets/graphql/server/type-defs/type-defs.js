@@ -20,6 +20,7 @@ export const typeDefs = gql`
     login(email: String, password: String): User
     test: User
     getUserData: User
+    user(id: String): User
     users(limit: Int, sort: String, skip: Int, email: String): [User]
     countUsers(email: String): Int
     logOut: String

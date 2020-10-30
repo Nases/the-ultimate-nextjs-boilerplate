@@ -22,14 +22,16 @@ const schema = yup.object().shape({
 
 
 const users = async (obj, { limit, sort, skip, email }, { req, res }, info) => {
-  return schema.validate({ limit, sort, skip, email }).then(values => {
-    return User.find(email ? { email: { $regex: email, $options: "i" } } : {})
-      .sort({ _id: (sort === 'asc' ? -1 : 1) })
-      .skip(values.skip || 0)
-      .limit(values.limit || 20)
-      .then(value => value)
-      .catch(err => { throw err })
-  }).catch(err => { throw err })
+  return req.isAuthenticated(req, [2]).then(user => {
+    return schema.validate({ limit, sort, skip, email }).then(values => {
+      return User.find(email ? { email: { $regex: email, $options: "i" } } : {})
+        .sort({ _id: (sort === 'asc' ? -1 : 1) })
+        .skip(values.skip || 0)
+        .limit(values.limit || 20)
+        .then(value => value)
+        .catch(err => { throw err })
+    }).catch(err => { throw err })
+  })
 }
 
 

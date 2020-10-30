@@ -5,6 +5,7 @@ import Footer from '../partials/Footer/Footer'
 import { initGA, logPageView } from '../../assets/utils/google-analytics'
 import EnsureNotLoading from '../utils/EnsureNotLoading'
 
+
 export default function Layout({ children, title, description }) {
   useEffect(() => {
     if (!window.GA_INITIALIZED) {

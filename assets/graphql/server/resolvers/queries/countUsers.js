@@ -11,12 +11,14 @@ const schema = yup.object().shape({
 
 
 const countUsers = async (obj, { email }, { req, res }, info) => {
-  return schema.validate({ email }).then(values => {
-    return User.find(email ? { email: { $regex: email, $options: "i" } } : {})
-      .countDocuments()
-      .then(value => value)
-      .catch(err => { throw err })
-  }).catch(err => { throw err })
+  return req.isAuthenticated(req, [2]).then(user => {
+    return schema.validate({ email }).then(values => {
+      return User.find(email ? { email: { $regex: email, $options: "i" } } : {})
+        .countDocuments()
+        .then(value => value)
+        .catch(err => { throw err })
+    }).catch(err => { throw err })
+  })
 }
 
 

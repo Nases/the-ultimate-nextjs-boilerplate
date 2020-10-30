@@ -1,27 +1,40 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Badge from '../Badge/Badge'
 import Button from '../Button/Button'
 import Link from 'next/link'
-import axios from 'axios'
-import settings from '../../assets/settings'
 import moment from 'moment'
 import Skeleton from 'react-loading-skeleton'
+import { gql, useQuery } from '@apollo/client'
+import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
+
 
 const UserDetails = ({ id }) => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    user || axios.post(settings.serverURI + `user?id=${id}`)
-      .then(value => {
-        setUser(value.data[0])
-        setIsLoading(false)
-      })
-      .catch(err => {
-        console.log(err)
-        setIsLoading(false)
-      })
-  }, [user, isLoading])
+  const UserQuery = gql`
+    query UserQuery($id: String) {
+      user(id: $id) {
+        ...userFields
+      }
+    }
+    ${UserFragment}
+  `
+  useQuery(UserQuery, {
+    variables: {
+      id
+    },
+    onCompleted: data => {
+      console.log(data)
+      setUser(data.user)
+      setIsLoading(false)
+    },
+    onError: err => {
+      console.log(err)
+      setIsLoading(false)
+    }
+  })
+
 
   const UserDetailsRow = ({ title, value }) => {
     return (
@@ -75,5 +88,6 @@ const UserDetails = ({ id }) => {
         </> : 'Something went wrong, please try again later.'
   )
 }
+
 
 export default UserDetails
