@@ -21,7 +21,7 @@ const schema = yup.object().shape({
 })
 
 
-const users = async (obj, { limit, sort, skip, email }, { req, res }, info) => {
+const users = (obj, { limit, sort, skip, email }, { req, res }, info) => {
   return req.isAuthenticated(req, [2]).then(user => {
     return schema.validate({ limit, sort, skip, email }).then(values => {
       return User.find(email ? { email: { $regex: email, $options: "i" } } : {})

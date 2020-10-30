@@ -22,7 +22,7 @@ export const typeDefs = gql`
     getUserData: User
     user(id: String): User
     users(limit: Int, sort: String, skip: Int, email: String): [User]
-    countUsers(email: String): Int
+    countUsers(email: String, daysBefore: Int): Int
     logOut: String
   }
   type Mutation {

@@ -1,24 +1,28 @@
-import { useState, useEffect } from 'react'
 import Stats from './Stats'
-import axios from 'axios'
-import settings from '../../assets/settings'
+import { gql, useQuery } from '@apollo/client'
+
 
 const TotalUsersStats = ({ daysBefore }) => {
-  const [current, setCurrent] = useState(null)
-  const [from, setFrom] = useState(null)
-
-  useEffect(() => {
-    axios.post(settings.serverURI + 'users/count').then(value => setCurrent(value.data))
-    axios.post(settings.serverURI + `users/count/${daysBefore}`).then(value => setFrom(value.data))
-  }, [daysBefore])
+  const CountUsersQuery = gql`
+    query CountUsersQuery($daysBefore: Int) {
+      totalUsers: countUsers
+      totalUsersFromDate: countUsers(daysBefore: $daysBefore)
+    }
+  `
+  const { data } = useQuery(CountUsersQuery, {
+    variables: {
+      daysBefore: Number(daysBefore)
+    }
+  })
 
   return (
     <Stats
       name='Total Users'
-      current={current}
-      from={from}
+      current={data?.totalUsers}
+      from={data?.totalUsersFromDate}
     />
   )
 }
+
 
 export default TotalUsersStats
