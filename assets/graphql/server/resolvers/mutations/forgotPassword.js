@@ -1,34 +1,54 @@
-import { SignUpSchema } from '../../../../validation/schemas'
+import {
+  ForgotPasswordSchema,
+  ForgotPasswordChangePasswordSchema,
+  ForgotPasswordChangePasswordEnsureSchema,
+  ChangePasswordSchema
+} from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
 import User from '../../../../models/User'
 import { setUserSession } from '../../utils/auth'
+import settings from '../../../../settings'
+import { sendMail } from '../../utils/mailer'
+const cryptoRandomString = require('crypto-random-string')
 
 
-export const forgotPasswordForm = (parent, args, { req, res }, info) => {
-  console.log('parent', parent)
-  console.log('args', args)
-  return 'hello from forgotPasswordForm'
-}
-
-
-const forgotPassword = async (parent, args, { req, res }, info) => {
-  console.log('args from forgotPassword', args)
-  return { forgotPasswordForm: 'args' }
-  return SignUpSchema.validate({ email, password, confirmPassword }).then(values => {
-    return User.exists({ email }).then(exists => {
-      if (!exists) {
-        return bcrypt.genSalt(10).then(salt => {
-          return bcrypt.hash(password, salt).then(hash => {
-            return User({ email, password: hash }).save().then(user => {
-              return setUserSession(res, user._id).then(() => {
-                return user
+const forgotPassword = {
+  forgotPasswordForm: async (parent, { email }, { req, res }, info) => {
+    return ForgotPasswordSchema.validate({ email }).then(values => {
+      return User.exists({ email }).then(exists => {
+        if (exists) {
+          return cryptoRandomString.async({ length: 64 }).then(randomString => {
+            return User.updateOne({ email }, { forgotPasswordToken: randomString }).then(raw => {
+              const recoveryLink = `${settings.clientURI}forgot-password?email=${email}&forgotPasswordToken=${randomString}`
+              return sendMail({
+                to: email,
+                subject: "Password Recovery",
+                text: 'Please use the link to recover your password: ' + recoveryLink,
+                html: 'Please use the link to recover your password: ' + recoveryLink,
+              }).then(() => {
+                return 'Recovery email sent, please check your email.'
               }).catch(err => { throw err })
             }).catch(err => { throw err })
           }).catch(err => { throw err })
-        }).catch(err => { throw err })
-      } else { throw new Error('This email is already registered.') }
+        } else { throw new Error('This email is not registered.') }
+      }).catch(err => { throw err })
     }).catch(err => { throw err })
-  }).catch(err => { throw err })
+  },
+
+
+
+
+  forgotPasswordChangePassword: (parent, { email, forgotPasswordToken, newPassword, confirmNewPassword }, { req, res }, info) => {
+
+  },
+
+  forgotPasswordChangePasswordEnsure: (parent, { email, forgotPasswordToken }, { req, res }, info) => {
+
+  }
 }
+
+
+
+
 
 export default forgotPassword
