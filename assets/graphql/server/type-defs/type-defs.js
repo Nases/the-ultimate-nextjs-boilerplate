@@ -34,5 +34,6 @@ export const typeDefs = gql`
     changeEmail(email: String, password: String): String
     changePersonalInformation(firstName: String, lastName: String): String
     forgotPassword: ForgotPasswordPayload
+    forgotPasswordForm: String
   }
 `

@@ -2,7 +2,8 @@ import signUp from './signUp'
 import changePassword from './changePassword'
 import changeEmail from './changeEmail'
 import changePersonalInformation from './changePersonalInformation'
-import forgotPassword from './forgotPassword'
+import forgotPassword, { forgotPasswordForm } from './forgotPassword'
+
 
 
 const mutations = {
@@ -10,7 +11,8 @@ const mutations = {
   changePassword,
   changeEmail,
   changePersonalInformation,
-  forgotPassword
+  forgotPassword,
+  forgotPasswordForm
 }
 
 

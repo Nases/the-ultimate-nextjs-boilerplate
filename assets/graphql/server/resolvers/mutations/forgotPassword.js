@@ -4,11 +4,15 @@ import User from '../../../../models/User'
 import { setUserSession } from '../../utils/auth'
 
 
-const forgotPassword = async (obj, args, { req, res }, info) => {
-  console.log(args)
-  const forgotPasswordForm = (obj, args) => {
-    console.log(args)
-  }
+export const forgotPasswordForm = (parent, args, { req, res }, info) => {
+  console.log('parent', parent)
+  console.log('args', args)
+  return 'hello from forgotPasswordForm'
+}
+
+
+const forgotPassword = async (parent, args, { req, res }, info) => {
+  console.log('args from forgotPassword', args)
   return { forgotPasswordForm: 'args' }
   return SignUpSchema.validate({ email, password, confirmPassword }).then(values => {
     return User.exists({ email }).then(exists => {
