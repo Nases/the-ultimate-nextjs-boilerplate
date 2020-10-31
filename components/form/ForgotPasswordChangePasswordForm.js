@@ -11,6 +11,8 @@ import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
 import { useRouter } from 'next/router'
+import { gql, useMutation } from '@apollo/client'
+
 
 const ForgotPasswordChangePasswordForm = () => {
   const dispatchUserData = useDispatchUser()
@@ -18,11 +20,18 @@ const ForgotPasswordChangePasswordForm = () => {
   const { email, forgotPasswordToken } = router.query
   const [passwordChanged, setPasswordChanged] = useState(false)
 
+  const ForgotPasswordChangePassword = gql`
+    mutation ForgotPasswordChangePassword($email: String, $forgotPasswordToken: String, $newPassword: String, $confirmNewPassword: String) {
+      forgotPasswordChangePassword(email: $email, forgotPasswordToken: $forgotPasswordToken, newPassword: $newPassword, confirmNewPassword: $confirmNewPassword)
+    }
+  `
+  const [forgotPasswordChangePassword] = useMutation(ForgotPasswordChangePassword)
+
   const PasswordChanged = () => {
     return (
       <>
         <h2 className='text-green-400'>
-          <i class="fas fa-check-circle"></i>{' '}
+          <i aria-hidden className="fas fa-check-circle"></i>{' '}
           Password Changed
           </h2>
         <p>Your password has been successfully changed.</p>
@@ -45,18 +54,21 @@ const ForgotPasswordChangePasswordForm = () => {
           validateOnChange={false}
           validationSchema={ForgotPasswordChangePasswordSchema}
           onSubmit={(values, { setSubmitting, setFieldError, resetForm }) => {
-            userUtils.forgotPasswordChangePassword(email, forgotPasswordToken, values.newPassword, values.confirmNewPassword)
-              .then(response => {
-                console.log(response)
-                setPasswordChanged(true)
-                resetForm()
-                setSubmitting(false)
-              })
-              .catch((error) => {
-                console.log(error)
-                setFieldError('serverError', error.response.data)
-                setSubmitting(false)
-              })
+            forgotPasswordChangePassword({
+              variables: {
+                email,
+                forgotPasswordToken,
+                newPassword: values.newPassword,
+                confirmNewPassword: values.confirmNewPassword
+              }
+            }).then(data => {
+              setPasswordChanged(true)
+              resetForm()
+              setSubmitting(false)
+            }).catch(err => {
+              setFieldError('serverError', err.message)
+              setSubmitting(false)
+            })
           }}
         >
           {({ isSubmitting }) => (

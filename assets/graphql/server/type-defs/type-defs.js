@@ -30,7 +30,7 @@ export const typeDefs = gql`
     changePassword(currentPassword: String, newPassword: String, confirmNewPassword: String): String
     changeEmail(email: String, password: String): String
     changePersonalInformation(firstName: String, lastName: String): String
-    forgotPasswordForm(email: String!): String
+    forgotPasswordForm(email: String): String
     forgotPasswordChangePassword(email: String, forgotPasswordToken: String, newPassword: String, confirmNewPassword: String): String
     forgotPasswordChangePasswordEnsure(email: String, forgotPasswordToken: String): String
   }

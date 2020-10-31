@@ -1,8 +1,7 @@
 import {
   ForgotPasswordSchema,
   ForgotPasswordChangePasswordSchema,
-  ForgotPasswordChangePasswordEnsureSchema,
-  ChangePasswordSchema
+  ForgotPasswordChangePasswordEnsureSchema
 } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
 import User from '../../../../models/User'
@@ -35,20 +34,35 @@ const forgotPassword = {
     }).catch(err => { throw err })
   },
 
-
-
-
   forgotPasswordChangePassword: (parent, { email, forgotPasswordToken, newPassword, confirmNewPassword }, { req, res }, info) => {
-
+    return ForgotPasswordChangePasswordEnsureSchema.validate({ email, forgotPasswordToken }).then(values => {
+      return User.findOne({ email, forgotPasswordToken }).then(values => {
+        if (values) {
+          return ForgotPasswordChangePasswordSchema.validate({ newPassword, confirmNewPassword }).then(values => {
+            return bcrypt.genSalt(10).then(salt => {
+              return bcrypt.hash(newPassword, salt).then(hash => {
+                return User.updateOne({ email }, { password: hash, passwordLastUpdated: Date.now(), forgotPasswordToken: null }).then(raw => {
+                  return 'Password changed successfully.'
+                }).catch(err => { throw err })
+              }).catch(err => { throw err })
+            }).catch(err => { throw err })
+          }).catch(err => { throw err })
+        } else { throw new Error('Given email and Forgot Password Token does not match.') }
+      }).catch(err => { throw err })
+    }).catch(err => { throw err })
   },
 
   forgotPasswordChangePasswordEnsure: (parent, { email, forgotPasswordToken }, { req, res }, info) => {
-
+    return ForgotPasswordChangePasswordEnsureSchema.validate({ email, forgotPasswordToken }).then(values => {
+      if (forgotPasswordToken === null) console.log('forgotPasswordToken is null')
+      return User.exists({ email, forgotPasswordToken }).then(exists => {
+        if (exists) {
+          return 'Email and Forgot Password Token matches.'
+        } else { throw new Error('Email and Forgot Password Token does not match.') }
+      }).catch(err => { throw err })
+    }).catch(err => { throw err })
   }
 }
-
-
-
 
 
 export default forgotPassword

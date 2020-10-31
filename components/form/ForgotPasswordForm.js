@@ -6,17 +6,19 @@ import FormErrorMessage from './partials/FormErrorMessage'
 import FormSuccessMessage from './partials/FormSuccessMessage'
 import Button from '../Button/Button'
 import { ForgotPasswordSchema } from '../../assets/validation/schemas'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
-import userUtils from '../../assets/userUtils'
-import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
+import { gql, useMutation } from '@apollo/client'
 
 
 const ForgotPasswordForm = () => {
-  // const userData = useUser()
-  const dispatchUserData = useDispatchUser()
-  const dispatchAuthModal = useDispatchAuthModal()
-
   const [successMessage, setSuccessMessage] = useState('')
+
+  const ForgotPasswordFormMutation = gql`
+    mutation ForgotPasswordFormMutation($email: String) {
+      forgotPasswordForm(email: $email)
+    }
+  `
+  const [forgotPasswordForm] = useMutation(ForgotPasswordFormMutation)
+
 
   return (
     <div>
@@ -29,17 +31,19 @@ const ForgotPasswordForm = () => {
         validateOnChange={false}
         validationSchema={ForgotPasswordSchema}
         onSubmit={(values, { setSubmitting, setFieldError, resetForm }) => {
-          userUtils.forgotPassword(values.email)
-            .then(response => {
-              console.log(response)
-              resetForm()
-              setSuccessMessage(`Recovery email sent to ${values.email}, please check your email.`)
-              setSubmitting(false)
-            })
-            .catch(error => {
-              setFieldError('serverError', error.response.data)
-              setSubmitting(false)
-            })
+          forgotPasswordForm({
+            variables: {
+              email: values.email
+            }
+          }).then(data => {
+            resetForm()
+            setSuccessMessage(`Recovery email sent to ${values.email}, please check your email.`)
+            setSubmitting(false)
+          }).catch(err => {
+            console.log(err)
+            setFieldError('serverError', err.message)
+            setSubmitting(false)
+          })
         }}
       >
         {({ isSubmitting, values }) => (
