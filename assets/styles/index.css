@@ -65,15 +65,34 @@ input[type="password"] {
 }
 
 /* react-modal ease animation start */
-.ReactModal__Content {
+/* .ReactModal__Content {
   opacity: 0.25;
   transition: opacity 250ms ease-in-out;
 }
 
 .ReactModal__Content--after-open {
   opacity: 1;
-  transition: opacity 250ms ease-in-out;
+} */
+
+.ReactModal__Overlay {
+  opacity: 0;
+  /* transform: translateX(-100px); */
+  transition: all 250ms ease-in-out;
 }
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  /* transform: translateX(0px); */
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  /* transform: translateX(-100px); */
+}
+
+
+
+
 /* react-modal ease animation end */
 
 /* nprogress page loading bar start */
