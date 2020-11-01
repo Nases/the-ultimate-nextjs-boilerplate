@@ -10,7 +10,7 @@ async function sendMail({
   let transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
     port: parseInt(process.env.MAIL_PORT, 10),
-    secure: !(process.env.MAIL_SECURE === 'false'),
+    secure: (process.env.MAIL_SECURE === 'true'),
     auth: {
       user: process.env.MAIL_USER_NAME,
       pass: process.env.MAIL_PASSWORD,
