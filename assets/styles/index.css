@@ -66,12 +66,13 @@ input[type="password"] {
 
 /* react-modal ease animation start */
 .ReactModal__Content {
-  opacity: 0.25 !important;
-  transition: opacity 250ms ease-in-out !important;
+  opacity: 0.25;
+  transition: opacity 250ms ease-in-out;
 }
 
 .ReactModal__Content--after-open {
-  opacity: 1 !important;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
 }
 /* react-modal ease animation end */
 
