@@ -1,5 +1,5 @@
 import { ChangePersonalInformationSchema } from '../../../../validation/schemas'
-import User from '../../../../models/User'
+import User from '../../models/User'
 
 
 const changePersonalInformation = (obj, { firstName, lastName }, { req, res }, info) => {

@@ -1,6 +1,6 @@
 import { SignUpSchema } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
-import User from '../../../../models/User'
+import User from '../../models/User'
 import { setUserSession } from '../../utils/auth'
 
 

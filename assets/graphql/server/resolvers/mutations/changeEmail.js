@@ -1,6 +1,6 @@
 import { ChangeEmailSchema } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
-import User from '../../../../models/User'
+import User from '../../models/User'
 
 
 const changeEmail = (obj, { email, password }, { req, res }, info) => {

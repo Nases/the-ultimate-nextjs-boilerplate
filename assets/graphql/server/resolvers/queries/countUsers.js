@@ -1,4 +1,4 @@
-import User from '../../../../models/User'
+import User from '../../models/User'
 import * as yup from 'yup'
 import { calculateEarlierDate } from '../../../../utils/calculations'
 

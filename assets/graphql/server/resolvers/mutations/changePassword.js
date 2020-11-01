@@ -1,6 +1,6 @@
 import { ChangePasswordSchema } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
-import User from '../../../../models/User'
+import User from '../../models/User'
 
 
 const changePassword = (obj, { currentPassword, newPassword, confirmNewPassword }, { req, res }, info) => {
