@@ -3,6 +3,7 @@ import { schema } from '../../assets/graphql/server/schema'
 import { isAuthenticated } from '../../assets/graphql/server/utils/auth'
 import dbConnect from '../../assets/graphql/server/utils/dbConnect'
 
+
 const apolloServer = new ApolloServer({
   schema,
   context(ctx) {
@@ -21,5 +22,6 @@ export const config = {
     bodyParser: false
   }
 }
+
 
 export default apolloServer.createHandler({ path: '/api/graphql' })

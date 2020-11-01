@@ -7,10 +7,11 @@ import ChangePassword from '../../components/partials/User/ChangePassword'
 import ChangeEmail from '../../components/partials/User/ChangeEmail'
 import ChangePersonalInformation from '../../components/partials/User/ChangePersonalInformation'
 
-const Dashboard = () => {
 
+const Dashboard = () => {
   var title = `Profile | ${companyInfo.name}`
   var description = 'Profile'
+
 
   return (
     <EnsureAuth roleIdRequired={[1, 2]}>

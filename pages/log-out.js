@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import { useUser, useDispatchUser } from '../contexts/UserProvider/UserProvider'
+import { useDispatchUser } from '../contexts/UserProvider/UserProvider'
 import Router from 'next/router'
 import { removeSessionTokenCookie } from '../assets/graphql/server/utils/auth-cookies'
+
 
 export async function getServerSideProps(context) {
   removeSessionTokenCookie(context.res)
@@ -20,5 +21,6 @@ const LogOut = () => {
   }, [])
   return ('')
 }
+
 
 export default LogOut

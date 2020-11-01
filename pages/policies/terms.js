@@ -5,6 +5,7 @@ import BreadCrumbNav from '../../components/BreadCrumbs/BreadCrumbNav'
 import BreadCrumb from '../../components/BreadCrumbs/BreadCrumb'
 import BreadCrumbSeparator from '../../components/BreadCrumbs/BreadCrumbSeparator'
 
+
 const Terms = () => {
   var title = `Terms and Conditions | ${companyInfo.name}`
   var description = 'See our terms of our service and how they relate to you.'
@@ -114,5 +115,6 @@ const Terms = () => {
     </Layout >
   )
 }
+
 
 export default Terms

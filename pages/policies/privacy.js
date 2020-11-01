@@ -5,6 +5,7 @@ import BreadCrumbNav from '../../components/BreadCrumbs/BreadCrumbNav'
 import BreadCrumb from '../../components/BreadCrumbs/BreadCrumb'
 import BreadCrumbSeparator from '../../components/BreadCrumbs/BreadCrumbSeparator'
 
+
 const Privacy = () => {
   var title = `Privacy Policy | ${companyInfo.name}`
   var description = 'See our privacy policy and how it relates to you.'
@@ -89,5 +90,6 @@ const Privacy = () => {
     </Layout>
   )
 }
+
 
 export default Privacy

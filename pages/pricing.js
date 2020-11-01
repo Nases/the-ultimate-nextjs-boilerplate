@@ -5,6 +5,7 @@ import PricingSimpleTiers from '../components/Pricing/PricingSimpleTiers/Pricing
 import References from '../components/References/References'
 import Steps from '../components/Steps/Steps'
 
+
 const Pricing = () => {
   var title = `Default title | ${companyInfo.name}`
   var description = 'Default description.'
@@ -17,5 +18,6 @@ const Pricing = () => {
     </Layout>
   )
 }
+
 
 export default Pricing
