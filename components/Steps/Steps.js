@@ -69,8 +69,8 @@ const Steps = () => {
         </li>
       </ul>
     </nav>
-
   )
 }
+
 
 export default Steps

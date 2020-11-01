@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
-export default ({ children }) => {
+
+const Dropdown = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
   const node = useRef()
   useEffect(() => {
@@ -33,3 +34,6 @@ export default ({ children }) => {
     </div>
   )
 }
+
+
+export default Dropdown

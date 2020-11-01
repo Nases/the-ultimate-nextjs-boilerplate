@@ -1,5 +1,6 @@
 import Accordion from './Accordion'
 
+
 const FAQAccordion = () => {
   return (
     <>
@@ -40,5 +41,6 @@ const FAQAccordion = () => {
     </>
   )
 }
+
 
 export default FAQAccordion

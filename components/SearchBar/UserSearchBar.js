@@ -12,4 +12,5 @@ const UserSearchBar = ({ setSearchedEmail, isLoading, setSearchLoading }) => {
   )
 }
 
+
 export default UserSearchBar

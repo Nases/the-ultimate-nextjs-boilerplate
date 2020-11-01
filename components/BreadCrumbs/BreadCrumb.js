@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+
 const BreadCrumb = ({ href, children }) => {
   return (
     <Link href={href}>
@@ -9,5 +10,6 @@ const BreadCrumb = ({ href, children }) => {
     </Link>
   )
 }
+
 
 export default BreadCrumb

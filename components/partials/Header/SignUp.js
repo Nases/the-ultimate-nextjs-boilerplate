@@ -2,6 +2,7 @@ import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
 import SignUpForm from '../../form/SignUpForm'
 
+
 export const SignUpButton = ({ isMobile = false }) => {
   const dispatchAuthModal = useDispatchAuthModal()
   const openModal = () => {

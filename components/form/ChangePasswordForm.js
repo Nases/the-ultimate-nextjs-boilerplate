@@ -4,11 +4,11 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { ChangePasswordSchema } from '../../assets/validation/schemas'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import { useDispatchUser } from '../../contexts/UserProvider/UserProvider'
 import CardBodyRow from '../Card/UserOptionsCard/CardBodyRow'
 import CardBodyKey from '../Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../Card/UserOptionsCard/CardBodyValue'
-import { gql, useMutation, useApolloClient } from '@apollo/client'
+import { gql, useMutation } from '@apollo/client'
 
 
 const ChangePasswordForm = ({ closeAltMenu, showSuccessMessage }) => {

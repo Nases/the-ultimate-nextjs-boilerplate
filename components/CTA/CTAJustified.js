@@ -1,5 +1,6 @@
 import Button from '../Button/Button'
 
+
 const CTAJustified = () => {
   return (
     <>
@@ -17,8 +18,8 @@ const CTAJustified = () => {
         </div>
       </div>
     </>
-
   )
 }
+
 
 export default CTAJustified

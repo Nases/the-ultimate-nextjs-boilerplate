@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import Badge from '../Badge/Badge'
 
+
 const TableRow = ({ options, detailsLink, subscriber }) => {
   const router = useRouter()
 
@@ -21,5 +22,6 @@ const TableRow = ({ options, detailsLink, subscriber }) => {
     </tr>
   )
 }
+
 
 export default TableRow

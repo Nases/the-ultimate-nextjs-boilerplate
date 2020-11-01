@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Select from './Select'
 
+
 const SelectTemplate = () => {
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -19,5 +20,6 @@ const SelectTemplate = () => {
     />
   )
 }
+
 
 export default SelectTemplate

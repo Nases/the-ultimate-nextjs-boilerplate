@@ -86,8 +86,10 @@ const AccordionBody = ({ children }) => {
   )
 }
 
+
 Accordion.Item = AccordionItem
 Accordion.Head = AccordionHead
 Accordion.Body = AccordionBody
+
 
 export default Accordion

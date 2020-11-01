@@ -1,5 +1,4 @@
 const Button = (props) => {
-
   const colors = {
     primary: 'text-white bg-primary-600 border border-primary-600 hover:bg-primary-700 hover:border-primary-700 active:bg-primary-800 active:border-primary-800',
     secondary: 'text-primary-600 bg-white border border-primary-600 hover:text-primary-700 hover:border-primary-700 active:text-primary-900 active:border-primary-900',
@@ -46,5 +45,6 @@ const Button = (props) => {
     </button>
   )
 }
+
 
 export default Button

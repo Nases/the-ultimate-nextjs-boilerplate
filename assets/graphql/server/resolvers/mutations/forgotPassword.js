@@ -5,10 +5,9 @@ import {
 } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
 import User from '../../../../models/User'
-import { setUserSession } from '../../utils/auth'
-import settings from '../../../../settings'
+import settings from '../../../../config/settings'
 import { sendMail } from '../../utils/mailer'
-const cryptoRandomString = require('crypto-random-string')
+import cryptoRandomString from 'crypto-random-string'
 
 
 const forgotPassword = {

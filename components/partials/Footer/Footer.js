@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { companyInfo } from '../../../assets/settings'
+import { companyInfo } from '../../../assets/config/settings'
+
 
 const Footer = () => {
   return (
@@ -216,5 +217,6 @@ const Footer = () => {
     </>
   )
 }
+
 
 export default Footer

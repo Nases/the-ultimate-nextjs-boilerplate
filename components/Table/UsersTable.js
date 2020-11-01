@@ -57,7 +57,6 @@ const UsersTable = () => {
     }
   })
 
-
   const CountUsersQuery = gql`
     query CountUsersQuery($email: String) {
       countUsers(email: $email)
@@ -76,12 +75,12 @@ const UsersTable = () => {
     }
   })
 
-
   const toggleSort = () => {
     (sort === 'asc') ? setSort('desc') : setSort('asc')
   }
 
   const headOptions = ['Email', 'Registration Date', '']
+
 
   return (
     <>

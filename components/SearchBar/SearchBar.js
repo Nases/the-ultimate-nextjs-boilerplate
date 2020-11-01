@@ -1,4 +1,3 @@
-
 const SearchBar = ({ placeholder, onChange, isLoading, setSearchLoading }) => {
   return (
     <div className="max-w-lg w-full lg:max-w-md">
@@ -29,5 +28,6 @@ const SearchBar = ({ placeholder, onChange, isLoading, setSearchLoading }) => {
     </div>
   )
 }
+
 
 export default SearchBar

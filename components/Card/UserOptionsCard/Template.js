@@ -26,7 +26,6 @@ import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserPro
 
 
 const Template = () => {
-
   const InfoMenu = () => {
     return (
       <CardBodyRow>
@@ -67,5 +66,6 @@ const Template = () => {
     </Card>
   )
 }
+
 
 export default Template

@@ -4,11 +4,10 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { SignUpSchema } from '../../assets/validation/schemas'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
-import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
+import { useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import { useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import Router from 'next/router'
-import settings from '../../assets/settings'
-
+import settings from '../../assets/config/settings'
 import { gql, useMutation } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
@@ -18,7 +17,6 @@ const SignUpForm = () => {
   const dispatchAuthModal = useDispatchAuthModal()
   const signUpRedirectPath = settings.customerSignUpRedirectPath
 
-
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
       signUp(email: $email, password: $password, confirmPassword: $confirmPassword) {
@@ -27,7 +25,7 @@ const SignUpForm = () => {
     }
     ${UserFragment}
   `
-  const [signUp, { loading, error, data }] = useMutation(SignUpMutation)
+  const [signUp] = useMutation(SignUpMutation)
 
 
   return (
@@ -94,10 +92,6 @@ const SignUpForm = () => {
     </div >
   )
 }
-
-
-
-
 
 
 export default SignUpForm

@@ -1,5 +1,6 @@
 import UserSidebar from './UserSidebar'
 
+
 const UserLayout = ({ children }) => {
   return (
     <>
@@ -14,5 +15,6 @@ const UserLayout = ({ children }) => {
     </>
   )
 }
+
 
 export default UserLayout

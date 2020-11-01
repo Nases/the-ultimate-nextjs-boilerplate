@@ -90,4 +90,5 @@ const Feature2x2 = () => {
   )
 }
 
+
 export default Feature2x2

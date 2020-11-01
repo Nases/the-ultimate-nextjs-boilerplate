@@ -1,5 +1,4 @@
 const FormSuccessMessage = (props) => {
-
   return (
     <>
       {props.children ?
@@ -12,5 +11,6 @@ const FormSuccessMessage = (props) => {
     </>
   )
 }
+
 
 export default FormSuccessMessage

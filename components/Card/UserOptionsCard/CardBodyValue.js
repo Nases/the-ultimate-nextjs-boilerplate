@@ -7,4 +7,5 @@ const CardBodyValue = (props) => {
   )
 }
 
+
 export default CardBodyValue

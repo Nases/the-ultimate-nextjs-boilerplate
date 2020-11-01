@@ -5,11 +5,11 @@ import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
 import { LoginSchema } from '../../assets/validation/schemas'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
-import { useAuthModal, useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
+import { useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import { useDispatchAuthModal } from '../../contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
-import settings from '../../assets/settings'
-import { gql, useQuery, useLazyQuery } from '@apollo/client'
+import settings from '../../assets/config/settings'
+import { gql, useLazyQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
 
@@ -106,5 +106,6 @@ const LoginForm = () => {
     </div>
   )
 }
+
 
 export default LoginForm

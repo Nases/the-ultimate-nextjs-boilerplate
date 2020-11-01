@@ -1,4 +1,3 @@
-
 const Badge = (props) => {
   const colors = {
     default: 'bg-gray-100 text-gray-800',

@@ -5,7 +5,6 @@ import router from 'next/router'
 
 const EnsureAuth = ({ children, roleIdRequired }) => {
   const userData = useUser()
-
   const isAuth = userData.isAuth
   const isLoading = userData.isLoading
   const roleId = userData.data.roleId

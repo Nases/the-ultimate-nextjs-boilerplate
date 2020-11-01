@@ -1,10 +1,11 @@
 import Skeleton from 'react-loading-skeleton'
 
+
 const Stats = ({ name, current, from }) => {
-
   const Percentage = () => {
-
     var percentage = ((current - from) / (from) * 100).toFixed(0)
+
+
     return (
       <>
         {
@@ -26,7 +27,6 @@ const Stats = ({ name, current, from }) => {
       </>
     )
   }
-
 
 
   return (
@@ -52,5 +52,6 @@ const Stats = ({ name, current, from }) => {
     </div>
   )
 }
+
 
 export default Stats

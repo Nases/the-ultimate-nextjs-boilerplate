@@ -2,6 +2,7 @@ import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
 import ForgotPasswordForm from '../../form/ForgotPasswordForm'
 
+
 export const ForgotPassword = ({ isMobile = false }) => {
   const dispatchAuthModal = useDispatchAuthModal()
   const openLoginModal = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../../contexts/UserProvider/UserProvider'
 import { useMobileMenu, useDispatchMobileMenu } from '../../../contexts/MobileMenuProvider/MobileMenuProvider'
 import MainMenuLinks from './MainMenuLinks'
 import ProfileMenuLinks from './ProfileMenuLinks'
@@ -96,6 +96,7 @@ const RightSideMobile = () => {
     </div>
   )
 }
+
 
 export { MobileMenuButton }
 export default RightSideMobile

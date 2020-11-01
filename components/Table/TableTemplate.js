@@ -5,7 +5,6 @@ import TableRow from './TableRow'
 
 
 const TableTemplate = () => {
-
   const headOptions = ['Email', 'Role', 'Role']
   const rowOptions = ['jane.cooper@example.com', 'Admin', 'Admin']
 
@@ -21,5 +20,6 @@ const TableTemplate = () => {
     </Table>
   )
 }
+
 
 export default TableTemplate

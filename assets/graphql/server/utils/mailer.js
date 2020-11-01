@@ -1,4 +1,5 @@
-const nodemailer = require("nodemailer")
+import nodemailer from "nodemailer"
+
 
 async function sendMail({
   from,

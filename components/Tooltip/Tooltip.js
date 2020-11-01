@@ -1,4 +1,5 @@
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from 'react-tooltip'
+
 
 const Tooltip = ({ children, data }) => {
   return (
@@ -8,5 +9,6 @@ const Tooltip = ({ children, data }) => {
     </>
   )
 }
+
 
 export default Tooltip

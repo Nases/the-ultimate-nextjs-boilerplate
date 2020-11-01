@@ -1,5 +1,4 @@
 const Label = ({ children, htmlFor, variant }) => {
-
   const variants = {
     top: 'ml-1 mt-3',
     left: 'mt-3'
@@ -13,5 +12,6 @@ const Label = ({ children, htmlFor, variant }) => {
     </label>
   )
 }
+
 
 export default Label

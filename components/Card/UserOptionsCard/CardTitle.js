@@ -7,4 +7,5 @@ const CardTitle = (props) => {
   )
 }
 
+
 export default CardTitle

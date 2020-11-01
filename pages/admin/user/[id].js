@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Layout from '../../../components/Layout/Layout'
 import LayoutIndent from '../../../components/Layout/LayoutIndent'
-import { companyInfo } from '../../../assets/settings'
+import { companyInfo } from '../../../assets/config/settings'
 import UserLayout from '../../../components/partials/User/UserLayout'
 import UserDetails from '../../../components/User/UserDetails'
 import EnsureAuth from '../../../components/utils/EnsureAuth'

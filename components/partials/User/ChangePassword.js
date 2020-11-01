@@ -8,10 +8,9 @@ import CardBody from '../../../components/Card/UserOptionsCard/CardBody'
 import CardBodyKey from '../../../components/Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../../../components/Card/UserOptionsCard/CardBodyValue'
 import CardBodyRow from '../../../components/Card/UserOptionsCard/CardBodyRow'
-
 import ChangePasswordForm from '../../form/ChangePasswordForm'
-import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
-const moment = require('moment')
+import { useUser } from '../../../contexts/UserProvider/UserProvider'
+import moment from 'moment'
 
 
 const ChangePassword = () => {
@@ -59,5 +58,6 @@ const ChangePassword = () => {
     </Card>
   )
 }
+
 
 export default ChangePassword

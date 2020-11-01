@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { profileMenuItems } from '../../../assets/menu-items'
+import { profileMenuItems } from '../../../assets/config/menu-items'
 import { useUser } from '../../../contexts/UserProvider/UserProvider'
+
 
 const UserMenuLink = ({ children, href, isMobile = false }) => {
   const router = useRouter()
@@ -25,7 +26,6 @@ const UserMenuLink = ({ children, href, isMobile = false }) => {
   }
 }
 
-
 const ProfileMenuLinks = ({ isMobile }) => {
   const userData = useUser()
   const roleId = userData.data.roleId
@@ -46,5 +46,6 @@ const ProfileMenuLinks = ({ isMobile }) => {
     })
   )
 }
+
 
 export default ProfileMenuLinks

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 const Card = (props) => {
   const [altMenuActive, setAltMenuActive] = useState(false)
   const [successMessage, setSuccessMessage] = useState(false)
@@ -33,5 +34,6 @@ const Card = (props) => {
     </div>
   )
 }
+
 
 export default Card

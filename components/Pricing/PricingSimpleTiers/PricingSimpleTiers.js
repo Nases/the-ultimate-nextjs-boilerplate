@@ -1,7 +1,7 @@
 import PricingCard from './PricingCard'
 
-const PricingSimpleTiers = () => {
 
+const PricingSimpleTiers = () => {
   return (
     <div className="bg-gray-50">
       <div className="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -48,8 +48,8 @@ const PricingSimpleTiers = () => {
         </div>
       </div>
     </div>
-
   )
 }
+
 
 export default PricingSimpleTiers

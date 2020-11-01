@@ -1,5 +1,6 @@
 import Button from '../../Button/Button'
 
+
 const SimpleCenteredHero = () => {
   return (
     <div className="relative bg-gray-50 overflow-hidden">
@@ -29,5 +30,6 @@ const SimpleCenteredHero = () => {
     </div>
   )
 }
+
 
 export default SimpleCenteredHero

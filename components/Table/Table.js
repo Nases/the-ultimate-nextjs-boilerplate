@@ -1,4 +1,3 @@
-
 const Table = ({ children }) => {
   return (
     <div className="flex flex-col">
@@ -14,5 +13,6 @@ const Table = ({ children }) => {
     </div>
   )
 }
+
 
 export default Table

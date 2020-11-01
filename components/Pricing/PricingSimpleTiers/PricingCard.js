@@ -1,5 +1,6 @@
 import Button from '../../Button/Button'
 
+
 const Includes = ({ children }) => {
   return (
     <li className="flex space-x-3">
@@ -39,5 +40,6 @@ const PricingCard = ({ price, description, includes, buttonColor }) => {
     </div>
   )
 }
+
 
 export default PricingCard

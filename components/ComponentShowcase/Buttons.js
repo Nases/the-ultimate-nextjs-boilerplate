@@ -1,5 +1,6 @@
 import Button from '../Button/Button'
 
+
 const Buttons = () => {
   return (
     <div>
@@ -30,5 +31,6 @@ const Buttons = () => {
     </div>
   )
 }
+
 
 export default Buttons

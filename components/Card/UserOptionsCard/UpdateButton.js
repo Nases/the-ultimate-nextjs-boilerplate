@@ -1,5 +1,6 @@
 import Button from '../../Button/Button'
 
+
 const UpdateButton = (props) => {
   const { altMenuActive, ...rest } = props
   return (
@@ -12,5 +13,6 @@ const UpdateButton = (props) => {
     </div>
   )
 }
+
 
 export default UpdateButton

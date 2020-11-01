@@ -35,7 +35,6 @@ const UserDetails = ({ id }) => {
     }
   })
 
-
   const UserDetailsRow = ({ title, value }) => {
     return (
       <div className="px-4 py-5 sm:p-0 border-b border-gray-200">
@@ -52,6 +51,7 @@ const UserDetails = ({ id }) => {
       </div>
     )
   }
+
 
   return (
     isLoading ? <Skeleton className='mb-2' height={24} count={5} /> :

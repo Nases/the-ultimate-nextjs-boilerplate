@@ -1,4 +1,4 @@
-import { useUser, useDispatchUser } from '../../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../../contexts/UserProvider/UserProvider'
 
 const UserTest = () => {
   const user = useUser()
@@ -12,5 +12,6 @@ const UserTest = () => {
     </>
   )
 }
+
 
 export default UserTest

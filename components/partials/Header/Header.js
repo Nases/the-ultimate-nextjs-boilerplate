@@ -3,8 +3,8 @@ import MainMenuLinks from './MainMenuLinks'
 import RightSideDesktop from './RightSideDesktop'
 import RightSideMobile, { MobileMenuButton } from './RightSideMobile'
 
-const Header = () => {
 
+const Header = () => {
   return (
     <>
       <div className='headerBefore'></div>
@@ -51,5 +51,6 @@ const Header = () => {
     </>
   )
 }
+
 
 export default Header

@@ -1,6 +1,6 @@
 import Layout from '../components/Layout/Layout'
 import LayoutIndent from '../components/Layout/LayoutIndent'
-import { companyInfo } from '../assets/settings'
+import { companyInfo } from '../assets/config/settings'
 
 import { gql, useQuery, useMutation } from '@apollo/client'
 

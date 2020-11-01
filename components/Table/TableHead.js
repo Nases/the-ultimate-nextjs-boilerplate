@@ -40,4 +40,5 @@ const TableHead = ({ options, toggleSort }) => {
   )
 }
 
+
 export default TableHead

@@ -2,6 +2,7 @@ import { createContext } from 'react'
 import { CSSTransition as ReactCSSTransition } from 'react-transition-group'
 import { useRef, useEffect, useContext } from 'react'
 
+
 const TransitionContext = createContext({
   parent: {},
 })
@@ -39,6 +40,7 @@ function CSSTransition({
   function removeClasses(node, classes) {
     classes.length && node.classList.remove(...classes)
   }
+
 
   return (
     <ReactCSSTransition
@@ -103,5 +105,6 @@ function Transition({ show, appear, ...rest }) {
     </TransitionContext.Provider>
   )
 }
+
 
 export default Transition
