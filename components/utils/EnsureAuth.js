@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useUser } from '../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../assets/contexts/UserProvider/UserProvider'
 import router from 'next/router'
 
 

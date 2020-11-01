@@ -1,5 +1,5 @@
 import Modal from 'react-modal'
-import { useAuthModal, useDispatchAuthModal } from '../../../contexts/AuthModalProvider/AuthModalProvider'
+import { useAuthModal, useDispatchAuthModal } from '../../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import LoginForm from '../../form/LoginForm'
 
 

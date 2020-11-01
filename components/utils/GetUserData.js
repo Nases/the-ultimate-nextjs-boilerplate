@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useUser, useDispatchUser } from '../../contexts/UserProvider/UserProvider'
+import { useUser, useDispatchUser } from '../../assets/contexts/UserProvider/UserProvider'
 import { gql, useQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 

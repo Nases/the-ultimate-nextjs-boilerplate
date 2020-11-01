@@ -3,7 +3,7 @@ import Transition from "../../utils/Transition.js"
 import { LoginButton, LoginModal } from './Login'
 import { SignUpButton, SignUpModal } from './SignUp'
 import { ForgotPasswordModal } from './ForgotPassword'
-import { useUser } from '../../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
 import ProfileMenuLinks from './ProfileMenuLinks'
 import Badge from '../../Badge/Badge'
 import Tooltip from '../../Tooltip/Tooltip'

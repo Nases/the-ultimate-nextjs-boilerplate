@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { profileMenuItems } from '../../../assets/config/menu-items'
-import { useUser } from '../../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
 
 
 const UserMenuLink = ({ children, href, isMobile = false }) => {

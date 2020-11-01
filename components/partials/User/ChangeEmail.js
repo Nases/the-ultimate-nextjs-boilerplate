@@ -8,7 +8,7 @@ import CardBodyKey from '../../../components/Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../../../components/Card/UserOptionsCard/CardBodyValue'
 import CardBodyRow from '../../../components/Card/UserOptionsCard/CardBodyRow'
 import ChangeEmailForm from '../../form/ChangeEmailForm'
-import { useUser } from '../../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
 
 
 const ChangeEmail = () => {

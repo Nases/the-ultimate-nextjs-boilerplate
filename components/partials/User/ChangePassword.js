@@ -9,7 +9,7 @@ import CardBodyKey from '../../../components/Card/UserOptionsCard/CardBodyKey'
 import CardBodyValue from '../../../components/Card/UserOptionsCard/CardBodyValue'
 import CardBodyRow from '../../../components/Card/UserOptionsCard/CardBodyRow'
 import ChangePasswordForm from '../../form/ChangePasswordForm'
-import { useUser } from '../../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
 import moment from 'moment'
 
 

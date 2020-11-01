@@ -1,7 +1,7 @@
 import { profileMenuItems } from '../../../assets/config/menu-items'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useUser } from '../../../contexts/UserProvider/UserProvider'
+import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
 
 
 const UserSideBarItem = ({ children, href, icon }) => {

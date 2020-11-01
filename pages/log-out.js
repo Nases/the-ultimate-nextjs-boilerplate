@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatchUser } from '../contexts/UserProvider/UserProvider'
+import { useDispatchUser } from '../assets/contexts/UserProvider/UserProvider'
 import Router from 'next/router'
 import { removeSessionTokenCookie } from '../assets/graphql/server/utils/auth-cookies'
 

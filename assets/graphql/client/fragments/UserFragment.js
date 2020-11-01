@@ -16,4 +16,5 @@ const UserFragment = gql`
   }
 `
 
+
 export default UserFragment
