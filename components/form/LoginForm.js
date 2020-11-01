@@ -16,7 +16,7 @@ import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 const LogInForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
-  const loginRedirectPath = settings.customerLoginRedirectPath
+  const logInRedirectPath = settings.customerLogInRedirectPath
 
   const logInForm = useRef(null)
 
@@ -41,7 +41,7 @@ const LogInForm = () => {
           dispatchAuthModal({
             type: 'CLOSE_LOGIN_MODAL'
           })
-          router.push(loginRedirectPath)
+          router.push(logInRedirectPath)
         } else {
           logInForm.current.setFieldError('serverError', 'Something went wrong, please try again later.')
           logInForm.current.setSubmitting(false)
@@ -58,7 +58,7 @@ const LogInForm = () => {
 
 
   useEffect(() => {
-    router.prefetch(loginRedirectPath)
+    router.prefetch(logInRedirectPath)
   }, [])
 
   return (

@@ -23,7 +23,7 @@ export const SignUpModal = () => {
   const closeModal = () => {
     dispatchAuthModal({ type: 'CLOSE_SIGN_UP_MODAL' })
   }
-  const openLoginModal = () => {
+  const openLogInModal = () => {
     dispatchAuthModal({ type: 'OPEN_LOGIN_MODAL' })
   }
 
@@ -52,7 +52,7 @@ export const SignUpModal = () => {
               Already have an account?
             </span>
             {' '}
-            <button onClick={openLoginModal} className="font-medium text-primary-600 hover:text-primary-700 transition ease-in-out duration-150">
+            <button onClick={openLogInModal} className="font-medium text-primary-600 hover:text-primary-700 transition ease-in-out duration-150">
               Log In
             </button>
           </div>
