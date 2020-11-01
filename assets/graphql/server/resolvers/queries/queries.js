@@ -1,4 +1,4 @@
-import login from './login'
+import logIn from './logIn'
 import getUserData from './getUserData'
 import logOut from './logOut'
 import test from './test'
@@ -8,7 +8,7 @@ import countUsers from './countUsers'
 
 
 const queries = {
-  login,
+  logIn,
   logOut,
   getUserData,
   test,

@@ -13,46 +13,46 @@ import { gql, useLazyQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
 
-const LoginForm = () => {
+const LogInForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
   const loginRedirectPath = settings.customerLoginRedirectPath
 
-  const loginForm = useRef(null)
+  const logInForm = useRef(null)
 
-  const LoginQuery = gql`
-    query LoginQuery($email: String, $password: String) {
-      login(email: $email, password: $password) {
+  const LogInQuery = gql`
+    query LogInQuery($email: String, $password: String) {
+      logIn(email: $email, password: $password) {
         ...userFields
       }
     }
     ${UserFragment}
   `
 
-  const [login] =
-    useLazyQuery(LoginQuery, {
+  const [logIn] =
+    useLazyQuery(LogInQuery, {
       fetchPolicy: 'no-cache',
       onCompleted: data => {
-        if (data?.login?._id) {
+        if (data?.logIn?._id) {
           dispatchUserData({
             type: 'LOGIN',
-            userData: data.login
+            userData: data.logIn
           })
           dispatchAuthModal({
             type: 'CLOSE_LOGIN_MODAL'
           })
           router.push(loginRedirectPath)
         } else {
-          loginForm.current.setFieldError('serverError', 'Something went wrong, please try again later.')
-          loginForm.current.setSubmitting(false)
+          logInForm.current.setFieldError('serverError', 'Something went wrong, please try again later.')
+          logInForm.current.setSubmitting(false)
         }
       },
       onError: err => {
         dispatchUserData({
           type: 'SET_IS_LOADING_FALSE'
         })
-        loginForm.current.setFieldError('serverError', err.message)
-        loginForm.current.setSubmitting(false)
+        logInForm.current.setFieldError('serverError', err.message)
+        logInForm.current.setSubmitting(false)
       }
     })
 
@@ -64,7 +64,7 @@ const LoginForm = () => {
   return (
     <div>
       <Formik
-        innerRef={loginForm}
+        innerRef={logInForm}
         initialValues={{
           email: '',
           password: '',
@@ -74,7 +74,7 @@ const LoginForm = () => {
         validateOnChange={false}
         validationSchema={LoginSchema}
         onSubmit={values => {
-          login({
+          logIn({
             variables: {
               email: values.email,
               password: values.password
@@ -108,4 +108,4 @@ const LoginForm = () => {
 }
 
 
-export default LoginForm
+export default LogInForm

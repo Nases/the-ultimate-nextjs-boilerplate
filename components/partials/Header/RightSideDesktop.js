@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import Transition from "../../utils/Transition.js"
-import { LoginButton, LoginModal } from './Login'
+import { LogInButton, LogInModal } from './LogIn'
 import { SignUpButton, SignUpModal } from './SignUp'
 import { ForgotPasswordModal } from './ForgotPassword'
 import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
@@ -88,11 +88,11 @@ const RightSideDesktop = () => {
             :
             // signed out
             <div className='inline-flex items-center'>
-              <LoginButton />
+              <LogInButton />
               <span className="ml-2">
                 <SignUpButton />
               </span>
-              <LoginModal />
+              <LogInModal />
               <SignUpModal />
               <ForgotPasswordModal />
             </div>

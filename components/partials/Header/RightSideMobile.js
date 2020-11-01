@@ -3,7 +3,7 @@ import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
 import { useMobileMenu, useDispatchMobileMenu } from '../../../assets/contexts/MobileMenuProvider/MobileMenuProvider'
 import MainMenuLinks from './MainMenuLinks'
 import ProfileMenuLinks from './ProfileMenuLinks'
-import { LoginButton } from './Login'
+import { LogInButton } from './LogIn'
 import { SignUpButton } from './SignUp'
 import Skeleton from 'react-loading-skeleton'
 
@@ -87,7 +87,7 @@ const RightSideMobile = () => {
               :
               // signed out
               <div>
-                <LoginButton isMobile={true} />
+                <LogInButton isMobile={true} />
                 <SignUpButton isMobile={true} />
               </div>
         }

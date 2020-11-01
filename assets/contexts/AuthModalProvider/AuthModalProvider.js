@@ -6,15 +6,15 @@ const AuthModalDispatchContext = createContext()
 const reducer = (state, action) => {
   switch (action.type) {
     case 'OPEN_LOGIN_MODAL':
-      state.loginModal.active = true
+      state.logInModal.active = true
       state.signUpModal.active = false
       state.forgotPasswordModal.active = false
       return { ...state }
     case 'CLOSE_LOGIN_MODAL':
-      state.loginModal.active = false
+      state.logInModal.active = false
       return { ...state }
     case 'OPEN_SIGN_UP_MODAL':
-      state.loginModal.active = false
+      state.logInModal.active = false
       state.signUpModal.active = true
       state.forgotPasswordModal.active = false
       return { ...state }
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
       state.signUpModal.active = false
       return { ...state }
     case 'OPEN_FORGOT_PASSWORD_MODAL':
-      state.loginModal.active = false
+      state.logInModal.active = false
       state.signUpModal.active = false
       state.forgotPasswordModal.active = true
       return { ...state }
@@ -36,7 +36,7 @@ const reducer = (state, action) => {
 
 export const AuthModalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
-    loginModal: { active: false },
+    logInModal: { active: false },
     signUpModal: { active: false },
     forgotPasswordModal: { active: false }
   })

@@ -4,7 +4,7 @@ import User from '../../models/User'
 import { setUserSession } from '../../utils/auth'
 
 
-const login = async (obj, { email, password }, { req, res }, info) => {
+const logIn = async (obj, { email, password }, { req, res }, info) => {
   return LoginSchema.validate({ email, password }).then(values => {
     return User.findOne({ email }).then(user => {
       if (user) {
@@ -20,4 +20,4 @@ const login = async (obj, { email, password }, { req, res }, info) => {
   }).catch(err => { throw err })
 }
 
-export default login
+export default logIn
