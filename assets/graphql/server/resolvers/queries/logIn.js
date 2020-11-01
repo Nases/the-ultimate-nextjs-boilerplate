@@ -1,11 +1,11 @@
-import { LoginSchema } from '../../../../validation/schemas'
+import { LogInSchema } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
 import User from '../../models/User'
 import { setUserSession } from '../../utils/auth'
 
 
 const logIn = async (obj, { email, password }, { req, res }, info) => {
-  return LoginSchema.validate({ email, password }).then(values => {
+  return LogInSchema.validate({ email, password }).then(values => {
     return User.findOne({ email }).then(user => {
       if (user) {
         return bcrypt.compare(password, user.password).then(isMatch => {

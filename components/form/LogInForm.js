@@ -4,7 +4,7 @@ import Input from './partials/Input'
 import Label from './partials/Label'
 import FormErrorMessage from './partials/FormErrorMessage'
 import Button from '../Button/Button'
-import { LoginSchema } from '../../assets/validation/schemas'
+import { LogInSchema } from '../../assets/validation/schemas'
 import { useDispatchUser } from '../../assets/contexts/UserProvider/UserProvider'
 import { useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
@@ -72,7 +72,7 @@ const LogInForm = () => {
         }}
         validateOnBlur={false}
         validateOnChange={false}
-        validationSchema={LoginSchema}
+        validationSchema={LogInSchema}
         onSubmit={values => {
           logIn({
             variables: {
