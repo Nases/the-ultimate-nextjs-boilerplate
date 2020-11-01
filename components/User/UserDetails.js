@@ -25,12 +25,10 @@ const UserDetails = ({ id }) => {
       id
     },
     onCompleted: data => {
-      console.log(data)
       setUser(data.user)
       setIsLoading(false)
     },
     onError: err => {
-      console.log(err)
       setIsLoading(false)
     }
   })
