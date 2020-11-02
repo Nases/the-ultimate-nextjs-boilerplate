@@ -9,6 +9,7 @@ import Select from '../Select/Select'
 import UserSearchBar from '../SearchBar/UserSearchBar'
 import { gql, useQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
+import Skeleton from 'react-loading-skeleton'
 
 
 const UsersTable = () => {
@@ -39,7 +40,7 @@ const UsersTable = () => {
     }
     ${UserFragment}
   `
-  useQuery(UsersQuery, {
+  var { loading } = useQuery(UsersQuery, {
     fetchPolicy: 'no-cache',
     variables: {
       sort: sort,
@@ -56,6 +57,7 @@ const UsersTable = () => {
       setSearchLoading(false)
     }
   })
+
 
   const CountUsersQuery = gql`
     query CountUsersQuery($email: String) {
@@ -99,17 +101,20 @@ const UsersTable = () => {
       <Table>
         <TableHead options={headOptions} toggleSort={toggleSort} />
         <TableBody>
-          {users?.map(value => {
-            const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
-            return (
-              <TableRow
-                options={rowOptions}
-                detailsLink={`/admin/user/${value._id}`}
-                subscriber={users.subscriber}
-                key={value._id}
-              />
-            )
-          })}
+          {
+            !loading ? users?.map(value => {
+              const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
+              return (
+                <TableRow
+                  options={rowOptions}
+                  detailsLink={`/admin/user/${value._id}`}
+                  subscriber={users.subscriber}
+                  key={value._id}
+                />
+              )
+            }) :
+              <TableRow loading={{ rows: 5 }} />
+          }
           <TablePagination totalUsersCount={totalUsersCount} currentPage={currentPage} setCurrentPage={setCurrentPage} limit={limitSelectedOption.value} />
         </TableBody>
       </Table>
