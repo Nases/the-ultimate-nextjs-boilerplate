@@ -9,7 +9,6 @@ import Select from '../Select/Select'
 import UserSearchBar from '../SearchBar/UserSearchBar'
 import { gql, useQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
-import Skeleton from 'react-loading-skeleton'
 
 
 const UsersTable = () => {
@@ -21,6 +20,8 @@ const UsersTable = () => {
 
   const [searchedEmail, setSearchedEmail] = useState('')
   const [searchLoading, setSearchLoading] = useState()
+
+  const [isLoading, setIsLoading] = useState(true)
 
   const limitOptions = [
     { value: '2', label: '2' },
@@ -40,7 +41,7 @@ const UsersTable = () => {
     }
     ${UserFragment}
   `
-  var { loading } = useQuery(UsersQuery, {
+  useQuery(UsersQuery, {
     fetchPolicy: 'no-cache',
     variables: {
       sort: sort,
@@ -50,6 +51,7 @@ const UsersTable = () => {
     },
     onCompleted: data => {
       setUsers(data.users)
+      isLoading && setIsLoading(false)
       setSearchLoading(false)
     },
     onError: err => {
@@ -102,7 +104,7 @@ const UsersTable = () => {
         <TableHead options={headOptions} toggleSort={toggleSort} />
         <TableBody>
           {
-            !loading ? users?.map(value => {
+            !isLoading ? users?.map(value => {
               const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
               return (
                 <TableRow
