@@ -1,6 +1,6 @@
 module.exports = {
   plugins: [
-    // 'tailwindcss',
+    'tailwindcss',
     // process.env.NODE_ENV === 'production'
     //   ? [
     //     '@fullhuman/postcss-purgecss',
@@ -13,6 +13,6 @@ module.exports = {
     //     },
     //   ]
     //   : undefined,
-    // 'postcss-preset-env',
+    'postcss-preset-env',
   ],
 }
