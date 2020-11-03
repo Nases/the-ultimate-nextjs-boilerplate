@@ -10,9 +10,11 @@ const TableRow = ({ options, detailsLink, subscriber, loading }) => {
   if (!loading) {
     return (
       <tr onClick={() => router.push(detailsLink)} className="bg-white border-b hover:bg-gray-50 cursor-pointer">
-        {options?.map(value => {
+        {options?.map((value, index) => {
           return (
-            <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900" key={detailsLink + value}>
+            <td className={`px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 ${(index === 0) && 'max-w-xs w-2/5 overflow-hidden'}`}
+              key={detailsLink + value}
+            >
               {value}
             </td>
           )

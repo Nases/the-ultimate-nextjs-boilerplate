@@ -7,6 +7,7 @@
 /* secondary color indigo-500 */
 @import 'animations.css';
 @import 'color-schema.css';
+@import 'test.css';
 
 
 .font-primary {

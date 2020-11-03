@@ -28,7 +28,7 @@ const TableHead = ({ options, toggleSort }) => {
               </th>
               :
               <th
-                className='px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider'
+                className="px-6 py-3 text-left text-xs leading-4 font-medium uppercase tracking-wider"
                 key={value}
               >
                 {value}
