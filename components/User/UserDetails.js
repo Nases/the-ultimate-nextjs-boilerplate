@@ -52,28 +52,27 @@ const UserDetails = ({ id }) => {
 
 
   return (
-    isLoading ? <Skeleton className='mb-2' height={24} count={5} /> :
-      user ?
-        <>
-          <div className="mb-1">
-            <Button className='pt-0 pb-0' color='link'>
-              <Link href='/admin/users'>
-                <a>
-                  <i aria-hidden className="fas fa-long-arrow-alt-left"></i>
-                  {' '}
-              Back
-            </a>
-              </Link>
-            </Button>
-          </div>
+    <>
+      <div className="mb-1">
+        <Button className='pt-0 pb-0' color='link'>
+          <Link href='/admin/users'>
+            <a>
+              <i aria-hidden className="fas fa-long-arrow-alt-left"></i>
+              {' '}
+                  Back
+                </a>
+          </Link>
+        </Button>
+      </div>
+      {
+        !isLoading ? (user ?
           <div className="bg-white shadow overflow-hidden sm:rounded-lg">
             <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
-              <h3 className="text-lg leading-6 font-medium text-gray-900">
+              <h3 className="flex justify-between text-lg leading-6 font-medium text-gray-900">
                 {user.email}
-                {' '}
                 <Badge color='green'>
                   Customer
-              </Badge>
+                </Badge>
               </h3>
               <p className="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
                 User ID: {user._id}
@@ -83,7 +82,25 @@ const UserDetails = ({ id }) => {
             <UserDetailsRow title={'Last name'} value={user.lastName} />
             <UserDetailsRow title={'Registration date'} value={moment(user.registrationDate).format('DD MMM YYYY')} />
           </div>
-        </> : 'Something went wrong, please try again later.'
+          : 'Something went wrong, please try again later.')
+          :
+          <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+            <div className="px-4 py-5 border-b border-gray-200 sm:px-6">
+              <h3 className="flex justify-between text-lg leading-6 font-medium text-gray-900">
+                <Skeleton height={24} width={400} />
+                <Skeleton height={20} width={80} />
+              </h3>
+              <p className="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+                User ID: <Skeleton height={16} width={300} />
+              </p>
+            </div>
+            <Skeleton className="mx-4 my-5" height={24} width={400} />
+            <Skeleton className="mx-4 my-5" height={24} width={400} />
+            <Skeleton className="mx-4 my-5" height={24} width={400} />
+            <Skeleton className="mx-4 my-5" height={24} width={400} />
+          </div>
+      }
+    </>
   )
 }
 
