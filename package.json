@@ -2,12 +2,9 @@
   "name": "nextjs-express-auth-starter",
   "version": "1.0.0",
   "scripts": {
-    "dev-node": "cross-env NODE_ENV=development node server.js",
     "dev": "next",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js",
-    "dev-nodemon": "cross-env NODE_ENV=development nodemon server.js",
-    "dev-client": "next dev",
+    "start": "next start",
     "save": "git add . && git commit -m '⭐️' && git push -u origin master"
   },
   "dependencies": {
