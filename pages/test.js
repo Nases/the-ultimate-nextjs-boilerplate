@@ -19,7 +19,7 @@ const Template = () => {
 
 
         <FacebookLogin
-          appId="632779907666090"
+          appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
           fields="name,email,picture"
           callback={handleResponseFacebook}
           render={renderProps => (
