@@ -1,6 +1,7 @@
 import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import LogInForm from '../../form/LogInForm'
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 
 export const LogInButton = ({ isMobile = false }) => {
@@ -33,6 +34,13 @@ export const LogInModal = () => {
   // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
   Modal.setAppElement('#__next')
 
+
+
+  const handleResponseFacebook = response => {
+    console.log(response)
+  }
+
+
   return (
     <Modal
       className='m-auto w-11/12 md:w-440px border border-solid border-gray-300 outline-none overflow-auto bg-white rounded-lg'
@@ -42,12 +50,29 @@ export const LogInModal = () => {
       contentLabel="Login Modal"
     >
       <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 min-w-40">
-        <div className="text-center pb-2">
+        <div className="text-center pb-6">
           <i className="text-primary-600 fas fa-sign-in-alt fa-3x"></i>
           <h2 className="text-gray-700 mt-4 text-3xl leading-9 font-extrabold">
             Log In
           </h2>
         </div>
+
+        <FacebookLogin
+          appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
+          fields="name,email,picture"
+          callback={handleResponseFacebook}
+          render={renderProps => (
+            <button onClick={renderProps.onClick} type="button" className="inline-flex items-center w-full px-3 py-2 border border-transparent shadow-sm text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150">
+              <i aria-hidden className="absolute fab fa-facebook fa-lg"></i>
+              <span className='m-auto'>
+                Continue with Facebook
+              </span>
+            </button>
+          )}
+        />
+
+        <div className='text-center my-4'>or</div>
+
         <LogInForm />
         <div className="mt-3">
           <div className="text-sm leading-5 justify-between flex">
