@@ -49,5 +49,3 @@ try {
 
 
 export default User
-// module.exports = User
-// module.exports.UserSchema = UserSchema
