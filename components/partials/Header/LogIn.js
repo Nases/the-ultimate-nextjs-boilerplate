@@ -1,7 +1,7 @@
 import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import LogInForm from '../../form/LogInForm'
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import FacebookOAuth from '../../utils/FacebookOAuth'
 
 
 export const LogInButton = ({ isMobile = false }) => {
@@ -13,7 +13,7 @@ export const LogInButton = ({ isMobile = false }) => {
   return (
     <button onClick={openLogInModal} type="button" className={isMobile ? "block mt-1 px-4 py-2 hover:border-gray-300 text-gray-500 hover:text-gray-800 hover:bg-gray-100 font-primary font-semibold text-base transition duration-150 ease-in-out" : "inline-flex items-center font-primary font-semibold uppercase hover:text-primary-600 h-10 px-3 py-2 text-sm leading-4 font-medium text-gray-900 transition ease-in-out duration-150"} >
       Log In
-    </button >
+    </button>
   )
 }
 
@@ -37,7 +37,8 @@ export const LogInModal = () => {
 
 
   const handleResponseFacebook = response => {
-    console.log(response)
+    const { email, id, name } = response
+    console.log(email)
   }
 
 
@@ -47,7 +48,7 @@ export const LogInModal = () => {
       overlayClassName='fixed top-0 bottom-0 left-0 right-0 bg-white bg-opacity-75 flex'
       isOpen={modalIsOpen}
       onRequestClose={closeLogInModal}
-      contentLabel="Login Modal"
+      contentLabel="Log In Modal"
     >
       <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 min-w-40">
         <div className="text-center pb-6">
@@ -57,19 +58,7 @@ export const LogInModal = () => {
           </h2>
         </div>
 
-        <FacebookLogin
-          appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
-          fields="name,email,picture"
-          callback={handleResponseFacebook}
-          render={renderProps => (
-            <button onClick={renderProps.onClick} type="button" className="inline-flex items-center w-full px-3 py-2 border border-transparent shadow-sm text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150">
-              <i aria-hidden className="absolute fab fa-facebook fa-lg"></i>
-              <span className='m-auto'>
-                Continue with Facebook
-              </span>
-            </button>
-          )}
-        />
+        <FacebookOAuth />
 
         <div className='text-center my-4'>or</div>
 

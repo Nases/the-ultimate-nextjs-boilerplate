@@ -22,4 +22,5 @@ const signUp = async (obj, { email, password, confirmPassword }, { req, res }, i
   }).catch(err => { throw err })
 }
 
+
 export default signUp
