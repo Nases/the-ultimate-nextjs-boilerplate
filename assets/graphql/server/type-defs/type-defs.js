@@ -35,6 +35,6 @@ export const typeDefs = gql`
     forgotPasswordForm(email: String): String
     forgotPasswordChangePassword(email: String, forgotPasswordToken: String, newPassword: String, confirmNewPassword: String): String
     forgotPasswordChangePasswordEnsure(email: String, forgotPasswordToken: String): String
-    facebookOAuth(email: String, facebookID: String): User
+    facebookOAuth(email: String, facebookID: String, firstName: String, lastName: String): User
   }
 `

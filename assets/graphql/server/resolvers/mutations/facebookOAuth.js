@@ -7,22 +7,28 @@ import checkUserSignUpType from '../../utils/checkUserSignUpType'
 const schema = yup.object().shape({
   email: yup
     .string()
-    .required()
     .min(0, 'Email must be at least 0 characters long')
-    .max(200, 'Email can be maximum 200 characters long'),
+    .max(200, 'Email can be maximum 200 characters long')
+    .required(),
   facebookID: yup
     .string()
-    .required()
     .min(1, 'Id must be at least 1')
     .max(1000, 'Id can be maximum 1000')
+    .required(),
+  firstName: yup.string()
+    .min(1, 'First Name must be at least 1 character')
+    .max(200, 'First Name can be maximum 200 characters'),
+  lastName: yup.string()
+    .min(1, 'Last Name must be at least 1 character')
+    .max(200, 'Last Name can be maximum 200 characters')
 })
 
 
-const facebookOAuth = async (parent, { facebookID, email }, { req, res }, info) => {
-  return schema.validate({ facebookID, email }).then(values => {
+const facebookOAuth = async (parent, { facebookID, email, firstName, lastName }, { req, res }, info) => {
+  return schema.validate({ facebookID, email, firstName, lastName }).then(values => {
     return User.findOne({ email }).then(user => {
       if (!user) {
-        return User({ email, facebookID }).save().then(user => {
+        return User({ email, facebookID, firstName, lastName }).save().then(user => {
           return setUserSession(res, user._id).then(() => {
             return user
           }).catch(err => { throw err })
