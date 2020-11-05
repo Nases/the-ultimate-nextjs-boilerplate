@@ -37,12 +37,12 @@ export const getUserSession = req => {
 }
 
 
-export const isAuthenticated = (req, role = []) => {
+export const isAuthenticated = (req, roleRequired = []) => {
   return (
     new Promise((resolve, reject) => {
       getUserSession(req).then(user => {
         if (user) {
-          if (role.includes(user.role)) {
+          if (roleRequired.includes(user.role)) {
             resolve(user)
           } else { reject('Unauthorized.') }
         } else { reject('Unauthenticated.') }
