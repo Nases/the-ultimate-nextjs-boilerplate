@@ -15,4 +15,5 @@ const isAuthenticated = (req, roleRequired = []) => {
   )
 }
 
+
 export default isAuthenticated
