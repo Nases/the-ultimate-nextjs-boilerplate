@@ -9,6 +9,7 @@ import Select from '../Select/Select'
 import UserSearchBar from '../SearchBar/UserSearchBar'
 import { gql, useQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
+import SignUpTypeIcon from '../utils/SignUpTypeIcon'
 
 
 const UsersTable = () => {
@@ -83,7 +84,7 @@ const UsersTable = () => {
     (sort === 'asc') ? setSort('desc') : setSort('asc')
   }
 
-  const headOptions = ['Email', 'Registration Date', '']
+  const headOptions = ['Email', 'Registration Date', 'Via', '']
 
 
   return (
@@ -105,7 +106,7 @@ const UsersTable = () => {
         <TableBody>
           {
             !isLoading ? users?.map(value => {
-              const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY')]
+              const rowOptions = [value.email, moment(value.registrationDate).format('DD MMM YYYY'), <SignUpTypeIcon user={value} />]
               return (
                 <TableRow
                   options={rowOptions}
