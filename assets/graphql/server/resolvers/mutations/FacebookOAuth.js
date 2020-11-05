@@ -1,6 +1,7 @@
 import User from '../../models/User'
 import { setUserSession } from '../../utils/auth'
 import * as yup from 'yup'
+import checkUserSignUpType from '../../utils/checkUserSignUpType'
 
 
 const schema = yup.object().shape({
@@ -17,13 +18,28 @@ const schema = yup.object().shape({
 })
 
 
-const facebookOAuth = async (obj, { email, facebookID }, { req, res }, info) => {
-  return schema.validate({ email, facebookID }).then(values => {
-    // check if email is already registered normally??
-    return User.findOneAndUpdate({ facebookID, email }, {}, { upsert: true, new: true }).then(user => {
-      return setUserSession(res, user._id).then(() => {
-        return user
-      }).catch(err => { throw err })
+const facebookOAuth = async (parent, { facebookID, email }, { req, res }, info) => {
+  return schema.validate({ facebookID, email }).then(values => {
+    return User.findOne({ email }).then(user => {
+      if (!user) {
+        return User({ email, facebookID }).save().then(user => {
+          return setUserSession(res, user._id).then(() => {
+            return user
+          }).catch(err => { throw err })
+        }).catch(err => { throw err })
+      } else if (facebookID === user.facebookID) {
+        return setUserSession(res, user._id).then(() => {
+          return user
+        }).catch(err => { throw err })
+      } else {
+        return checkUserSignUpType(user).then(signUpType => {
+          if (signUpType === 'Normal') {
+            throw new Error('This email is already registered.')
+          } else {
+            throw new Error(`This email is registered through ${signUpType}`)
+          }
+        }).catch(err => { throw err })
+      }
     }).catch(err => { throw err })
   }).catch(err => { throw err })
 }

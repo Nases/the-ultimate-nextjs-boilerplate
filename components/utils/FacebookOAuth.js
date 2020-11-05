@@ -27,8 +27,6 @@ const FacebookOAuth = () => {
 
   const handleResponseFacebook = response => {
     const { email, id, name } = response
-    console.log(name)
-
 
     if (email && id) {
       facebookOAuth({
