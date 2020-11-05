@@ -4,31 +4,55 @@ import { useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/Au
 import { gql, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import settings from '../../assets/config/settings'
+import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 
 
 const FacebookOAuth = () => {
   const dispatchUserData = useDispatchUser()
+  const dispatchAuthModal = useDispatchAuthModal()
   const router = useRouter()
   const logInRedirectPath = settings.customerLogInRedirectPath
 
 
+  const FaceBookOAuthMutation = gql`
+    mutation FaceBookOAuthMutation($facebookID: String, $email: String) {
+      facebookOAuth(facebookID: $facebookID, email: $email) {
+        ...userFields
+      }
+    }
+    ${UserFragment}
+  `
+  const [facebookOAuth] = useMutation(FaceBookOAuthMutation)
+
+
   const handleResponseFacebook = response => {
     const { email, id, name } = response
-    console.log(email)
+    console.log(name)
 
 
     if (email && id) {
-      dispatchUserData({
-        type: 'LOGIN',
-        userData: data.logIn
+      facebookOAuth({
+        variables: {
+          facebookID: id,
+          email
+        }
+      }).then(data => {
+        dispatchUserData({
+          type: 'LOGIN',
+          userData: data.data.facebookOAuth
+        })
+        dispatchAuthModal({
+          type: 'CLOSE_LOGIN_MODAL'
+        })
+        dispatchAuthModal({
+          type: 'CLOSE_SIGN_UP_MODAL'
+        })
+        router.push(logInRedirectPath)
+      }).catch(err => {
+        console.log(err)
       })
-      dispatchAuthModal({
-        type: 'CLOSE_LOGIN_MODAL'
-      })
-      dispatchAuthModal({
-        type: 'CLOSE_SIGNUP_MODAL'
-      })
-      router.push(logInRedirectPath)
+
+
     } else {
       // show real error here
       console.log('Something went wrong, please try again later.')

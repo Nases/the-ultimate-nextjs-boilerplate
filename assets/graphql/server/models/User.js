@@ -37,8 +37,17 @@ const UserSchema = mongoose.Schema({
   forgotPasswordToken: {
     type: String,
     default: null
+  },
+  facebookID: {
+    type: String,
+    default: null
+  },
+  googleID: {
+    type: String,
+    default: null
   }
 })
+
 
 let User
 try {

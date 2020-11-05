@@ -13,6 +13,8 @@ const UserFragment = gql`
     registrationDate
     passwordLastUpdated
     forgotPasswordToken
+    facebookID
+    googleID
   }
 `
 

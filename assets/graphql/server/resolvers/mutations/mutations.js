@@ -3,7 +3,7 @@ import changePassword from './changePassword'
 import changeEmail from './changeEmail'
 import changePersonalInformation from './changePersonalInformation'
 import forgotPassword from './forgotPassword'
-import FacebookOAuth from './FacebookOAuth'
+import facebookOAuth from './facebookOAuth'
 
 
 const mutations = {
@@ -12,7 +12,7 @@ const mutations = {
   changeEmail,
   changePersonalInformation,
   ...forgotPassword,
-  FacebookOAuth
+  facebookOAuth
 }
 
 

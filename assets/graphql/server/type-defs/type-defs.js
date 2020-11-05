@@ -15,6 +15,8 @@ export const typeDefs = gql`
     registrationDate: Date
     passwordLastUpdated: Date
     forgotPasswordToken: String
+    facebookID: String
+    googleID: String
   }
   type Query {
     logIn(email: String, password: String): User
@@ -33,6 +35,6 @@ export const typeDefs = gql`
     forgotPasswordForm(email: String): String
     forgotPasswordChangePassword(email: String, forgotPasswordToken: String, newPassword: String, confirmNewPassword: String): String
     forgotPasswordChangePasswordEnsure(email: String, forgotPasswordToken: String): String
-    FacebookOAuth(email: String, id: String): User
+    facebookOAuth(email: String, facebookID: String): User
   }
 `

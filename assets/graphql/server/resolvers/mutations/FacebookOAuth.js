@@ -1,9 +1,6 @@
-import { SignUpSchema } from '../../../../validation/schemas'
-import bcrypt from 'bcryptjs'
 import User from '../../models/User'
 import { setUserSession } from '../../utils/auth'
 import * as yup from 'yup'
-import mongoose from 'mongoose'
 
 
 const schema = yup.object().shape({
@@ -12,7 +9,7 @@ const schema = yup.object().shape({
     .required()
     .min(0, 'Email must be at least 0 characters long')
     .max(200, 'Email can be maximum 200 characters long'),
-  id: yup
+  facebookID: yup
     .string()
     .required()
     .min(1, 'Id must be at least 1')
@@ -20,24 +17,16 @@ const schema = yup.object().shape({
 })
 
 
-const FacebookOAuth = async (obj, { email, id }, { req, res }, info) => {
-  return schema.validate({ email, id }).then(values => {
-
-    // id = mongoose.Types.ObjectId(id)
-    return User.findOneAndUpdate({ _id: id, email }, {}, { upsert: true }).then(user => {
-
-
+const facebookOAuth = async (obj, { email, facebookID }, { req, res }, info) => {
+  return schema.validate({ email, facebookID }).then(values => {
+    // check if email is already registered normally??
+    return User.findOneAndUpdate({ facebookID, email }, {}, { upsert: true, new: true }).then(user => {
       return setUserSession(res, user._id).then(() => {
         return user
       }).catch(err => { throw err })
-
-
     }).catch(err => { throw err })
-
-
-
   }).catch(err => { throw err })
 }
 
 
-export default FacebookOAuth
+export default facebookOAuth
