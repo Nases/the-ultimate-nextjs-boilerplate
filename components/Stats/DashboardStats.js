@@ -30,8 +30,8 @@ const DashboardStats = () => {
       </h3>
       <StatsContainer>
         <TotalUsersStats daysBefore={selectedOption.value} />
-        <Stats />
-        <Stats />
+        {/* <Stats />
+        <Stats /> */}
       </StatsContainer>
     </>
   )
