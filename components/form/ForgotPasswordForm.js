@@ -40,7 +40,6 @@ const ForgotPasswordForm = () => {
             setSuccessMessage(`Recovery email sent to ${values.email}, please check your email.`)
             setSubmitting(false)
           }).catch(err => {
-            console.log(err)
             setFieldError('serverError', err.message)
             setSubmitting(false)
           })

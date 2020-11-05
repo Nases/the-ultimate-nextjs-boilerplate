@@ -41,9 +41,7 @@ const facebookOAuth = async (parent, { facebookID, email, firstName, lastName },
         return checkUserSignUpType(user).then(signUpType => {
           if (signUpType === 'Normal') {
             throw new Error('This email is already registered.')
-          } else {
-            throw new Error(`This email is registered through ${signUpType}`)
-          }
+          } else { throw new Error(`This email is registered through ${signUpType}.`) }
         }).catch(err => { throw err })
       }
     }).catch(err => { throw err })

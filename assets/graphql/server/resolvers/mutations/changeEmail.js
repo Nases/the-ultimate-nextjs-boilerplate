@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import User from '../../models/User'
 
 
-const changeEmail = (obj, { email, password }, { req, res }, info) => {
+const changeEmail = (parent, { email, password }, { req, res }, info) => {
   return req.isAuthenticated(req, [1, 2]).then(user => {
     return ChangeEmailSchema.validate({ email, password }).then(values => {
       if (email !== user.email) {

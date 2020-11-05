@@ -7,7 +7,7 @@ export const SignUpSchema = yup.object().shape({
     .required('Required'),
   password: yup.string()
     .min(6, 'Password must be at least 6 characters')
-    .max(24, 'Password can be maximum 24 characters')
+    .max(80, 'Password can be maximum 80 characters')
     .required('Required'),
   confirmPassword: yup.string()
     .oneOf([yup.ref('password'), null], 'Passwords must match')
@@ -20,18 +20,18 @@ export const LogInSchema = yup.object().shape({
     .required('Required'),
   password: yup.string()
     .min(6, 'Password must be at least 6 characters')
-    .max(24, 'Password can be maximum 24 characters')
+    .max(80, 'Password can be maximum 80 characters')
     .required('Required')
 })
 
 export const ChangePasswordSchema = yup.object().shape({
   currentPassword: yup.string()
     .min(6, 'Password must be at least 6 characters')
-    .max(24, 'Password can be maximum 24 characters')
+    .max(80, 'Password can be maximum 80 characters')
     .required('Required'),
   newPassword: yup.string()
     .min(6, 'Password must be at least 6 characters')
-    .max(24, 'Password can be maximum 24 characters')
+    .max(80, 'Password can be maximum 80 characters')
     .required('Required'),
   confirmNewPassword: yup.string()
     .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
@@ -41,7 +41,7 @@ export const ChangePasswordSchema = yup.object().shape({
 export const ForgotPasswordChangePasswordSchema = yup.object().shape({
   newPassword: yup.string()
     .min(6, 'Password must be at least 6 characters')
-    .max(24, 'Password can be maximum 24 characters')
+    .max(80, 'Password can be maximum 80 characters')
     .required('Required'),
   confirmNewPassword: yup.string()
     .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
@@ -54,7 +54,7 @@ export const ChangeEmailSchema = yup.object().shape({
     .required('Required'),
   password: yup.string()
     .min(6, 'Password must be at least 6 characters')
-    .max(24, 'Password can be maximum 24 characters')
+    .max(80, 'Password can be maximum 80 characters')
     .required('Required'),
 })
 

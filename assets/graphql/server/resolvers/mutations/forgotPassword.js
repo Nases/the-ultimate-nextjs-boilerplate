@@ -8,25 +8,30 @@ import User from '../../models/User'
 import settings from '../../../../config/settings'
 import { sendMail } from '../../utils/mailer'
 import cryptoRandomString from 'crypto-random-string'
+import checkUserSignUpType from '../../utils/checkUserSignUpType'
 
 
 const forgotPassword = {
   forgotPasswordForm: async (parent, { email }, { req, res }, info) => {
     return ForgotPasswordSchema.validate({ email }).then(values => {
-      return User.exists({ email }).then(exists => {
-        if (exists) {
-          return cryptoRandomString.async({ length: 64 }).then(randomString => {
-            return User.updateOne({ email }, { forgotPasswordToken: randomString }).then(raw => {
-              const recoveryLink = `${settings.clientURI}forgot-password?email=${email}&forgotPasswordToken=${randomString}`
-              return sendMail({
-                to: email,
-                subject: "Password Recovery",
-                text: 'Please use the link to recover your password: ' + recoveryLink,
-                html: 'Please use the link to recover your password: ' + recoveryLink,
-              }).then(() => {
-                return 'Recovery email sent, please check your email.'
+      return User.findOne({ email }).then(user => {
+        if (user) {
+          return checkUserSignUpType(user).then(signUpType => {
+            if (signUpType === 'Normal') {
+              return cryptoRandomString.async({ length: 64 }).then(randomString => {
+                return User.updateOne({ email }, { forgotPasswordToken: randomString }).then(raw => {
+                  const recoveryLink = `${settings.clientURI}forgot-password?email=${email}&forgotPasswordToken=${randomString}`
+                  return sendMail({
+                    to: email,
+                    subject: "Password Recovery",
+                    text: 'Please use the link to recover your password: ' + recoveryLink,
+                    html: 'Please use the link to recover your password: ' + recoveryLink,
+                  }).then(() => {
+                    return 'Recovery email sent, please check your email.'
+                  }).catch(err => { throw err })
+                }).catch(err => { throw err })
               }).catch(err => { throw err })
-            }).catch(err => { throw err })
+            } else { throw new Error(`This email is registered through ${signUpType}.`) }
           }).catch(err => { throw err })
         } else { throw new Error('This email is not registered.') }
       }).catch(err => { throw err })

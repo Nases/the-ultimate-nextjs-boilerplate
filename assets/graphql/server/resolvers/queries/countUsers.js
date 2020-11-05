@@ -15,7 +15,7 @@ const schema = yup.object().shape({
 })
 
 
-const countUsers = (obj, { email, daysBefore }, { req, res }, info) => {
+const countUsers = (parent, { email, daysBefore }, { req, res }, info) => {
   return req.isAuthenticated(req, [2]).then(user => {
     return schema.validate({ email, daysBefore }).then(values => {
       return User.find(email ? { email: { $regex: email, $options: "i" } } : {})
