@@ -6,6 +6,7 @@ import { gql, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import settings from '../../assets/config/settings'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
+import FormErrorMessage from '../form/partials/FormErrorMessage'
 
 
 const FacebookOAuth = () => {
@@ -14,7 +15,7 @@ const FacebookOAuth = () => {
   const router = useRouter()
   const logInRedirectPath = settings.customerLogInRedirectPath
 
-  const [error, setError] = useState('hellu im error')
+  const [errorMessage, setErrorMessage] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
 
@@ -47,12 +48,11 @@ const FacebookOAuth = () => {
         dispatchAuthModal({ type: 'CLOSE_SIGN_UP_MODAL' })
         router.push(logInRedirectPath)
       }).catch(err => {
-        console.log(err)
+        setErrorMessage(err.message)
         setIsLoading(false)
       })
     } else {
-      // show real error here
-      console.log('Something went wrong, please try again later.')
+      setErrorMessage('Something went wrong, please try again later.')
       setIsLoading(false)
     }
   }
@@ -66,12 +66,15 @@ const FacebookOAuth = () => {
       isDisabled={isLoading}
       onClick={() => setIsLoading(true)}
       render={renderProps => (
-        <button onClick={renderProps.onClick} type="button" className={`${renderProps.isDisabled ? 'opacity-50 cursor-default' : ''} inline-flex items-center w-full px-3 py-2 border border-transparent shadow-sm text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150`}>
-          <i aria-hidden className="absolute fab fa-facebook fa-lg"></i>
-          <span className='m-auto'>
-            Continue with Facebook
+        <>
+          <FormErrorMessage>{errorMessage}</FormErrorMessage>
+          <button onClick={renderProps.onClick} type="button" className={`${renderProps.isDisabled ? 'opacity-50 cursor-default' : ''} inline-flex items-center w-full px-3 py-2 border border-transparent shadow-sm text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150`}>
+            <i aria-hidden className="absolute fab fa-facebook fa-lg"></i>
+            <span className='m-auto'>
+              Continue with Facebook
           </span>
-        </button>
+          </button>
+        </>
       )}
     />
   )
