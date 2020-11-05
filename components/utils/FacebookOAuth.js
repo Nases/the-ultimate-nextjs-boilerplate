@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { useDispatchUser } from '../../assets/contexts/UserProvider/UserProvider'
 import { useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
@@ -12,6 +13,9 @@ const FacebookOAuth = () => {
   const dispatchAuthModal = useDispatchAuthModal()
   const router = useRouter()
   const logInRedirectPath = settings.customerLogInRedirectPath
+
+  const [error, setError] = useState('hellu im error')
+  const [isLoading, setIsLoading] = useState(false)
 
 
   const FaceBookOAuthMutation = gql`
@@ -39,38 +43,34 @@ const FacebookOAuth = () => {
           type: 'LOGIN',
           userData: data.data.facebookOAuth
         })
-        dispatchAuthModal({
-          type: 'CLOSE_LOGIN_MODAL'
-        })
-        dispatchAuthModal({
-          type: 'CLOSE_SIGN_UP_MODAL'
-        })
+        dispatchAuthModal({ type: 'CLOSE_LOGIN_MODAL' })
+        dispatchAuthModal({ type: 'CLOSE_SIGN_UP_MODAL' })
         router.push(logInRedirectPath)
       }).catch(err => {
         console.log(err)
+        setIsLoading(false)
       })
-
-
     } else {
       // show real error here
       console.log('Something went wrong, please try again later.')
+      setIsLoading(false)
     }
-
-
-
   }
+
 
   return (
     <FacebookLogin
       appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
       fields="name,email,picture"
       callback={handleResponseFacebook}
+      isDisabled={isLoading}
+      onClick={() => setIsLoading(true)}
       render={renderProps => (
-        <button onClick={renderProps.onClick} type="button" className="inline-flex items-center w-full px-3 py-2 border border-transparent shadow-sm text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150">
+        <button onClick={renderProps.onClick} type="button" className={`${renderProps.isDisabled ? 'opacity-50 cursor-default' : ''} inline-flex items-center w-full px-3 py-2 border border-transparent shadow-sm text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150`}>
           <i aria-hidden className="absolute fab fa-facebook fa-lg"></i>
           <span className='m-auto'>
             Continue with Facebook
-        </span>
+          </span>
         </button>
       )}
     />
