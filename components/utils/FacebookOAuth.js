@@ -32,10 +32,13 @@ const FacebookOAuth = () => {
 
   const handleResponseFacebook = response => {
     const { email, id, name } = response
-    var firstName = name.split(' ').slice(0, -1).join(' ')
-    var lastName = name.split(' ').slice(-1).join(' ')
 
     if (email && id) {
+      if (name) {
+        var firstName = name.split(' ').slice(0, -1).join(' ')
+        var lastName = name.split(' ').slice(-1).join(' ')
+      }
+
       facebookOAuth({
         variables: {
           facebookID: id,
