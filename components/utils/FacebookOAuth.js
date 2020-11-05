@@ -72,7 +72,7 @@ const FacebookOAuth = () => {
             <i aria-hidden className="absolute fab fa-facebook fa-lg"></i>
             <span className='m-auto'>
               Continue with Facebook
-          </span>
+            </span>
           </button>
         </>
       )}
