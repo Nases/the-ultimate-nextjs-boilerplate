@@ -12,7 +12,7 @@ const schema = yup.object().shape({
 
 
 const user = (parent, { id }, { req, res }, info) => {
-  return req.isAuthenticated(req, [2]).then(user => {
+  return req.isAuthenticated(req, ['ADMIN']).then(user => {
     return schema.validate({ id }).then(values => {
       return User.find({ _id: id })
         .then(value => value[0])

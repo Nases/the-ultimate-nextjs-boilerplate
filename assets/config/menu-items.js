@@ -15,30 +15,30 @@ export const profileMenuItems = [
     name: 'Dashboard',
     href: '/admin/dashboard',
     icon: 'chart-line',
-    roleIdRequired: [2]
+    roleRequired: ['ADMIN']
   },
   {
     name: 'Users',
     href: '/admin/users',
     icon: 'users',
-    roleIdRequired: [2]
+    roleRequired: ['ADMIN']
   },
   {
     name: 'Components',
     href: '/admin/components',
     icon: 'th',
-    roleIdRequired: [2]
+    roleRequired: ['ADMIN']
   },
   {
     name: 'Account Settings',
     href: '/user/account-settings',
     icon: 'cog',
-    roleIdRequired: [1, 2]
+    roleRequired: ['CUSTOMER', 'ADMIN']
   },
   {
     name: 'Log Out',
     href: '/log-out',
     icon: 'sign-out-alt',
-    roleIdRequired: [1, 2]
+    roleRequired: ['CUSTOMER', 'ADMIN']
   }
 ]

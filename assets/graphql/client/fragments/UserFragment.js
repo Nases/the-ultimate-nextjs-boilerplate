@@ -4,7 +4,7 @@ import { gql } from '@apollo/client'
 const UserFragment = gql`
   fragment userFields on User {
     _id
-    roleId
+    role
     email
     password
     firstName

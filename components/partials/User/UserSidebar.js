@@ -22,13 +22,13 @@ const UserSideBarItem = ({ children, href, icon }) => {
 
 const UserSidebar = () => {
   const userData = useUser()
-  const roleId = userData.data.roleId
+  const role = userData.data.role
 
   return (
     <div className="flex flex-col flex-grow shadow-md bg-white overflow-y-auto rounded-md mb-6">
       <nav className="bg-white">
         {profileMenuItems.map(value => {
-          if ((value.name !== 'Log Out') && (value.roleIdRequired.includes(roleId))) {
+          if ((value.name !== 'Log Out') && (value.roleRequired.includes(role))) {
             return (
               <UserSideBarItem href={value.href} icon={value.icon} key={value.name}>
                 {value.name}

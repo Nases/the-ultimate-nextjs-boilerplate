@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 
 
 const users = (parent, { limit, sort, skip, email }, { req, res }, info) => {
-  return req.isAuthenticated(req, [2]).then(user => {
+  return req.isAuthenticated(req, ['ADMIN']).then(user => {
     return schema.validate({ limit, sort, skip, email }).then(values => {
       return User.find(email ? { email: { $regex: email, $options: "i" } } : {})
         .sort({ _id: (sort === 'asc' ? -1 : 1) })

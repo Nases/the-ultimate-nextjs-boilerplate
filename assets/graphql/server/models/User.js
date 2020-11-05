@@ -2,9 +2,9 @@ import mongoose from 'mongoose'
 
 
 const UserSchema = mongoose.Schema({
-  roleId: {
-    type: Number,
-    default: 2
+  role: {
+    type: String,
+    default: 'ADMIN'
   },
   email: {
     type: String,

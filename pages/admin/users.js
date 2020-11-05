@@ -11,7 +11,7 @@ const Users = () => {
   var description = 'Admin - users'
 
   return (
-    <EnsureAuth roleIdRequired={[2]}>
+    <EnsureAuth roleRequired={['ADMIN']}>
       <Layout title={title} description={description}>
         <LayoutIndent>
           <UserLayout>

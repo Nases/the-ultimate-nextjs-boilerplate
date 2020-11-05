@@ -28,11 +28,11 @@ const UserMenuLink = ({ children, href, isMobile = false }) => {
 
 const ProfileMenuLinks = ({ isMobile }) => {
   const userData = useUser()
-  const roleId = userData.data.roleId
+  const role = userData.data.role
 
   return (
     profileMenuItems.map(value => {
-      if (value.roleIdRequired.includes(roleId)) {
+      if (value.roleRequired.includes(role)) {
         return (
           <span key={value.href}>
             {value.name == 'Log Out' ? <hr className='mt-1 mb-1' /> : ''}

@@ -4,7 +4,7 @@ import User from '../../models/User'
 
 
 const changePassword = (parent, { currentPassword, newPassword, confirmNewPassword }, { req, res }, info) => {
-  return req.isAuthenticated(req, [1, 2]).then(user => {
+  return req.isAuthenticated(req, ['CUSTOMER', 'ADMIN']).then(user => {
     return ChangePasswordSchema.validate({ currentPassword, newPassword, confirmNewPassword }).then(values => {
       return bcrypt.compare(newPassword, user.password).then(isMatch => {
         if (!isMatch) {

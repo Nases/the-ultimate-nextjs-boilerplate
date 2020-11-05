@@ -17,7 +17,7 @@ const Dashboard = () => {
 
 
   return (
-    <EnsureAuth roleIdRequired={[1, 2]}>
+    <EnsureAuth roleRequired={['CUSTOMER', 'ADMIN']}>
       <Layout title={title} description={description}>
         <LayoutIndent>
           <UserLayout>

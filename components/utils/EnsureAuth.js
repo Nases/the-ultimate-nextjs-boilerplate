@@ -3,14 +3,14 @@ import { useUser } from '../../assets/contexts/UserProvider/UserProvider'
 import router from 'next/router'
 
 
-const EnsureAuth = ({ children, roleIdRequired }) => {
+const EnsureAuth = ({ children, roleRequired }) => {
   const userData = useUser()
   const isAuth = userData.isAuth
   const isLoading = userData.isLoading
-  const roleId = userData.data.roleId
+  const role = userData.data.role
 
   const redirectNonAuth = () => {
-    if (!isAuth || !roleIdRequired.includes(roleId)) {
+    if (!isAuth || !roleRequired.includes(role)) {
       router.push('/')
     }
   }
