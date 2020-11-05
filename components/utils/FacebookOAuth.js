@@ -68,7 +68,7 @@ const FacebookOAuth = () => {
   return (
     <FacebookLogin
       appId={process.env.NEXT_PUBLIC_FACEBOOK_APP_ID}
-      fields="name,email,picture"
+      fields="name,email"
       callback={handleResponseFacebook}
       isDisabled={isLoading}
       onClick={() => setIsLoading(true)}
