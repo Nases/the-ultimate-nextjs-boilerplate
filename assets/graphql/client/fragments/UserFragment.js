@@ -9,7 +9,6 @@ const UserFragment = gql`
     password
     firstName
     lastName
-    address
     registrationDate
     passwordLastUpdated
     forgotPasswordToken

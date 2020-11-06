@@ -11,7 +11,6 @@ export const typeDefs = gql`
     password: String
     firstName: String
     lastName: String
-    address: String
     registrationDate: Date
     passwordLastUpdated: Date
     forgotPasswordToken: String
