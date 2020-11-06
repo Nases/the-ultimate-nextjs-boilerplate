@@ -34,7 +34,6 @@ const SignUpForm = () => {
   }, [])
 
 
-
   return (
     <div>
       <Formik

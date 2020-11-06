@@ -1,8 +1,3 @@
-const settings = {
-  customerLogInRedirectPath: '/user/account-settings',
-  customerSignUpRedirectPath: '/user/account-settings',
-}
-
 export const redirectPath = {
   logIn: {
     default: '/user/account-settings', // used by prefetch
