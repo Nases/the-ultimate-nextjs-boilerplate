@@ -6,7 +6,7 @@ import { gql, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
 import settings from '../../assets/config/settings'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
-import FormErrorMessage from '../form/partials/FormErrorMessage'
+import FormErrorMessage from '../Form/partials/FormErrorMessage'
 
 
 const FacebookOAuth = () => {

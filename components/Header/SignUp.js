@@ -1,6 +1,6 @@
 import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
-import SignUpForm from '../form/SignUpForm'
+import SignUpForm from '../Form/SignUpForm'
 import FacebookOAuth from '../utils/FacebookOAuth'
 
 

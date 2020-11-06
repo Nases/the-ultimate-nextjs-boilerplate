@@ -1,7 +1,7 @@
-import Input from '../form/partials/Input'
-import Label from '../form/partials/Label'
-import FormErrorMessage from '../form/partials/FormErrorMessage'
-import FormSuccessMessage from '../form/partials/FormSuccessMessage'
+import Input from '../Form/partials/Input'
+import Label from '../Form/partials/Label'
+import FormErrorMessage from '../Form/partials/FormErrorMessage'
+import FormSuccessMessage from '../Form/partials/FormSuccessMessage'
 
 
 const FormElements = () => {
