@@ -1,9 +1,5 @@
 export const mainMenuItems = [
   {
-    name: 'Home',
-    href: '/'
-  },
-  {
     name: 'Pricing',
     href: '/pricing'
   }
