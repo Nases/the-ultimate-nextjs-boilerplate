@@ -1,7 +1,7 @@
 import Modal from 'react-modal'
-import { useAuthModal, useDispatchAuthModal } from '../../../assets/contexts/AuthModalProvider/AuthModalProvider'
-import SignUpForm from '../../form/SignUpForm'
-import FacebookOAuth from '../../utils/FacebookOAuth'
+import { useAuthModal, useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
+import SignUpForm from '../form/SignUpForm'
+import FacebookOAuth from '../utils/FacebookOAuth'
 
 
 export const SignUpButton = ({ isMobile = false }) => {

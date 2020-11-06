@@ -3,7 +3,7 @@ import LayoutIndent from '../../components/Layout/LayoutIndent'
 import { companyInfo } from '../../assets/config/settings'
 import EnsureAuth from '../../components/utils/EnsureAuth'
 import ComponentShowcase from '../../components/ComponentShowcase/ComponentShowcase'
-import UserLayout from '../../components/partials/User/UserLayout'
+import UserLayout from '../../components/User/UserLayout'
 
 
 const Components = () => {

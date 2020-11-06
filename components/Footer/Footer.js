@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { companyInfo } from '../../../assets/config/settings'
+import { companyInfo } from '../../assets/config/settings'
 
 
 const Footer = () => {

@@ -1,6 +1,6 @@
 import Modal from 'react-modal'
-import { useAuthModal, useDispatchAuthModal } from '../../../assets/contexts/AuthModalProvider/AuthModalProvider'
-import ForgotPasswordForm from '../../form/ForgotPasswordForm'
+import { useAuthModal, useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
+import ForgotPasswordForm from '../form/ForgotPasswordForm'
 
 
 export const ForgotPassword = ({ isMobile = false }) => {

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { mainMenuItems } from '../../../assets/config/menu-items'
+import { mainMenuItems } from '../../assets/config/menu-items'
 
 
 const MainMenuLink = ({ children, href, isMobile = false }) => {

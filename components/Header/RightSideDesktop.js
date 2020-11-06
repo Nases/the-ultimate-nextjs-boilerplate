@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
-import Transition from "../../utils/Transition.js"
+import Transition from "../utils/Transition.js"
 import { LogInButton, LogInModal } from './LogIn'
 import { SignUpButton, SignUpModal } from './SignUp'
 import { ForgotPasswordModal } from './ForgotPassword'
-import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
+import { useUser } from '../../assets/contexts/UserProvider/UserProvider'
 import ProfileMenuLinks from './ProfileMenuLinks'
-import Badge from '../../Badge/Badge'
-import Tooltip from '../../Tooltip/Tooltip'
+import Badge from '../Badge/Badge'
+import Tooltip from '../Tooltip/Tooltip'
 import Skeleton from 'react-loading-skeleton'
 
 

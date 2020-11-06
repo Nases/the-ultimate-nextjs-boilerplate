@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { useUser } from '../../../assets/contexts/UserProvider/UserProvider'
-import { useMobileMenu, useDispatchMobileMenu } from '../../../assets/contexts/MobileMenuProvider/MobileMenuProvider'
+import { useUser } from '../../assets/contexts/UserProvider/UserProvider'
+import { useMobileMenu, useDispatchMobileMenu } from '../../assets/contexts/MobileMenuProvider/MobileMenuProvider'
 import MainMenuLinks from './MainMenuLinks'
 import ProfileMenuLinks from './ProfileMenuLinks'
 import { LogInButton } from './LogIn'
