@@ -40,7 +40,7 @@ const LogInForm = () => {
           dispatchAuthModal({
             type: 'CLOSE_LOGIN_MODAL'
           })
-          router.push(getRedirectPath(data.logIn, 'logIn'))
+          router.push(getRedirectPath(data.logIn.role, 'logIn'))
         } else {
           logInForm.current.setFieldError('serverError', 'Something went wrong, please try again later.')
           logInForm.current.setSubmitting(false)
@@ -57,7 +57,7 @@ const LogInForm = () => {
 
 
   useEffect(() => {
-    router.prefetch(logInRedirectPath)
+    router.prefetch(getRedirectPath("CUSTOMER", 'logIn'))
   }, [])
 
   return (

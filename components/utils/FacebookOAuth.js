@@ -1,10 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { useDispatchUser } from '../../assets/contexts/UserProvider/UserProvider'
 import { useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import { gql, useMutation } from '@apollo/client'
 import { useRouter } from 'next/router'
-import settings from '../../assets/config/settings'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 import FormErrorMessage from '../Form/partials/FormErrorMessage'
 import getRedirectPath from '../../assets/utils/getRedirectPath'
@@ -14,10 +13,14 @@ const FacebookOAuth = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
   const router = useRouter()
-  const logInRedirectPath = settings.customerLogInRedirectPath
 
   const [errorMessage, setErrorMessage] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+
+
+  useEffect(() => {
+    router.prefetch(getRedirectPath("CUSTOMER", 'logIn'))
+  }, [])
 
 
   const FaceBookOAuthMutation = gql`
@@ -54,7 +57,7 @@ const FacebookOAuth = () => {
         })
         dispatchAuthModal({ type: 'CLOSE_LOGIN_MODAL' })
         dispatchAuthModal({ type: 'CLOSE_SIGN_UP_MODAL' })
-        router.push(getRedirectPath(data.data.facebookOAuth, 'logIn'))
+        router.push(getRedirectPath(data.data.facebookOAuth.role, 'logIn'))
       }).catch(err => {
         setErrorMessage(err.message)
         setIsLoading(false)

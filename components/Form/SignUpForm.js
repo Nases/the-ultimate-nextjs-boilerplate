@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Input from './partials/Input'
 import Label from './partials/Label'
@@ -6,7 +7,7 @@ import Button from '../Button/Button'
 import { SignUpSchema } from '../../assets/validation/schemas'
 import { useDispatchUser } from '../../assets/contexts/UserProvider/UserProvider'
 import { useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import { gql, useMutation } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 import getRedirectPath from '../../assets/utils/getRedirectPath'
@@ -15,6 +16,7 @@ import getRedirectPath from '../../assets/utils/getRedirectPath'
 const SignUpForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
+  const router = useRouter()
 
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
@@ -25,6 +27,12 @@ const SignUpForm = () => {
     ${UserFragment}
   `
   const [signUp] = useMutation(SignUpMutation)
+
+
+  useEffect(() => {
+    router.prefetch(getRedirectPath("CUSTOMER", 'signUp'))
+  }, [])
+
 
 
   return (
@@ -54,7 +62,7 @@ const SignUpForm = () => {
             dispatchAuthModal({
               type: 'CLOSE_SIGN_UP_MODAL'
             })
-            Router.push(getRedirectPath(value.data.signUp, 'signUp'))
+            router.push(getRedirectPath(value.data.signUp.role, 'signUp'))
           }).catch(err => {
             dispatchUserData({
               type: 'SET_IS_LOADING_FALSE'
