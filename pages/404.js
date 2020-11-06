@@ -1,7 +1,7 @@
 import Layout from '../components/Layout/Layout'
 import LayoutIndent from '../components/Layout/LayoutIndent'
 import { companyInfo } from '../assets/config/settings'
-import Svg404 from '../components/svg/Svg404'
+import Svg404 from '../components/Svg/Svg404'
 import Link from 'next/link'
 
 
