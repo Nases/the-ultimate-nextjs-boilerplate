@@ -5,7 +5,6 @@ import {
 } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
 import User from '../../models/User'
-// import settings from '../../../../config/settings'
 import { sendMail } from '../../utils/mailer'
 import cryptoRandomString from 'crypto-random-string'
 import checkUserSignUpType from '../../utils/checkUserSignUpType'
