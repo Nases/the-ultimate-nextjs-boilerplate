@@ -1,4 +1,3 @@
-
 export const mainMenuItems = [
   {
     name: 'Home',

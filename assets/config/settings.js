@@ -1,26 +1,23 @@
 const settings = {
-  clientURI: (process.env.NODE_ENV === 'production') ? 'https://nextjsboilerplate.com/' : 'http://localhost:3000/',
-  serverURI: (process.env.NODE_ENV === 'production') ? 'https://nextjsboilerplate.com/api/' : 'http://localhost:3000/api/',
+  // clientURI: (process.env.NODE_ENV === 'production') ? 'https://nextjsboilerplate.com/' : 'http://localhost:3000/',
+  // serverURI: (process.env.NODE_ENV === 'production') ? 'https://nextjsboilerplate.com/api/' : 'http://localhost:3000/api/',
   customerLogInRedirectPath: '/user/account-settings',
-  customerSignUpRedirectPath: '/user/account-settings'
+  customerSignUpRedirectPath: '/user/account-settings',
+  // redirectPath: {
+  //   logIn: {
+  //     customer: '/user/account-settings',
+  //     admin: '/admin/dashboard'
+  //   }
+  // }
 }
 
 const companyInfo = {
-  name: 'Hasan Sefa Ozalp',
+  name: 'The Ultimate Next.js Boilerplate',
   email: 'hasan@hasansefaozalp.com',
   address: 'Los Angeles 90025',
   website: 'nextjsboilerplate.com',
   github: 'https://github.com/Nases/nextjs-express-auth-starter'
 }
 
-// routePermissions is not in use yet
-const routePermissions = {
-  '/user/account-settings': [1, 2],
-  '/admin/debug': [2],
-  '/admin/dastboard': [2],
-  '/admin/users': [2],
-  '/admin/user': [2],
-}
 
-
-export { settings as default, routePermissions, companyInfo }
+export { settings as default, companyInfo }

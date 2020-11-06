@@ -186,8 +186,8 @@ const Footer = () => {
               &copy;
               {new Date().getFullYear()}
               {' '}
-              <Link href="https://hasansefaozalp.com/">
-                <a target='blank' className='hover:text-gray-700'>
+              <Link href='#'>
+                <a className='hover:text-gray-700'>
                   {companyInfo.name}.
                 </a>
               </Link>
