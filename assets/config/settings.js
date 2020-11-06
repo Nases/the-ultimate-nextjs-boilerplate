@@ -18,6 +18,3 @@ export const companyInfo = {
   website: 'nextjsboilerplate.com',
   github: 'https://github.com/Nases/nextjs-express-auth-starter'
 }
-
-
-export default settings

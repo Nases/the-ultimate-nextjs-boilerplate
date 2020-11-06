@@ -5,7 +5,7 @@ import {
 } from '../../../../validation/schemas'
 import bcrypt from 'bcryptjs'
 import User from '../../models/User'
-import settings from '../../../../config/settings'
+// import settings from '../../../../config/settings'
 import { sendMail } from '../../utils/mailer'
 import cryptoRandomString from 'crypto-random-string'
 import checkUserSignUpType from '../../utils/checkUserSignUpType'
@@ -20,7 +20,7 @@ const forgotPassword = {
             if (signUpType === 'Normal') {
               return cryptoRandomString.async({ length: 64 }).then(randomString => {
                 return User.updateOne({ email }, { forgotPasswordToken: randomString }).then(raw => {
-                  const recoveryLink = `${settings.clientURI}forgot-password?email=${email}&forgotPasswordToken=${randomString}`
+                  const recoveryLink = `${process.env.NODE_ENV == 'production' ? 'https://' : 'http://'}${req.headers.host}/forgot-password?email=${email}&forgotPasswordToken=${randomString}`
                   return sendMail({
                     to: email,
                     subject: "Password Recovery",
