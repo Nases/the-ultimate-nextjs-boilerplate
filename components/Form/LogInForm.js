@@ -8,15 +8,14 @@ import { LogInSchema } from '../../assets/validation/schemas'
 import { useDispatchUser } from '../../assets/contexts/UserProvider/UserProvider'
 import { useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import router from 'next/router'
-import settings from '../../assets/config/settings'
 import { gql, useLazyQuery } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
+import getRedirectPath from '../../assets/utils/getRedirectPath'
 
 
 const LogInForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
-  const logInRedirectPath = settings.customerLogInRedirectPath
 
   const logInForm = useRef(null)
 
@@ -41,7 +40,7 @@ const LogInForm = () => {
           dispatchAuthModal({
             type: 'CLOSE_LOGIN_MODAL'
           })
-          router.push(logInRedirectPath)
+          router.push(getRedirectPath(data.logIn, 'logIn'))
         } else {
           logInForm.current.setFieldError('serverError', 'Something went wrong, please try again later.')
           logInForm.current.setSubmitting(false)

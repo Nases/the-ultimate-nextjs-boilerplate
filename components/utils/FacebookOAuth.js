@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import settings from '../../assets/config/settings'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
 import FormErrorMessage from '../Form/partials/FormErrorMessage'
+import getRedirectPath from '../../assets/utils/getRedirectPath'
 
 
 const FacebookOAuth = () => {
@@ -53,7 +54,7 @@ const FacebookOAuth = () => {
         })
         dispatchAuthModal({ type: 'CLOSE_LOGIN_MODAL' })
         dispatchAuthModal({ type: 'CLOSE_SIGN_UP_MODAL' })
-        router.push(logInRedirectPath)
+        router.push(getRedirectPath(data.data.facebookOAuth, 'logIn'))
       }).catch(err => {
         setErrorMessage(err.message)
         setIsLoading(false)

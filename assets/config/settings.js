@@ -1,15 +1,20 @@
 const settings = {
   customerLogInRedirectPath: '/user/account-settings',
   customerSignUpRedirectPath: '/user/account-settings',
-  // redirectPath: {
-  //   logIn: {
-  //     customer: '/user/account-settings',
-  //     admin: '/admin/dashboard'
-  //   }
-  // }
 }
 
-const companyInfo = {
+export const redirectPath = {
+  logIn: {
+    customer: '/user/account-settings',
+    admin: '/admin/dashboard'
+  },
+  signUp: {
+    customer: '/user/account-settings',
+    admin: '/admin/dashboard'
+  }
+}
+
+export const companyInfo = {
   name: 'The Ultimate Next.js Boilerplate',
   email: 'hasan@hasansefaozalp.com',
   address: 'Los Angeles 90025',
@@ -18,4 +23,4 @@ const companyInfo = {
 }
 
 
-export { settings as default, companyInfo }
+export default settings

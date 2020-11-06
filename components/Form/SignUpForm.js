@@ -7,15 +7,14 @@ import { SignUpSchema } from '../../assets/validation/schemas'
 import { useDispatchUser } from '../../assets/contexts/UserProvider/UserProvider'
 import { useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import Router from 'next/router'
-import settings from '../../assets/config/settings'
 import { gql, useMutation } from '@apollo/client'
 import UserFragment from '../../assets/graphql/client/fragments/UserFragment'
+import getRedirectPath from '../../assets/utils/getRedirectPath'
 
 
 const SignUpForm = () => {
   const dispatchUserData = useDispatchUser()
   const dispatchAuthModal = useDispatchAuthModal()
-  const signUpRedirectPath = settings.customerSignUpRedirectPath
 
   const SignUpMutation = gql`
     mutation SignUpMutation($email: String, $password: String, $confirmPassword: String) {
@@ -55,7 +54,7 @@ const SignUpForm = () => {
             dispatchAuthModal({
               type: 'CLOSE_SIGN_UP_MODAL'
             })
-            Router.push(signUpRedirectPath)
+            Router.push(getRedirectPath(value.data.signUp, 'signUp'))
           }).catch(err => {
             dispatchUserData({
               type: 'SET_IS_LOADING_FALSE'
