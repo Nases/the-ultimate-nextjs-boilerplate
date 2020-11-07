@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <>
       <div className='headerBefore'></div>
-      <nav className="header bg-white z-50 shadow-sm sm:sticky top-0">
+      <nav className="header bg-white z-40 shadow-sm sm:sticky top-0">
         <div className="max-w-7xl mx-auto pt-1 px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             {/* logo & main menu items */}
