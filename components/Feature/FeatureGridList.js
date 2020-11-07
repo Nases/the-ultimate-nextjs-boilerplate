@@ -12,7 +12,7 @@ const FeatureGridList = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
             </svg>
             <div className="space-y-2">
-              <dt className="text-lg leading-6 font-medium text-gray-900">Protected client & server</dt>
+              <dt className="text-lg leading-6 font-medium text-gray-900">Role protected client & server</dt>
               <dd className="flex space-x-3 lg:py-0 lg:pb-4">
                 <span className="text-base leading-6 text-gray-500">Tempor tellus in aliquet eu et sit nulla tellus. Suspendisse est, molestie blandit quis ac. Lacus.</span>
               </dd>

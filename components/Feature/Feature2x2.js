@@ -58,7 +58,7 @@ const Feature2x2 = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-lg leading-6 font-medium text-gray-900">No magic</h4>
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">Role protected client & server</h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
                     </p>
@@ -75,7 +75,7 @@ const Feature2x2 = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-lg leading-6 font-medium text-gray-900">Protected client & server</h4>
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">No magic</h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
                     </p>

@@ -2,7 +2,6 @@ import Layout from '../components/Layout/Layout'
 import { companyInfo } from '../assets/config/settings'
 import PricingSimpleTiers from '../components/Pricing/PricingSimpleTiers/PricingSimpleTiers'
 import References from '../components/References/References'
-import Steps from '../components/Steps/Steps'
 
 
 const Pricing = () => {
@@ -11,7 +10,6 @@ const Pricing = () => {
 
   return (
     <Layout title={title} description={description}>
-      <Steps />
       <PricingSimpleTiers />
       <References />
     </Layout>
