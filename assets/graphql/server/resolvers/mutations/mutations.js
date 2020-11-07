@@ -4,6 +4,7 @@ import changeEmail from './changeEmail'
 import changePersonalInformation from './changePersonalInformation'
 import forgotPassword from './forgotPassword'
 import facebookOAuth from './facebookOAuth'
+import googleOAuth from './googleOAuth'
 
 
 const mutations = {
@@ -12,7 +13,8 @@ const mutations = {
   changeEmail,
   changePersonalInformation,
   ...forgotPassword,
-  facebookOAuth
+  facebookOAuth,
+  googleOAuth
 }
 
 

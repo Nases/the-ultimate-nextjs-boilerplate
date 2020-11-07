@@ -2,6 +2,7 @@ import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import LogInForm from '../Form/LogInForm'
 import FacebookOAuth from '../utils/FacebookOAuth'
+import GoogleOAuth from '../utils/GoogleOAuth'
 
 
 export const LogInButton = ({ isMobile = false }) => {
@@ -57,11 +58,9 @@ export const LogInModal = () => {
             Log In
           </h2>
         </div>
-
         <FacebookOAuth />
-
+        <GoogleOAuth />
         <div className='text-center my-4'>or</div>
-
         <LogInForm />
         <div className="mt-3">
           <div className="text-sm leading-5 justify-between flex">

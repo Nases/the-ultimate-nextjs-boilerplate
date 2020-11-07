@@ -23,15 +23,15 @@ const FacebookOAuth = () => {
   }, [])
 
 
-  const FaceBookOAuthMutation = gql`
-    mutation FaceBookOAuthMutation($facebookID: String, $email: String, $firstName: String, $lastName: String) {
+  const FacebookOAuthMutation = gql`
+    mutation FacebookOAuthMutation($facebookID: String, $email: String, $firstName: String, $lastName: String) {
       facebookOAuth(facebookID: $facebookID, email: $email, firstName: $firstName, lastName: $lastName) {
         ...userFields
       }
     }
     ${UserFragment}
   `
-  const [facebookOAuth] = useMutation(FaceBookOAuthMutation)
+  const [facebookOAuth] = useMutation(FacebookOAuthMutation)
 
 
   const handleResponseFacebook = response => {
@@ -79,7 +79,7 @@ const FacebookOAuth = () => {
       render={renderProps => (
         <>
           <FormErrorMessage>{errorMessage}</FormErrorMessage>
-          <button onClick={renderProps.onClick} type="button" className={`${renderProps.isDisabled ? 'opacity-50 cursor-default' : ''} inline-flex items-center w-full px-3 py-2 border border-transparent shadow-sm text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150`}>
+          <button onClick={renderProps.onClick} type="button" className={`${renderProps.isDisabled ? 'opacity-50 cursor-default' : ''} inline-flex items-center w-full px-3 py-2 border border-transparent shadow-md text-md font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none active:bg-blue-800 transition ease-in-out duration-150`}>
             <i aria-hidden className="absolute fab fa-facebook fa-lg"></i>
             <span className='m-auto'>
               Continue with Facebook

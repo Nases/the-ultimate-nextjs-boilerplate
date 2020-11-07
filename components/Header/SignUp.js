@@ -2,6 +2,7 @@ import Modal from 'react-modal'
 import { useAuthModal, useDispatchAuthModal } from '../../assets/contexts/AuthModalProvider/AuthModalProvider'
 import SignUpForm from '../Form/SignUpForm'
 import FacebookOAuth from '../utils/FacebookOAuth'
+import GoogleOAuth from '../utils/GoogleOAuth'
 
 
 export const SignUpButton = ({ isMobile = false }) => {
@@ -46,11 +47,9 @@ export const SignUpModal = () => {
             Sign Up
           </h2>
         </div>
-
         <FacebookOAuth />
-
+        <GoogleOAuth />
         <div className='text-center my-4'>or</div>
-
         <SignUpForm />
         <div className="mt-3">
           <div className="text-sm leading-5 text-right">
