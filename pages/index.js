@@ -4,6 +4,7 @@ import SimpleCenteredHero from '../components/HeroSections/SimpleCenteredHero/Si
 import CTAJustified from '../components/CTA/CTAJustified'
 import Feature2x2 from '../components/Feature/Feature2x2'
 import FAQAccordion from '../components/FAQ/FAQAccordion'
+import FeatureGridList from '../components/Feature/FeatureGridList'
 
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <SimpleCenteredHero />
       <Feature2x2 />
       <FAQAccordion />
+      <FeatureGridList />
       <CTAJustified />
     </Layout>
   )

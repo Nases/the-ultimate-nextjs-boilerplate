@@ -6,7 +6,7 @@ const Feature2x2 = () => {
           <div className="lg:text-center">
             <p className="text-base leading-6 text-primary-600 font-semibold tracking-wide uppercase">Transactions</p>
             <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-              A better way to send money
+              A better way to start projects
             </h3>
             <p className="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">
               Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.
@@ -24,7 +24,7 @@ const Feature2x2 = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-lg leading-6 font-medium text-gray-900">Competitive exchange rates</h4>
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">One click deploy</h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
                     </p>
@@ -41,7 +41,7 @@ const Feature2x2 = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-lg leading-6 font-medium text-gray-900">No hidden fees</h4>
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">Authentication ready</h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
                     </p>
@@ -58,7 +58,7 @@ const Feature2x2 = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-lg leading-6 font-medium text-gray-900">Transfers are instant</h4>
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">No magic</h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
                     </p>
@@ -75,7 +75,7 @@ const Feature2x2 = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-lg leading-6 font-medium text-gray-900">Mobile notifications</h4>
+                    <h4 className="text-lg leading-6 font-medium text-gray-900">Protected client & server</h4>
                     <p className="mt-2 text-base leading-6 text-gray-500">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
                     </p>
