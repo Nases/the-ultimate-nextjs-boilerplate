@@ -2,12 +2,12 @@ export const redirectPath = {
   logIn: {
     default: '/user/account-settings', // used by prefetch
     customer: '/user/account-settings',
-    admin: '/admin/dashboard',
+    admin: '/admin/users',
   },
   signUp: {
     default: '/user/account-settings', // used by prefetch
     customer: '/user/account-settings',
-    admin: '/admin/dashboard'
+    admin: '/admin/users'
   }
 }
 

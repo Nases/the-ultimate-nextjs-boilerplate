@@ -19,12 +19,6 @@ export const profileMenuItems = [
     roleRequired: ['ADMIN']
   },
   {
-    name: 'Components',
-    href: '/admin/components',
-    icon: 'th',
-    roleRequired: ['ADMIN']
-  },
-  {
     name: 'Account Settings',
     href: '/user/account-settings',
     icon: 'cog',
