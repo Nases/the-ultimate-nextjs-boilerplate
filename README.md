@@ -17,12 +17,11 @@ npm install
 cp .env.local.example .env.local
 
 # Update .env.local
-# Update /assets/settings.js
+# Update /assets/config/settings.js
 
 npm run dev
 
 # go to http://localhost:3000/
-# Voila
 ```
 
 ## Contributing
