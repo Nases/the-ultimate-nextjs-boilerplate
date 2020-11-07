@@ -60,7 +60,16 @@ export const LogInModal = () => {
         </div>
         <FacebookOAuth />
         <GoogleOAuth />
-        <div className='text-center my-4'>or</div>
+        <div className="relative my-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center text-sm leading-5">
+            <span className="px-6 bg-gray-50 text-gray-500">
+              or
+            </span>
+          </div>
+        </div>
         <LogInForm />
         <div className="mt-3">
           <div className="text-sm leading-5 justify-between flex">
