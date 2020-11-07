@@ -10,6 +10,8 @@
   "dependencies": {
     "@apollo/client": "^3.2.5",
     "@hapi/iron": "^6.0.0",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.11.0",
     "@tailwindcss/typography": "^0.2.0",
     "@tailwindcss/ui": "^0.6.2",
     "apollo-server-micro": "^2.18.2",
@@ -34,6 +36,7 @@
     "react-select": "^3.1.0",
     "react-tooltip": "^4.2.10",
     "react-transition-group": "^4.4.1",
+    "stripe": "^8.120.0",
     "yup": "^0.29.3"
   },
   "devDependencies": {

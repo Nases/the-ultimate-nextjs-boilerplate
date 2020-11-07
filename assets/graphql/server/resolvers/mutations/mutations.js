@@ -5,6 +5,7 @@ import changePersonalInformation from './changePersonalInformation'
 import forgotPassword from './forgotPassword'
 import facebookOAuth from './facebookOAuth'
 import googleOAuth from './googleOAuth'
+import createPaymentIntent from './stripe/createPaymentIntent'
 
 
 const mutations = {
@@ -14,7 +15,8 @@ const mutations = {
   changePersonalInformation,
   ...forgotPassword,
   facebookOAuth,
-  googleOAuth
+  googleOAuth,
+  createPaymentIntent
 }
 
 
