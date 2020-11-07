@@ -38,8 +38,8 @@ export const ForgotPasswordModal = () => {
       onRequestClose={closeForgotPasswordModal}
       contentLabel="Forgot Password Modal"
     >
-      <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 min-w-40">
-        <div className="text-center pb-2">
+      <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 min-w-40">
+        <div className="text-center pb-6">
           <i className="text-primary-500 fas fa-unlock fa-3x"></i>
           <h2 className="text-gray-700 mt-4 text-3xl leading-9 font-extrabold">
             Forgot Password
