@@ -69,23 +69,23 @@ const GoogleOAuth = () => {
     }
   }
 
-  console.log(isLoading)
+
   return (
     <GoogleLogin
       clientId={process.env.NEXT_PUBLIC_GOOGLE_APP_ID}
       disabled={isLoading}
       render={renderProps => (
         <>
-          <FormErrorMessage>{errorMessage}</FormErrorMessage>
+          <FormErrorMessage className={errorMessage && 'mt-4'}>{errorMessage}</FormErrorMessage>
           <button onClick={() => {
             renderProps.onClick()
             setIsLoading(true)
           }
           } type="button" className={`${renderProps.disabled ? 'opacity-50 cursor-default' : ''} inline-flex items-center w-full px-3 py-2 border border-transparent shadow-md text-md font-semibold rounded-full text-gray-600 bg-white hover:bg-gray-50 focus:outline-none active:bg-gray-100 transition ease-in-out duration-150`}>
-            <span className='google-icon w-5 h-5'></span>
+            <span className='absolute google-icon w-5 h-5'></span>
             <span className='m-auto'>
               Continue with Google
-              </span>
+            </span>
           </button>
         </>
       )}
