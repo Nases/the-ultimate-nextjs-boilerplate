@@ -111,7 +111,7 @@ const UsersTable = () => {
                 <TableRow
                   options={rowOptions}
                   detailsLink={`/admin/user/${value._id}`}
-                  subscriber={users.subscriber}
+                  role={value.role}
                   key={value._id}
                 />
               )

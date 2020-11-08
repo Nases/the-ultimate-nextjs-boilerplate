@@ -3,7 +3,7 @@ import Badge from '../Badge/Badge'
 import Skeleton from 'react-loading-skeleton'
 
 
-const TableRow = ({ options, detailsLink, subscriber, loading }) => {
+const TableRow = ({ options, detailsLink, role, loading }) => {
   const router = useRouter()
 
 
@@ -20,8 +20,8 @@ const TableRow = ({ options, detailsLink, subscriber, loading }) => {
           )
         })}
         <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-          <Badge color={subscriber ? 'green' : 'blue'} size='small'>
-            {subscriber ? 'Subscriber' : 'Non-Subscriber'}
+          <Badge color={(role === 'ADMIN') ? 'blue' : 'green'} size='small'>
+            {(role === 'ADMIN') ? 'Admin' : 'Customer'}
           </Badge>
         </td>
       </tr>
