@@ -76,7 +76,6 @@ const FacebookOAuth = () => {
       callback={handleResponseFacebook}
       isDisabled={isLoading}
       onClick={() => setIsLoading(true)}
-      redirectUri='https://nextjsboilerplate.com/admin/users'
       render={renderProps => (
         <>
           <FormErrorMessage>{errorMessage}</FormErrorMessage>
