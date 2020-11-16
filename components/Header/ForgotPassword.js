@@ -38,7 +38,14 @@ export const ForgotPasswordModal = () => {
       onRequestClose={closeForgotPasswordModal}
       contentLabel="Forgot Password Modal"
     >
-      <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 min-w-40">
+      <div className="relative bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 min-w-40">
+        <div onClick={closeForgotPasswordModal} className="absolute top-0 right-0 pt-4 pr-4">
+          <button type="button" className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150" aria-label="Close">
+            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
         <div className="text-center pb-6">
           <i className="text-primary-500 fas fa-unlock fa-3x"></i>
           <h2 className="text-gray-700 mt-4 text-3xl leading-9 font-extrabold">
