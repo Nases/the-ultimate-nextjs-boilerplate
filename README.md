@@ -1,8 +1,8 @@
 # The Ultimate Next.js Boilerplate
 
-### Demo &#8594;  https://nextjsboilerplate.com/
+### Demo &#8594;  https://nextjs-express-auth-starter-hasansefaozalp.vercel.app/
 
-The goal of [The Ultimate Next.js Boilerplate](https://nextjsboilerplate.com/) is to provide an advanced code base to start Next.js projects.
+The goal of [The Ultimate Next.js Boilerplate](https://nextjs-express-auth-starter-hasansefaozalp.vercel.app/) is to provide an advanced code base to start Next.js projects.
 
 Development environment requirements:
 - [Node.js](https://nodejs.org/en/download/)
